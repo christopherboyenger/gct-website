@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands — The Golf Creator Tour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
+  <meta name="description" content="Launch Sponsored Challenges inside the GCT app. Put your brand at the center of elite golf creator competition — 100 creators, authentic content, guaranteed delivery.">
+  <meta property="og:title" content="Brands — The Golf Creator Tour">
+  <meta property="og:description" content="Launch a Sponsored Challenge inside the world's top golf creator competition. 100 elite creators. Authentic content. Real results.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#c9982a">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08090f; --bg2: #0c0f1a; --navy: #0f1524;
+      --gold: #c9982a; --gold2: #e8b84b; --gold3: #f5d07a;
+      --white: #ffffff; --gray: #6b7a94; --gray2: #8a9ab5;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 48px); max-width: 1200px; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: rgba(12,15,26,0.85); backdrop-filter: blur(24px); border-radius: 100px; border: 1px solid rgba(201,152,42,0.18); transition: background 0.3s; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); text-transform: uppercase; line-height: 1.3; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 10px 26px; border-radius: 100px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(201,152,42,0.4); }
+
+    /* BUTTONS */
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 16px 40px; border-radius: 100px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201,152,42,0.45); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.25); padding: 16px 40px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 100% 60%, rgba(201,152,42,0.14) 0%, transparent 60%), linear-gradient(135deg, #08090f 0%, #0c1220 60%, #080c18 100%); }
+    .hero-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(201,152,42,0.09); animation: spin linear infinite; }
+    .hero-ring-1 { width: 600px; height: 600px; top: -100px; right: -150px; animation-duration: 30s; }
+    .hero-ring-2 { width: 900px; height: 900px; top: -270px; right: -320px; opacity: 0.45; animation-duration: 46s; animation-direction: reverse; }
+    .gold-line { position: absolute; width: 2px; border-radius: 100px; background: linear-gradient(180deg, transparent 0%, var(--gold2) 50%, transparent 100%); opacity: 0.4; }
+    .gl1 { height: 260px; right: 28%; top: 12%; transform: rotate(-20deg); }
+    .gl2 { height: 170px; right: 22%; top: 34%; transform: rotate(-35deg); opacity: 0.25; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 140px 40px 80px; width: 100%; }
+    .hero-label { display: inline-block; background: rgba(201,152,42,0.12); border: 1px solid rgba(201,152,42,0.3); color: var(--gold2); padding: 8px 20px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; }
+    .hero-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7vw, 100px); line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 22px; background: linear-gradient(180deg, #fff 20%, rgba(255,255,255,0.78) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-p { font-size: 17px; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 36px; max-width: 500px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Hero visual — challenge panel */
+    .hero-visual { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .brand-card { background: var(--navy); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 26px; width: 100%; max-width: 360px; position: relative; overflow: hidden; transition: transform 0.3s; }
+    .brand-card:hover { transform: translateY(-4px); }
+    .brand-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .brand-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .brand-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.02em; margin-bottom: 14px; }
+    .brand-stat-row { display: flex; gap: 0; }
+    .brand-stat { flex: 1; padding: 12px 14px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+    .brand-stat + .brand-stat { margin-left: 8px; }
+    .brand-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--gold2); line-height: 1; }
+    .brand-stat-label { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 4px; }
+    .challenge-list { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .challenge-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .challenge-row:last-child { border-bottom: none; }
+    .challenge-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 100px; text-transform: uppercase; }
+    .badge-elite { background: rgba(201,152,42,0.18); color: var(--gold2); border: 1px solid rgba(201,152,42,0.3); }
+    .badge-premium { background: rgba(139,92,246,0.18); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+    .challenge-name { font-size: 13px; font-weight: 600; flex: 1; }
+    .challenge-pts { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold2); }
+    .ob-bar-row { margin-top: 14px; }
+    .ob-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+    .ob-bar-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
+    .ob-bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .ob-metric-row { display: flex; gap: 10px; }
+    .ob-metric { flex: 1; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; text-align: center; }
+    .ob-metric-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold2); }
+    .ob-metric-label { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+    /* EYEBROW */
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+
+    /* SPONSORED CHALLENGES SPOTLIGHT */
+    .spotlight { padding: 100px 40px; }
+    .spotlight-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .spotlight-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 18px; line-height: 1; }
+    .spotlight-text p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 32px; }
+    .spotlight-list { display: flex; flex-direction: column; gap: 16px; }
+    .spotlight-item { display: flex; align-items: flex-start; gap: 16px; }
+    .spotlight-check { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold2)); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #000; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+    .spotlight-item-text { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .spotlight-item-text strong { color: var(--white); font-weight: 700; }
+
+    /* FEATURES */
+    .features { padding: 100px 40px; background: var(--bg2); }
+    .features-header { text-align: center; max-width: 700px; margin: 0 auto 72px; }
+    .features-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 16px; }
+    .features-header p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.04); }
+    .feature { background: var(--bg2); padding: 52px 48px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .feature:hover { background: rgba(201,152,42,0.03); }
+    .feature::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,152,42,0.18), transparent); }
+    .feature-icon { font-size: 44px; margin-bottom: 26px; }
+    .feature-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .feature-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; margin-bottom: 14px; }
+    .feature-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.75; }
+
+    /* TICKER */
+    .ticker { padding: 22px 0; overflow: hidden; background: rgba(201,152,42,0.035); border-top: 1px solid rgba(201,152,42,0.08); border-bottom: 1px solid rgba(201,152,42,0.08); }
+    .ticker-inner { display: flex; animation: ticker-move 22s linear infinite; white-space: nowrap; }
+    .t-item { display: inline-flex; align-items: center; gap: 20px; padding: 0 36px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .t-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    @keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* STATS */
+    .stats-bar { padding: 80px 40px; position: relative; overflow: hidden; }
+    .stats-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,152,42,0.07) 0%, transparent 70%); pointer-events: none; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; }
+    .stats-top { text-align: center; margin-bottom: 60px; }
+    .stats-top h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5vw, 64px); letter-spacing: 0.02em; margin-bottom: 12px; }
+    .stats-top p { font-size: 17px; color: rgba(255,255,255,0.48); max-width: 520px; margin: 0 auto; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(255,255,255,0.04); }
+    .stat { background: var(--bg); padding: 40px 30px; text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; background: linear-gradient(135deg, var(--gold2), var(--gold3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 8px; line-height: 1.5; }
+
+    /* HOW IT WORKS */
+    .how { padding: 120px 40px; background: var(--bg2); position: relative; }
+    .how::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(201,152,42,0.04) 0%, transparent 70%); pointer-events: none; }
+    .how-header { text-align: center; margin-bottom: 72px; }
+    .how-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 14px; }
+    .how-sub { font-size: 17px; color: rgba(255,255,255,0.48); max-width: 520px; margin: 0 auto; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.04); }
+    .step { background: var(--bg2); padding: 48px 30px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .step:hover { background: rgba(201,152,42,0.03); }
+    .step-n { font-family: 'Bebas Neue', sans-serif; font-size: 90px; color: rgba(255,255,255,0.03); position: absolute; top: 12px; right: 16px; line-height: 1; }
+    .step-icon { font-size: 34px; margin-bottom: 20px; }
+    .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; margin-bottom: 12px; }
+    .step-desc { font-size: 14px; color: rgba(255,255,255,0.46); line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 100px 40px; }
+    .test-header { text-align: center; margin-bottom: 56px; }
+    .test-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5vw, 64px); letter-spacing: 0.02em; margin-bottom: 10px; }
+    .test-sub { font-size: 16px; color: rgba(255,255,255,0.42); }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
+    .test-card { background: var(--navy); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 32px; transition: border-color 0.2s; }
+    .test-card:hover { border-color: rgba(201,152,42,0.28); }
+    .test-stars { color: var(--gold2); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+    .test-quote { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: 12px; }
+    .test-av { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold2)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 15px; flex-shrink: 0; }
+    .test-name { font-weight: 600; font-size: 14px; }
+    .test-handle { font-size: 12px; color: var(--gold2); }
+
+    /* CTA */
+    .cta { padding: 140px 40px; text-align: center; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.1) 0%, transparent 70%); pointer-events: none; }
+    .cta-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 9vw, 120px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 20px; }
+    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.45); margin-bottom: 44px; }
+    .cta-disclaimer { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 20px; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 40px 36px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo-text { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* FADE IN */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fi.vis { opacity: 1; transform: translateY(0); }
+    .fi.d1 { transition-delay: 0.1s; } .fi.d2 { transition-delay: 0.2s; } .fi.d3 { transition-delay: 0.3s; }
+
+    /* MOBILE NAV */
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.3s; display: block; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-overlay { display: none; position: fixed; inset: 0; z-index: 99; background: rgba(8,9,15,0.97); backdrop-filter: blur(24px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-overlay.open { display: flex; }
+    .mobile-overlay a { color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.08em; transition: color 0.2s; }
+    .mobile-overlay a:hover { color: var(--gold2); }
+    .mobile-overlay .mob-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000 !important; padding: 14px 40px; border-radius: 100px; font-size: 18px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 16px; }
+
+    @media (max-width: 960px) { .nav-links { display: none; } .nav-hamburger { display: flex; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } .features-grid, .steps { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .spotlight-inner { grid-template-columns: 1fr; } .test-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .features-grid, .steps, .test-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="gct-landing.html" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="15" r="7" fill="white"/>
+      <circle cx="17.5" cy="13" r="1.2" fill="rgba(0,0,0,0.18)"/>
+      <circle cx="22.5" cy="13" r="1.2" fill="rgba(0,0,0,0.18)"/>
+      <circle cx="20" cy="17.5" r="1.2" fill="rgba(0,0,0,0.18)"/>
+      <rect x="19" y="22" width="2" height="8" rx="1" fill="white"/>
+      <rect x="16.5" y="29" width="7" height="1.5" rx="0.75" fill="white"/>
+      <path d="M10 19 Q6.5 16 8.5 12.5 Q10.5 14.5 10 19Z" fill="white" opacity="0.8"/>
+      <path d="M8.5 22.5 Q4.5 20.5 5.5 17 Q8.5 18 8.5 22.5Z" fill="white" opacity="0.65"/>
+      <path d="M30 19 Q33.5 16 31.5 12.5 Q29.5 14.5 30 19Z" fill="white" opacity="0.8"/>
+      <path d="M31.5 22.5 Q35.5 20.5 34.5 17 Q31.5 18 31.5 22.5Z" fill="white" opacity="0.65"/>
+    </svg>
+    <span class="nav-logo-text">The Golf Creator<br>Tour</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="gct-landing.html">Home</a></li>
+    <li><a href="gct-creators.html">Creators</a></li>
+    <li><a href="gct-brands.html" class="active">Brands</a></li>
+    <li><a href="gct-landing.html#contact">Contact</a></li>
+  </ul>
+  <a href="#partner" class="nav-cta">Partner With Us</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="gct-landing.html" onclick="toggleMenu()">Home</a>
+  <a href="gct-creators.html" onclick="toggleMenu()">Creators</a>
+  <a href="gct-brands.html" onclick="toggleMenu()">Brands</a>
+  <a href="gct-landing.html#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#partner" class="mob-cta" onclick="toggleMenu()">Partner With Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="gold-line gl1"></div>
+  <div class="gold-line gl2"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-label fi">GCT Brand Partnerships</div>
+      <h1 class="hero-h fi">Your Brand<br>Fuels the<br>Competition.</h1>
+      <p class="hero-p fi">Launch a Sponsored Challenge inside the GCT app and become one of the three ways creators earn points toward the Golf Creator Open. 100 elite golf content creators compete to create your content — authentically, competitively, and at scale.</p>
+      <div class="hero-actions fi">
+        <a href="#partner" class="btn-gold">Become a Partner</a>
+        <a href="#how" class="btn-outline">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="brand-card fi d1">
+        <div class="brand-card-label">Active Sponsored Challenges</div>
+        <div class="brand-card-title">Brand Challenges Live</div>
+        <div class="brand-stat-row">
+          <div class="brand-stat">
+            <div class="brand-stat-num">100</div>
+            <div class="brand-stat-label">Creators Eligible</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">97.6K</div>
+            <div class="brand-stat-label">Avg Creator Reach</div>
+          </div>
+        </div>
+        <div class="challenge-list">
+          <div class="challenge-row">
+            <span class="challenge-badge badge-elite">Elite</span>
+            <span class="challenge-name">Iron Shot Masterclass</span>
+            <span class="challenge-pts">600 pts</span>
+          </div>
+          <div class="challenge-row">
+            <span class="challenge-badge badge-premium">Premium</span>
+            <span class="challenge-name">Legato Pressure Putt</span>
+            <span class="challenge-pts">250 pts</span>
+          </div>
+          <div class="challenge-row">
+            <span class="challenge-badge badge-elite">Elite</span>
+            <span class="challenge-name">Longest Drive</span>
+            <span class="challenge-pts">800 pts</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-card fi d2" style="max-width:300px; margin-left:40px;">
+        <div class="brand-card-label">Campaign Performance</div>
+        <div class="ob-metric-row">
+          <div class="ob-metric">
+            <div class="ob-metric-num">8.4%</div>
+            <div class="ob-metric-label">Avg Eng Rate</div>
+          </div>
+          <div class="ob-metric">
+            <div class="ob-metric-num">98%</div>
+            <div class="ob-metric-label">Delivery Rate</div>
+          </div>
+        </div>
+        <div class="ob-bar-row" style="margin-top:16px;">
+          <div class="ob-bar-label"><span>Content Delivered</span><span>98%</span></div>
+          <div class="ob-bar-track"><div class="ob-bar-fill" style="width:98%"></div></div>
+        </div>
+        <div class="ob-bar-row" style="margin-top:10px;">
+          <div class="ob-bar-label"><span>Creator Participation</span><span>94%</span></div>
+          <div class="ob-bar-track"><div class="ob-bar-fill" style="width:94%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORED CHALLENGES SPOTLIGHT -->
+<section class="spotlight">
+  <div class="spotlight-inner">
+    <div class="spotlight-text fi">
+      <div class="eyebrow">The Core Opportunity</div>
+      <h2>Sponsored Challenges</h2>
+      <p>Sponsored Challenges are one of the three ways GCT creators earn points toward the Golf Creator Open. When you launch a challenge, 100 creators are motivated to complete it — not because they have to, but because their ranking depends on it. That's built-in creator incentive no traditional influencer deal can match.</p>
+      <a href="#partner" class="btn-gold">Launch a Challenge</a>
+    </div>
+    <div class="spotlight-list">
+      <div class="spotlight-item fi d1">
+        <div class="spotlight-check">✓</div>
+        <div class="spotlight-item-text"><strong>Your brief becomes their mission.</strong> Creators earn points for completing your challenge — they're competing to create your content, not just posting for a paycheck.</div>
+      </div>
+      <div class="spotlight-item fi d2">
+        <div class="spotlight-check">✓</div>
+        <div class="spotlight-item-text"><strong>Authentic by design.</strong> Every challenge is tied to a real competitive context — iron technique, driving distance, putting pressure. The content is genuine because the competition is real.</div>
+      </div>
+      <div class="spotlight-item fi d3">
+        <div class="spotlight-check">✓</div>
+        <div class="spotlight-item-text"><strong>Point value = creator motivation.</strong> You set the challenge tier — Elite, Premium, or Standard — which determines the point value and the level of creator participation and urgency.</div>
+      </div>
+      <div class="spotlight-item fi">
+        <div class="spotlight-check">✓</div>
+        <div class="spotlight-item-text"><strong>Scale from day one.</strong> Tap into 100 pre-vetted golf content creators immediately. No sourcing, no cold outreach, no one-off negotiations. One campaign brief, 100 creator reach.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <div class="eyebrow fi">Why GCT</div>
+    <h2 class="fi">Built for Brand Results</h2>
+    <p class="fi">Beyond Sponsored Challenges, every GCT partnership is engineered to drive measurable value for your brand across the entire golf creator ecosystem.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature fi">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-tag">Placement</div>
+      <div class="feature-title">Competition-Driven Content</div>
+      <div class="feature-desc">Your brand isn't just mentioned — it's embedded into the competition. When creators complete a Sponsored Challenge, your product is part of the stakes. On-screen, in the content, and naturally integrated into every round they film and share.</div>
+    </div>
+    <div class="feature fi d1">
+      <div class="feature-icon">📊</div>
+      <div class="feature-tag">Insights</div>
+      <div class="feature-title">Real-Time Analytics</div>
+      <div class="feature-desc">Track impressions, engagement rates, content performance, and audience demographics across every creator and challenge in one clean dashboard. No guesswork — clear data on what's working with an audience of avid golfers across every major platform.</div>
+    </div>
+    <div class="feature fi d2">
+      <div class="feature-icon">✅</div>
+      <div class="feature-tag">Delivery</div>
+      <div class="feature-title">Guaranteed Content Delivery</div>
+      <div class="feature-desc">Every Sponsored Challenge comes with a content commitment baked into the point structure — creators who complete the challenge deliver the post. You get authentic, context-rich content without the back-and-forth of traditional influencer coordination.</div>
+    </div>
+    <div class="feature fi d3">
+      <div class="feature-icon">⛳</div>
+      <div class="feature-tag">Audience</div>
+      <div class="feature-title">The Right Golf Audience</div>
+      <div class="feature-desc">GCT creators are golfers who create content — their audiences are deeply engaged golf enthusiasts, not casual scrollers. Reach avid players, gear buyers, and tournament followers who trust the creators they watch every round.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
+    <div class="t-item"><span class="t-dot"></span>100 Creators</div>
+    <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
+    <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
+    <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
+    <div class="t-item"><span class="t-dot"></span>8.4% Avg Engagement</div>
+    <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
+    <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
+    <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
+    <div class="t-item"><span class="t-dot"></span>100 Creators</div>
+    <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
+    <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
+    <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
+    <div class="t-item"><span class="t-dot"></span>8.4% Avg Engagement</div>
+    <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
+    <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stats-top">
+      <div class="eyebrow fi">The Network</div>
+      <h2 class="fi">The GCT Creator Network</h2>
+      <p class="fi">A global community of elite golf content creators — and the brands that power their competition.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat fi">
+        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-label">Elite Golf Content<br>Creators on Tour</div>
+      </div>
+      <div class="stat fi d1">
+        <div class="stat-num">97.6K</div>
+        <div class="stat-label">Average Creator<br>Audience Reach</div>
+      </div>
+      <div class="stat fi d2">
+        <div class="stat-num">8.4%</div>
+        <div class="stat-label">Average Creator<br>Engagement Rate</div>
+      </div>
+      <div class="stat fi d3">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Sponsored Challenge<br>Content Delivery Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header">
+    <div class="eyebrow fi">The Partnership Journey</div>
+    <h2 class="how-h fi">Launch. Reach. Capture. Grow.</h2>
+    <p class="how-sub fi">From your first conversation to your challenge going live — a clear, measurable path to results.</p>
+  </div>
+  <div class="steps">
+    <div class="step fi">
+      <div class="step-n">01</div>
+      <div class="step-icon">🤝</div>
+      <div class="step-tag">Step 1</div>
+      <div class="step-title">Partner</div>
+      <div class="step-desc">Apply as a GCT brand partner. Work with our team to design your Sponsored Challenge — choose the challenge type, content format, point tier (Elite, Premium, or Standard), and campaign duration. Onboarding takes days, not months.</div>
+    </div>
+    <div class="step fi d1">
+      <div class="step-n">02</div>
+      <div class="step-icon">🎯</div>
+      <div class="step-tag">Step 2</div>
+      <div class="step-title">Launch</div>
+      <div class="step-desc">Your Sponsored Challenge goes live inside the GCT app. 100 creators see your brief, understand the point reward, and compete to complete it. The higher the point value, the more urgency — creators fighting for the Open don't miss big challenges.</div>
+    </div>
+    <div class="step fi d2">
+      <div class="step-n">03</div>
+      <div class="step-icon">🎬</div>
+      <div class="step-tag">Step 3</div>
+      <div class="step-title">Capture</div>
+      <div class="step-desc">Creators deliver authentic, competition-driven content tied to your brand. Every post, Reel, and video is created because the creator genuinely competed in your challenge — not because they were paid to pretend. The authenticity is built into the format.</div>
+    </div>
+    <div class="step fi d3">
+      <div class="step-n">04</div>
+      <div class="step-icon">📈</div>
+      <div class="step-tag">Step 4</div>
+      <div class="step-title">Grow</div>
+      <div class="step-desc">Track results through GCT's analytics dashboard. Measure content reach, audience engagement, and challenge participation across every creator. Iterate and scale what works — with a dedicated partner success team helping you every step of the way.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-header">
+    <div class="eyebrow fi">Brand Stories</div>
+    <h2 class="test-h fi">Brands Love GCT</h2>
+    <p class="test-sub fi">Partners come back season after season — because the content performs and the creators deliver.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card fi">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"GCT gave us access to an audience we couldn't reach through traditional golf media. The Sponsored Challenge format meant creators were genuinely competing with our products — the content felt real because it was real."</p>
+      <div class="test-author">
+        <div class="test-av">MR</div>
+        <div>
+          <div class="test-name">Marcus Reid</div>
+          <div class="test-handle">Director of Marketing · PinHigh Apparel</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card fi d1">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"The combination of competitive golf content and authentic creator voices is something no other platform offers. When a creator completes your challenge to earn points for the Open, they're genuinely invested — and it shows in the content."</p>
+      <div class="test-author">
+        <div class="test-av">SL</div>
+        <div>
+          <div class="test-name">Sarah Lin</div>
+          <div class="test-handle">Brand Partnerships · Fairway Golf</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card fi d2">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-quote">"We went from 'let's try this' to 'this is our primary golf channel' after one season. The analytics are transparent, the creators deliver, and the GCT team is exceptional to work with. The Sponsored Challenge model is unlike anything else in the market."</p>
+      <div class="test-author">
+        <div class="test-av">DK</div>
+        <div>
+          <div class="test-name">Derek Kam</div>
+          <div class="test-handle">VP Growth · Links & Co.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="partner">
+  <div class="eyebrow fi">Ready to Partner?</div>
+  <h2 class="cta-h fi">Let's Build<br>Your Challenge.</h2>
+  <p class="cta-sub fi">Apply to become a GCT brand partner and launch your first Sponsored Challenge inside the world's top golf creator competition.</p>
+  <div class="fi">
+    <a href="mailto:brands@golfcreator.tour" class="btn-gold">Apply as a Brand Partner</a>
+  </div>
+  <p class="cta-disclaimer fi">Brand partnerships are subject to GCT review and approval. Reach out for challenge packages, point tiers, and pricing.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="15" r="7" fill="white" opacity="0.6"/>
+        <rect x="19" y="22" width="2" height="8" rx="1" fill="white" opacity="0.6"/>
+        <rect x="16.5" y="29" width="7" height="1.5" rx="0.75" fill="white" opacity="0.6"/>
+        <path d="M10 19 Q6.5 16 8.5 12.5 Q10.5 14.5 10 19Z" fill="white" opacity="0.4"/>
+        <path d="M30 19 Q33.5 16 31.5 12.5 Q29.5 14.5 30 19Z" fill="white" opacity="0.4"/>
+      </svg>
+      <span class="footer-logo-text">The Golf Creator Tour</span>
+    </div>
+    <div class="footer-links">
+      <a href="gct-landing.html">Home</a>
+      <a href="gct-creators.html">Creators</a>
+      <a href="gct-brands.html">Brands</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <span class="footer-copy">© 2026 The Golf Creator Tour. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+  function animateCounter(el, target) {
+    const duration = 2000;
+    const startTime = performance.now();
+    const update = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.target);
+        if (!isNaN(target)) animateCounter(e.target, target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.background = window.scrollY > 60
+      ? 'rgba(8,9,15,0.96)' : 'rgba(12,15,26,0.85)';
+  });
+
+  function toggleMenu() {
+    const h = document.getElementById('hamburger');
+    const m = document.getElementById('mobileOverlay');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>
