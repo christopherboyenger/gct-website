@@ -16,9 +16,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #08090f;
-      --bg2: #0c0f1a;
-      --navy: #0f1524;
+      --bg: #0f1524;
+      --bg2: #131c30;
+      --navy: #1a2640;
       --gold: #c9982a;
       --gold2: #e8b84b;
       --gold3: #f5d07a;
@@ -148,7 +148,7 @@
     .creator-card {
       position: relative; border-radius: 20px; overflow: hidden;
       aspect-ratio: 3/4; border: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(160deg, #131d30 0%, #090d16 100%);
+      background: linear-gradient(160deg, #1a2640 0%, #0f1524 100%);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .creator-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
@@ -268,7 +268,7 @@
     }
     .phone-screen {
       position: absolute; inset: 8px; border-radius: 32px; overflow: hidden;
-      background: linear-gradient(180deg, #0d1426 0%, #060912 100%);
+      background: linear-gradient(180deg, #131c30 0%, #0f1524 100%);
       font-family: 'Inter', sans-serif;
       padding: 22px 12px 14px;
       display: flex; flex-direction: column; gap: 10px;
@@ -518,9 +518,9 @@
 
     /* Stats row redesigned */
     .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.04); margin-top: 28px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-    .open-card { background: linear-gradient(180deg, #0d1322 0%, #0a0f1c 100%); padding: 44px 32px; text-align: center; transition: background 0.4s, transform 0.4s; position: relative; }
+    .open-card { background: linear-gradient(180deg, #131c30 0%, #0f1524 100%); padding: 44px 32px; text-align: center; transition: background 0.4s, transform 0.4s; position: relative; }
     .open-card::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold2), transparent); transition: width 0.5s ease, left 0.5s ease; }
-    .open-card:hover { background: linear-gradient(180deg, rgba(201,152,42,0.08), rgba(13,19,34,0.9)); }
+    .open-card:hover { background: linear-gradient(180deg, rgba(201,152,42,0.08), rgba(15,21,36,0.9)); }
     .open-card:hover::after { width: 80%; left: 10%; }
     .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 8vw, 100px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .open-card-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; }
