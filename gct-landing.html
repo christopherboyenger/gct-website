@@ -426,15 +426,113 @@
     }
 
     /* THE OPEN */
-    .the-open { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; }
-    .the-open::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.09) 0%, transparent 70%); pointer-events: none; }
-    .open-inner { max-width: 1100px; margin: 0 auto; }
-    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.04); margin-top: 64px; border-radius: 20px; overflow: hidden; }
-    .open-card { background: var(--navy); padding: 48px 36px; text-align: center; transition: background 0.3s; }
-    .open-card:hover { background: rgba(201,152,42,0.05); }
+    .the-open { padding: 140px 40px 120px; position: relative; overflow: hidden; background: var(--bg); }
+    .the-open::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1200px; height: 700px; background: radial-gradient(ellipse, rgba(201,152,42,0.10) 0%, transparent 65%); pointer-events: none; }
+    .open-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+    .open-head { text-align: center; max-width: 880px; margin: 0 auto 72px; }
+
+    /* Venue showcase */
+    .venue-stage {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: linear-gradient(180deg, #0c1322 0%, #060810 100%);
+      border: 1px solid rgba(201,152,42,0.18);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .venue-image-wrap {
+      position: relative; height: clamp(420px, 62vh, 680px); overflow: hidden;
+    }
+    .venue-image {
+      position: absolute; inset: -8% -2%; width: 104%; height: 116%;
+      background-image: url('pga-national.jpg');
+      background-size: cover; background-position: center;
+      transform: scale(1.15) translateY(0);
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .venue-stage.in-view .venue-image { transform: scale(1.04) translateY(0); }
+    .venue-image-wrap::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8,9,15,0.20) 0%, rgba(8,9,15,0.10) 35%, rgba(8,9,15,0.55) 75%, rgba(8,9,15,0.95) 100%),
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,152,42,0.18) 0%, transparent 60%);
+    }
+    .venue-image-wrap::before {
+      content: ''; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.10) 50%, transparent 70%);
+      transform: skewX(-18deg); pointer-events: none; z-index: 3;
+      transition: left 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+    }
+    .venue-stage.in-view .venue-image-wrap::before { left: 130%; }
+
+    .venue-overlay {
+      position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column;
+      justify-content: space-between; padding: 36px clamp(28px, 5vw, 64px);
+    }
+    .venue-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .venue-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 18px; border-radius: 100px;
+      background: rgba(8,9,15,0.55); backdrop-filter: blur(18px);
+      border: 1px solid rgba(201,152,42,0.35);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold2);
+    }
+    .venue-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold2); box-shadow: 0 0 12px var(--gold2); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .venue-date-card {
+      text-align: right; padding: 14px 22px; border-radius: 14px;
+      background: rgba(8,9,15,0.55); backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .venue-date-card .vd-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .venue-date-card .vd-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1.1; color: #fff; letter-spacing: 0.04em; margin-top: 4px; }
+    .venue-date-card .vd-year { font-size: 11px; color: var(--gold2); font-weight: 700; letter-spacing: 0.16em; margin-top: 2px; }
+
+    .venue-bottom { position: relative; }
+    .venue-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .venue-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: 0.92; letter-spacing: 0.02em; color: #fff;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+      max-width: 900px;
+    }
+    .venue-sub {
+      margin-top: 16px; font-size: 15px; color: rgba(255,255,255,0.72);
+      max-width: 620px; line-height: 1.55;
+    }
+    .venue-meta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .venue-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .venue-meta-item .vm-k { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .venue-meta-item .vm-v { font-size: 14px; font-weight: 600; color: #fff; }
+
+    /* Reveal layers stagger inside stage */
+    .venue-stage .rv { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .venue-stage.in-view .rv { opacity: 1; transform: translateY(0); }
+    .venue-stage.in-view .rv.r1 { transition-delay: 0.15s; }
+    .venue-stage.in-view .rv.r2 { transition-delay: 0.25s; }
+    .venue-stage.in-view .rv.r3 { transition-delay: 0.45s; }
+    .venue-stage.in-view .rv.r4 { transition-delay: 0.6s; }
+    .venue-stage.in-view .rv.r5 { transition-delay: 0.75s; }
+
+    /* Stats row redesigned */
+    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.04); margin-top: 28px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .open-card { background: linear-gradient(180deg, #0d1322 0%, #0a0f1c 100%); padding: 44px 32px; text-align: center; transition: background 0.4s, transform 0.4s; position: relative; }
+    .open-card::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold2), transparent); transition: width 0.5s ease, left 0.5s ease; }
+    .open-card:hover { background: linear-gradient(180deg, rgba(201,152,42,0.08), rgba(13,19,34,0.9)); }
+    .open-card:hover::after { width: 80%; left: 10%; }
     .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 8vw, 100px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .open-card-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; }
-    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 8px; line-height: 1.5; }
+    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 8px; line-height: 1.5; }
+
+    @media (max-width: 880px) {
+      .venue-image-wrap { height: 520px; }
+      .venue-overlay { padding: 24px; }
+      .venue-top { gap: 14px; }
+      .venue-date-card { text-align: left; }
+      .venue-meta { gap: 20px; }
+    }
 
     /* LEADERBOARD SECTION */
     .leaderboard-section { padding: 120px 40px; }
@@ -864,12 +962,50 @@
   </div>
 </section>
 
-<!-- THE OPEN -->
-<section class="the-open">
+<!-- THE OPEN / VENUE -->
+<section class="the-open" id="venue">
   <div class="open-inner">
-    <div class="eyebrow fi">The Destination</div>
-    <h2 class="section-title fi">The 2nd Annual Golf Creator Open</h2>
-    <p class="section-body fi">Every match, every challenge, every new follower is a step toward the biggest event in golf content creation. The season leaderboard decides who goes.</p>
+    <div class="open-head">
+      <div class="eyebrow fi">The Venue</div>
+      <h2 class="section-title fi">Where the Season Ends. The Legend Begins.</h2>
+      <p class="section-body fi">The Top 100 creators on the season leaderboard travel to Palm Beach Gardens for three days of competition at one of the most iconic stages in professional golf.</p>
+    </div>
+
+    <div class="venue-stage fi">
+      <div class="venue-image-wrap">
+        <div class="venue-image" aria-label="PGA National Resort, Palm Beach Gardens"></div>
+      </div>
+      <div class="venue-overlay">
+        <div class="venue-top">
+          <span class="venue-pill rv r1"><span class="dot"></span> The 2nd Annual Golf Creator Open</span>
+          <div class="venue-date-card rv r2">
+            <div class="vd-label">Event Dates</div>
+            <div class="vd-value">Oct 2 — 4</div>
+            <div class="vd-year">2026</div>
+          </div>
+        </div>
+        <div class="venue-bottom">
+          <div class="venue-eyebrow rv r3">Host Venue</div>
+          <h3 class="venue-title rv r3">PGA National Resort</h3>
+          <p class="venue-sub rv r4">Palm Beach Gardens, Florida — home of The Honda Classic and the legendary Bear Trap. Three days. 100 creators. One champion crowned.</p>
+          <div class="venue-meta rv r5">
+            <div class="venue-meta-item">
+              <span class="vm-k">Location</span>
+              <span class="vm-v">Palm Beach Gardens, FL</span>
+            </div>
+            <div class="venue-meta-item">
+              <span class="vm-k">Dates</span>
+              <span class="vm-v">October 2 – 4, 2026</span>
+            </div>
+            <div class="venue-meta-item">
+              <span class="vm-k">Format</span>
+              <span class="vm-v">3-Day Championship</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="open-grid">
       <div class="open-card fi">
         <div class="open-card-num">100</div>
@@ -994,6 +1130,37 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+  // Venue stage premium reveal (parallax image + staggered overlay)
+  const venueObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        venueObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.venue-stage').forEach(el => venueObserver.observe(el));
+
+  // Subtle parallax drift on the venue image as user scrolls
+  const venueImg = document.querySelector('.venue-stage .venue-image');
+  const venueWrap = document.querySelector('.venue-stage');
+  if (venueImg && venueWrap) {
+    let raf = null;
+    const onScroll = () => {
+      const rect = venueWrap.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - vh / 2) / vh));
+      const ty = progress * -28;
+      venueImg.style.setProperty('--py', ty + 'px');
+      venueImg.style.transform = `scale(${venueWrap.classList.contains('in-view') ? 1.06 : 1.15}) translateY(${ty}px)`;
+    };
+    window.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { onScroll(); raf = null; });
+    }, { passive: true });
+    onScroll();
+  }
 
   // Nav on scroll
   const nav = document.getElementById('nav');
