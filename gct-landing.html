@@ -242,6 +242,18 @@
     .footer-links a:hover { color: rgba(255,255,255,0.8); }
     .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
 
+    /* CONTACT */
+    .contact { padding: 140px 40px; text-align: center; position: relative; overflow: hidden; }
+    .contact::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.11) 0%, transparent 70%); pointer-events: none; }
+    .contact-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 10vw, 130px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 24px; position: relative; }
+    .contact-sub { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 36px; letter-spacing: 0.04em; position: relative; }
+    .contact-email { display: inline-block; font-size: 18px; font-weight: 600; color: var(--gold, #c9982a); text-decoration: none; letter-spacing: 0.04em; margin-bottom: 40px; position: relative; transition: color 0.2s; }
+    .contact-email:hover { color: #fff; }
+    .contact-socials { display: flex; gap: 20px; justify-content: center; position: relative; }
+    .contact-socials a { width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all 0.2s; }
+    .contact-socials a:hover { color: #c9982a; border-color: #c9982a; transform: translateY(-2px); }
+    .contact-socials svg { width: 22px; height: 22px; fill: currentColor; }
+
     /* FADE IN */
     .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fi.vis { opacity: 1; transform: translateY(0); }
@@ -298,7 +310,7 @@
   <a href="gct-landing.html" onclick="toggleMenu()">Creators</a>
   <a href="gct-brands.html" onclick="toggleMenu()">Brands</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="#" class="mob-cta" onclick="toggleMenu()">Enter Tour</a>
+  <a href="https://golfcreatortour.app/apply" class="mob-cta" onclick="toggleMenu()">Enter Tour</a>
 </div>
 
 <!-- HERO -->
@@ -322,9 +334,8 @@
       The Tour<br>Starts Here.
       <span class="hero-tagline-gold">CREATE · COMPETE · CONNECT</span>
     </h1>
-    <p class="hero-sub">The global online competitive platform built for golf content creators. Compete from anywhere in the world — the Top 100 creators earn their spot at the 2nd Annual Golf Creator Open.</p>
     <div class="hero-actions">
-      <a href="#" class="btn-gold">Enter the Tour</a>
+      <a href="https://golfcreatortour.app/apply" class="btn-gold">Enter the Tour</a>
       <a href="#how" class="btn-outline">How It Works</a>
     </div>
   </div>
@@ -378,7 +389,7 @@
   <div class="eyebrow fi">The Platform</div>
   <h2 class="section-title fi">The Global Online Competitive Platform for Golf Content Creators</h2>
   <p class="section-body fi">Compete from anywhere in the world. Earn points through Creator Matches, Sponsored Brand Challenges, and Social Media Growth. The Top 100 creators on the leaderboard earn their spot at the 2nd Annual Golf Creator Open.</p>
-  <a href="#" class="btn-gold fi">Enter the Tour</a>
+  <a href="https://golfcreatortour.app/apply" class="btn-gold fi">Enter the Tour</a>
 </section>
 
 <!-- HOW IT WORKS -->
@@ -446,7 +457,7 @@
       <div class="big-stat">Top 100</div>
       <div class="big-stat-label">Earn a Spot at the Open</div>
       <p>The season leaderboard is live. Every Creator Match won, every Sponsored Challenge completed, and every follower gained pushes you up the board. The Top 100 get their shot at the Golf Creator Open.</p>
-      <a href="#" class="btn-gold">See the Leaderboard</a>
+      <a href="https://golfcreatortour.app/apply" class="btn-gold">See the Leaderboard</a>
     </div>
     <div class="lb-board fi d1">
       <div class="lb-head">
@@ -499,7 +510,7 @@
     <div class="split-eyebrow">Creators</div>
     <h3 class="split-h">Compete for Your Spot at the Open</h3>
     <p class="split-p">Earn points through Creator Matches, Sponsored Challenges, and Social Media Growth. Rise into the Top 100 and earn your invitation to the 2nd Annual Golf Creator Open. Compete from anywhere in the world.</p>
-    <a href="#" class="btn-gold">Join as a Creator</a>
+    <a href="https://golfcreatortour.app/apply" class="btn-gold">Join as a Creator</a>
   </div>
   <div class="split-panel s-navy">
     <div class="split-eyebrow">Brands</div>
@@ -509,25 +520,29 @@
   </div>
 </div>
 
-<!-- CTA -->
-<section class="cta" id="enter">
-  <h2 class="cta-h fi">Your Shot<br>at the Open.</h2>
-  <p class="cta-sub fi">Season 2026 is live. 100 spots. The Top 100 earn the Open.</p>
-  <a href="#" class="btn-gold fi" style="font-size:15px; padding:20px 52px;">Enter the Tour</a>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="contact-h fi">Contact</h2>
+  <p class="contact-sub fi">Get in touch with The Golf Creator Tour.</p>
+  <a href="mailto:info@golfcreatoropen.com" class="contact-email fi">info@golfcreatoropen.com</a>
+  <div class="contact-socials fi">
+    <a href="https://instagram.com/golfcreatortour" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.8 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.2 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+    </a>
+    <a href="https://tiktok.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.6 6.8a5.5 5.5 0 0 1-3.4-1.2 5.5 5.5 0 0 1-2-3.5h-3.3v12.5a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.7a5.9 5.9 0 0 0-.8-.1 5.9 5.9 0 1 0 5.9 5.9V8.6a8.8 8.8 0 0 0 5.4 1.8z"/></svg>
+    </a>
+    <a href="https://youtube.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer id="contact">
+<footer>
   <div class="footer-inner">
     <div class="footer-logo">
       <img src="logo-gct-full.png" alt="The Golf Creator Tour" height="48">
-    </div>
-    <div class="footer-links">
-      <a href="#">Home</a>
-      <a href="#">Creators</a>
-      <a href="gct-brands.html">Brands</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
     </div>
     <div class="footer-copy">© 2026 The Golf Creator Tour · GCT v4.0 · Season 2026</div>
   </div>
