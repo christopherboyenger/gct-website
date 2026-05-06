@@ -174,6 +174,257 @@
     .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.02em; margin-bottom: 14px; }
     .step-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
 
+    /* HOW — REDESIGNED */
+    .how { overflow: hidden; }
+    .aurora { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; opacity: 0.6; z-index: 0; }
+    .aurora-1 { width: 600px; height: 600px; top: -160px; left: -160px; background: radial-gradient(circle, rgba(201,152,42,0.18), transparent 60%); animation: drift 18s ease-in-out infinite alternate; }
+    .aurora-2 { width: 720px; height: 720px; bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(232,184,75,0.12), transparent 60%); animation: drift 22s ease-in-out infinite alternate-reverse; }
+    @keyframes drift {
+      0% { transform: translate(0,0) scale(1); }
+      100% { transform: translate(40px,30px) scale(1.1); }
+    }
+
+    .how-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      position: relative; z-index: 1;
+    }
+    .how-card {
+      position: relative; padding: 32px 28px 36px; border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(20,28,46,0.92) 0%, rgba(10,14,26,0.92) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+      overflow: hidden; isolation: isolate;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.6s, border-color 0.6s;
+      transform-style: preserve-3d;
+    }
+    .how-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+      background: linear-gradient(140deg, rgba(201,152,42,0.55), rgba(255,255,255,0.04) 35%, rgba(201,152,42,0.0) 60%, rgba(232,184,75,0.45) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0.55; transition: opacity 0.6s;
+      pointer-events: none;
+    }
+    .how-card:hover { border-color: rgba(201,152,42,0.25); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.5); }
+    .how-card:hover::before { opacity: 1; }
+    .hc-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,15%), rgba(201,152,42,0.20), transparent 55%);
+      opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 0;
+    }
+    .how-card:hover .hc-glow { opacity: 1; }
+    .hc-orbit {
+      position: absolute; width: 480px; height: 480px; right: -190px; top: -150px;
+      border: 1px solid rgba(201,152,42,0.10); border-radius: 50%;
+      animation: spin 28s linear infinite; pointer-events: none; z-index: 0;
+    }
+    .hc-orbit::after {
+      content: ''; position: absolute; left: 50%; top: -3px; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--gold2); box-shadow: 0 0 16px var(--gold2);
+      transform: translateX(-50%);
+    }
+
+    .hc-meta { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; position: relative; z-index: 2; }
+    .hc-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 1; letter-spacing: 0.02em;
+      background: linear-gradient(180deg, rgba(201,152,42,0.85), rgba(201,152,42,0.0));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hc-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+
+    .hc-stage {
+      position: relative; height: 460px; display: flex; align-items: flex-end; justify-content: center;
+      perspective: 1400px; margin-bottom: 26px; z-index: 2;
+    }
+    .hc-stage::before {
+      content: ''; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      width: 78%; height: 36px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
+      filter: blur(6px); z-index: 0;
+    }
+
+    /* PHONE */
+    .phone {
+      position: relative; width: 248px; height: 510px; border-radius: 38px;
+      background: linear-gradient(160deg, #1a1d28, #06080e);
+      box-shadow:
+        0 28px 60px rgba(0,0,0,0.55),
+        inset 0 0 0 1px rgba(255,255,255,0.06),
+        inset 0 0 0 4px #0a0c14;
+      transform: translateY(40px) rotateX(8deg) rotateY(-12deg) rotateZ(-2deg);
+      transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+      animation: float 6s ease-in-out infinite;
+    }
+    .how-card:hover .phone { transform: translateY(20px) rotateX(2deg) rotateY(-4deg) rotateZ(0); }
+    @keyframes float {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+    .phone-2 { animation-delay: -2s; }
+    .phone-3 { animation-delay: -4s; }
+    .phone-notch {
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 78px; height: 16px; background: #000; border-radius: 100px; z-index: 3;
+    }
+    .phone-screen {
+      position: absolute; inset: 8px; border-radius: 32px; overflow: hidden;
+      background: linear-gradient(180deg, #0d1426 0%, #060912 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 22px 12px 14px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    /* status row */
+    .ps-status { display: flex; justify-content: space-between; font-size: 8px; color: rgba(255,255,255,0.65); padding: 0 6px 2px; font-weight: 700; }
+    .ps-icons { letter-spacing: 0.05em; }
+
+    /* topbar */
+    .ps-topbar { display: flex; justify-content: space-between; align-items: center; padding: 0 4px; }
+    .ps-iconbtn { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
+    .ps-logo { font-size: 14px; color: var(--gold2); }
+
+    /* CONNECT (card 1) */
+    .ps-center { text-align: center; margin-top: 2px; }
+    .ps-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: rgba(255,255,255,0.85); }
+    .ps-subtle { font-size: 8px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+    .ps-statrow { display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; }
+    .ps-statrow > div { display: flex; flex-direction: column; align-items: center; flex: 1; }
+    .ps-statrow b { font-family: 'Bebas Neue', sans-serif; font-size: 18px; line-height: 1; }
+    .ps-statrow span { font-size: 7px; color: rgba(255,255,255,0.45); margin-top: 2px; letter-spacing: 0.05em; }
+    .ps-divv { width: 1px; height: 18px; background: rgba(255,255,255,0.08); flex: 0 0 auto; }
+    .ps-tabs { display: flex; gap: 4px; }
+    .ps-tab { flex: 1; text-align: center; font-size: 8px; padding: 5px 0; border-radius: 6px; color: rgba(255,255,255,0.5); position: relative; }
+    .ps-tab.on { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; font-weight: 800; }
+    .ps-tab .ps-badge { position: absolute; top: -3px; right: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); color: #000; font-size: 7px; font-weight: 800; font-style: normal; display: inline-flex; align-items: center; justify-content: center; }
+    .ps-list { display: flex; flex-direction: column; gap: 5px; }
+    .ps-creator { display: flex; align-items: center; gap: 7px; padding: 7px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; opacity: 0; transform: translateY(8px); animation: rowIn 0.6s forwards; }
+    @keyframes rowIn { to { opacity: 1; transform: translateY(0); } }
+    .how-card:hover .ps-creator.s1 { animation-delay: 0.1s; }
+    .how-card:hover .ps-creator.s2 { animation-delay: 0.25s; }
+    .how-card:hover .ps-creator.s3 { animation-delay: 0.4s; }
+    .ps-creator.s1 { animation-delay: 0.2s; }
+    .ps-creator.s2 { animation-delay: 0.35s; }
+    .ps-creator.s3 { animation-delay: 0.5s; }
+    .ps-av { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, #444, #222); }
+    .av-a { background: linear-gradient(135deg, #4f6b8a, #1a2235); }
+    .av-b { background: linear-gradient(135deg, #d49b6b, #8a4a2a); }
+    .av-c { background: linear-gradient(135deg, #6a8c5a, #2a3a25); }
+    .ps-cr-info { flex: 1; display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .ps-cr-info b { font-size: 9px; font-weight: 700; display: flex; align-items: center; gap: 3px; }
+    .ps-cr-info span { font-size: 7px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .ps-pro { font-style: normal; font-size: 6px; padding: 1px 3px; background: rgba(201,152,42,0.18); color: var(--gold2); border-radius: 3px; font-weight: 800; letter-spacing: 0.05em; }
+    .ps-challenge { font-size: 8px; font-weight: 800; padding: 5px 9px; border-radius: 6px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000;
+      box-shadow: 0 0 0 0 rgba(232,184,75,0.6); animation: pulseBtn 2.4s ease-out infinite; }
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 0 0 0 rgba(232,184,75,0.55); }
+      70% { box-shadow: 0 0 0 8px rgba(232,184,75,0); }
+      100% { box-shadow: 0 0 0 0 rgba(232,184,75,0); }
+    }
+    .ps-pending { font-size: 8px; padding: 5px 9px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
+
+    /* CHALLENGES (card 2) */
+    .ps-chal-top { display: flex; justify-content: space-between; align-items: center; font-size: 8px; color: rgba(255,255,255,0.55); padding: 0 4px; }
+    .ps-chal-top b { color: #fff; font-size: 8px; font-weight: 600; }
+    .ps-chal-mid { color: rgba(255,255,255,0.7); }
+    .ps-chal-actions i { font-style: normal; font-size: 7px; padding: 3px 6px; border-radius: 4px; margin-left: 3px; }
+    .act-go { background: rgba(56,180,100,0.18); color: #4dd285; border: 1px solid rgba(56,180,100,0.35); }
+    .act-drop { background: rgba(220,80,80,0.18); color: #ff7777; border: 1px solid rgba(220,80,80,0.35); }
+    .ps-chal-list { display: flex; flex-direction: column; gap: 8px; }
+    .ps-chal { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 9px; padding: 8px; position: relative; overflow: hidden; }
+    .ps-chal.elite { border-top: 2px solid #c9982a; }
+    .ps-chal.premium { border-top: 2px solid #8b6cf6; }
+    .ps-chal.hi { box-shadow: 0 0 0 1px rgba(201,152,42,0.5), 0 0 24px rgba(201,152,42,0.2); }
+    .ps-chal::after {
+      content: ''; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.08), transparent);
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    .ps-chal.premium::after { animation-delay: 1.3s; }
+    .ps-chal.hi::after { animation-delay: 2.6s; }
+    @keyframes shimmer { 0% { left: -60%; } 60%,100% { left: 130%; } }
+    .ps-chal-row { display: flex; gap: 7px; align-items: flex-start; }
+    .ps-brand { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
+    .brand-a { background: linear-gradient(135deg, #5a1a1a, #2a0a0a); border: 1px solid #c9982a; }
+    .brand-b { background: linear-gradient(135deg, #1a3a2a, #0a1f15); border: 1px solid #8b6cf6; }
+    .brand-c { background: linear-gradient(135deg, #c41a1a, #5a0a0a); border: 1px solid #c9982a; }
+    .ps-chal-info { flex: 1; line-height: 1.2; min-width: 0; }
+    .chal-tag { font-style: normal; font-size: 6px; font-weight: 800; padding: 1px 4px; border-radius: 3px; letter-spacing: 0.05em; }
+    .elite-tag { background: var(--gold); color: #000; }
+    .premium-tag { background: #8b6cf6; color: #fff; }
+    .chal-cat { font-size: 7px; color: rgba(255,255,255,0.5); margin-left: 2px; }
+    .ps-chal-info b { display: block; font-size: 9px; font-weight: 700; margin-top: 3px; }
+    .ps-chal-info p { font-size: 7px; color: rgba(255,255,255,0.45); margin-top: 2px; line-height: 1.35; }
+    .ps-points { text-align: right; flex-shrink: 0; }
+    .ps-points b { font-family: 'Bebas Neue', sans-serif; font-size: 19px; line-height: 1; color: var(--gold2);
+      text-shadow: 0 0 10px rgba(232,184,75,0.4); }
+    .ps-points span { display: block; font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    .ps-chal-foot { display: flex; justify-content: space-between; font-size: 7px; color: rgba(255,255,255,0.4); margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .row-act i { font-style: normal; font-size: 7px; padding: 2px 5px; border-radius: 3px; margin-left: 2px; }
+
+    /* PROFILE / SOCIAL (card 3) */
+    .ps-profile { display: flex; gap: 8px; align-items: center; padding: 0 4px; }
+    .ps-pf-av { width: 38px; height: 38px; border-radius: 8px; background: linear-gradient(135deg, #d49b6b, #6a3a25); flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
+    .ps-pf-info { flex: 1; line-height: 1.2; }
+    .ps-pf-info b { display: block; font-size: 11px; font-weight: 700; }
+    .ps-pf-info > span { font-size: 8px; color: rgba(255,255,255,0.5); }
+    .ps-pf-tags { display: flex; gap: 4px; margin-top: 3px; }
+    .tag-elite { font-style: normal; font-size: 7px; font-weight: 800; padding: 2px 5px; background: var(--gold); color: #000; border-radius: 4px; }
+    .tag-loc { font-style: normal; font-size: 7px; padding: 2px 5px; background: rgba(255,255,255,0.06); border-radius: 4px; color: rgba(255,255,255,0.7); }
+    .ps-pf-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
+    .ps-pf-stats > div { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 7px; padding: 7px 4px; text-align: center; }
+    .ps-pf-stats span { font-size: 6px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
+    .ps-pf-stats b { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 16px; line-height: 1.1; margin-top: 2px; }
+    .goldnum { color: var(--gold2); }
+    .ps-pf-tabs { display: flex; gap: 4px; padding: 4px; background: rgba(255,255,255,0.03); border-radius: 7px; }
+    .ps-pf-tabs span { flex: 1; text-align: center; font-size: 8px; padding: 4px 0; color: rgba(255,255,255,0.5); border-radius: 5px; }
+    .ps-pf-tabs span.on { background: var(--gold); color: #000; font-weight: 800; }
+    .ps-reach { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; }
+    .ps-reach-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .ps-reach-row span { font-size: 7px; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+    .ps-reach-row b { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 18px; line-height: 1.1; margin: 2px 0; }
+    .ps-reach-row i { font-style: normal; font-size: 7px; color: rgba(255,255,255,0.45); }
+    .ps-socials { display: flex; gap: 4px; }
+    .soc { font-style: normal; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 6px; font-weight: 800; }
+    .soc.ig { background: linear-gradient(135deg,#e85a8c,#c93584); color: #fff; }
+    .soc.tt { background: #25f4ee; color: #000; }
+    .soc.yt { background: #ff0000; color: #fff; }
+    .ps-sync { margin-top: 6px; width: 100%; font-size: 7px; padding: 4px 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border-radius: 5px; }
+    .ps-ig { background: rgba(232,90,140,0.06); border: 1px solid rgba(232,90,140,0.18); border-radius: 8px; padding: 8px; }
+    .ps-ig-row { display: flex; gap: 7px; align-items: center; }
+    .ps-ig-info { flex: 1; line-height: 1.2; }
+    .ps-ig-info b { font-size: 9px; }
+    .ps-ig-info span { font-size: 7px; color: rgba(255,255,255,0.45); }
+    .ps-ig-count { text-align: right; line-height: 1.2; }
+    .ps-ig-count b { font-size: 11px; }
+    .ps-conn { display: block; font-size: 6px; color: #e85a8c; }
+    .ps-ig-next { display: flex; justify-content: space-between; font-size: 7px; color: rgba(255,255,255,0.55); margin-top: 6px; }
+    .ps-pts { color: var(--gold2); font-weight: 700; }
+    .ps-progress { height: 4px; background: rgba(255,255,255,0.06); border-radius: 100px; margin-top: 4px; overflow: hidden; }
+    .ps-progress-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, #e85a8c, #c93584);
+      border-radius: 100px;
+      box-shadow: 0 0 10px rgba(232,90,140,0.6);
+      animation: fillBar 2.4s ease-out 0.4s forwards;
+    }
+    @keyframes fillBar { to { width: 78%; } }
+    .ps-progress-lbl { font-size: 6px; color: rgba(232,90,140,0.7); margin-top: 3px; }
+    .ps-mile { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
+    .ps-mile i { font-style: normal; font-size: 6px; padding: 2px 5px; background: rgba(232,90,140,0.12); border: 1px solid rgba(232,90,140,0.25); color: #e85a8c; border-radius: 4px; }
+
+    /* CARD BODY */
+    .hc-body { position: relative; z-index: 2; }
+    .hc-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; margin-bottom: 10px; }
+    .hc-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px; }
+    .hc-foot { display: flex; gap: 8px; flex-wrap: wrap; }
+    .hc-pill { font-size: 10px; padding: 5px 11px; border-radius: 100px; background: rgba(201,152,42,0.08); border: 1px solid rgba(201,152,42,0.22); color: var(--gold2); letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
+
+    @media (max-width: 1100px) {
+      .how-cards { grid-template-columns: 1fr; max-width: 480px; gap: 32px; }
+      .hc-orbit { width: 360px; height: 360px; right: -120px; }
+    }
+
     /* THE OPEN */
     .the-open { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; }
     .the-open::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.09) 0%, transparent 70%); pointer-events: none; }
@@ -394,33 +645,222 @@
 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
   <div class="how-header">
     <div class="eyebrow fi">How to Earn Points</div>
     <h2 class="section-title fi">Three Ways to Climb the Leaderboard</h2>
     <p class="section-body fi" style="margin-bottom:0;">Every point you earn moves you closer to the Golf Creator Open.</p>
   </div>
-  <div class="steps">
-    <div class="step fi">
-      <div class="step-n">01</div>
-      <div class="step-icon">⛳</div>
-      <div class="step-tag">Point Source 1</div>
-      <div class="step-title">Creator Matches</div>
-      <div class="step-desc">Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points. Compete from any course, anywhere in the world.</div>
-    </div>
-    <div class="step fi d1">
-      <div class="step-n">02</div>
-      <div class="step-icon">🎯</div>
-      <div class="step-tag">Point Source 2</div>
-      <div class="step-title">Sponsored Challenges</div>
-      <div class="step-desc">Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points. From iron masterclasses to longest drive competitions — every challenge is an opportunity to score.</div>
-    </div>
-    <div class="step fi d2">
-      <div class="step-n">03</div>
-      <div class="step-icon">📈</div>
-      <div class="step-tag">Point Source 3</div>
-      <div class="step-title">Social Media Growth</div>
-      <div class="step-desc">Grow your audience and earn points for it. GCT rewards creators who build their following — the bigger your reach, the more you contribute to the network and the higher you climb the board.</div>
-    </div>
+
+  <div class="how-cards">
+
+    <!-- CARD 1 -->
+    <article class="how-card fi" data-tilt>
+      <div class="hc-orbit"></div>
+      <div class="hc-glow"></div>
+      <div class="hc-meta">
+        <div class="hc-num">01</div>
+        <div class="hc-tag">Point Source 1</div>
+      </div>
+      <div class="hc-stage">
+        <div class="phone phone-1">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-status"><span>10:53</span><span class="ps-icons">●●● 44</span></div>
+            <div class="ps-topbar">
+              <span class="ps-iconbtn">🔔</span>
+              <span class="ps-logo">⚜</span>
+              <span class="ps-iconbtn">≡</span>
+            </div>
+            <div class="ps-center">
+              <div class="ps-eyebrow">CONNECT</div>
+              <div class="ps-subtle">Find creators near you &amp; challenge them</div>
+            </div>
+            <div class="ps-statrow">
+              <div><b>4</b><span>Nearby</span></div>
+              <div class="ps-divv"></div>
+              <div><b class="count" data-target="1">0</b><span>Sent</span></div>
+              <div class="ps-divv"></div>
+              <div><b>0</b><span>Received</span></div>
+            </div>
+            <div class="ps-tabs">
+              <span class="ps-tab on">Browse</span>
+              <span class="ps-tab">Requests</span>
+              <span class="ps-tab">Matches<i class="ps-badge">1</i></span>
+              <span class="ps-tab">Sent</span>
+            </div>
+            <div class="ps-list">
+              <div class="ps-creator s1">
+                <div class="ps-av av-a"></div>
+                <div class="ps-cr-info"><b>Cannon Claycomb <i class="ps-pro">PRO</i></b><span>@cannonclaycomb</span></div>
+                <button class="ps-challenge">Challenge</button>
+              </div>
+              <div class="ps-creator s2">
+                <div class="ps-av av-b"></div>
+                <div class="ps-cr-info"><b>Elizabeth Veith <i class="ps-pro">PRO</i></b><span>@elizabeth_veith5</span></div>
+                <button class="ps-challenge">Challenge</button>
+              </div>
+              <div class="ps-creator s3">
+                <div class="ps-av av-c"></div>
+                <div class="ps-cr-info"><b>Fulll Ball Golf <i class="ps-pro">PRO</i></b><span>@fullball.golf · 12.8K IG</span></div>
+                <button class="ps-pending">Pending</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-body">
+        <h3 class="hc-title">Creator Matches</h3>
+        <p class="hc-desc">Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points.</p>
+        <div class="hc-foot">
+          <span class="hc-pill">Head-to-head</span>
+          <span class="hc-pill">Worldwide</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="how-card fi d1" data-tilt>
+      <div class="hc-orbit"></div>
+      <div class="hc-glow"></div>
+      <div class="hc-meta">
+        <div class="hc-num">02</div>
+        <div class="hc-tag">Point Source 2</div>
+      </div>
+      <div class="hc-stage">
+        <div class="phone phone-2">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-status"><span>6:21</span><span class="ps-icons">●●● 70</span></div>
+            <div class="ps-chal-top">
+              <span><b>Session long</b></span>
+              <span class="ps-chal-mid">1 participating</span>
+              <span class="ps-chal-actions"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span>
+            </div>
+            <div class="ps-chal-list">
+              <div class="ps-chal elite">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-a"></div>
+                  <div class="ps-chal-info">
+                    <span class="chal-tag elite-tag">ELITE</span> <span class="chal-cat">Technique</span>
+                    <b>Iron Shot Masterclass</b>
+                    <p>Create a tutorial using Reel-wisecing<br/>Grow your iron approach technique..</p>
+                  </div>
+                  <div class="ps-points"><b>600</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Due Jun 15, 2025</span><span>15 spots</span></div>
+              </div>
+              <div class="ps-chal premium">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-b"></div>
+                  <div class="ps-chal-info">
+                    <span class="chal-tag premium-tag">PREMIUM</span> <span class="chal-cat">Lifestyle</span>
+                    <b>Legato Pressure Putt</b>
+                    <p>Film a pressure putt challenge using a<br/>Legato Golf Putt. Minimum 15-footer. Sho…</p>
+                  </div>
+                  <div class="ps-points"><b>250</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Due May 28, 2025</span><span>25 spots</span></div>
+              </div>
+              <div class="ps-chal elite hi">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-c"></div>
+                  <div class="ps-chal-info">
+                    <span class="chal-tag elite-tag">ELITE</span> <span class="chal-cat">Callaway</span>
+                    <b>Longest Drive</b>
+                    <p>Create a 30-60 second Reel showing<br/>your longest drive with a Callaway driver.</p>
+                  </div>
+                  <div class="ps-points"><b>800</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Session long · 15 spots</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-body">
+        <h3 class="hc-title">Sponsored Challenges</h3>
+        <p class="hc-desc">Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points — every challenge is an opportunity to score.</p>
+        <div class="hc-foot">
+          <span class="hc-pill">Brand-funded</span>
+          <span class="hc-pill">Up to 800 pts</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="how-card fi d2" data-tilt>
+      <div class="hc-orbit"></div>
+      <div class="hc-glow"></div>
+      <div class="hc-meta">
+        <div class="hc-num">03</div>
+        <div class="hc-tag">Point Source 3</div>
+      </div>
+      <div class="hc-stage">
+        <div class="phone phone-3">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-status"><span>10:53</span><span class="ps-icons">●●● 44</span></div>
+            <div class="ps-topbar">
+              <span class="ps-iconbtn">🔔</span>
+              <span class="ps-logo">⚜</span>
+              <span class="ps-iconbtn">≡</span>
+            </div>
+            <div class="ps-profile">
+              <div class="ps-pf-av"></div>
+              <div class="ps-pf-info">
+                <b>Epiphany Priebe</b>
+                <span>@piff_golfs</span>
+                <div class="ps-pf-tags"><i class="tag-elite">ELITE</i><i class="tag-loc">🇺🇸 Houston, TX</i></div>
+              </div>
+            </div>
+            <div class="ps-pf-stats">
+              <div><span>RANK</span><b class="goldnum">#4</b></div>
+              <div><span>POINTS</span><b class="count" data-target="1725">0</b></div>
+              <div><span>TOTAL FOLLOWERS</span><b>40.5K</b></div>
+            </div>
+            <div class="ps-pf-tabs">
+              <span>Overview</span>
+              <span class="on">Social</span>
+              <span>Badges</span>
+            </div>
+            <div class="ps-reach">
+              <div class="ps-reach-row">
+                <div><span>TOTAL REACH</span><b>40.5K</b><i>7 of 30 milestones achieved</i></div>
+                <div class="ps-socials">
+                  <i class="soc ig">IG</i><i class="soc tt">TT</i><i class="soc yt">YT</i>
+                </div>
+              </div>
+              <button class="ps-sync">⟳ Sync Now</button>
+            </div>
+            <div class="ps-ig">
+              <div class="ps-ig-row">
+                <i class="soc ig">IG</i>
+                <div class="ps-ig-info"><b>Instagram</b><span>@Piff_golfs</span></div>
+                <div class="ps-ig-count"><b>39.0K</b><span class="ps-conn">Connected</span></div>
+              </div>
+              <div class="ps-ig-next"><span>Next: 50.0K followers</span><span class="ps-pts">+150 pts</span></div>
+              <div class="ps-progress"><div class="ps-progress-fill"></div></div>
+              <div class="ps-progress-lbl">39.0K / 50.0K (78%)</div>
+              <div class="ps-mile">
+                <i>100 → 100pts ✓</i><i>1.0K → 25pts ✓</i><i>5.0K → 50pts ✓</i>
+                <i>10.0K → 75pts ✓</i><i>20.0K → 100pts ✓</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-body">
+        <h3 class="hc-title">Social Media Growth</h3>
+        <p class="hc-desc">Grow your audience and earn points for it. GCT rewards creators who build their following — the bigger your reach, the higher you climb the board.</p>
+        <div class="hc-foot">
+          <span class="hc-pill">IG · TikTok · YouTube</span>
+          <span class="hc-pill">Auto-synced</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -587,6 +1027,39 @@
   }, { threshold: 0.4 });
   const sb = document.querySelector('.stats-bar');
   if (sb) statsObserver.observe(sb);
+
+  // Tilt + glow tracking on how-cards
+  document.querySelectorAll('.how-card[data-tilt]').forEach(card => {
+    const phone = card.querySelector('.phone');
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--mx', (px * 100) + '%');
+      card.style.setProperty('--my', (py * 100) + '%');
+      if (phone) {
+        const rx = (0.5 - py) * 8;
+        const ry = (px - 0.5) * 12;
+        phone.style.transform = `translateY(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      }
+    });
+    card.addEventListener('mouseleave', () => {
+      if (phone) phone.style.transform = '';
+    });
+  });
+
+  // Animate count-ups inside phone mockups when card enters view
+  const numObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.count[data-target]').forEach(el => {
+          animateCount(el, +el.dataset.target, 1800);
+        });
+        numObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.how-card').forEach(c => numObserver.observe(c));
 
   function toggleMenu() {
     const h = document.getElementById('hamburger');
