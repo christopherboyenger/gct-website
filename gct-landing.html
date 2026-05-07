@@ -576,23 +576,150 @@
     }
 
     /* LEADERBOARD SECTION */
-    .leaderboard-section { padding: 120px 40px; }
-    .lb-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .lb-text .big-stat { font-family: 'Bebas Neue', sans-serif; font-size: clamp(70px, 9vw, 120px); line-height: 1; color: #fff; }
-    .lb-text .big-stat-label { font-size: 13px; color: var(--gray2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; }
-    .lb-text p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 36px; }
-    .lb-board { background: var(--navy); border-radius: 20px; padding: 28px; border: 1px solid rgba(255,255,255,0.07); }
-    .lb-head { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--gray); text-transform: uppercase; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; }
-    .lb-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .lb-row:last-child { border-bottom: none; }
-    .lb-rank { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: rgba(255,255,255,0.25); width: 32px; text-align: center; }
-    .lb-rank.top { color: var(--gold2); }
-    .lb-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold2)); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #000; flex-shrink: 0; }
-    .lb-info { flex: 1; }
-    .lb-name { font-size: 14px; font-weight: 600; }
-    .lb-handle { font-size: 11px; color: var(--gray); }
-    .lb-pts { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--white); }
-    .lb-pts small { font-family: 'Inter', sans-serif; font-size: 10px; color: var(--gray); font-weight: 400; }
+    .leaderboard-section { padding: 140px 40px; position: relative; overflow: hidden; }
+    .leaderboard-section::before {
+      content: ''; position: absolute; top: 50%; left: 65%; transform: translate(-50%,-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(ellipse at center, rgba(201,152,42,0.14) 0%, rgba(201,152,42,0.05) 35%, transparent 65%);
+      pointer-events: none; filter: blur(20px); opacity: 0; transition: opacity 1.4s ease;
+    }
+    .leaderboard-section.in-view::before { opacity: 1; }
+    .lb-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
+    .lb-text .lb-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold2); margin-bottom: 18px; display: inline-flex; align-items: center; gap: 10px; }
+    .lb-text .lb-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold2); }
+    .lb-text .big-stat { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 10vw, 140px); line-height: 0.92; color: #fff; letter-spacing: 0.01em; }
+    .lb-text .big-stat .lb-grad {
+      background: linear-gradient(180deg, #fff 0%, var(--gold2) 60%, var(--gold) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .lb-text .big-stat-label { font-size: 13px; color: var(--gray2); letter-spacing: 0.14em; text-transform: uppercase; margin: 14px 0 28px; }
+    .lb-text p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
+    .lb-stats-row { display: flex; gap: 28px; margin-bottom: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); max-width: 480px; }
+    .lb-stat { flex: 1; }
+    .lb-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; color: #fff; letter-spacing: 0.01em; }
+    .lb-stat-num .gold { color: var(--gold2); }
+    .lb-stat-lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 8px; }
+
+    /* Phone stage */
+    .lb-stage {
+      position: relative; height: 640px;
+      display: flex; align-items: center; justify-content: center;
+      perspective: 1600px;
+    }
+    .lb-stage::before {
+      content: ''; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      width: 76%; height: 44px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.7), transparent 70%);
+      filter: blur(8px); z-index: 0;
+    }
+    .lb-aurora-ring {
+      position: absolute; left: 50%; top: 50%; width: 520px; height: 520px;
+      transform: translate(-50%,-50%);
+      border-radius: 50%; pointer-events: none; z-index: 0;
+      background: conic-gradient(from 180deg, transparent 0deg, rgba(201,152,42,0.45) 90deg, transparent 180deg, rgba(201,152,42,0.25) 270deg, transparent 360deg);
+      filter: blur(40px); opacity: 0;
+      transition: opacity 1.4s ease;
+      animation: lb-spin 22s linear infinite;
+    }
+    .leaderboard-section.in-view .lb-aurora-ring { opacity: 0.9; }
+    @keyframes lb-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    .lb-phone {
+      position: relative; width: 290px; height: 600px; border-radius: 44px;
+      background: linear-gradient(160deg, #1c2030, #06080e);
+      box-shadow:
+        0 60px 120px rgba(0,0,0,0.65),
+        0 30px 60px rgba(201,152,42,0.18),
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 0 0 5px #0a0c14;
+      transform: translateY(80px) rotateX(18deg) rotateY(-14deg) rotateZ(-3deg) scale(0.92);
+      opacity: 0;
+      transition:
+        transform 1.4s cubic-bezier(.22,1,.36,1),
+        opacity 1.0s ease;
+      z-index: 2;
+      will-change: transform;
+    }
+    .leaderboard-section.in-view .lb-phone {
+      transform: translateY(0) rotateX(4deg) rotateY(-9deg) rotateZ(-1.5deg) scale(1);
+      opacity: 1;
+    }
+    .lb-phone::after {
+      content: ''; position: absolute; inset: 0; border-radius: 44px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 40%, transparent 70%, rgba(201,152,42,0.12));
+      pointer-events: none; mix-blend-mode: overlay;
+    }
+    .lb-phone-notch {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 92px; height: 18px; background: #000; border-radius: 100px; z-index: 5;
+    }
+    .lb-phone-screen {
+      position: absolute; inset: 9px; border-radius: 38px; overflow: hidden;
+      background: #0a0d18;
+    }
+    .lb-phone-screen img {
+      display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transform: scale(1.02);
+      transition: transform 2.4s cubic-bezier(.22,1,.36,1);
+    }
+    .leaderboard-section.in-view .lb-phone-screen img { transform: scale(1); }
+
+    /* Floating chips */
+    .lb-chip {
+      position: absolute; z-index: 4;
+      background: rgba(14,18,30,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 12px 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; transform: translateY(20px) scale(0.92);
+      transition: opacity 0.7s ease, transform 0.9s cubic-bezier(.22,1,.36,1);
+    }
+    .leaderboard-section.in-view .lb-chip { opacity: 1; transform: translateY(0) scale(1); }
+    .leaderboard-section.in-view .lb-chip-1 { transition-delay: 0.55s; }
+    .leaderboard-section.in-view .lb-chip-2 { transition-delay: 0.75s; }
+    .leaderboard-section.in-view .lb-chip-3 { transition-delay: 0.95s; }
+    .lb-chip-1 { top: 8%; left: -4%; animation: lb-float-a 6s ease-in-out infinite 1.2s; }
+    .lb-chip-2 { top: 38%; right: -10%; animation: lb-float-b 7s ease-in-out infinite 1.4s; }
+    .lb-chip-3 { bottom: 12%; left: -2%; animation: lb-float-a 6.5s ease-in-out infinite 1.6s; }
+    @keyframes lb-float-a {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -10px; }
+    }
+    @keyframes lb-float-b {
+      0%,100% { translate: 0 0; }
+      50% { translate: 0 -14px; }
+    }
+    .lb-chip-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+      color: #0a0c14; font-weight: 800; font-size: 13px;
+      flex-shrink: 0;
+    }
+    .lb-chip-icon.dark { background: rgba(255,255,255,0.08); color: var(--gold2); }
+    .lb-chip-text { line-height: 1.2; }
+    .lb-chip-val { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #fff; letter-spacing: 0.02em; }
+    .lb-chip-val .up { color: #4ade80; font-size: 13px; margin-right: 4px; }
+    .lb-chip-lbl { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 1px; }
+
+    @media (max-width: 960px) {
+      .lb-stage { height: 560px; }
+      .lb-phone { width: 250px; height: 520px; }
+      .lb-chip-2 { right: 0; }
+      .lb-chip-1 { left: 0; }
+      .lb-chip-3 { left: 4%; }
+    }
+    @media (max-width: 600px) {
+      .lb-stage { height: 520px; }
+      .lb-phone { width: 230px; height: 480px; }
+      .lb-chip { padding: 10px 12px; }
+      .lb-chip-val { font-size: 15px; }
+      .lb-chip-icon { width: 24px; height: 24px; font-size: 11px; }
+    }
 
     /* TESTIMONIALS */
     .testimonials { padding: 120px 40px; }
@@ -965,54 +1092,62 @@
 </section>
 
 <!-- LEADERBOARD -->
-<section class="leaderboard-section" style="background: var(--bg2);">
+<section class="leaderboard-section" id="leaderboardSection" style="background: var(--bg2);">
   <div class="lb-inner">
     <div class="lb-text fi">
-      <div class="big-stat">Top 100</div>
+      <div class="lb-eyebrow">Season 2026 · Live</div>
+      <div class="big-stat">See Where<br><span class="lb-grad">You Stand.</span></div>
       <div class="big-stat-label">Earn a Spot at the Open</div>
       <p>The season leaderboard is live. Every Creator Match won, every Sponsored Challenge completed, and every follower gained pushes you up the board. The Top 100 get their shot at the Golf Creator Open.</p>
+      <div class="lb-stats-row">
+        <div class="lb-stat">
+          <div class="lb-stat-num"><span class="lb-count" data-target="100">0</span></div>
+          <div class="lb-stat-lbl">Creators Competing</div>
+        </div>
+        <div class="lb-stat">
+          <div class="lb-stat-num"><span class="gold">#</span><span class="lb-count" data-target="100">0</span></div>
+          <div class="lb-stat-lbl">Spots at the Open</div>
+        </div>
+        <div class="lb-stat">
+          <div class="lb-stat-num"><span class="lb-count" data-target="294">0</span></div>
+          <div class="lb-stat-lbl">Top Score</div>
+        </div>
+      </div>
       <a href="https://golfcreatortour.app/apply" class="btn-gold">See the Leaderboard</a>
     </div>
-    <div class="lb-board fi d1">
-      <div class="lb-head">
-        <span>Leaderboard · Season 2026</span>
-        <span>Points</span>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank top">1</div>
-        <div class="lb-av">K</div>
-        <div class="lb-info">
-          <div class="lb-name">Keaton Veillette</div>
-          <div class="lb-handle">@Keaton_v 🇨🇦 · Champion</div>
+
+    <div class="lb-stage fi d1">
+      <div class="lb-aurora-ring"></div>
+
+      <div class="lb-phone" id="lbPhone">
+        <div class="lb-phone-notch"></div>
+        <div class="lb-phone-screen">
+          <img src="screenshot-leaderboard.png.jpg" alt="GCT leaderboard screen" loading="lazy">
         </div>
-        <div class="lb-pts">294<br><small>pts</small></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank top">2</div>
-        <div class="lb-av">J</div>
-        <div class="lb-info">
-          <div class="lb-name">Jose Palayo</div>
-          <div class="lb-handle">@josepelayogolf 🇺🇸 · Champion</div>
+
+      <div class="lb-chip lb-chip-1">
+        <div class="lb-chip-icon">#1</div>
+        <div class="lb-chip-text">
+          <div class="lb-chip-val">Keaton V.</div>
+          <div class="lb-chip-lbl">Season Leader</div>
         </div>
-        <div class="lb-pts">209<br><small>pts</small></div>
       </div>
-      <div class="lb-row">
-        <div class="lb-rank">3</div>
-        <div class="lb-av">CC</div>
-        <div class="lb-info">
-          <div class="lb-name">Cannon Claycomb</div>
-          <div class="lb-handle">@cannonclaycomb 🇺🇸</div>
+
+      <div class="lb-chip lb-chip-2">
+        <div class="lb-chip-icon dark">▲</div>
+        <div class="lb-chip-text">
+          <div class="lb-chip-val"><span class="up">+27</span>RANK</div>
+          <div class="lb-chip-lbl">This Week</div>
         </div>
-        <div class="lb-pts">—<br><small>pts</small></div>
       </div>
-      <div class="lb-row" style="opacity:0.5;">
-        <div class="lb-rank">4</div>
-        <div class="lb-av" style="background:#1a2535;">•••</div>
-        <div class="lb-info">
-          <div class="lb-name">97 more creators</div>
-          <div class="lb-handle">competing for the Open this season</div>
+
+      <div class="lb-chip lb-chip-3">
+        <div class="lb-chip-icon">★</div>
+        <div class="lb-chip-text">
+          <div class="lb-chip-val">294 PTS</div>
+          <div class="lb-chip-lbl">Top Score</div>
         </div>
-        <div class="lb-pts" style="color:var(--gray);">—</div>
       </div>
     </div>
   </div>
@@ -1180,6 +1315,44 @@
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.how-card').forEach(c => numObserver.observe(c));
+
+  // Leaderboard section: in-view trigger + scroll-driven phone parallax + count-ups
+  const lbSection = document.getElementById('leaderboardSection');
+  const lbPhone = document.getElementById('lbPhone');
+  if (lbSection) {
+    const lbObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          e.target.querySelectorAll('.lb-count[data-target]').forEach(el => {
+            animateCount(el, +el.dataset.target, 1800);
+          });
+          lbObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    lbObserver.observe(lbSection);
+
+    // Scroll-driven parallax rotation on the phone
+    if (lbPhone) {
+      let raf = null;
+      const onLbScroll = () => {
+        if (!lbSection.classList.contains('in-view')) return;
+        const r = lbSection.getBoundingClientRect();
+        const vh = window.innerHeight || 1;
+        const progress = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+        const rx = 4 + progress * 4;
+        const ry = -9 + progress * 5;
+        const rz = -1.5 + progress * 1;
+        const ty = progress * -24;
+        lbPhone.style.transform = `translateY(${ty}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
+      };
+      window.addEventListener('scroll', () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => { onLbScroll(); raf = null; });
+      }, { passive: true });
+    }
+  }
 
   function toggleMenu() {
     const h = document.getElementById('hamburger');
