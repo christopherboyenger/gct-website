@@ -337,7 +337,7 @@
     </div>
     <div class="stats-grid">
       <div class="stat fi">
-        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-num" data-target="100" data-suffix="+">0</div>
         <div class="stat-label">Elite Golf Content<br>Creators on Tour</div>
       </div>
       <div class="stat fi d1">
@@ -345,7 +345,7 @@
         <div class="stat-label">Average Creator<br>Audience Reach</div>
       </div>
       <div class="stat fi d2">
-        <div class="stat-num">8.4%</div>
+        <div class="stat-num">84%</div>
         <div class="stat-label">Average Creator<br>Engagement Rate</div>
       </div>
       <div class="stat fi d3">
@@ -425,19 +425,19 @@
 <div class="ticker">
   <div class="ticker-inner">
     <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>100 Creators</div>
+    <div class="t-item"><span class="t-dot"></span>100+ Creators</div>
     <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
     <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
     <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
-    <div class="t-item"><span class="t-dot"></span>8.4% Avg Engagement</div>
+    <div class="t-item"><span class="t-dot"></span>84% Avg Engagement</div>
     <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
     <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
     <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>100 Creators</div>
+    <div class="t-item"><span class="t-dot"></span>100+ Creators</div>
     <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
     <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
     <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
-    <div class="t-item"><span class="t-dot"></span>8.4% Avg Engagement</div>
+    <div class="t-item"><span class="t-dot"></span>84% Avg Engagement</div>
     <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
     <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
   </div>
@@ -618,7 +618,8 @@
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
+      const suffix = el.dataset.suffix || '';
+      el.textContent = Math.round(eased * target) + (progress === 1 ? suffix : '');
       if (progress < 1) requestAnimationFrame(update);
     };
     requestAnimationFrame(update);
