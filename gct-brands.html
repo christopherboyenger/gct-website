@@ -115,7 +115,8 @@
     .feature { background: var(--bg2); padding: 52px 48px; position: relative; overflow: hidden; transition: background 0.3s; }
     .feature:hover { background: rgba(201,152,42,0.03); }
     .feature::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,152,42,0.18), transparent); }
-    .feature-icon { font-size: 44px; margin-bottom: 26px; }
+    .feature-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(201,152,42,0.18), rgba(232,184,75,0.06)); border: 1px solid rgba(201,152,42,0.32); display: flex; align-items: center; justify-content: center; margin-bottom: 26px; }
+    .feature-icon svg { width: 28px; height: 28px; stroke: var(--gold2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .feature-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .feature-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; margin-bottom: 14px; }
     .feature-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.75; }
@@ -149,7 +150,9 @@
     .step { background: var(--bg2); padding: 48px 30px; position: relative; overflow: hidden; transition: background 0.3s; }
     .step:hover { background: rgba(201,152,42,0.03); }
     .step-n { font-family: 'Bebas Neue', sans-serif; font-size: 90px; color: rgba(255,255,255,0.03); position: absolute; top: 12px; right: 16px; line-height: 1; }
-    .step-icon { font-size: 34px; margin-bottom: 20px; }
+    .step-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(201,152,42,0.18), rgba(232,184,75,0.06)); border: 1px solid rgba(201,152,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; z-index: 1; }
+    .step-icon svg { width: 24px; height: 24px; stroke: var(--gold2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .price-icon svg { width: 28px; height: 28px; stroke: var(--gold2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; margin-bottom: 12px; }
     .step-desc { font-size: 14px; color: rgba(255,255,255,0.46); line-height: 1.7; }
@@ -392,25 +395,25 @@
   </div>
   <div class="features-grid">
     <div class="feature fi">
-      <div class="feature-icon">🎯</div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none" style="color: var(--gold2);"/></svg></div>
       <div class="feature-tag">Placement</div>
       <div class="feature-title">Competition-Driven Content</div>
       <div class="feature-desc">Your brand isn't just mentioned — it's embedded into the competition. When creators complete a Sponsored Challenge, your product is part of the stakes. On-screen, in the content, and naturally integrated into every round they film and share.</div>
     </div>
     <div class="feature fi d1">
-      <div class="feature-icon">📊</div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M11 20V6"/><path d="M16 20v-7"/><path d="M21 20V9"/></svg></div>
       <div class="feature-tag">Insights</div>
       <div class="feature-title">Real-Time Analytics</div>
       <div class="feature-desc">Track impressions, engagement rates, content performance, and audience demographics across every creator and challenge in one clean dashboard. No guesswork — clear data on what's working with an audience of avid golfers across every major platform.</div>
     </div>
     <div class="feature fi d2">
-      <div class="feature-icon">✅</div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <div class="feature-tag">Delivery</div>
       <div class="feature-title">Guaranteed Content Delivery</div>
       <div class="feature-desc">Every Sponsored Challenge comes with a content commitment baked into the point structure — creators who complete the challenge deliver the post. You get authentic, context-rich content without the back-and-forth of traditional influencer coordination.</div>
     </div>
     <div class="feature fi d3">
-      <div class="feature-icon">⛳</div>
+      <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 4l11 2.5L6 9"/><circle cx="6" cy="20" r="1.4" fill="currentColor" stroke="none" style="color: var(--gold2);"/></svg></div>
       <div class="feature-tag">Audience</div>
       <div class="feature-title">The Right Golf Audience</div>
       <div class="feature-desc">GCT creators are golfers who create content — their audiences are deeply engaged golf enthusiasts, not casual scrollers. Reach avid players, gear buyers, and tournament followers who trust the creators they watch every round.</div>
@@ -450,28 +453,28 @@
   <div class="steps">
     <div class="step fi">
       <div class="step-n">01</div>
-      <div class="step-icon">🤝</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></div>
       <div class="step-tag">Step 1</div>
       <div class="step-title">Partner</div>
       <div class="step-desc">Apply as a GCT brand partner. Work with our team to design your Sponsored Challenge — choose the challenge type, content format, point tier (Elite, Premium, or Standard), and campaign duration. Onboarding takes days, not months.</div>
     </div>
     <div class="step fi d1">
       <div class="step-n">02</div>
-      <div class="step-icon">🎯</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 2l4 5h-3v6h-2V7H8l4-5z"/><path d="M5 14l-2 8 8-3"/><path d="M19 14l2 8-8-3"/></svg></div>
       <div class="step-tag">Step 2</div>
       <div class="step-title">Launch</div>
       <div class="step-desc">Your Sponsored Challenge goes live inside the GCT app. 100 creators see your brief, understand the point reward, and compete to complete it. The higher the point value, the more urgency — creators fighting for the Open don't miss big challenges.</div>
     </div>
     <div class="step fi d2">
       <div class="step-n">03</div>
-      <div class="step-icon">🎬</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 6L5 3"/><path d="M12 6l-2-3"/><path d="M17 6l-2-3"/></svg></div>
       <div class="step-tag">Step 3</div>
       <div class="step-title">Capture</div>
       <div class="step-desc">Creators deliver authentic, competition-driven content tied to your brand. Every post, Reel, and video is created because the creator genuinely competed in your challenge — not because they were paid to pretend. The authenticity is built into the format.</div>
     </div>
     <div class="step fi d3">
       <div class="step-n">04</div>
-      <div class="step-icon">📈</div>
+      <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
       <div class="step-tag">Step 4</div>
       <div class="step-title">Grow</div>
       <div class="step-desc">Track results through GCT's analytics dashboard. Measure content reach, audience engagement, and challenge participation across every creator. Iterate and scale what works — with a dedicated partner success team helping you every step of the way.</div>
@@ -489,7 +492,7 @@
   <div class="pricing-grid">
     <!-- Brand Challenge Subscription -->
     <div class="price-card reveal-left">
-      <div class="price-icon">📱</div>
+      <div class="price-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
       <div class="price-title">Brand Challenge<br>Subscription</div>
       <div class="price-pill">Free Trial Available</div>
       <div class="price-amount-block">
@@ -516,7 +519,7 @@
 
     <!-- GCO Event Sponsorship -->
     <div class="price-card reveal-right">
-      <div class="price-icon">🏆</div>
+      <div class="price-icon"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 01-8 0V4z"/><path d="M8 6H5v2a3 3 0 003 3"/><path d="M16 6h3v2a3 3 0 01-3 3"/><path d="M10 14h4l-.5 4h-3L10 14z"/><path d="M8 20h8"/></svg></div>
       <div class="price-title">GCO Event<br>Sponsorship</div>
       <div class="price-pill">Flagship Event Packages</div>
       <div class="price-amount-block">
