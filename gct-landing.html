@@ -191,8 +191,9 @@
     }
     .how-card {
       position: relative; padding: 32px 28px 36px; border-radius: 28px;
-      background: #f0f2f5;
-      border: 1px solid rgba(0,0,0,0.08);
+      background:
+        linear-gradient(180deg, rgba(20,28,46,0.92) 0%, rgba(10,14,26,0.92) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
       box-shadow: 0 24px 60px rgba(0,0,0,0.45);
       overflow: hidden; isolation: isolate;
       transition: transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.6s, border-color 0.6s;
@@ -206,7 +207,7 @@
       opacity: 0.55; transition: opacity 0.6s;
       pointer-events: none;
     }
-    .how-card:hover { border-color: rgba(201,152,42,0.5); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.2); }
+    .how-card:hover { border-color: rgba(201,152,42,0.25); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.5); }
     .how-card:hover::before { opacity: 1; }
     .hc-glow {
       position: absolute; inset: 0;
@@ -414,10 +415,10 @@
 
     /* CARD BODY */
     .hc-body { position: relative; z-index: 2; }
-    .hc-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; margin-bottom: 10px; color: #0d1220; }
-    .hc-desc { font-size: 14px; color: rgba(0,0,0,0.55); line-height: 1.65; margin-bottom: 16px; }
+    .hc-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; margin-bottom: 10px; }
+    .hc-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px; }
     .hc-foot { display: flex; gap: 8px; flex-wrap: wrap; }
-    .hc-pill { font-size: 10px; padding: 5px 11px; border-radius: 100px; background: rgba(201,152,42,0.12); border: 1px solid rgba(201,152,42,0.35); color: #8a6510; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
+    .hc-pill { font-size: 10px; padding: 5px 11px; border-radius: 100px; background: rgba(201,152,42,0.08); border: 1px solid rgba(201,152,42,0.22); color: var(--gold2); letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
 
     @media (max-width: 1100px) {
       .how-cards { grid-template-columns: 1fr; max-width: 480px; gap: 32px; }
