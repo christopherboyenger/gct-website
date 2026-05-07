@@ -26,8 +26,8 @@
       --gray: #6b7a94;
       --gray2: #8a9ab5;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; position: relative; }
 
     /* NAV */
     nav {
@@ -672,9 +672,36 @@
       .nav-hamburger { display: flex; }
       .stats-inner { gap: 40px; }
       .split-panel { padding: 60px 36px; }
+      .scroll-badge { display: none; }
+      .ticker-inner { animation-duration: 55s; }
     }
     @media (max-width: 600px) {
       .creators-grid, .steps, .test-grid, .open-grid { grid-template-columns: 1fr; }
+      .hero-content { padding: 130px 20px 80px; }
+      .platform, .creators, .leaderboard-section, .testimonials, .cta, .contact, .the-open { padding-left: 20px; padding-right: 20px; }
+      .stats-bar { padding-left: 20px; padding-right: 20px; }
+      .how { padding-left: 0; padding-right: 0; }
+      .how-cards { padding: 0 20px; }
+      footer { padding-left: 20px; padding-right: 20px; }
+    }
+
+    /* Touch device — use scroll-based reveal instead of hover */
+    @media (hover: none) {
+      .how-card .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
+      .how-card:hover { border-color: rgba(255,255,255,0.06); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+      .how-card:hover::before { opacity: 0.55; }
+      .how-card:hover .hc-glow { opacity: 0; }
+      .how-card:hover .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
+      .how-card.in-view { border-color: rgba(201,152,42,0.25); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.5); }
+      .how-card.in-view::before { opacity: 1; }
+      .how-card.in-view .hc-glow { opacity: 1; }
+      .how-card.in-view .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
+      .creator-card:hover { transform: none; box-shadow: none; }
+      .open-card:hover { transform: none; }
+      .open-card:hover .open-card-img { transform: none; }
+      .open-card:hover::after { width: 0; }
+      .test-card:hover { border-color: rgba(255,255,255,0.06); }
+      .brand-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -1106,25 +1133,40 @@
   const sb = document.querySelector('.stats-bar');
   if (sb) statsObserver.observe(sb);
 
-  // Tilt + glow tracking on how-cards
-  document.querySelectorAll('.how-card[data-tilt]').forEach(card => {
-    const phone = card.querySelector('.phone');
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;
-      const py = (e.clientY - r.top) / r.height;
-      card.style.setProperty('--mx', (px * 100) + '%');
-      card.style.setProperty('--my', (py * 100) + '%');
-      if (phone) {
-        const rx = (0.5 - py) * 8;
-        const ry = (px - 0.5) * 12;
-        phone.style.transform = `translateY(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  // Tilt + glow tracking on how-cards (desktop / hover-capable devices only)
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  if (canHover) {
+    document.querySelectorAll('.how-card[data-tilt]').forEach(card => {
+      const phone = card.querySelector('.phone');
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', (px * 100) + '%');
+        card.style.setProperty('--my', (py * 100) + '%');
+        if (phone) {
+          const rx = (0.5 - py) * 8;
+          const ry = (px - 0.5) * 12;
+          phone.style.transform = `translateY(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        }
+      });
+      card.addEventListener('mouseleave', () => {
+        if (phone) phone.style.transform = '';
+      });
+    });
+  }
+
+  // Touch devices: trigger card reveal on scroll instead of tap
+  const cardInViewObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+      } else {
+        e.target.classList.remove('in-view');
       }
     });
-    card.addEventListener('mouseleave', () => {
-      if (phone) phone.style.transform = '';
-    });
-  });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.how-card').forEach(c => cardInViewObserver.observe(c));
 
   // Animate count-ups inside phone mockups when card enters view
   const numObserver = new IntersectionObserver(entries => {
