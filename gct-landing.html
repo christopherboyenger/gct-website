@@ -268,10 +268,11 @@
     }
     .phone-screen {
       position: absolute; inset: 8px; border-radius: 32px; overflow: hidden;
-      background: linear-gradient(180deg, #131c30 0%, #0f1524 100%);
+      background: #0a0d18;
       font-family: 'Inter', sans-serif;
-      padding: 22px 12px 36px;
-      display: flex; flex-direction: column; gap: 9px;
+    }
+    .phone-screen img.ps-shot {
+      display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center;
     }
 
     /* phone bottom nav */
@@ -800,59 +801,7 @@
         <div class="phone phone-3">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
-            <div class="ps-topbar">
-              <span class="ps-iconbtn">🔔</span>
-              <span class="ps-logo">⚜</span>
-              <span class="ps-iconbtn">≡</span>
-            </div>
-            <div class="ps-profile">
-              <div class="ps-pf-av"></div>
-              <div class="ps-pf-info">
-                <b>Epiphany Priebe</b>
-                <span>@piff_golfs</span>
-                <div class="ps-pf-tags"><i class="tag-elite">ELITE</i><i class="tag-loc">🇺🇸 Houston, TX</i></div>
-              </div>
-            </div>
-            <div class="ps-pf-stats">
-              <div><span>RANK</span><b class="goldnum">#4</b></div>
-              <div><span>POINTS</span><b class="count" data-target="1725">0</b></div>
-              <div><span>TOTAL FOLLOWERS</span><b>40.5K</b></div>
-            </div>
-            <div class="ps-pf-tabs">
-              <span>Overview</span>
-              <span class="on">Social</span>
-              <span>Badges</span>
-            </div>
-            <div class="ps-reach">
-              <div class="ps-reach-row">
-                <div><span>TOTAL REACH</span><b>40.5K</b><i>7 of 30 milestones achieved</i></div>
-                <div class="ps-socials">
-                  <i class="soc ig">IG</i><i class="soc tt">TT</i><i class="soc yt">YT</i>
-                </div>
-              </div>
-              <button class="ps-sync">⟳ Sync Now</button>
-            </div>
-            <div class="ps-ig">
-              <div class="ps-ig-row">
-                <i class="soc ig">IG</i>
-                <div class="ps-ig-info"><b>Instagram</b><span>@Piff_golfs</span></div>
-                <div class="ps-ig-count"><b>39.0K</b><span class="ps-conn">Connected</span></div>
-              </div>
-              <div class="ps-ig-next"><span>Next: 50.0K followers</span><span class="ps-pts">+150 pts</span></div>
-              <div class="ps-progress"><div class="ps-progress-fill"></div></div>
-              <div class="ps-progress-lbl">39.0K / 50.0K (78%)</div>
-              <div class="ps-mile">
-                <i>100 → 100pts ✓</i><i>1.0K → 25pts ✓</i><i>5.0K → 50pts ✓</i>
-                <i>10.0K → 75pts ✓</i><i>20.0K → 100pts ✓</i>
-              </div>
-            </div>
-          </div>
-          <div class="ps-nav">
-            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+            <img class="ps-shot" src="screenshot-social.png.jpg" alt="GCT Social profile screen" loading="lazy">
           </div>
         </div>
       </div>
@@ -877,63 +826,7 @@
         <div class="phone phone-2">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
-            <div class="ps-chal-list">
-              <div class="ps-chal elite hi">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-a" style="background: linear-gradient(135deg, #1e2a47, #0a1224); border-color: rgba(201,152,42,0.5);"></div>
-                  <div class="ps-chal-info">
-                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">GCT</span></div>
-                    <b>Qualified Creator Events</b>
-                    <p>Win: 1000 Points · Top 3: 500 Points · Participation: 100 Points</p>
-                  </div>
-                  <div class="ps-points"><b>1000</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Season long · 1 participating</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
-              </div>
-              <div class="ps-chal">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-a" style="background: linear-gradient(135deg, #1e2a47, #0a1224);"></div>
-                  <div class="ps-chal-info">
-                    <div class="ps-chal-head"><span class="chal-tag standard-tag">STANDARD</span><span class="ps-chal-brand-name">GCT</span></div>
-                    <b>Origin Story</b>
-                    <p>Tell your golf creator origin story in a 60–90 second Reel.</p>
-                  </div>
-                  <div class="ps-points"><b class="muted">100</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Season long · 5 participating</span><span>95 spots</span></div>
-              </div>
-              <div class="ps-chal elite">
-                <div class="ps-chal-row">
-                  <div class="ps-brand" style="width:32px;height:32px;border-radius:6px;flex-shrink:0;background:#000;border:1px solid #c9982a;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:800;color:#fff;letter-spacing:0.02em;">TM</div>
-                  <div class="ps-chal-info">
-                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">TaylorMade</span></div>
-                    <b>Iron Shot Masterclass</b>
-                    <p>Create a tutorial-style Reel breaking down your iron approach technique.</p>
-                  </div>
-                  <div class="ps-points"><b>600</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Due Jun 15, 2026</span><span>15 spots</span></div>
-              </div>
-              <div class="ps-chal elite">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-c"></div>
-                  <div class="ps-chal-info">
-                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">Callaway</span></div>
-                    <b>Longest Drive</b>
-                    <p>Create a 30–60 second Reel showing your longest drive with a Callaway driver.</p>
-                  </div>
-                  <div class="ps-points"><b>800</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Season long · 2 participating</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="ps-nav">
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
-            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+            <img class="ps-shot" src="screenshot-challenges.png.jpg" alt="GCT sponsored challenges screen" loading="lazy">
           </div>
         </div>
       </div>
@@ -958,57 +851,7 @@
         <div class="phone phone-1">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
-            <div class="ps-topbar">
-              <span class="ps-iconbtn">🔔</span>
-              <span class="ps-logo">⚜</span>
-              <span class="ps-iconbtn">≡</span>
-            </div>
-            <div class="ps-center">
-              <div class="ps-eyebrow">CONNECT</div>
-              <div class="ps-subtle">Find creators near you &amp; challenge them</div>
-            </div>
-            <div class="ps-statrow">
-              <div><b>6</b><span>Nearby</span></div>
-              <div class="ps-divv"></div>
-              <div><b class="count goldnum" data-target="2">0</b><span>Sent</span></div>
-              <div class="ps-divv"></div>
-              <div><b>0</b><span>Requests</span></div>
-            </div>
-            <div class="ps-tabs">
-              <span class="ps-tab on">Browse</span>
-              <span class="ps-tab">Requests</span>
-              <span class="ps-tab">Matches<i class="ps-badge">1</i></span>
-              <span class="ps-tab">Sent</span>
-            </div>
-            <div class="ps-dd-row">
-              <span class="ps-dd">🇺🇸 United States</span>
-              <span class="ps-dd">All</span>
-            </div>
-            <div class="ps-section-lbl"><span>CREATORS IN UNITED STATES</span><span>6 found</span></div>
-            <div class="ps-list">
-              <div class="ps-creator s1">
-                <div class="ps-av av-a"></div>
-                <div class="ps-cr-info"><b>Cannon Claycomb<i class="ps-rank">#3</i></b><span>@cannonclaycomb</span></div>
-                <button class="ps-challenge">Challenge</button>
-              </div>
-              <div class="ps-creator s2">
-                <div class="ps-av av-b"></div>
-                <div class="ps-cr-info"><b>Elizabeth Veith<i class="ps-rank">#55</i></b><span>@Elizabeth_diane22 · 18.7K IG</span></div>
-                <button class="ps-challenge">Challenge</button>
-              </div>
-              <div class="ps-creator s3">
-                <div class="ps-av av-b"></div>
-                <div class="ps-cr-info"><b>Epiphany Priebe<i class="ps-rank">#4</i></b><span>@piff_golfs · 39.0K IG · Houston</span></div>
-                <button class="ps-pending">Pending</button>
-              </div>
-            </div>
-          </div>
-          <div class="ps-nav">
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
-            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
-            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+            <img class="ps-shot" src="screenshot-connect.png.jpg" alt="GCT creator connect screen" loading="lazy">
           </div>
         </div>
       </div>
