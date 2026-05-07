@@ -480,7 +480,7 @@
     }
     .venue-image {
       position: absolute; inset: -8% -2%; width: 104%; height: 116%;
-      background-image: url('pga-national.jpg');
+      background-image: url('PGAHERO.jpg');
       background-size: cover; background-position: center;
       transform: scale(1.15) translateY(0);
       transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -554,14 +554,18 @@
     .venue-stage.in-view .rv.r5 { transition-delay: 0.75s; }
 
     /* Stats row redesigned */
-    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.04); margin-top: 28px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-    .open-card { background: linear-gradient(180deg, #131c30 0%, #0f1524 100%); padding: 44px 32px; text-align: center; transition: background 0.4s, transform 0.4s; position: relative; }
-    .open-card::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold2), transparent); transition: width 0.5s ease, left 0.5s ease; }
-    .open-card:hover { background: linear-gradient(180deg, rgba(201,152,42,0.08), rgba(15,21,36,0.9)); }
-    .open-card:hover::after { width: 80%; left: 10%; }
-    .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 8vw, 100px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .open-card-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; }
-    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.42); margin-top: 8px; line-height: 1.5; }
+    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; border-radius: 20px; overflow: hidden; }
+    .open-card { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.4s; }
+    .open-card:hover { transform: translateY(-4px); }
+    .open-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .open-card:hover .open-card-img { transform: scale(1.05); }
+    .open-card-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,9,15,0.15) 0%, rgba(8,9,15,0.65) 55%, rgba(8,9,15,0.95) 100%); }
+    .open-card-body { position: relative; z-index: 2; padding: 28px 28px 32px; text-align: left; }
+    .open-card::after { content: ''; position: absolute; left: 28px; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold2), transparent); transition: width 0.5s ease; z-index: 3; }
+    .open-card:hover::after { width: calc(100% - 56px); }
+    .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .open-card-label { font-size: 20px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em; }
+    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.5; }
 
     @media (max-width: 880px) {
       .venue-image-wrap { height: 520px; }
@@ -873,7 +877,7 @@
   <div class="open-inner">
     <div class="open-head">
       <div class="eyebrow fi">The Venue</div>
-      <h2 class="section-title fi">Where the Season Ends. The Legend Begins.</h2>
+      <h2 class="section-title fi">The 2nd Annual Golf Creator Open</h2>
       <p class="section-body fi">The Top 100 creators on the season leaderboard travel to Palm Beach Gardens for three days of competition at one of the most iconic stages in professional golf.</p>
     </div>
 
@@ -914,19 +918,31 @@
 
     <div class="open-grid">
       <div class="open-card fi">
-        <div class="open-card-num">100</div>
-        <div class="open-card-label">Creators Compete</div>
-        <div class="open-card-sub">The Top 100 on the season leaderboard earn their invitation to the Golf Creator Open</div>
+        <div class="open-card-img" style="background-image: url('CARD1.png');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Friday</div>
+          <div class="open-card-label">Creator Social</div>
+          <div class="open-card-sub">Kick off the weekend with a creator social — meet your fellow competitors and celebrate the season</div>
+        </div>
       </div>
       <div class="open-card fi d1">
-        <div class="open-card-num">20</div>
-        <div class="open-card-label">Play the Championship</div>
-        <div class="open-card-sub">The Top 20 creators advance to compete in the championship round at the Open</div>
+        <div class="open-card-img" style="background-image: url('CARD2.jpg');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Saturday</div>
+          <div class="open-card-label">Scramble</div>
+          <div class="open-card-sub">18 teams face off in the flagship scramble event — the heart of the Golf Creator Open</div>
+        </div>
       </div>
       <div class="open-card fi d2">
-        <div class="open-card-num">18</div>
-        <div class="open-card-label">Teams in the Scramble</div>
-        <div class="open-card-sub">18 teams face off in the flagship scramble event — the heart of the Golf Creator Open</div>
+        <div class="open-card-img" style="background-image: url('CARD 3.jpg');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Sunday</div>
+          <div class="open-card-label">Championship</div>
+          <div class="open-card-sub">The Top 20 creators compete in the championship round — one champion crowned at PGA National</div>
+        </div>
       </div>
     </div>
   </div>
