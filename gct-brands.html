@@ -57,8 +57,14 @@
     .hero-p { font-size: 17px; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 36px; max-width: 500px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
+    /* Hero visual — phone screenshot */
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .phone-frame { position: relative; width: 100%; max-width: 320px; aspect-ratio: 9 / 19.5; background: #0a0e1a; border: 10px solid #0a0e1a; border-radius: 44px; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,152,42,0.18), 0 0 80px -10px rgba(201,152,42,0.18); overflow: hidden; }
+    .phone-frame::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 110px; height: 26px; background: #0a0e1a; border-radius: 100px; z-index: 2; }
+    .phone-frame img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 32px; }
+
     /* Hero visual — challenge panel */
-    .hero-visual { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .hero-visual-old { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
     .brand-card { background: var(--navy); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 26px; width: 100%; max-width: 360px; position: relative; overflow: hidden; transition: transform 0.3s; }
     .brand-card:hover { transform: translateY(-4px); }
     .brand-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
@@ -311,57 +317,37 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="brand-card fi d1">
-        <div class="brand-card-label">Active Sponsored Challenges</div>
-        <div class="brand-card-title">Brand Challenges Live</div>
-        <div class="brand-stat-row">
-          <div class="brand-stat">
-            <div class="brand-stat-num">100</div>
-            <div class="brand-stat-label">Creators Eligible</div>
-          </div>
-          <div class="brand-stat">
-            <div class="brand-stat-num">97.6K</div>
-            <div class="brand-stat-label">Avg Creator Reach</div>
-          </div>
-        </div>
-        <div class="challenge-list">
-          <div class="challenge-row">
-            <span class="challenge-badge badge-elite">Elite</span>
-            <span class="challenge-name">Iron Shot Masterclass</span>
-            <span class="challenge-pts">600 pts</span>
-          </div>
-          <div class="challenge-row">
-            <span class="challenge-badge badge-premium">Premium</span>
-            <span class="challenge-name">Legato Pressure Putt</span>
-            <span class="challenge-pts">250 pts</span>
-          </div>
-          <div class="challenge-row">
-            <span class="challenge-badge badge-elite">Elite</span>
-            <span class="challenge-name">Longest Drive</span>
-            <span class="challenge-pts">1000 pts</span>
-          </div>
-        </div>
+      <div class="phone-frame fi d1">
+        <img src="screenshot-challenges.png.jpg" alt="Sponsored Challenges live in the GCT app">
       </div>
-      <div class="brand-card fi d2" style="max-width:300px; margin-left:40px;">
-        <div class="brand-card-label">Campaign Performance</div>
-        <div class="ob-metric-row">
-          <div class="ob-metric">
-            <div class="ob-metric-num">8.4%</div>
-            <div class="ob-metric-label">Avg Eng Rate</div>
-          </div>
-          <div class="ob-metric">
-            <div class="ob-metric-num">98%</div>
-            <div class="ob-metric-label">Delivery Rate</div>
-          </div>
-        </div>
-        <div class="ob-bar-row" style="margin-top:16px;">
-          <div class="ob-bar-label"><span>Content Delivered</span><span>98%</span></div>
-          <div class="ob-bar-track"><div class="ob-bar-fill" style="width:98%"></div></div>
-        </div>
-        <div class="ob-bar-row" style="margin-top:10px;">
-          <div class="ob-bar-label"><span>Creator Participation</span><span>94%</span></div>
-          <div class="ob-bar-track"><div class="ob-bar-fill" style="width:94%"></div></div>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stats-top">
+      <div class="eyebrow fi">The Network</div>
+      <h2 class="fi">The GCT Creator Network</h2>
+      <p class="fi">A global community of elite golf content creators — and the brands that power their competition.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat fi">
+        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-label">Elite Golf Content<br>Creators on Tour</div>
+      </div>
+      <div class="stat fi d1">
+        <div class="stat-num">97.6K</div>
+        <div class="stat-label">Average Creator<br>Audience Reach</div>
+      </div>
+      <div class="stat fi d2">
+        <div class="stat-num">8.4%</div>
+        <div class="stat-label">Average Creator<br>Engagement Rate</div>
+      </div>
+      <div class="stat fi d3">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Sponsored Challenge<br>Content Delivery Rate</div>
       </div>
     </div>
   </div>
@@ -453,35 +439,6 @@
     <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
   </div>
 </div>
-
-<!-- STATS -->
-<section class="stats-bar">
-  <div class="stats-inner">
-    <div class="stats-top">
-      <div class="eyebrow fi">The Network</div>
-      <h2 class="fi">The GCT Creator Network</h2>
-      <p class="fi">A global community of elite golf content creators — and the brands that power their competition.</p>
-    </div>
-    <div class="stats-grid">
-      <div class="stat fi">
-        <div class="stat-num" data-target="100">0</div>
-        <div class="stat-label">Elite Golf Content<br>Creators on Tour</div>
-      </div>
-      <div class="stat fi d1">
-        <div class="stat-num">97.6K</div>
-        <div class="stat-label">Average Creator<br>Audience Reach</div>
-      </div>
-      <div class="stat fi d2">
-        <div class="stat-num">8.4%</div>
-        <div class="stat-label">Average Creator<br>Engagement Rate</div>
-      </div>
-      <div class="stat fi d3">
-        <div class="stat-num">98%</div>
-        <div class="stat-label">Sponsored Challenge<br>Content Delivery Rate</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
@@ -596,57 +553,13 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="test-header">
-    <div class="eyebrow fi">Brand Stories</div>
-    <h2 class="test-h fi">Brands Love GCT</h2>
-    <p class="test-sub fi">Partners come back season after season — because the content performs and the creators deliver.</p>
-  </div>
-  <div class="test-grid">
-    <div class="test-card fi">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"GCT gave us access to an audience we couldn't reach through traditional golf media. The Sponsored Challenge format meant creators were genuinely competing with our products — the content felt real because it was real."</p>
-      <div class="test-author">
-        <div class="test-av">MR</div>
-        <div>
-          <div class="test-name">Marcus Reid</div>
-          <div class="test-handle">Director of Marketing · PinHigh Apparel</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card fi d1">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"The combination of competitive golf content and authentic creator voices is something no other platform offers. When a creator completes your challenge to earn points for the Open, they're genuinely invested — and it shows in the content."</p>
-      <div class="test-author">
-        <div class="test-av">SL</div>
-        <div>
-          <div class="test-name">Sarah Lin</div>
-          <div class="test-handle">Brand Partnerships · Fairway Golf</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card fi d2">
-      <div class="test-stars">★★★★★</div>
-      <p class="test-quote">"We went from 'let's try this' to 'this is our primary golf channel' after one season. The analytics are transparent, the creators deliver, and the GCT team is exceptional to work with. The Sponsored Challenge model is unlike anything else in the market."</p>
-      <div class="test-author">
-        <div class="test-av">DK</div>
-        <div>
-          <div class="test-name">Derek Kam</div>
-          <div class="test-handle">VP Growth · Links & Co.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta" id="partner">
   <div class="eyebrow fi">Ready to Partner?</div>
   <h2 class="cta-h fi">Let's Build<br>Your Challenge.</h2>
   <p class="cta-sub fi">Apply to become a GCT brand partner and launch your first Sponsored Challenge inside the world's top golf creator competition.</p>
   <div class="fi">
-    <a href="mailto:brands@golfcreator.tour" class="btn-gold">Apply as a Brand Partner</a>
+    <a href="https://www.golfcreatortour.app/apply?type=brand" class="btn-gold">Apply as a Brand Partner</a>
   </div>
   <p class="cta-disclaimer fi">Brand partnerships are subject to GCT review and approval. Reach out for challenge packages, point tiers, and pricing.</p>
 </section>
