@@ -270,9 +270,45 @@
       position: absolute; inset: 8px; border-radius: 32px; overflow: hidden;
       background: linear-gradient(180deg, #131c30 0%, #0f1524 100%);
       font-family: 'Inter', sans-serif;
-      padding: 22px 12px 14px;
-      display: flex; flex-direction: column; gap: 10px;
+      padding: 22px 12px 36px;
+      display: flex; flex-direction: column; gap: 9px;
     }
+
+    /* phone bottom nav */
+    .ps-nav {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 32px;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-around;
+      padding: 0 8px;
+    }
+    .ps-nav-item { display: flex; flex-direction: column; align-items: center; gap: 1px; color: rgba(255,255,255,0.45); position: relative; }
+    .ps-nav-item svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .ps-nav-item span { font-size: 6px; font-weight: 600; letter-spacing: 0.04em; }
+    .ps-nav-item.on { color: #fff; }
+    .ps-nav-item.on::after {
+      content: ''; position: absolute; bottom: -3px; width: 3px; height: 3px;
+      border-radius: 50%; background: var(--gold2);
+    }
+
+    /* status icons */
+    .ps-bed { display: inline-block; width: 7px; height: 5px; background: rgba(255,255,255,0.7); border-radius: 1px 1px 2px 2px; margin-left: 3px; vertical-align: middle; }
+    .ps-bed::before { content: ''; display: block; width: 7px; height: 1.5px; background: rgba(255,255,255,0.7); margin-top: -2px; border-radius: 1px; }
+
+    /* rank chip */
+    .ps-rank { font-style: normal; font-size: 6px; padding: 1px 4px; background: rgba(201,152,42,0.18); color: var(--gold2); border-radius: 3px; font-weight: 800; margin-left: 3px; }
+
+    /* dropdown row (connect) */
+    .ps-dd-row { display: flex; gap: 4px; }
+    .ps-dd { flex: 1; font-size: 7px; padding: 5px 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.85); }
+    .ps-dd::after { content: '▾'; font-size: 6px; color: rgba(255,255,255,0.4); }
+    .ps-section-lbl { display: flex; justify-content: space-between; font-size: 6px; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); padding: 0 2px; }
+
+    /* challenge points text variant */
+    .ps-points b.muted { color: rgba(255,255,255,0.85); text-shadow: none; }
+    .ps-chal-brand-name { font-size: 6px; color: rgba(255,255,255,0.5); font-weight: 600; margin-left: auto; }
+    .ps-chal-head { display: flex; align-items: center; gap: 4px; }
+    .chal-tag.standard-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
 
     /* status row */
     .ps-status { display: flex; justify-content: space-between; font-size: 8px; color: rgba(255,255,255,0.65); padding: 0 6px 2px; font-weight: 700; }
@@ -761,142 +797,10 @@
         <div class="hc-num">01</div>
       </div>
       <div class="hc-stage">
-        <div class="phone phone-1">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="ps-status"><span>10:53</span><span class="ps-icons">●●● 44</span></div>
-            <div class="ps-topbar">
-              <span class="ps-iconbtn">🔔</span>
-              <span class="ps-logo">⚜</span>
-              <span class="ps-iconbtn">≡</span>
-            </div>
-            <div class="ps-center">
-              <div class="ps-eyebrow">CONNECT</div>
-              <div class="ps-subtle">Find creators near you &amp; challenge them</div>
-            </div>
-            <div class="ps-statrow">
-              <div><b>4</b><span>Nearby</span></div>
-              <div class="ps-divv"></div>
-              <div><b class="count" data-target="1">0</b><span>Sent</span></div>
-              <div class="ps-divv"></div>
-              <div><b>0</b><span>Received</span></div>
-            </div>
-            <div class="ps-tabs">
-              <span class="ps-tab on">Browse</span>
-              <span class="ps-tab">Requests</span>
-              <span class="ps-tab">Matches<i class="ps-badge">1</i></span>
-              <span class="ps-tab">Sent</span>
-            </div>
-            <div class="ps-list">
-              <div class="ps-creator s1">
-                <div class="ps-av av-a"></div>
-                <div class="ps-cr-info"><b>Cannon Claycomb <i class="ps-pro">PRO</i></b><span>@cannonclaycomb</span></div>
-                <button class="ps-challenge">Challenge</button>
-              </div>
-              <div class="ps-creator s2">
-                <div class="ps-av av-b"></div>
-                <div class="ps-cr-info"><b>Elizabeth Veith <i class="ps-pro">PRO</i></b><span>@elizabeth_veith5</span></div>
-                <button class="ps-challenge">Challenge</button>
-              </div>
-              <div class="ps-creator s3">
-                <div class="ps-av av-c"></div>
-                <div class="ps-cr-info"><b>Fulll Ball Golf <i class="ps-pro">PRO</i></b><span>@fullball.golf · 12.8K IG</span></div>
-                <button class="ps-pending">Pending</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hc-body">
-        <h3 class="hc-title">Creator Matches</h3>
-        <p class="hc-desc">Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points.</p>
-        <div class="hc-foot">
-          <span class="hc-pill">Head-to-head</span>
-          <span class="hc-pill">Worldwide</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- CARD 2 -->
-    <article class="how-card fi d1" data-tilt>
-      <div class="hc-orbit"></div>
-      <div class="hc-glow"></div>
-      <div class="hc-meta">
-        <div class="hc-num">02</div>
-      </div>
-      <div class="hc-stage">
-        <div class="phone phone-2">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="ps-status"><span>6:21</span><span class="ps-icons">●●● 70</span></div>
-            <div class="ps-chal-top">
-              <span><b>Session long</b></span>
-              <span class="ps-chal-mid">1 participating</span>
-              <span class="ps-chal-actions"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span>
-            </div>
-            <div class="ps-chal-list">
-              <div class="ps-chal elite">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-a"></div>
-                  <div class="ps-chal-info">
-                    <span class="chal-tag elite-tag">ELITE</span> <span class="chal-cat">Technique</span>
-                    <b>Iron Shot Masterclass</b>
-                    <p>Create a tutorial using Reel-wisecing<br/>Grow your iron approach technique..</p>
-                  </div>
-                  <div class="ps-points"><b>600</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Due Jun 15, 2025</span><span>15 spots</span></div>
-              </div>
-              <div class="ps-chal premium">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-b"></div>
-                  <div class="ps-chal-info">
-                    <span class="chal-tag premium-tag">PREMIUM</span> <span class="chal-cat">Lifestyle</span>
-                    <b>Legato Pressure Putt</b>
-                    <p>Film a pressure putt challenge using a<br/>Legato Golf Putt. Minimum 15-footer. Sho…</p>
-                  </div>
-                  <div class="ps-points"><b>250</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Due May 28, 2025</span><span>25 spots</span></div>
-              </div>
-              <div class="ps-chal elite hi">
-                <div class="ps-chal-row">
-                  <div class="ps-brand brand-c"></div>
-                  <div class="ps-chal-info">
-                    <span class="chal-tag elite-tag">ELITE</span> <span class="chal-cat">Callaway</span>
-                    <b>Longest Drive</b>
-                    <p>Create a 30-60 second Reel showing<br/>your longest drive with a Callaway driver.</p>
-                  </div>
-                  <div class="ps-points"><b>800</b><span>points</span></div>
-                </div>
-                <div class="ps-chal-foot"><span>Session long · 15 spots</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hc-body">
-        <h3 class="hc-title">Sponsored Challenges</h3>
-        <p class="hc-desc">Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points — every challenge is an opportunity to score.</p>
-        <div class="hc-foot">
-          <span class="hc-pill">Brand-funded</span>
-          <span class="hc-pill">Up to 800 pts</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- CARD 3 -->
-    <article class="how-card fi d2" data-tilt>
-      <div class="hc-orbit"></div>
-      <div class="hc-glow"></div>
-      <div class="hc-meta">
-        <div class="hc-num">03</div>
-      </div>
-      <div class="hc-stage">
         <div class="phone phone-3">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="ps-status"><span>10:53</span><span class="ps-icons">●●● 44</span></div>
+            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
             <div class="ps-topbar">
               <span class="ps-iconbtn">🔔</span>
               <span class="ps-logo">⚜</span>
@@ -944,6 +848,12 @@
               </div>
             </div>
           </div>
+          <div class="ps-nav">
+            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+          </div>
         </div>
       </div>
       <div class="hc-body">
@@ -952,6 +862,162 @@
         <div class="hc-foot">
           <span class="hc-pill">IG · TikTok · YouTube</span>
           <span class="hc-pill">Auto-synced</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="how-card fi d1" data-tilt>
+      <div class="hc-orbit"></div>
+      <div class="hc-glow"></div>
+      <div class="hc-meta">
+        <div class="hc-num">02</div>
+      </div>
+      <div class="hc-stage">
+        <div class="phone phone-2">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
+            <div class="ps-chal-list">
+              <div class="ps-chal elite hi">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-a" style="background: linear-gradient(135deg, #1e2a47, #0a1224); border-color: rgba(201,152,42,0.5);"></div>
+                  <div class="ps-chal-info">
+                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">GCT</span></div>
+                    <b>Qualified Creator Events</b>
+                    <p>Win: 1000 Points · Top 3: 500 Points · Participation: 100 Points</p>
+                  </div>
+                  <div class="ps-points"><b>1000</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Season long · 1 participating</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
+              </div>
+              <div class="ps-chal">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-a" style="background: linear-gradient(135deg, #1e2a47, #0a1224);"></div>
+                  <div class="ps-chal-info">
+                    <div class="ps-chal-head"><span class="chal-tag standard-tag">STANDARD</span><span class="ps-chal-brand-name">GCT</span></div>
+                    <b>Origin Story</b>
+                    <p>Tell your golf creator origin story in a 60–90 second Reel.</p>
+                  </div>
+                  <div class="ps-points"><b class="muted">100</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Season long · 5 participating</span><span>95 spots</span></div>
+              </div>
+              <div class="ps-chal elite">
+                <div class="ps-chal-row">
+                  <div class="ps-brand" style="width:32px;height:32px;border-radius:6px;flex-shrink:0;background:#000;border:1px solid #c9982a;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:800;color:#fff;letter-spacing:0.02em;">TM</div>
+                  <div class="ps-chal-info">
+                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">TaylorMade</span></div>
+                    <b>Iron Shot Masterclass</b>
+                    <p>Create a tutorial-style Reel breaking down your iron approach technique.</p>
+                  </div>
+                  <div class="ps-points"><b>600</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Due Jun 15, 2026</span><span>15 spots</span></div>
+              </div>
+              <div class="ps-chal elite">
+                <div class="ps-chal-row">
+                  <div class="ps-brand brand-c"></div>
+                  <div class="ps-chal-info">
+                    <div class="ps-chal-head"><span class="chal-tag elite-tag">ELITE</span><span class="ps-chal-brand-name">Callaway</span></div>
+                    <b>Longest Drive</b>
+                    <p>Create a 30–60 second Reel showing your longest drive with a Callaway driver.</p>
+                  </div>
+                  <div class="ps-points"><b>800</b><span>points</span></div>
+                </div>
+                <div class="ps-chal-foot"><span>Season long · 2 participating</span><span class="row-act"><i class="act-go">Submit</i><i class="act-drop">Drop</i></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-nav">
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
+            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-body">
+        <h3 class="hc-title">Sponsored Challenges</h3>
+        <p class="hc-desc">Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points — every challenge is an opportunity to score.</p>
+        <div class="hc-foot">
+          <span class="hc-pill">Brand-funded</span>
+          <span class="hc-pill">Up to 800 pts</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="how-card fi d2" data-tilt>
+      <div class="hc-orbit"></div>
+      <div class="hc-glow"></div>
+      <div class="hc-meta">
+        <div class="hc-num">03</div>
+      </div>
+      <div class="hc-stage">
+        <div class="phone phone-1">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-status"><span>10:53 🛌</span><span class="ps-icons">●●● 44</span></div>
+            <div class="ps-topbar">
+              <span class="ps-iconbtn">🔔</span>
+              <span class="ps-logo">⚜</span>
+              <span class="ps-iconbtn">≡</span>
+            </div>
+            <div class="ps-center">
+              <div class="ps-eyebrow">CONNECT</div>
+              <div class="ps-subtle">Find creators near you &amp; challenge them</div>
+            </div>
+            <div class="ps-statrow">
+              <div><b>6</b><span>Nearby</span></div>
+              <div class="ps-divv"></div>
+              <div><b class="count goldnum" data-target="2">0</b><span>Sent</span></div>
+              <div class="ps-divv"></div>
+              <div><b>0</b><span>Requests</span></div>
+            </div>
+            <div class="ps-tabs">
+              <span class="ps-tab on">Browse</span>
+              <span class="ps-tab">Requests</span>
+              <span class="ps-tab">Matches<i class="ps-badge">1</i></span>
+              <span class="ps-tab">Sent</span>
+            </div>
+            <div class="ps-dd-row">
+              <span class="ps-dd">🇺🇸 United States</span>
+              <span class="ps-dd">All</span>
+            </div>
+            <div class="ps-section-lbl"><span>CREATORS IN UNITED STATES</span><span>6 found</span></div>
+            <div class="ps-list">
+              <div class="ps-creator s1">
+                <div class="ps-av av-a"></div>
+                <div class="ps-cr-info"><b>Cannon Claycomb<i class="ps-rank">#3</i></b><span>@cannonclaycomb</span></div>
+                <button class="ps-challenge">Challenge</button>
+              </div>
+              <div class="ps-creator s2">
+                <div class="ps-av av-b"></div>
+                <div class="ps-cr-info"><b>Elizabeth Veith<i class="ps-rank">#55</i></b><span>@Elizabeth_diane22 · 18.7K IG</span></div>
+                <button class="ps-challenge">Challenge</button>
+              </div>
+              <div class="ps-creator s3">
+                <div class="ps-av av-b"></div>
+                <div class="ps-cr-info"><b>Epiphany Priebe<i class="ps-rank">#4</i></b><span>@piff_golfs · 39.0K IG · Houston</span></div>
+                <button class="ps-pending">Pending</button>
+              </div>
+            </div>
+          </div>
+          <div class="ps-nav">
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Profile</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><path d="M7 21l3-9 9-3-3 9-9 3z"/><circle cx="12" cy="12" r="1"/></svg><span>Compete</span></div>
+            <div class="ps-nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M9 7l1.5-2h3L15 7"/></svg><span>Create</span></div>
+            <div class="ps-nav-item on"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="11" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2 2-3.5 4-3.5s4 1.5 4 3.5"/></svg><span>Connect</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hc-body">
+        <h3 class="hc-title">Creator Matches</h3>
+        <p class="hc-desc">Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points.</p>
+        <div class="hc-foot">
+          <span class="hc-pill">Head-to-head</span>
+          <span class="hc-pill">Worldwide</span>
         </div>
       </div>
     </article>
