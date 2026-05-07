@@ -123,7 +123,7 @@
 
     /* TICKER */
     .ticker { padding: 22px 0; overflow: hidden; background: rgba(201,152,42,0.035); border-top: 1px solid rgba(201,152,42,0.08); border-bottom: 1px solid rgba(201,152,42,0.08); }
-    .ticker-inner { display: flex; width: max-content; animation: ticker-move 32s linear infinite; white-space: nowrap; will-change: transform; }
+    .ticker-inner { display: flex; width: max-content; animation: ticker-move 45s linear infinite; white-space: nowrap; will-change: transform; }
     .t-item { display: inline-flex; align-items: center; gap: 20px; padding: 0 36px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); flex-shrink: 0; }
     .t-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     @keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -273,7 +273,7 @@
     .mobile-overlay a:hover { color: var(--gold2); }
     .mobile-overlay .mob-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000 !important; padding: 14px 40px; border-radius: 100px; font-size: 18px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 16px; }
 
-    @media (max-width: 960px) { .nav-links { display: none; } .nav-hamburger { display: flex; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } .features-grid, .steps { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .spotlight-inner { grid-template-columns: 1fr; } .test-grid { grid-template-columns: 1fr; } .ticker-inner { animation-duration: 20s; } .t-item { padding: 0 24px; } }
+    @media (max-width: 960px) { .nav-links { display: none; } .nav-hamburger { display: flex; } .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } .features-grid, .steps { grid-template-columns: 1fr 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .spotlight-inner { grid-template-columns: 1fr; } .test-grid { grid-template-columns: 1fr; } .ticker-inner { animation-duration: 45s; } .t-item { padding: 0 24px; } }
     @media (max-width: 600px) { .features-grid, .steps, .test-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
