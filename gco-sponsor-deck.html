@@ -81,6 +81,13 @@
       padding: 140px 24px 80px; max-width: 1000px; width: 100%;
       display: flex; flex-direction: column; align-items: center;
     }
+    .hero-logo-wrap { margin-bottom: 24px; }
+    .hero-logo {
+      width: 320px; height: 320px; object-fit: contain; opacity: 0.85;
+      filter: drop-shadow(0 0 40px rgba(201,152,42,0.4));
+      image-rendering: -webkit-optimize-contrast;
+      animation: fadeUp 1s ease 0.25s both;
+    }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 8px 20px; border-radius: 100px; margin-bottom: 36px;
@@ -153,6 +160,24 @@
     .hero-scroll span { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
     .scroll-line { width: 1px; height: 48px; background: linear-gradient(180deg, rgba(201,152,42,0.6), transparent); animation: scrollAnim 2s ease-in-out infinite; }
     @keyframes scrollAnim { 0%,100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.3; } }
+
+    @media (max-width: 640px) {
+      .hero { min-height: auto; }
+      .hero-content { padding: 96px 20px 56px; }
+      .hero-logo-wrap { margin-bottom: 12px; }
+      .hero-logo { width: 200px; height: 200px; }
+      .hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; margin-bottom: 12px; }
+      .hero-headline { font-size: 56px; line-height: 0.92; margin-bottom: 28px; }
+      .hero-meta { gap: 0; margin-bottom: 36px; width: 100%; flex-wrap: nowrap; }
+      .hero-meta-item { flex: 1; min-width: 0; padding: 0 8px; }
+      .hero-meta-item .label { font-size: 9px; letter-spacing: 0.14em; }
+      .hero-meta-item .value { font-size: 17px; letter-spacing: 0.02em; }
+      .hero-meta-divider { width: 1px; min-height: 36px; }
+      .hero-actions { flex-direction: column; gap: 12px; width: 100%; max-width: 320px; }
+      .hero-actions .btn-gold,
+      .hero-actions .btn-outline { width: 100%; padding: 16px 28px; }
+      .hero-scroll { display: none; }
+    }
 
     /* ── TICKER ── */
     .ticker { padding: 20px 0; overflow: hidden; background: rgba(201,152,42,0.04); border-top: 1px solid rgba(201,152,42,0.1); border-bottom: 1px solid rgba(201,152,42,0.1); }
@@ -524,8 +549,8 @@
 
   <div class="hero-content">
     <div class="hero-eyebrow">2026 Golf Creator Open Championship</div>
-    <div class="hero-logo-wrap" style="margin-bottom:24px;">
-      <img src="GCO Logo.png" alt="Golf Creator Open" style="width:320px;height:320px;object-fit:contain;opacity:0.85;filter:drop-shadow(0 0 40px rgba(201,152,42,0.4));image-rendering:-webkit-optimize-contrast;animation:fadeUp 1s ease 0.25s both;">
+    <div class="hero-logo-wrap">
+      <img src="GCO Logo.png" alt="Golf Creator Open" class="hero-logo">
     </div>
     <h1 class="hero-headline">
       Partner<br><span>With Us</span>
