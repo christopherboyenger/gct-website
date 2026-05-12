@@ -496,15 +496,14 @@
     }
     .collage-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 220px 180px 180px;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 220px 200px;
       gap: 4px;
     }
     .cg-item { overflow: hidden; position: relative; }
     .cg-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); display: block; }
     .cg-item:hover img { transform: scale(1.08); }
     .cg-wide { grid-column: span 2; }
-    .cg-tall { grid-row: span 2; }
     .collage-overlay {
       position: absolute; inset: 0; z-index: 2; pointer-events: none;
       background: linear-gradient(180deg, rgba(10,13,24,0.05) 0%, rgba(10,13,24,0.65) 100%);
@@ -610,15 +609,18 @@
     <div class="collage-wrap reveal-left">
       <div class="collage-grid">
         <!-- Row 1 -->
-        <div class="cg-item cg-wide"><img src="PGAHERO2.jpg" alt="GCO 2025"></div>
-        <div class="cg-item cg-tall"><img src="CARD2.jpg" alt="GCO 2025"></div>
+        <div class="cg-item cg-wide"><img src="Picture6.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture4.jpg" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture7.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture9.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture12.png" alt="GCO 2025"></div>
         <!-- Row 2 -->
-        <div class="cg-item"><img src="PGAHERO1.jpg" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="CARD1.png" alt="GCO 2025"></div>
-        <!-- Row 3 -->
-        <div class="cg-item"><img src="leaderboard.jpeg" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="ChatGPT Image May 4, 2026, 03_52_05 PM (8).png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="ChatGPT Image May 4, 2026, 03_52_05 PM (10).png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture3.jpg" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture5.jpg" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture8.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture10.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture11.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture13.png" alt="GCO 2025"></div>
       </div>
       <div class="collage-overlay"></div>
       <div class="collage-badge">
