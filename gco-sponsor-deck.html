@@ -276,34 +276,91 @@
     .why-desc { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.72; }
     @media (max-width: 900px) { .why-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
 
-    /* ── SCHEDULE ── */
-    .schedule { padding: 130px 40px; background: var(--bg2); position: relative; overflow: hidden; }
-    .schedule::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201,152,42,0.07) 0%, transparent 65%); pointer-events: none; }
-    .schedule-header { text-align: center; max-width: 680px; margin: 0 auto 72px; }
-    .schedule-header .section-title { margin-bottom: 18px; }
-    .schedule-days { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
-    .schedule-day {
-      padding: 52px 40px; position: relative;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: background 0.4s;
+    /* ── THE OPEN / VENUE ── */
+    .the-open { padding: 130px 40px; position: relative; overflow: hidden; background: var(--bg2); }
+    .the-open::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1200px; height: 700px; background: radial-gradient(ellipse, rgba(201,152,42,0.10) 0%, transparent 65%); pointer-events: none; }
+    .open-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+    .open-head { text-align: center; max-width: 880px; margin: 0 auto 72px; }
+    .open-head .section-title { margin-bottom: 18px; }
+    .open-head .section-body { margin-top: 18px; }
+
+    /* Venue showcase */
+    .venue-stage {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: linear-gradient(180deg, #0c1322 0%, #060810 100%);
+      border: 1px solid rgba(201,152,42,0.18);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
     }
-    .schedule-day:first-child { border-radius: 24px 0 0 24px; }
-    .schedule-day:last-child { border-radius: 0 24px 24px 0; }
-    .schedule-day::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), transparent);
-      opacity: 0; transition: opacity 0.4s;
+    .venue-image-wrap {
+      position: relative; height: clamp(420px, 62vh, 680px); overflow: hidden;
     }
-    .schedule-day:hover { background: rgba(201,152,42,0.05); }
-    .schedule-day:hover::before { opacity: 1; }
-    .day-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .day-name { font-family: 'Bebas Neue', sans-serif; font-size: 58px; line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 20px; }
-    .day-event { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--gold2); margin-bottom: 16px; }
-    .day-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
-    .day-tag { display: inline-block; margin-top: 22px; padding: 6px 16px; border-radius: 100px; background: rgba(201,152,42,0.1); border: 1px solid rgba(201,152,42,0.25); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold2); }
-    @media (max-width: 900px) { .schedule-days { grid-template-columns: 1fr; }
-      .schedule-day:first-child { border-radius: 24px 24px 0 0; }
-      .schedule-day:last-child { border-radius: 0 0 24px 24px; }
+    .venue-image {
+      position: absolute; inset: -8% -2%; width: 104%; height: 116%;
+      background-image: url('PGAHERO2.jpg');
+      background-size: cover; background-position: center;
+      transform: scale(1.15) translateY(0);
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .venue-stage.visible .venue-image { transform: scale(1.04) translateY(0); }
+    .venue-image-wrap::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8,9,15,0.20) 0%, rgba(8,9,15,0.10) 35%, rgba(8,9,15,0.55) 75%, rgba(8,9,15,0.95) 100%),
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,152,42,0.18) 0%, transparent 60%);
+    }
+    .venue-image-wrap::before {
+      content: ''; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.10) 50%, transparent 70%);
+      transform: skewX(-18deg); pointer-events: none; z-index: 3;
+      transition: left 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+    }
+    .venue-stage.visible .venue-image-wrap::before { left: 130%; }
+
+    .venue-overlay {
+      position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column;
+      justify-content: space-between; padding: 36px clamp(28px, 5vw, 64px);
+    }
+    .venue-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+    .venue-bottom { position: relative; }
+    .venue-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .venue-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: 0.92; letter-spacing: 0.02em; color: #fff;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.6);
+      max-width: 900px;
+    }
+    .venue-meta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+    .venue-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .venue-meta-item .vm-k { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .venue-meta-item .vm-v { font-size: 14px; font-weight: 600; color: #fff; }
+
+    /* Day cards row */
+    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; border-radius: 20px; overflow: hidden; }
+    .open-card { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.4s; }
+    .open-card:hover { transform: translateY(-4px); }
+    .open-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .open-card:hover .open-card-img { transform: scale(1.05); }
+    .open-card-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,9,15,0.15) 0%, rgba(8,9,15,0.65) 55%, rgba(8,9,15,0.95) 100%); }
+    .open-card-body { position: relative; z-index: 2; padding: 28px 28px 32px; text-align: left; }
+    .open-card::after { content: ''; position: absolute; left: 28px; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold2), transparent); transition: width 0.5s ease; z-index: 3; }
+    .open-card:hover::after { width: calc(100% - 56px); }
+    .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .open-card-label { font-size: 20px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em; }
+    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.5; }
+
+    @media (max-width: 900px) {
+      .open-grid { grid-template-columns: 1fr; }
+      .venue-image-wrap { height: 520px; }
+      .venue-overlay { padding: 24px; }
+      .venue-meta { gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .the-open { padding: 110px 20px; }
+      .open-card:hover { transform: none; }
+      .open-card:hover .open-card-img { transform: none; }
+      .open-card:hover::after { width: 0; }
     }
 
     /* ── PACKAGES ── */
@@ -748,35 +805,66 @@
   </div>
 </section>
 
-<!-- SCHEDULE -->
-<section class="schedule" id="schedule">
-  <div class="schedule-header">
-    <span class="eyebrow reveal">Event Schedule</span>
-    <h2 class="section-title reveal d2">Three Days.<br>One Championship.</h2>
-    <p class="section-body reveal d3" style="margin-top:18px;">October 2–4, 2026 · Palm Beach, Florida</p>
-  </div>
+<!-- THE OPEN / VENUE -->
+<section class="the-open" id="schedule">
+  <div class="open-inner">
+    <div class="open-head">
+      <span class="eyebrow reveal">The Championship</span>
+      <h2 class="section-title reveal d2">The 2nd Annual<br>Golf Creator Open</h2>
+      <p class="section-body reveal d3">The Top 100 creators on the season leaderboard travel to Palm Beach Gardens for three days of competition at one of the most iconic stages in professional golf.</p>
+    </div>
 
-  <div class="schedule-days section-inner">
-    <div class="schedule-day reveal d1">
-      <div class="day-label">Day One · Friday</div>
-      <div class="day-name">Friday</div>
-      <div class="day-event">Creator Social</div>
-      <p class="day-desc">The championship kicks off with an exclusive Creator Social — an evening built for networking, brand activations, welcome kits, and setting the stage for competition ahead.</p>
-      <div class="day-tag">Kickoff Event</div>
+    <div class="venue-stage reveal">
+      <div class="venue-image-wrap">
+        <div class="venue-image" aria-label="PGA National Resort, Palm Beach Gardens"></div>
+      </div>
+      <div class="venue-overlay">
+        <div class="venue-top"></div>
+        <div class="venue-bottom">
+          <div class="venue-eyebrow">Host Venue</div>
+          <h3 class="venue-title">PGA National</h3>
+          <div class="venue-meta">
+            <div class="venue-meta-item">
+              <span class="vm-k">Location</span>
+              <span class="vm-v">Palm Beach Gardens, FL</span>
+            </div>
+            <div class="venue-meta-item">
+              <span class="vm-k">Dates</span>
+              <span class="vm-v">October 2 – 4, 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="schedule-day reveal d2">
-      <div class="day-label">Day Two · Saturday</div>
-      <div class="day-name">Saturday</div>
-      <div class="day-event">Scramble + Match Play</div>
-      <p class="day-desc">Creators compete in a dynamic scramble format followed by head-to-head match play brackets. Maximum on-course content creation and brand exposure throughout the day.</p>
-      <div class="day-tag">Competition Day</div>
-    </div>
-    <div class="schedule-day reveal d3">
-      <div class="day-label">Day Three · Sunday</div>
-      <div class="day-name">Sunday</div>
-      <div class="day-event">Championship Sunday</div>
-      <p class="day-desc">The crown jewel of the weekend. Finals, purse presentation, trophy moment, and award ceremony. The highest-visibility moments of the entire championship.</p>
-      <div class="day-tag">Championship Final</div>
+
+    <div class="open-grid">
+      <div class="open-card reveal">
+        <div class="open-card-img" style="background-image: url('CARD1.png');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Friday</div>
+          <div class="open-card-label">Creator Social</div>
+          <div class="open-card-sub">Kick off the weekend with a creator social — meet your fellow competitors and celebrate the season</div>
+        </div>
+      </div>
+      <div class="open-card reveal d1">
+        <div class="open-card-img" style="background-image: url('CARD2.jpg');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Saturday</div>
+          <div class="open-card-label">Scramble</div>
+          <div class="open-card-sub">18 teams face off in the flagship scramble event — the heart of the Golf Creator Open</div>
+        </div>
+      </div>
+      <div class="open-card reveal d2">
+        <div class="open-card-img" style="background-image: url('CARD 3.jpg');"></div>
+        <div class="open-card-overlay"></div>
+        <div class="open-card-body">
+          <div class="open-card-num">Sunday</div>
+          <div class="open-card-label">Championship</div>
+          <div class="open-card-sub">The Top 20 creators compete in the championship round — one champion crowned at PGA National</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
