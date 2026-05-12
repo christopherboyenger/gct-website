@@ -487,6 +487,50 @@
 
     /* ── PARTICLES CANVAS ── */
     #particles-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+    /* ── PHOTO COLLAGE ── */
+    .collage-wrap {
+      position: relative; border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(201,152,42,0.18);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+    .collage-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 220px 180px 180px;
+      gap: 4px;
+    }
+    .cg-item { overflow: hidden; position: relative; }
+    .cg-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); display: block; }
+    .cg-item:hover img { transform: scale(1.08); }
+    .cg-wide { grid-column: span 2; }
+    .cg-tall { grid-row: span 2; }
+    .collage-overlay {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(180deg, rgba(10,13,24,0.05) 0%, rgba(10,13,24,0.65) 100%);
+    }
+    .collage-badge {
+      position: absolute; bottom: 24px; left: 24px; z-index: 3;
+      background: rgba(10,13,24,0.82); backdrop-filter: blur(18px);
+      border: 1px solid rgba(201,152,42,0.35); border-radius: 14px;
+      padding: 14px 20px;
+    }
+    .collage-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--gold2); }
+    .collage-badge .sm { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+    /* ── HOLE SPONSOR ── */
+    .pkg-card.is-hole { border-color: rgba(245,160,50,0.2); }
+    .pkg-card.is-hole:hover { box-shadow: 0 44px 100px rgba(245,160,50,0.15), 0 24px 64px rgba(0,0,0,0.55); }
+    .tier-hole { background: linear-gradient(135deg, #f5a032, #e07820); color: #000; box-shadow: 0 4px 20px rgba(245,160,50,0.35); }
+    .pkg-price.orange-price { background: linear-gradient(135deg, #f5a032, #ffc46b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .pkg-card.is-hole .pkg-check { background: rgba(245,160,50,0.12); border-color: rgba(245,160,50,0.35); color: #f5a032; }
+    .pkg-cta-hole { background: linear-gradient(135deg, #f5a032, #e07820); color: #000; }
+    .pkg-cta-hole:hover { box-shadow: 0 12px 36px rgba(245,160,50,0.4); transform: translateY(-2px); }
+    .hole-activations { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 10px; }
+    .hole-activation { display: flex; gap: 10px; align-items: flex-start; }
+    .hole-activation-bar { width: 3px; flex-shrink: 0; border-radius: 2px; background: linear-gradient(180deg, #f5a032, #e07820); margin-top: 3px; align-self: stretch; min-height: 36px; }
+    .hole-activation-text b { display: block; font-size: 12px; font-weight: 700; color: #f5a032; margin-bottom: 2px; }
+    .hole-activation-text p { font-size: 11.5px; color: rgba(255,255,255,0.45); line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -563,9 +607,21 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-image-wrap reveal-left">
-      <img src="PGAHERO1.jpg" alt="Golf Creator Open 2025">
-      <div class="about-image-badge">
+    <div class="collage-wrap reveal-left">
+      <div class="collage-grid">
+        <!-- Row 1 -->
+        <div class="cg-item cg-wide"><img src="PGAHERO2.jpg" alt="GCO 2025"></div>
+        <div class="cg-item cg-tall"><img src="CARD2.jpg" alt="GCO 2025"></div>
+        <!-- Row 2 -->
+        <div class="cg-item"><img src="PGAHERO1.jpg" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="CARD1.png" alt="GCO 2025"></div>
+        <!-- Row 3 -->
+        <div class="cg-item"><img src="leaderboard.jpeg" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="ChatGPT Image May 4, 2026, 03_52_05 PM (8).png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="ChatGPT Image May 4, 2026, 03_52_05 PM (10).png" alt="GCO 2025"></div>
+      </div>
+      <div class="collage-overlay"></div>
+      <div class="collage-badge">
         <div class="big">90</div>
         <div class="sm">Days to build the first GCO</div>
       </div>
@@ -700,7 +756,7 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="tier-badge tier-title">🥇 Title Sponsor</div>
-        <div class="pkg-price gold-price">$65,000</div>
+        <div class="pkg-price gold-price">$50k</div>
         <div class="pkg-name">Title Sponsor</div>
       </div>
       <div class="pkg-body">
@@ -723,27 +779,36 @@
       </div>
     </div>
 
-    <!-- PRESENTING SPONSOR -->
+    <!-- CREATOR SOCIAL SPONSOR -->
     <div class="pkg-card is-presenting reveal d2">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
-        <div class="tier-badge tier-presenting">🥈 Presenting Sponsor</div>
-        <div class="pkg-price silver-price">$35,000</div>
-        <div class="pkg-name">Presenting Sponsor</div>
+        <div class="tier-badge tier-presenting">🎉 Creator Social Sponsor</div>
+        <div class="pkg-price silver-price">$30k</div>
+        <div class="pkg-name">Creator Social Sponsor</div>
       </div>
       <div class="pkg-body">
         <div class="pkg-benefits">
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Presented-by branding across all hero lockups — <em>The Golf Creator Open Presented by Brand</em></span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Second-largest logo on step-and-repeat, entry signage & scoring graphics</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Brand mention during opening remarks & awards presentation</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>3 dedicated event-owned social placements</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>1 dedicated event email inclusion</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>60-day branded app challenge</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Product placement in player & creator welcome kits</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>4 VIP all-access credentials + 2-day resort accommodations</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>12 months of rights to event photo & video assets</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Category exclusivity + first right to renew</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Naming rights to The Creator Lounge</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>1 optional booth space within The Creator Lounge</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>2–4 media passes to attend the event</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Ability to stock swag or branded items in The Lounge</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Option to provide items for exclusive swag bags</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Primary logo placement in Creator Lounge space</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Logo inclusion in promotional email campaigns</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Logo on event website with a clickable link</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Email list of all GCO applicants and attendees</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Social Media Promotion: 6 Posts Total — 2 Pre-event · 2 During · 2 Post-event</span></div>
+        </div>
+        <div class="pkg-specifics">
+          <div class="pkg-specifics-label" style="color:rgba(192,192,192,0.6);">Main Visual Activations</div>
+          <div class="pkg-specifics-grid">
+            <span class="pkg-specific" style="background:rgba(192,192,192,0.08);border-color:rgba(192,192,192,0.2);">High-visibility archway</span>
+            <span class="pkg-specific" style="background:rgba(192,192,192,0.08);border-color:rgba(192,192,192,0.2);">Charging stations (x2)</span>
+            <span class="pkg-specific" style="background:rgba(192,192,192,0.08);border-color:rgba(192,192,192,0.2);">Branded cups & napkins</span>
+            <span class="pkg-specific" style="background:rgba(192,192,192,0.08);border-color:rgba(192,192,192,0.2);">Step-and-repeat backdrop</span>
+          </div>
         </div>
       </div>
       <div class="pkg-footer">
@@ -757,7 +822,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
         <div class="tier-badge tier-purse">🏆 Purse Partner</div>
-        <div class="pkg-price bronze-price">$10,000</div>
+        <div class="pkg-price bronze-price">$10k</div>
         <div class="pkg-name">Championship Purse Partner</div>
       </div>
       <div class="pkg-body">
@@ -788,7 +853,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">10 Available</div>
         <div class="tier-badge tier-official">🤝 Official Partner</div>
-        <div class="pkg-price blue-price">$15,000</div>
+        <div class="pkg-price blue-price">$5k</div>
         <div class="pkg-name">Official Partner</div>
       </div>
       <div class="pkg-body">
@@ -821,29 +886,49 @@
       </div>
     </div>
 
-    <!-- PRODUCT PARTNER -->
-    <div class="pkg-card is-product reveal d2">
+    <!-- HOLE SPONSOR -->
+    <div class="pkg-card is-hole reveal d2">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="pkg-availability">Unlimited Availability</div>
-        <div class="tier-badge tier-product">📦 Product Partner</div>
-        <div class="pkg-price green-price">$5,000</div>
-        <div class="pkg-name">Product Partner</div>
+        <div class="pkg-availability">Only 18 Spots Available</div>
+        <div class="tier-badge tier-hole">⛳ Hole Sponsor</div>
+        <div class="pkg-price orange-price">$2k</div>
+        <div class="pkg-name">Scramble Hole Sponsor</div>
       </div>
       <div class="pkg-body">
         <div class="pkg-benefits">
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Focused on-site placement tied directly to your product category</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Product sampling, gifting, demo, or contest-prize integration</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Logo on event website & partner board</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>1 event-owned social mention</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>2 VIP guest credentials</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>3 months of rights to event photo assets for marketing</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Hosted meet-and-connect access with attending creators</span></div>
-          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Post-event recap focused on championship-week visibility</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>(2) Sponsor-branded feather flags placed at the hole of your choice — first come, first serve</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>(1) Set of branded tee box markers from the tips and for the ladies</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>(1) Branded pin flag visible in all creator content captured at your hole</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Keep your branded materials after the event</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Option to include swag or promotional material in The Creator Social swag bags</span></div>
+        </div>
+        <div class="hole-activations">
+          <div class="hole-activation">
+            <div class="hole-activation-bar"></div>
+            <div class="hole-activation-text">
+              <b>Branded Tee Box Markers</b>
+              <p>Custom tee markers featuring your logo placed at both championship and ladies tees on your sponsored hole.</p>
+            </div>
+          </div>
+          <div class="hole-activation">
+            <div class="hole-activation-bar"></div>
+            <div class="hole-activation-text">
+              <b>Branded Feather Flags</b>
+              <p>Two tall feather flags with your branding positioned prominently at your selected hole for maximum visibility.</p>
+            </div>
+          </div>
+          <div class="hole-activation">
+            <div class="hole-activation-bar"></div>
+            <div class="hole-activation-text">
+              <b>Branded Pin Flag</b>
+              <p>Custom pin flag displaying your logo on the green, visible in all creator content captured at your hole.</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="pkg-footer">
-        <a href="#contact" class="pkg-cta pkg-cta-green">Get Started</a>
+        <a href="#contact" class="pkg-cta pkg-cta-hole">Own a Hole</a>
       </div>
     </div>
 
