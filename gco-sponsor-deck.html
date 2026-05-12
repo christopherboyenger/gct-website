@@ -481,32 +481,125 @@
 
     /* ── PHOTO COLLAGE ── */
     .collage-wrap {
-      position: relative; border-radius: 28px; overflow: hidden;
+      position: relative; border-radius: 28px;
       border: 1px solid rgba(201,152,42,0.18);
       box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      padding: 10px;
+      background: linear-gradient(180deg, rgba(20,28,46,0.4), rgba(10,14,24,0.4));
     }
     .collage-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: 280px 260px;
-      gap: 4px;
+      column-count: 3;
+      column-gap: 10px;
     }
-    .cg-item { overflow: hidden; position: relative; }
-    .cg-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); display: block; }
-    .cg-item:hover img { transform: scale(1.08); }
-    .cg-wide { grid-column: span 2; }
-    .collage-overlay {
-      position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background: linear-gradient(180deg, rgba(10,13,24,0.05) 0%, rgba(10,13,24,0.65) 100%);
+    .cg-item {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      cursor: zoom-in;
+      background: rgba(255,255,255,0.03);
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s;
     }
+    .cg-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
+    }
+    .cg-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,13,24,0) 60%, rgba(10,13,24,0.45) 100%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .cg-item:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .cg-item:hover img { transform: scale(1.04); }
+    .cg-item:hover::after { opacity: 1; }
     .collage-badge {
       position: absolute; bottom: 24px; left: 24px; z-index: 3;
       background: rgba(10,13,24,0.82); backdrop-filter: blur(18px);
       border: 1px solid rgba(201,152,42,0.35); border-radius: 14px;
       padding: 14px 20px;
+      pointer-events: none;
     }
     .collage-badge .big { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--gold2); }
     .collage-badge .sm { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+    @media (max-width: 900px) {
+      .collage-grid { column-count: 2; column-gap: 8px; }
+      .cg-item { margin-bottom: 8px; border-radius: 12px; }
+    }
+    @media (max-width: 480px) {
+      .collage-wrap { padding: 8px; border-radius: 20px; }
+      .collage-grid { column-count: 2; column-gap: 6px; }
+      .cg-item { margin-bottom: 6px; border-radius: 10px; }
+    }
+
+    /* ── LIGHTBOX CAROUSEL ── */
+    .gco-lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(6,8,14,0.94); backdrop-filter: blur(14px);
+      display: none; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s ease;
+      touch-action: pan-y;
+    }
+    .gco-lightbox.open { display: flex; opacity: 1; }
+    .gco-lightbox-stage {
+      position: relative; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 80px;
+    }
+    .gco-lightbox img {
+      max-width: 100%; max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain; display: block;
+      border-radius: 12px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+      animation: gco-lb-in 0.3s ease;
+    }
+    @keyframes gco-lb-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    .gco-lb-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(20,28,46,0.85);
+      border: 1px solid rgba(201,152,42,0.35);
+      color: #fff; font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      z-index: 2;
+    }
+    .gco-lb-btn:hover { background: rgba(201,152,42,0.25); border-color: var(--gold2); transform: translateY(-50%) scale(1.06); }
+    .gco-lb-prev { left: 20px; }
+    .gco-lb-next { right: 20px; }
+    .gco-lb-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(20,28,46,0.85);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 2;
+    }
+    .gco-lb-close:hover { background: rgba(201,152,42,0.25); border-color: var(--gold2); }
+    .gco-lb-counter {
+      position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      background: rgba(20,28,46,0.7); border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 16px; border-radius: 999px;
+      z-index: 2;
+    }
+    .gco-lb-counter .gold { color: var(--gold2); }
+    body.gco-lb-open { overflow: hidden; }
+
+    @media (max-width: 720px) {
+      .gco-lightbox-stage { padding: 70px 16px; }
+      .gco-lb-btn { width: 44px; height: 44px; font-size: 18px; }
+      .gco-lb-prev { left: 10px; }
+      .gco-lb-next { right: 10px; }
+    }
 
     /* ── HOLE SPONSOR ── */
     .pkg-card.is-hole { border-color: rgba(245,160,50,0.2); }
@@ -593,21 +686,18 @@
   <div class="about-grid">
     <div class="collage-wrap reveal-left">
       <div class="collage-grid">
-        <!-- Row 1 -->
-        <div class="cg-item cg-wide"><img src="Picture6.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture4.jpg" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture7.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture9.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture12.png" alt="GCO 2025"></div>
-        <!-- Row 2 -->
-        <div class="cg-item"><img src="Picture3.jpg" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture5.jpg" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture8.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture10.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture11.png" alt="GCO 2025"></div>
-        <div class="cg-item"><img src="Picture13.png" alt="GCO 2025"></div>
+        <div class="cg-item"><img src="Picture6.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture4.jpg" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture7.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture9.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture12.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture3.jpg" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture5.jpg" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture8.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture10.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture11.png" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture13.png" alt="GCO 2025" loading="lazy"></div>
       </div>
-      <div class="collage-overlay"></div>
     </div>
     <div class="about-text">
       <div class="reveal d1">
@@ -947,6 +1037,17 @@
   <p class="footer-copy">© 2026 Golf Creator Open Championship · Palm Beach, Florida · All rights reserved.</p>
 </footer>
 
+<!-- LIGHTBOX CAROUSEL -->
+<div class="gco-lightbox" id="gco-lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <div class="gco-lb-counter"><span id="gco-lb-current" class="gold">1</span> / <span id="gco-lb-total">11</span></div>
+  <button class="gco-lb-close" id="gco-lb-close" aria-label="Close gallery">✕</button>
+  <div class="gco-lightbox-stage">
+    <button class="gco-lb-btn gco-lb-prev" id="gco-lb-prev" aria-label="Previous image">‹</button>
+    <img id="gco-lb-img" alt="">
+    <button class="gco-lb-btn gco-lb-next" id="gco-lb-next" aria-label="Next image">›</button>
+  </div>
+</div>
+
 <script>
   // ── PARTICLE SYSTEM ──
   (function () {
@@ -1021,6 +1122,83 @@
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
     navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
   }, { passive: true });
+
+  // ── COLLAGE LIGHTBOX CAROUSEL ──
+  (function () {
+    const items = Array.from(document.querySelectorAll('.collage-grid .cg-item img'));
+    if (!items.length) return;
+    const lb = document.getElementById('gco-lightbox');
+    const lbImg = document.getElementById('gco-lb-img');
+    const lbCur = document.getElementById('gco-lb-current');
+    const lbTotal = document.getElementById('gco-lb-total');
+    const btnPrev = document.getElementById('gco-lb-prev');
+    const btnNext = document.getElementById('gco-lb-next');
+    const btnClose = document.getElementById('gco-lb-close');
+    let idx = 0;
+
+    lbTotal.textContent = items.length;
+
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      const src = items[idx].getAttribute('src');
+      const alt = items[idx].getAttribute('alt') || '';
+      lbImg.style.animation = 'none';
+      // force reflow to restart animation
+      void lbImg.offsetWidth;
+      lbImg.style.animation = '';
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lbCur.textContent = idx + 1;
+      // preload neighbors
+      [idx - 1, idx + 1].forEach(n => {
+        const j = (n + items.length) % items.length;
+        const pre = new Image();
+        pre.src = items[j].getAttribute('src');
+      });
+    }
+    function open(i) {
+      show(i);
+      lb.classList.add('open');
+      document.body.classList.add('gco-lb-open');
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.classList.remove('gco-lb-open');
+    }
+    function next() { show(idx + 1); }
+    function prev() { show(idx - 1); }
+
+    items.forEach((img, i) => {
+      img.parentElement.addEventListener('click', () => open(i));
+    });
+    btnNext.addEventListener('click', next);
+    btnPrev.addEventListener('click', prev);
+    btnClose.addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Touch swipe
+    let touchX = null, touchY = null;
+    lb.addEventListener('touchstart', (e) => {
+      const t = e.changedTouches[0];
+      touchX = t.clientX; touchY = t.clientY;
+    }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchX;
+      const dy = t.clientY - touchY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) next(); else prev();
+      }
+      touchX = touchY = null;
+    });
+  })();
 </script>
 </body>
 </html>
