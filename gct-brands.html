@@ -152,7 +152,6 @@
     .step-n { font-family: 'Bebas Neue', sans-serif; font-size: 90px; color: rgba(255,255,255,0.03); position: absolute; top: 12px; right: 16px; line-height: 1; }
     .step-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(201,152,42,0.18), rgba(232,184,75,0.06)); border: 1px solid rgba(201,152,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; z-index: 1; }
     .step-icon svg { width: 24px; height: 24px; stroke: var(--gold2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    .price-icon svg { width: 28px; height: 28px; stroke: var(--gold2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; margin-bottom: 12px; }
     .step-desc { font-size: 14px; color: rgba(255,255,255,0.46); line-height: 1.7; }
@@ -202,10 +201,7 @@
     .pricing-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 16px; line-height: 1; }
     .pricing-header p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto 32px; position: relative; z-index: 2; }
-    .pricing-secondary { max-width: 1200px; margin: 96px auto 0; position: relative; z-index: 2; }
-    .pricing-secondary-header { text-align: center; margin-bottom: 32px; }
-    .pricing-secondary-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: 0.02em; line-height: 1.1; margin-bottom: 10px; }
-    .pricing-secondary-header p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 640px; margin: 0 auto; }
+    .pricing-event-cta { display: flex; justify-content: center; margin-top: 56px; position: relative; z-index: 2; }
     .price-card { position: relative; background: linear-gradient(180deg, rgba(26,38,64,0.85) 0%, rgba(15,21,36,0.9) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; overflow: hidden; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.5s; display: flex; flex-direction: column; }
     .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--tier-accent, var(--gold2)) 50%, transparent); opacity: 0.7; }
     .price-card::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, var(--tier-glow, rgba(201,152,42,0.12)) 0%, transparent 40%); opacity: 0; transition: opacity 0.6s; pointer-events: none; }
@@ -215,7 +211,6 @@
     .price-card.tier-premium { --tier-accent: #8b5cf6; --tier-glow: rgba(139,92,246,0.18); border-color: rgba(139,92,246,0.28); }
     .price-card.tier-elite { --tier-accent: var(--gold2); --tier-glow: rgba(232,184,75,0.2); border-color: rgba(201,152,42,0.4); }
     .price-card.tier-elite { background: linear-gradient(180deg, rgba(64,46,12,0.55) 0%, rgba(15,21,36,0.92) 100%); }
-    .price-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(201,152,42,0.18), rgba(232,184,75,0.08)); border: 1px solid rgba(201,152,42,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
     .tier-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 24px; }
     .tier-label .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--tier-accent); }
     .tier-standard .tier-label { color: rgba(255,255,255,0.65); }
@@ -223,13 +218,10 @@
     .tier-elite .tier-label { color: var(--gold2); }
     .tier-badge { position: absolute; top: 18px; right: 18px; background: rgba(201,152,42,0.16); border: 1px solid rgba(201,152,42,0.4); color: var(--gold2); padding: 5px 12px; border-radius: 100px; font-size: 9px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
     .price-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; line-height: 1.05; margin-bottom: 14px; }
-    .price-pill { display: inline-block; background: rgba(201,152,42,0.14); border: 1px solid rgba(201,152,42,0.32); color: var(--gold2); padding: 6px 16px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; }
     .price-amount-block { margin-bottom: 14px; }
-    .price-prefix { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 6px; letter-spacing: 0.04em; }
     .price-amount { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
     .price-amount .num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 72px); background: linear-gradient(135deg, #fff 30%, var(--tier-accent, var(--gold3)) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; letter-spacing: 0.01em; }
     .price-amount .per { font-size: 15px; color: rgba(255,255,255,0.55); font-weight: 500; }
-    .price-amount .sep { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold2); margin: 0 4px; }
     .price-duration { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 22px; }
     .price-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 24px; }
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
@@ -243,16 +235,6 @@
     .tier-elite .price-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; }
     .tier-elite .price-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201,152,42,0.45); }
     .pricing-footnote { text-align: center; font-size: 13px; color: rgba(255,255,255,0.45); max-width: 720px; margin: 24px auto 0; line-height: 1.7; }
-    .price-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 28px; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; overflow: hidden; }
-    .price-table thead { background: rgba(201,152,42,0.08); }
-    .price-table th { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold2); padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(201,152,42,0.18); }
-    .price-table td { padding: 11px 14px; font-size: 12.5px; color: rgba(255,255,255,0.72); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .price-table tbody tr:last-child td { border-bottom: none; }
-    .price-table tbody tr { transition: background 0.2s; }
-    .price-table tbody tr:hover { background: rgba(201,152,42,0.04); }
-    .price-table .tier-name { font-weight: 600; color: var(--white); }
-    .price-table .tier-price { font-family: 'Bebas Neue', sans-serif; color: var(--gold2); font-size: 15px; letter-spacing: 0.02em; }
-    .price-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; padding: 14px 16px; background: rgba(201,152,42,0.05); border-left: 2px solid var(--gold); border-radius: 4px; margin-bottom: 0; }
 
     /* PREMIUM REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(60px) scale(0.97); filter: blur(8px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease; will-change: opacity, transform, filter; }
@@ -278,7 +260,6 @@
     @media (max-width: 960px) {
       .pricing-grid { grid-template-columns: 1fr; }
       .price-card { padding: 36px 28px; }
-      .price-table th, .price-table td { padding: 9px 10px; font-size: 11px; }
     }
 
     /* MOBILE NAV */
@@ -567,45 +548,9 @@
   </div>
   <p class="pricing-footnote">Every challenge runs for 14 days and is paid per challenge — bundle multiple tiers to build a season-long brand campaign.</p>
 
-  <!-- GCO Event Sponsorship -->
-  <div class="pricing-secondary">
-    <div class="pricing-secondary-header">
-      <div class="eyebrow reveal">Beyond Brand Challenges</div>
-      <h3 class="reveal">GCO Flagship Event Sponsorship</h3>
-      <p class="reveal">Looking for a bigger moment? Activate live at the Golf Creator Open with custom event sponsorship packages.</p>
-    </div>
-    <div class="price-card reveal">
-      <div class="price-icon"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 01-8 0V4z"/><path d="M8 6H5v2a3 3 0 003 3"/><path d="M16 6h3v2a3 3 0 01-3 3"/><path d="M10 14h4l-.5 4h-3L10 14z"/><path d="M8 20h8"/></svg></div>
-      <div class="price-title">GCO Event Sponsorship</div>
-      <div class="price-pill">Flagship Event Packages</div>
-      <div class="price-amount-block">
-        <div class="price-prefix">From</div>
-        <div class="price-amount">
-          <span class="num">$2k</span>
-          <span class="sep">-</span>
-          <span class="num">$100k</span>
-        </div>
-      </div>
-      <p class="price-desc">Activate at the Golf Creator Open with premium sponsorship opportunities built for visibility, hospitality, and creator-led content.</p>
-      <table class="price-table">
-        <thead>
-          <tr>
-            <th>Sponsorship</th>
-            <th>Price</th>
-            <th>Best For</th>
-          </tr>
-        </thead>
-        <tbody class="stagger">
-          <tr><td class="tier-name">Title Partner</td><td class="tier-price">$100k</td><td>Full event ownership</td></tr>
-          <tr><td class="tier-name">Championship Sponsor</td><td class="tier-price">$50k</td><td>Trophy, purse, winner moment</td></tr>
-          <tr><td class="tier-name">Creator Social Sponsor</td><td class="tier-price">$30k</td><td>Friday hospitality/content</td></tr>
-          <tr><td class="tier-name">Official Sponsor</td><td class="tier-price">$5k–$10k</td><td>Category alignment</td></tr>
-          <tr><td class="tier-name">Activation Sponsor</td><td class="tier-price">$2k per hole</td><td>On-course visibility</td></tr>
-          <tr><td class="tier-name">Swag Bag Sponsor</td><td class="tier-price">In-kind</td><td>Product placement/gifting</td></tr>
-        </tbody>
-      </table>
-      <div class="price-note">Resort rooms can be built into partner packages based on tier, availability, and sponsor hospitality needs.</div>
-    </div>
+  <!-- Event Sponsorship CTA -->
+  <div class="pricing-event-cta reveal">
+    <a href="https://www.golfcreatortour.com/gco-sponsor-deck.html" class="btn-outline">Event Sponsorship</a>
   </div>
 </section>
 
