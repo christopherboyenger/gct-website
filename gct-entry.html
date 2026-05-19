@@ -6,6 +6,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>Golf Creator Tour | Choose Your Entry</title>
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
+  <link rel="preload" as="image" href="logo-gct-full.png" fetchpriority="high">
   <style>
     :root {
       --navy: #061b36;
@@ -76,7 +77,7 @@
     }
 
     .header-logo {
-      height: 72px;
+      height: 160px;
       width: auto;
       object-fit: contain;
     }
@@ -148,7 +149,6 @@
         linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.025)),
         var(--card);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
       overflow: hidden;
     }
 
@@ -199,7 +199,7 @@
     }
 
     .price strong {
-      font-size: 62px;
+      font-size: 84px;
       line-height: 1;
       letter-spacing: -0.06em;
       color: var(--white);
@@ -207,7 +207,7 @@
 
     .price span {
       color: var(--muted);
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
     }
 
@@ -321,7 +321,6 @@
       border-radius: 26px;
       overflow: hidden;
       background: rgba(255,255,255,0.045);
-      backdrop-filter: blur(14px);
       box-shadow: 0 24px 64px rgba(0,0,0,0.25);
     }
 
@@ -395,7 +394,7 @@
       }
 
       .header-logo {
-        height: 56px;
+        height: 120px;
       }
 
       .pricing-grid {
@@ -423,20 +422,17 @@
     /* === Premium reveal animations === */
     .reveal {
       opacity: 0;
-      transform: translate3d(0, 32px, 0);
-      filter: blur(8px);
+      transform: translate3d(0, 28px, 0);
       transition:
-        opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
       transition-delay: var(--reveal-delay, 0ms);
-      will-change: opacity, transform, filter;
+      will-change: opacity, transform;
     }
 
     .reveal.is-visible {
       opacity: 1;
       transform: none;
-      filter: none;
     }
 
     .reveal-left {
@@ -457,19 +453,17 @@
 
     /* Header logo entrance on load */
     .header-logo {
-      animation: logoIn 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: logoIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     @keyframes logoIn {
       from {
         opacity: 0;
-        transform: translateY(-14px) scale(0.94);
-        filter: blur(8px);
+        transform: translateY(-10px) scale(0.96);
       }
       to {
         opacity: 1;
         transform: none;
-        filter: none;
       }
     }
 
@@ -661,7 +655,7 @@
       }
 
       .price strong {
-        font-size: 54px;
+        font-size: 64px;
       }
     }
   </style>
@@ -671,7 +665,7 @@
     <div class="glow-line"></div>
 
     <header>
-      <img src="logo-gct-full.png" alt="Golf Creator Tour" class="header-logo">
+      <img src="logo-gct-full.png" alt="Golf Creator Tour" class="header-logo" width="160" height="160" decoding="async" fetchpriority="high">
     </header>
 
     <section class="hero">
