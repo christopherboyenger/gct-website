@@ -11,11 +11,11 @@
       --navy: #061b36;
       --navy-2: #08284f;
       --blue: #0d3a70;
-      --gold: #c9a84c;
-      --gold-light: #f5df9b;
+      --gold: #c9982a;
+      --gold-light: #e8b84b;
       --white: #ffffff;
       --muted: rgba(255,255,255,0.72);
-      --line: rgba(201,168,76,0.38);
+      --line: rgba(201,152,42,0.38);
       --card: rgba(6, 27, 54, 0.82);
       --shadow: 0 30px 80px rgba(0,0,0,0.35);
     }
@@ -31,7 +31,7 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--white);
       background:
-        radial-gradient(circle at 76% 12%, rgba(201,168,76,0.22), transparent 30%),
+        radial-gradient(circle at 76% 12%, rgba(201,152,42,0.22), transparent 30%),
         radial-gradient(circle at 18% 28%, rgba(30,94,166,0.45), transparent 32%),
         linear-gradient(135deg, #031326 0%, #061b36 42%, #020b18 100%);
       overflow-x: hidden;
@@ -70,45 +70,15 @@
 
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      gap: 22px;
-      padding: 12px 0 58px;
+      padding: 12px 0 48px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 900;
-    }
-
-    .mark {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-      box-shadow: inset 0 0 24px rgba(201,168,76,0.15);
-      color: var(--gold-light);
-      font-size: 21px;
-    }
-
-    .eyebrow-pill {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 10px 16px;
-      color: var(--gold-light);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(12px);
+    .header-logo {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
     }
 
     .hero {
@@ -202,8 +172,8 @@
       border-radius: 999px;
       padding: 9px 13px;
       margin-bottom: 22px;
-      background: rgba(201,168,76,0.14);
-      border: 1px solid rgba(201,168,76,0.45);
+      background: rgba(201,152,42,0.14);
+      border: 1px solid rgba(201,152,42,0.45);
       color: var(--gold-light);
       font-size: 12px;
       font-weight: 900;
@@ -255,7 +225,7 @@
       margin: 22px 0;
       padding: 18px;
       border-radius: 20px;
-      border: 1px solid rgba(201,168,76,0.38);
+      border: 1px solid rgba(201,152,42,0.38);
       background: rgba(0,0,0,0.18);
     }
 
@@ -327,7 +297,7 @@
     .cta.primary {
       color: #061b36;
       background: linear-gradient(135deg, #ffffff, #f5df9b 45%, #c9a84c);
-      box-shadow: 0 18px 42px rgba(201,168,76,0.26);
+      box-shadow: 0 18px 42px rgba(201,152,42,0.26);
     }
 
     .cta.secondary {
@@ -390,9 +360,9 @@
       padding: 32px;
       border-radius: 30px;
       text-align: center;
-      border: 1px solid rgba(201,168,76,0.34);
+      border: 1px solid rgba(201,152,42,0.34);
       background:
-        linear-gradient(135deg, rgba(201,168,76,0.12), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, rgba(201,152,42,0.12), rgba(255,255,255,0.04)),
         rgba(0,0,0,0.18);
     }
 
@@ -421,12 +391,11 @@
 
     @media (max-width: 840px) {
       header {
-        align-items: flex-start;
-        padding-bottom: 36px;
+        padding-bottom: 32px;
       }
 
-      .eyebrow-pill {
-        display: none;
+      .header-logo {
+        height: 56px;
       }
 
       .pricing-grid {
@@ -451,13 +420,218 @@
       }
     }
 
+    /* === Premium reveal animations === */
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 32px, 0);
+      filter: blur(8px);
+      transition:
+        opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .reveal-left {
+      transform: translate3d(-44px, 18px, 0);
+    }
+
+    .reveal-right {
+      transform: translate3d(44px, 18px, 0);
+    }
+
+    .reveal-scale {
+      transform: translate3d(0, 22px, 0) scale(0.96);
+    }
+
+    .reveal-scale.is-visible {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    /* Header logo entrance on load */
+    .header-logo {
+      animation: logoIn 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes logoIn {
+      from {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.94);
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    /* Glow line parallax-ready */
+    .glow-line {
+      transition: transform 200ms linear;
+      will-change: transform;
+    }
+
+    /* Featured card: gold shimmer sweep */
+    .card.featured::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(245,223,155,0.85) 48%,
+        rgba(255,255,255,0.95) 50%,
+        rgba(245,223,155,0.85) 52%,
+        transparent 70%
+      );
+      background-size: 220% 100%;
+      background-position: 200% 0;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+      animation: shimmerSweep 4800ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation-delay: 1200ms;
+      opacity: 0.85;
+    }
+
+    @keyframes shimmerSweep {
+      0%   { background-position: 200% 0; }
+      55%  { background-position: -120% 0; }
+      100% { background-position: -120% 0; }
+    }
+
+    /* Card hover lift */
+    .card {
+      transition:
+        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 420ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 42px 100px rgba(0,0,0,0.45);
+      border-color: rgba(245,223,155,0.42);
+    }
+
+    .card.featured:hover {
+      transform: translateY(-22px);
+    }
+
+    /* List item stagger on reveal */
+    .card.is-visible li {
+      animation: liIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .card.is-visible li:nth-child(1) { animation-delay: 320ms; }
+    .card.is-visible li:nth-child(2) { animation-delay: 400ms; }
+    .card.is-visible li:nth-child(3) { animation-delay: 480ms; }
+    .card.is-visible li:nth-child(4) { animation-delay: 560ms; }
+    .card.is-visible li:nth-child(5) { animation-delay: 640ms; }
+
+    @keyframes liIn {
+      from {
+        opacity: 0;
+        transform: translateX(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Compare row stagger on reveal */
+    .compare.is-visible .compare-row {
+      animation: rowIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .compare.is-visible .compare-row:nth-child(1) { animation-delay: 80ms; }
+    .compare.is-visible .compare-row:nth-child(2) { animation-delay: 160ms; }
+    .compare.is-visible .compare-row:nth-child(3) { animation-delay: 240ms; }
+    .compare.is-visible .compare-row:nth-child(4) { animation-delay: 320ms; }
+    .compare.is-visible .compare-row:nth-child(5) { animation-delay: 400ms; }
+    .compare.is-visible .compare-row:nth-child(6) { animation-delay: 480ms; }
+
+    @keyframes rowIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Price digit ticker */
+    .price strong .digit-roll {
+      display: inline-block;
+      min-width: 0.6em;
+      text-align: center;
+    }
+
+    /* CTA subtle glow pulse on featured */
+    .card.featured .cta.primary {
+      box-shadow:
+        0 18px 42px rgba(201,152,42,0.26),
+        0 0 0 0 rgba(245,223,155,0.55);
+      animation: ctaPulse 3200ms ease-in-out infinite;
+      animation-delay: 1800ms;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% {
+        box-shadow:
+          0 18px 42px rgba(201,152,42,0.26),
+          0 0 0 0 rgba(245,223,155,0.55);
+      }
+      50% {
+        box-shadow:
+          0 22px 52px rgba(201,152,42,0.38),
+          0 0 0 10px rgba(245,223,155,0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .reveal-left,
+      .reveal-right,
+      .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+
+      .header-logo,
+      .card.featured::after,
+      .card.featured .cta.primary,
+      .card.is-visible li,
+      .compare.is-visible .compare-row {
+        animation: none !important;
+      }
+
+      .glow-line {
+        transition: none !important;
+      }
+    }
+
     @media (max-width: 520px) {
       .page {
         padding: 24px 14px 50px;
-      }
-
-      .brand-text {
-        font-size: 13px;
       }
 
       .hero {
@@ -497,27 +671,23 @@
     <div class="glow-line"></div>
 
     <header>
-      <div class="brand">
-        <div class="mark">◒</div>
-        <div class="brand-text">Golf Creator Tour</div>
-      </div>
-      <div class="eyebrow-pill">2026 Season Acceptance</div>
+      <img src="logo-gct-full.png" alt="Golf Creator Tour" class="header-logo">
     </header>
 
     <section class="hero">
-      <div class="hero-kicker">Application Approved</div>
-      <h1>Choose Your <span>Tour Entry</span></h1>
-      <p class="subhead">
+      <div class="hero-kicker reveal" style="--reveal-delay: 200ms;">Application Approved</div>
+      <h1 class="reveal" style="--reveal-delay: 360ms;">Choose Your <span>Tour Entry</span></h1>
+      <p class="subhead reveal" style="--reveal-delay: 600ms;">
         You’ve been approved for the Golf Creator Tour. Select the entry option that fits your season and officially activate your spot on the leaderboard.
       </p>
     </section>
 
     <section class="pricing-grid" aria-label="Golf Creator Tour pricing options">
-      <article class="card featured">
+      <article class="card featured reveal reveal-left" style="--reveal-delay: 0ms;">
         <div class="badge">Best Value</div>
         <h2>Tour Member</h2>
         <div class="price">
-          <strong>$200</strong>
+          <strong>$<span class="count-up" data-target="200">200</span></strong>
           <span>/ year</span>
         </div>
         <p class="description">
@@ -541,11 +711,11 @@
         <p class="note">Recommended for creators taking the Tour seriously.</p>
       </article>
 
-      <article class="card">
+      <article class="card reveal reveal-right" style="--reveal-delay: 160ms;">
         <div class="badge">Single Season</div>
         <h2>One-Time Entry</h2>
         <div class="price">
-          <strong>$350</strong>
+          <strong>$<span class="count-up" data-target="350">350</span></strong>
           <span>one time</span>
         </div>
         <p class="description">
@@ -570,7 +740,7 @@
       </article>
     </section>
 
-    <section class="compare" aria-label="Option comparison">
+    <section class="compare reveal" aria-label="Option comparison">
       <div class="compare-row header">
         <div class="compare-cell">Feature</div>
         <div class="compare-cell">Tour Member</div>
@@ -603,7 +773,7 @@
       </div>
     </section>
 
-    <section class="final-band">
+    <section class="final-band reveal reveal-scale">
       <h3>The Race to the Open Starts Now</h3>
       <p>
         Your content, growth, creator matches, and brand challenge activity now count toward something bigger. Choose your entry, activate your spot, and start climbing.
@@ -615,5 +785,69 @@
       Questions? Contact support@golfcreatortour.com
     </footer>
   </main>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Count-up: animate a number from 0 to data-target
+      function countUp(el) {
+        if (el.dataset.done === '1') return;
+        el.dataset.done = '1';
+        var target = parseInt(el.dataset.target, 10) || 0;
+        if (reduce) { el.textContent = target; return; }
+        var duration = 1400;
+        var start = performance.now();
+        function tick(now) {
+          var t = Math.min(1, (now - start) / duration);
+          // ease-out-expo
+          var eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+          el.textContent = Math.round(target * eased);
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        el.textContent = '0';
+        requestAnimationFrame(tick);
+      }
+
+      // Reveal on scroll
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reduce) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            el.classList.add('is-visible');
+            // Trigger count-ups inside this element
+            el.querySelectorAll('.count-up').forEach(function (n) {
+              setTimeout(function () { countUp(n); }, 280);
+            });
+            io.unobserve(el);
+          });
+        }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+        document.querySelectorAll('.count-up').forEach(countUp);
+      }
+
+      // Subtle parallax on the glow line
+      if (!reduce) {
+        var glow = document.querySelector('.glow-line');
+        if (glow) {
+          var ticking = false;
+          window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+              var y = window.scrollY || 0;
+              glow.style.transform = 'rotate(-6deg) translate3d(0,' + (y * 0.18) + 'px, 0)';
+              ticking = false;
+            });
+          }, { passive: true });
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
