@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Golf Creator Tour | Choose Your Entry</title>
+  <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
+  <style>
+    :root {
+      --navy: #061b36;
+      --navy-2: #08284f;
+      --blue: #0d3a70;
+      --gold: #c9a84c;
+      --gold-light: #f5df9b;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.72);
+      --line: rgba(201,168,76,0.38);
+      --card: rgba(6, 27, 54, 0.82);
+      --shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 76% 12%, rgba(201,168,76,0.22), transparent 30%),
+        radial-gradient(circle at 18% 28%, rgba(30,94,166,0.45), transparent 32%),
+        linear-gradient(135deg, #031326 0%, #061b36 42%, #020b18 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 72%);
+    }
+
+    .page {
+      position: relative;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 34px 22px 70px;
+    }
+
+    .glow-line {
+      position: absolute;
+      top: 430px;
+      left: -18vw;
+      width: 140vw;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(245,223,155,0.25), rgba(245,223,155,0.85), rgba(245,223,155,0.22), transparent);
+      box-shadow: 0 0 26px rgba(245,223,155,0.58);
+      transform: rotate(-6deg);
+      pointer-events: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      padding: 12px 0 58px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+      box-shadow: inset 0 0 24px rgba(201,168,76,0.15);
+      color: var(--gold-light);
+      font-size: 21px;
+    }
+
+    .eyebrow-pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 16px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 18px 0 36px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      font-weight: 900;
+    }
+
+    .hero-kicker::before,
+    .hero-kicker::after {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.75;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+      text-transform: uppercase;
+      text-shadow: 0 16px 42px rgba(0,0,0,0.32);
+    }
+
+    h1 span {
+      display: block;
+      color: var(--gold-light);
+    }
+
+    .subhead {
+      max-width: 735px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .pricing-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 50px;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 30px;
+      padding: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.025)),
+        var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(245,223,155,0.16), transparent 35%);
+      pointer-events: none;
+    }
+
+    .card.featured {
+      border-color: rgba(245,223,155,0.72);
+      transform: translateY(-10px);
+    }
+
+    .badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 9px 13px;
+      margin-bottom: 22px;
+      background: rgba(201,168,76,0.14);
+      border: 1px solid rgba(201,168,76,0.45);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+    }
+
+    .card h2 {
+      position: relative;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .price {
+      position: relative;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .price strong {
+      font-size: 62px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--white);
+    }
+
+    .price span {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .description {
+      position: relative;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 76px;
+      margin-bottom: 24px;
+    }
+
+    .point-rule {
+      position: relative;
+      margin: 22px 0;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.38);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .point-rule small {
+      display: block;
+      color: var(--gold-light);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .point-rule p {
+      color: rgba(255,255,255,0.86);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    ul {
+      position: relative;
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin: 24px 0 30px;
+    }
+
+    li {
+      display: flex;
+      gap: 10px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.4;
+      font-size: 15px;
+    }
+
+    li::before {
+      content: "✓";
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #061b36;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 58px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 950;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta.primary {
+      color: #061b36;
+      background: linear-gradient(135deg, #ffffff, #f5df9b 45%, #c9a84c);
+      box-shadow: 0 18px 42px rgba(201,168,76,0.26);
+    }
+
+    .cta.secondary {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .note {
+      position: relative;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.58);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .compare {
+      margin-top: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .compare-row:last-child {
+      border-bottom: 0;
+    }
+
+    .compare-cell {
+      padding: 18px 20px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.35;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .compare-cell:last-child {
+      border-right: 0;
+    }
+
+    .compare-row.header .compare-cell {
+      color: var(--gold-light);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .final-band {
+      margin-top: 38px;
+      padding: 32px;
+      border-radius: 30px;
+      text-align: center;
+      border: 1px solid rgba(201,168,76,0.34);
+      background:
+        linear-gradient(135deg, rgba(201,168,76,0.12), rgba(255,255,255,0.04)),
+        rgba(0,0,0,0.18);
+    }
+
+    .final-band h3 {
+      font-size: clamp(26px, 4vw, 44px);
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .final-band p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    footer {
+      padding-top: 36px;
+      text-align: center;
+      color: rgba(255,255,255,0.46);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 840px) {
+      header {
+        align-items: flex-start;
+        padding-bottom: 36px;
+      }
+
+      .eyebrow-pill {
+        display: none;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card.featured {
+        transform: none;
+      }
+
+      .compare-row {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-cell {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .compare-cell:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding: 24px 14px 50px;
+      }
+
+      .brand-text {
+        font-size: 13px;
+      }
+
+      .hero {
+        text-align: left;
+      }
+
+      .hero-kicker {
+        font-size: 11px;
+      }
+
+      .hero-kicker::before,
+      .hero-kicker::after {
+        width: 22px;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      .subhead {
+        margin-left: 0;
+      }
+
+      .card {
+        padding: 24px 18px;
+        border-radius: 24px;
+      }
+
+      .price strong {
+        font-size: 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="glow-line"></div>
+
+    <header>
+      <div class="brand">
+        <div class="mark">◒</div>
+        <div class="brand-text">Golf Creator Tour</div>
+      </div>
+      <div class="eyebrow-pill">2026 Season Acceptance</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-kicker">Application Approved</div>
+      <h1>Choose Your <span>Tour Entry</span></h1>
+      <p class="subhead">
+        You’ve been approved for the Golf Creator Tour. Select the entry option that fits your season and officially activate your spot on the leaderboard.
+      </p>
+    </section>
+
+    <section class="pricing-grid" aria-label="Golf Creator Tour pricing options">
+      <article class="card featured">
+        <div class="badge">Best Value</div>
+        <h2>Tour Member</h2>
+        <div class="price">
+          <strong>$200</strong>
+          <span>/ year</span>
+        </div>
+        <p class="description">
+          Built for creators who want full-season status, leaderboard access, brand challenge opportunities, and long-term Tour upside.
+        </p>
+
+        <div class="point-rule">
+          <small>Point Protection</small>
+          <p>If you do not qualify this season, your earned Tour Points roll over into the following season.</p>
+        </div>
+
+        <ul>
+          <li>Official Golf Creator Tour member status</li>
+          <li>Compete through social growth, brand challenges, creator matches, and referrals</li>
+          <li>Leaderboard ranking throughout the 2026 season</li>
+          <li>Eligibility to qualify for the Golf Creator Open</li>
+          <li>Points carry over if you do not qualify</li>
+        </ul>
+
+        <a class="cta primary" href="https://buy.stripe.com/eVq6oBdg62h44vg8a2bV602">Become a Member</a>
+        <p class="note">Recommended for creators taking the Tour seriously.</p>
+      </article>
+
+      <article class="card">
+        <div class="badge">Single Season</div>
+        <h2>One-Time Entry</h2>
+        <div class="price">
+          <strong>$350</strong>
+          <span>one time</span>
+        </div>
+        <p class="description">
+          A single-season entry for creators who want to compete now without annual membership benefits or rollover protection.
+        </p>
+
+        <div class="point-rule">
+          <small>Season Reset</small>
+          <p>When the season ends, your Tour Points reset to zero.</p>
+        </div>
+
+        <ul>
+          <li>Entry into the current Golf Creator Tour season</li>
+          <li>Earn points through eligible Tour activities</li>
+          <li>Compete on the 2026 leaderboard</li>
+          <li>Eligibility to qualify for the Golf Creator Open</li>
+          <li>No rollover points after season completion</li>
+        </ul>
+
+        <a class="cta secondary" href="https://buy.stripe.com/4gM7sF1xo4pc8LwaiabV607">Enter One Time</a>
+        <p class="note">Good for testing the Tour. Not built for the long game.</p>
+      </article>
+    </section>
+
+    <section class="compare" aria-label="Option comparison">
+      <div class="compare-row header">
+        <div class="compare-cell">Feature</div>
+        <div class="compare-cell">Tour Member</div>
+        <div class="compare-cell">One-Time Entry</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Price</div>
+        <div class="compare-cell">$200 per year</div>
+        <div class="compare-cell">$350 one time</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Leaderboard access</div>
+        <div class="compare-cell">Included</div>
+        <div class="compare-cell">Included</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Golf Creator Open qualification eligibility</div>
+        <div class="compare-cell">Included</div>
+        <div class="compare-cell">Included</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Points if you do not qualify</div>
+        <div class="compare-cell">Carry over to next season</div>
+        <div class="compare-cell">Reset to zero</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Best fit</div>
+        <div class="compare-cell">Creators building long-term Tour status</div>
+        <div class="compare-cell">Creators entering for this season only</div>
+      </div>
+    </section>
+
+    <section class="final-band">
+      <h3>The Race to the Open Starts Now</h3>
+      <p>
+        Your content, growth, creator matches, and brand challenge activity now count toward something bigger. Choose your entry, activate your spot, and start climbing.
+      </p>
+    </section>
+
+    <footer>
+      Golf Creator Tour · Compete · Create · Connect<br />
+      Questions? Contact support@golfcreatortour.com
+    </footer>
+  </main>
+</body>
+</html>
