@@ -205,7 +205,13 @@
       color: var(--white);
     }
 
-    .price span {
+    .price strong .count-up {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+    }
+
+    .price > span {
       color: var(--muted);
       font-size: 18px;
       font-weight: 700;
@@ -577,26 +583,22 @@
       text-align: center;
     }
 
-    /* CTA subtle glow pulse on featured */
+    /* CTA subtle pulse on featured (transform-only for compositor) */
     .card.featured .cta.primary {
-      box-shadow:
-        0 18px 42px rgba(201,152,42,0.26),
-        0 0 0 0 rgba(245,223,155,0.55);
       animation: ctaPulse 3200ms ease-in-out infinite;
       animation-delay: 1800ms;
+      will-change: transform;
     }
 
     @keyframes ctaPulse {
-      0%, 100% {
-        box-shadow:
-          0 18px 42px rgba(201,152,42,0.26),
-          0 0 0 0 rgba(245,223,155,0.55);
-      }
-      50% {
-        box-shadow:
-          0 22px 52px rgba(201,152,42,0.38),
-          0 0 0 10px rgba(245,223,155,0);
-      }
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.02); }
+    }
+
+    /* Pause expensive infinite animations while scrolling */
+    html.is-scrolling .card.featured::after,
+    html.is-scrolling .card.featured .cta.primary {
+      animation-play-state: paused;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -825,21 +827,22 @@
         document.querySelectorAll('.count-up').forEach(countUp);
       }
 
-      // Subtle parallax on the glow line
+      // Parallax on the glow line removed: repainting its 26px box-shadow
+      // across a 140vw element on every scroll frame caused major scroll jank.
+
+      // Pause infinite animations while scrolling to keep scroll smooth.
       if (!reduce) {
-        var glow = document.querySelector('.glow-line');
-        if (glow) {
-          var ticking = false;
-          window.addEventListener('scroll', function () {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(function () {
-              var y = window.scrollY || 0;
-              glow.style.transform = 'rotate(-6deg) translate3d(0,' + (y * 0.18) + 'px, 0)';
-              ticking = false;
-            });
-          }, { passive: true });
-        }
+        var root = document.documentElement;
+        var scrollTimer = null;
+        window.addEventListener('scroll', function () {
+          if (!root.classList.contains('is-scrolling')) {
+            root.classList.add('is-scrolling');
+          }
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function () {
+            root.classList.remove('is-scrolling');
+          }, 160);
+        }, { passive: true });
       }
     })();
   </script>
