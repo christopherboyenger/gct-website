@@ -205,10 +205,17 @@
       color: var(--white);
     }
 
-    .price span {
+    .price > span {
       color: var(--muted);
       font-size: 18px;
       font-weight: 700;
+    }
+
+    .price strong .count-up {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      letter-spacing: inherit;
     }
 
     .description {
@@ -406,16 +413,19 @@
       }
 
       .compare-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1.3fr 1fr 1fr;
       }
 
       .compare-cell {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 14px 12px;
+        font-size: 13px;
+        line-height: 1.35;
       }
 
-      .compare-cell:last-child {
-        border-bottom: 0;
+      .compare-row.header .compare-cell {
+        font-size: 10.5px;
+        letter-spacing: 0.06em;
+        padding: 12px 10px;
       }
     }
 
@@ -625,7 +635,7 @@
 
     @media (max-width: 520px) {
       .page {
-        padding: 24px 14px 50px;
+        padding: 24px 18px 50px;
       }
 
       .hero {
@@ -650,12 +660,35 @@
       }
 
       .card {
-        padding: 24px 18px;
+        padding: 24px 20px;
         border-radius: 24px;
       }
 
       .price strong {
-        font-size: 64px;
+        font-size: 56px;
+      }
+
+      .price > span {
+        font-size: 16px;
+      }
+
+      .compare {
+        border-radius: 20px;
+      }
+
+      .compare-row {
+        grid-template-columns: 1.2fr 1fr 1fr;
+      }
+
+      .compare-cell {
+        padding: 12px 9px;
+        font-size: 12px;
+      }
+
+      .compare-row.header .compare-cell {
+        font-size: 9.5px;
+        letter-spacing: 0.04em;
+        padding: 10px 8px;
       }
     }
   </style>
