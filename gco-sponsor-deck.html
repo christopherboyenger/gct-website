@@ -671,6 +671,18 @@
     .hole-activation-bar { width: 3px; flex-shrink: 0; border-radius: 2px; background: linear-gradient(180deg, #f5a032, #e07820); margin-top: 3px; align-self: stretch; min-height: 36px; }
     .hole-activation-text b { display: block; font-size: 12px; font-weight: 700; color: #f5a032; margin-bottom: 2px; }
     .hole-activation-text p { font-size: 11.5px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+    /* ── HOSPITALITY / VIP ── */
+    .hosp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+    .pkg-card.is-hosp { border-color: rgba(20,184,166,0.22); }
+    .pkg-card.is-hosp:hover { box-shadow: 0 44px 100px rgba(20,184,166,0.15), 0 24px 64px rgba(0,0,0,0.55); }
+    .tier-hosp { background: linear-gradient(135deg, #2dd4bf, #0d9488); color: #00201c; box-shadow: 0 4px 20px rgba(20,184,166,0.35); }
+    .pkg-card.is-hosp .pkg-check { background: rgba(20,184,166,0.12); border-color: rgba(20,184,166,0.35); color: #2dd4bf; }
+    .pkg-cta-hosp { background: linear-gradient(135deg, #2dd4bf, #0d9488); color: #00201c; }
+    .pkg-cta-hosp:hover { box-shadow: 0 12px 36px rgba(20,184,166,0.4); transform: translateY(-2px); }
+    .hosp-banner { background: linear-gradient(90deg, #2dd4bf, #0d9488) !important; color: #00201c !important; }
+    @media (max-width: 1100px) { .hosp-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 680px) { .hosp-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
   </style>
 </head>
 <body>
@@ -685,6 +697,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#packages">Packages</a></li>
+    <li><a href="#hospitality">Hospitality</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="nav-cta">Become a Sponsor</a>
@@ -728,8 +741,8 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner" id="ticker">
-    <div class="t-item"><span class="t-gold">Oct 2–4, 2026</span><span class="t-dot"></span>Palm Beach, Florida<span class="t-dot"></span>Golf Creator Open Championship<span class="t-dot"></span><span class="t-gold">6 Sponsorship Tiers</span><span class="t-dot"></span>VIP Access<span class="t-dot"></span>App Activations<span class="t-dot"></span><span class="t-gold">Brand Visibility</span><span class="t-dot"></span>Creator Connections<span class="t-dot"></span>Live Event Coverage<span class="t-dot"></span><span class="t-gold">Category Exclusivity</span><span class="t-dot"></span>Season Long Impact<span class="t-dot"></span>Championship Purse<span class="t-dot"></span></div>
-    <div class="t-item" aria-hidden="true"><span class="t-gold">Oct 2–4, 2026</span><span class="t-dot"></span>Palm Beach, Florida<span class="t-dot"></span>Golf Creator Open Championship<span class="t-dot"></span><span class="t-gold">6 Sponsorship Tiers</span><span class="t-dot"></span>VIP Access<span class="t-dot"></span>App Activations<span class="t-dot"></span><span class="t-gold">Brand Visibility</span><span class="t-dot"></span>Creator Connections<span class="t-dot"></span>Live Event Coverage<span class="t-dot"></span><span class="t-gold">Category Exclusivity</span><span class="t-dot"></span>Season Long Impact<span class="t-dot"></span>Championship Purse<span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-gold">Oct 2–4, 2026</span><span class="t-dot"></span>Palm Beach, Florida<span class="t-dot"></span>Golf Creator Open Championship<span class="t-dot"></span><span class="t-gold">6 Sponsorship Tiers</span><span class="t-dot"></span>VIP Access<span class="t-dot"></span><span class="t-gold">VIP Hospitality</span><span class="t-dot"></span>App Activations<span class="t-dot"></span><span class="t-gold">Brand Visibility</span><span class="t-dot"></span>Creator Connections<span class="t-dot"></span>Live Event Coverage<span class="t-dot"></span><span class="t-gold">Category Exclusivity</span><span class="t-dot"></span>Season Long Impact<span class="t-dot"></span>Championship Purse<span class="t-dot"></span></div>
+    <div class="t-item" aria-hidden="true"><span class="t-gold">Oct 2–4, 2026</span><span class="t-dot"></span>Palm Beach, Florida<span class="t-dot"></span>Golf Creator Open Championship<span class="t-dot"></span><span class="t-gold">6 Sponsorship Tiers</span><span class="t-dot"></span>VIP Access<span class="t-dot"></span><span class="t-gold">VIP Hospitality</span><span class="t-dot"></span>App Activations<span class="t-dot"></span><span class="t-gold">Brand Visibility</span><span class="t-dot"></span>Creator Connections<span class="t-dot"></span>Live Event Coverage<span class="t-dot"></span><span class="t-gold">Category Exclusivity</span><span class="t-dot"></span>Season Long Impact<span class="t-dot"></span>Championship Purse<span class="t-dot"></span></div>
   </div>
 </div>
 
@@ -1085,6 +1098,153 @@
   </div>
 </section>
 
+<!-- HOSPITALITY & VIP EXPERIENCES -->
+<section class="packages" id="hospitality">
+  <div class="packages-aurora"></div>
+
+  <div class="packages-header">
+    <span class="eyebrow reveal">Hospitality &amp; VIP Experiences</span>
+    <h2 class="section-title reveal d2">Watch It<br>Up Close</h2>
+    <p class="section-body reveal d3" style="margin-top:18px;">Premium hospitality at PGA National this October 2–4, 2026 — private clubs, greenside cabanas, suites and tables built for clients, partners and creator talent. Every experience is all-inclusive. Inquire for availability and group pricing.</p>
+  </div>
+
+  <div class="hosp-grid">
+
+    <!-- THE CREATOR CLUB (flagship) -->
+    <div class="pkg-card is-hosp reveal d1">
+      <div class="pkg-featured-banner hosp-banner">★ Flagship Hospitality — Limited Availability</div>
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">★ The Creator Club</div>
+        <div class="pkg-name">The Creator Club</div>
+        <div class="pkg-availability">Private access · Finishing-hole views</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Members-only club perched along the finishing stretch with the best closing-hole sightlines on property</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>All-inclusive chef-curated menu, full premium bar &amp; barista service throughout the day</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Climate-controlled indoor lounge plus a private outdoor viewing deck</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Dedicated host, private entrance &amp; upgraded restrooms</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Built for 20–60 guests — VIP clients, partners &amp; creator talent</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Optional table branding &amp; logo placement for hosting brands</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+    <!-- 18TH GREEN SUITES -->
+    <div class="pkg-card is-hosp reveal d2">
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">🥂 18th Green Suites</div>
+        <div class="pkg-name">18th Green Suites</div>
+        <div class="pkg-availability">Overlooking the 18th · Gourmet dining</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Panoramic views of the 18th green and the championship-deciding final putts</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Plated gourmet dining with all-inclusive food &amp; beverage service</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Semi-private suite with shaded, elevated premium seating</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Comfortable for 10–20 guests — perfect for client entertaining</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Option to name-your-suite with custom branding &amp; signage</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE HOLE CABANAS -->
+    <div class="pkg-card is-hosp reveal d3">
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">⛱️ Signature Hole Cabanas</div>
+        <div class="pkg-name">Signature Hole Cabanas</div>
+        <div class="pkg-availability">Greenside at the signature hole</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Private cabana greenside at the most-photographed hole on course</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>All-inclusive food &amp; beverage delivered straight to your cabana</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Lounge seating with shade — a front-row seat to the day's biggest moments</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Sized for an intimate group of 8–12 guests</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Optional cabana branding for a fully owned activation</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+    <!-- CHAMPIONSHIP CLUB -->
+    <div class="pkg-card is-hosp reveal d1">
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">🏆 Championship Club</div>
+        <div class="pkg-name">Championship Club</div>
+        <div class="pkg-availability">Indoor lounge · Stadium seating</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Climate-controlled lounge paired with outdoor stadium-style seating</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>All-inclusive food &amp; open bar from morning through the final group</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Multiple TVs with live scoring and tournament broadcast</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>High-energy social atmosphere at the heart of the action</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Scales for groups of 30–100 guests</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+    <!-- GREENSIDE TABLES -->
+    <div class="pkg-card is-hosp reveal d2">
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">🍽️ Greenside Tables</div>
+        <div class="pkg-name">Greenside Tables</div>
+        <div class="pkg-availability">Reserved tables · Right at the rope</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Privately reserved table in a prime greenside location</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Food &amp; beverage service brought directly to your table</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Shaded, comfortable seating for a group of 4–6</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>The simplest premium entry point — right where the action unfolds</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+    <!-- THE TERRACE -->
+    <div class="pkg-card is-hosp reveal d3">
+      <div class="pkg-shine"></div>
+      <div class="pkg-header">
+        <div class="tier-badge tier-hosp">🌤️ The Terrace</div>
+        <div class="pkg-name">The Terrace</div>
+        <div class="pkg-availability">Open-air social deck</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefits">
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Elevated open-air deck looking out over the action</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Shared upscale social setting with food &amp; beverage packages</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Lounge and cocktail seating built for mingling</span></div>
+          <div class="pkg-benefit"><div class="pkg-check">✓</div><span>Flexible for groups of 6–10 — a natural backdrop for content</span></div>
+        </div>
+      </div>
+      <div class="pkg-footer">
+        <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hosp">Book a Call</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -1109,6 +1269,7 @@
     <a href="gct-landing.html">Home</a>
     <a href="#about">About GCO</a>
     <a href="#packages">Packages</a>
+    <a href="#hospitality">Hospitality</a>
     <a href="#contact">Contact</a>
   </div>
   <p class="footer-copy">© 2026 Golf Creator Open Championship · Palm Beach, Florida · All rights reserved.</p>
