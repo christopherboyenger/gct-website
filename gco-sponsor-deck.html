@@ -809,6 +809,38 @@
     /* CONTACT (light) */
     .contact.section-light { background: var(--light); }
     .contact.section-light .contact-body { color: var(--ink-soft); }
+
+    /* ============================================================
+       LIGHT CARDS ON DARK SECTIONS — pop the cards against the dark
+       Why / Packages / Hospitality backdrops for stronger contrast.
+       ============================================================ */
+    .why-card, .pkg-card {
+      background: linear-gradient(180deg, #fdfcf9 0%, #f1ece1 100%);
+      border-color: rgba(20,27,45,0.10);
+      box-shadow: 0 28px 64px rgba(0,0,0,0.45);
+    }
+
+    /* WHY cards */
+    .why-card-num { color: rgba(201,152,42,0.18); }
+    .why-title { color: var(--ink); }
+    .why-desc { color: var(--ink-soft); }
+
+    /* PACKAGE / HOSPITALITY cards */
+    .pkg-header { border-bottom-color: rgba(20,27,45,0.10); }
+    .pkg-name { color: var(--ink); }
+    .pkg-availability { color: var(--ink-soft); }
+    .pkg-benefit { color: var(--ink-soft); }
+    .pkg-benefit em { color: var(--ink); }
+    .pkg-shine { background: linear-gradient(105deg, transparent, rgba(0,0,0,0.05), transparent); }
+    .pkg-specifics { border-top-color: rgba(20,27,45,0.10); }
+    .pkg-specifics-label { color: rgba(20,27,45,0.45); }
+    .pkg-specific { color: var(--ink-soft); }
+    .hole-activations { border-top-color: rgba(20,27,45,0.10); }
+    .hole-activation-text p { color: var(--ink-soft); }
+
+    /* Outline CTA needs darker gold to read on a light card */
+    .pkg-cta-outline { color: var(--gold-ink); border-color: rgba(201,152,42,0.45); }
+    .pkg-cta-outline:hover { background: rgba(201,152,42,0.10); border-color: var(--gold-ink); }
   </style>
 </head>
 <body>
