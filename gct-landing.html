@@ -866,6 +866,12 @@
     @media (max-width: 960px) {
       .split.section-light .split-panel.s-dark { border-right: none; border-bottom: 1px solid rgba(20,27,45,0.10); }
     }
+
+    /* ── DESKTOP SCALE — render large screens at 80% so the layout matches the intended density ── */
+    @media (min-width: 1025px) {
+      html { zoom: 0.8; }
+      .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
+    }
   </style>
 </head>
 <body>

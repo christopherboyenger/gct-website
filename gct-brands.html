@@ -306,6 +306,12 @@
     .how.section-light .step-tag { color: var(--gold-ink); }
     .how.section-light .step-title { color: var(--ink); }
     .how.section-light .step-desc { color: var(--ink-soft); }
+
+    /* ── DESKTOP SCALE — render large screens at 80% so the layout matches the intended density ── */
+    @media (min-width: 1025px) {
+      html { zoom: 0.8; }
+      .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
+    }
   </style>
 </head>
 <body>
