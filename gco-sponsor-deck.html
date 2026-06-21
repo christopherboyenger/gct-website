@@ -683,6 +683,98 @@
     .hosp-banner { background: linear-gradient(90deg, #2dd4bf, #0d9488) !important; color: #00201c !important; }
     @media (max-width: 1100px) { .hosp-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 680px) { .hosp-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+
+    /* ── INTERACTIVE HOLE MAP ── */
+    .holemap { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg2); }
+    .holemap::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:1200px; height:600px; background: radial-gradient(ellipse at 50% 0%, rgba(245,160,50,0.10) 0%, transparent 60%); pointer-events:none; }
+    .holemap-header { text-align:center; max-width: 800px; margin: 0 auto 52px; position:relative; z-index:1; }
+    .holemap-header .section-title { margin-bottom: 18px; }
+    .holemap-stage { max-width: 900px; margin: 0 auto; position: relative; z-index:1; }
+    .holemap-frame { position: relative; }
+    .holemap-img { display:block; width:100%; height:auto; border-radius: 24px; border:1px solid rgba(245,160,50,0.22); box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
+    .holemap-overlay { position:absolute; inset:0; }
+
+    .hole-marker {
+      position:absolute; transform: translate(-50%,-50%);
+      width: clamp(26px, 3.4vw, 36px); height: clamp(26px, 3.4vw, 36px);
+      border-radius: 50%; border: 2px solid #fff; padding:0;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Inter',sans-serif; font-weight: 800; font-size: clamp(11px,1.5vw,14px);
+      cursor: pointer; z-index: 2;
+      transition: transform 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hole-marker.available {
+      background: linear-gradient(135deg, #f5a032, #e07820); color:#1a1205;
+      box-shadow: 0 4px 14px rgba(245,160,50,0.5), 0 0 0 0 rgba(245,160,50,0.5);
+      animation: holePulse 2.6s ease-out infinite;
+    }
+    @keyframes holePulse {
+      0% { box-shadow:0 4px 14px rgba(245,160,50,0.5), 0 0 0 0 rgba(245,160,50,0.45); }
+      70% { box-shadow:0 4px 14px rgba(245,160,50,0.5), 0 0 0 11px rgba(245,160,50,0); }
+      100% { box-shadow:0 4px 14px rgba(245,160,50,0.5), 0 0 0 0 rgba(245,160,50,0); }
+    }
+    .hole-marker.available:hover { transform: translate(-50%,-50%) scale(1.18); }
+    .hole-marker.reserved {
+      background: rgba(15,20,34,0.92); color: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.5);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+    .hole-marker.reserved::after {
+      content:'✓'; position:absolute; top:-6px; right:-6px;
+      width:16px; height:16px; border-radius:50%;
+      background:#2dd4bf; color:#00201c; font-size:10px; font-weight:900;
+      display:flex; align-items:center; justify-content:center;
+      border:1.5px solid var(--bg2);
+    }
+    .hole-marker.reserved:hover { transform: translate(-50%,-50%) scale(1.12); }
+    .hole-marker:hover, .hole-marker.active { z-index: 25; }
+    .hole-marker:focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
+
+    .hole-pop {
+      position:absolute; left:50%; bottom: calc(100% + 12px);
+      transform: translateX(-50%) translateY(6px) scale(0.96);
+      width: max-content; max-width: 230px;
+      background: rgba(10,13,24,0.97); backdrop-filter: blur(14px);
+      border:1px solid rgba(245,160,50,0.4); border-radius:14px;
+      padding: 12px 15px; z-index: 30;
+      opacity:0; pointer-events:none;
+      transition: opacity 0.18s, transform 0.18s;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+      text-align:left; cursor: default;
+    }
+    .hole-pop::after {
+      content:''; position:absolute; top:100%; left:50%; transform: translateX(-50%);
+      border:7px solid transparent; border-top-color: rgba(10,13,24,0.97);
+    }
+    .hole-marker.pop-below .hole-pop { bottom:auto; top: calc(100% + 12px); }
+    .hole-marker.pop-below .hole-pop::after { top:auto; bottom:100%; border-top-color:transparent; border-bottom-color: rgba(10,13,24,0.97); }
+    .hole-marker:hover .hole-pop,
+    .hole-marker.active .hole-pop { opacity:1; pointer-events:auto; transform: translateX(-50%) translateY(0) scale(1); }
+
+    .hole-pop-eyebrow { font-size:9px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px; }
+    .hole-pop-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:#fff; line-height:1; margin-bottom:10px; }
+    .hole-pop-reserve { display:flex; align-items:center; gap:11px; }
+    .hole-pop-reserve img { width:42px; height:42px; border-radius:8px; object-fit:cover; background:#000; flex-shrink:0; border:1px solid rgba(255,255,255,0.14); }
+    .hole-pop-reserve .rb-status { font-size:9px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#2dd4bf; margin-bottom:2px; }
+    .hole-pop-reserve .rb-hole { font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:3px; }
+    .hole-pop-reserve .rb-brand { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.03em; color:#fff; line-height:1.02; }
+    .hole-pop-cta { display:inline-block; font-size:10px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,#f5a032,#e07820); padding:9px 15px; border-radius:9px; text-decoration:none; transition: transform 0.2s, box-shadow 0.2s; }
+    .hole-pop-cta:hover { transform: translateY(-1px); box-shadow:0 8px 22px rgba(245,160,50,0.4); }
+
+    .holemap-legend { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-top:34px; }
+    .hm-leg { display:flex; align-items:center; gap:9px; font-size:12px; font-weight:600; letter-spacing:0.04em; color: rgba(255,255,255,0.6); }
+    .hm-leg .dot { width:16px; height:16px; border-radius:50%; border:2px solid #fff; }
+    .hm-leg .dot.avail { background: linear-gradient(135deg,#f5a032,#e07820); }
+    .hm-leg .dot.res { background: rgba(15,20,34,0.92); border-color: rgba(255,255,255,0.5); }
+    .holemap-note { text-align:center; font-size:13px; color: rgba(255,255,255,0.42); margin-top:18px; }
+    .holemap-note b { color: var(--gold2); font-weight:700; }
+
+    @media (max-width: 600px) {
+      .holemap { padding: 90px 16px; }
+      .hole-marker { border-width:1.5px; }
+      .hole-pop { max-width: 200px; }
+    }
   </style>
 </head>
 <body>
@@ -1063,7 +1155,7 @@
         </div>
       </div>
       <div class="pkg-footer">
-        <a href="https://buy.stripe.com/3cIeV71xo9Jwf9U3TMbV601" target="_blank" rel="noopener" class="pkg-cta pkg-cta-hole">Become a Sponsor</a>
+        <a href="#hole-map" class="pkg-cta pkg-cta-hole">Choose Your Hole</a>
       </div>
     </div>
 
@@ -1095,6 +1187,27 @@
         <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-purple">Become a Sponsor</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE HOLE MAP -->
+<section class="holemap" id="hole-map">
+  <div class="holemap-header">
+    <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
+    <h2 class="section-title reveal d2">Claim Your Hole</h2>
+    <p class="section-body reveal d3" style="margin-top:18px;">Tap any open hole on the course to reserve it as a Hole Sponsor. Each of the 18 holes belongs to a single brand — first come, first serve. Holes already taken are marked as reserved.</p>
+  </div>
+
+  <div class="holemap-stage reveal-scale d2">
+    <div class="holemap-frame">
+      <img class="holemap-img" src="course-map.jpeg" alt="The Golf Creator Open course map — 18 holes">
+      <div class="holemap-overlay" id="holemap-overlay"></div>
+    </div>
+    <div class="holemap-legend">
+      <div class="hm-leg"><span class="dot avail"></span> Available</div>
+      <div class="hm-leg"><span class="dot res"></span> Reserved</div>
+    </div>
+    <p class="holemap-note"><b id="hm-remaining">18</b> of 18 holes still available · Hover or tap a hole for details</p>
   </div>
 </section>
 
@@ -1435,6 +1548,85 @@
         if (dx < 0) next(); else prev();
       }
       touchX = touchY = null;
+    });
+  })();
+
+  // ── INTERACTIVE HOLE MAP ──
+  (function () {
+    const overlay = document.getElementById('holemap-overlay');
+    if (!overlay) return;
+
+    const STRIPE = 'https://buy.stripe.com/3cIeV71xo9Jwf9U3TMbV601';
+
+    // Hole pin positions as % of the course-map image (832 x 900)
+    const HOLES = [
+      { n: 1,  x: 33.3, y: 70.2 }, { n: 2,  x: 55.6, y: 80.3 }, { n: 3,  x: 59.9, y: 77.6 },
+      { n: 4,  x: 63.0, y: 57.6 }, { n: 5,  x: 78.1, y: 48.3 }, { n: 6,  x: 74.8, y: 55.8 },
+      { n: 7,  x: 75.4, y: 69.6 }, { n: 8,  x: 68.3, y: 71.3 }, { n: 9,  x: 35.2, y: 61.6 },
+      { n: 10, x: 31.6, y: 57.3 }, { n: 11, x: 64.0, y: 50.7 }, { n: 12, x: 71.3, y: 34.1 },
+      { n: 13, x: 53.0, y: 12.0 }, { n: 14, x: 60.6, y: 8.2  }, { n: 15, x: 72.4, y: 15.4 },
+      { n: 16, x: 64.7, y: 37.1 }, { n: 17, x: 50.7, y: 48.0 }, { n: 18, x: 25.4, y: 53.1 }
+    ];
+
+    // Reserved holes — add an entry here when a brand buys a hole.
+    // Example: 5: { brand: 'Brand Name', logo: 'brand-logo.png' }
+    const RESERVED = {
+      2: { brand: 'Bogeys Beef', logo: 'sponsor-bogeys-beef.jpeg' }
+    };
+
+    let remaining = 0;
+
+    HOLES.forEach(h => {
+      const res = RESERVED[h.n];
+      const m = document.createElement('button');
+      m.type = 'button';
+      m.className = 'hole-marker ' + (res ? 'reserved' : 'available');
+      if (h.y < 24) m.classList.add('pop-below');
+      m.style.left = h.x + '%';
+      m.style.top = h.y + '%';
+      m.textContent = h.n;
+      m.setAttribute('aria-label', res
+        ? ('Hole ' + h.n + ' — reserved by ' + res.brand)
+        : ('Hole ' + h.n + ' — available, reserve now'));
+
+      const pop = document.createElement('span');
+      pop.className = 'hole-pop';
+      if (res) {
+        pop.innerHTML =
+          '<div class="hole-pop-reserve">' +
+            '<img src="' + res.logo + '" alt="' + res.brand + ' logo">' +
+            '<div>' +
+              '<div class="rb-hole">Hole ' + h.n + '</div>' +
+              '<div class="rb-status">&#10003; Reserved by</div>' +
+              '<div class="rb-brand">' + res.brand + '</div>' +
+            '</div>' +
+          '</div>';
+      } else {
+        remaining++;
+        pop.innerHTML =
+          '<div class="hole-pop-eyebrow">Available</div>' +
+          '<div class="hole-pop-title">Hole ' + h.n + '</div>' +
+          '<a class="hole-pop-cta" href="' + STRIPE + '" target="_blank" rel="noopener">Reserve This Hole</a>';
+      }
+      m.appendChild(pop);
+
+      // Tap/click toggles the popover (mobile) without blocking the CTA link.
+      m.addEventListener('click', (e) => {
+        if (e.target.closest('.hole-pop-cta')) return;
+        e.stopPropagation();
+        const wasActive = m.classList.contains('active');
+        document.querySelectorAll('.hole-marker.active').forEach(x => x.classList.remove('active'));
+        if (!wasActive) m.classList.add('active');
+      });
+
+      overlay.appendChild(m);
+    });
+
+    const rem = document.getElementById('hm-remaining');
+    if (rem) rem.textContent = remaining;
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.hole-marker.active').forEach(x => x.classList.remove('active'));
     });
   })();
 </script>
