@@ -54,8 +54,7 @@
       border-radius: 100px; border: 1px solid rgba(201,152,42,0.18);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 32px; width: auto; }
-    .nav-logo-text { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; line-height: 1.4; }
+    .nav-logo img { height: 52px; width: auto; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--white); }
@@ -272,13 +271,7 @@
       color: rgba(201,152,42,0.1); position: absolute; top: 12px; right: 20px;
       letter-spacing: -0.02em;
     }
-    .why-icon {
-      width: 64px; height: 64px; border-radius: 18px; margin-bottom: 28px;
-      background: linear-gradient(135deg, rgba(201,152,42,0.18), rgba(201,152,42,0.06));
-      border: 1px solid rgba(201,152,42,0.25);
-      display: flex; align-items: center; justify-content: center; font-size: 28px;
-    }
-    .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.02em; margin-bottom: 14px; line-height: 1; }
+    .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.02em; margin-top: 72px; margin-bottom: 14px; line-height: 1; }
     .why-desc { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.72; }
     @media (max-width: 900px) { .why-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
 
@@ -864,7 +857,6 @@
 <nav>
   <a href="gct-landing.html" class="nav-logo">
     <img src="GCO Logo.png" alt="GCO">
-    <div class="nav-logo-text">Golf Creator<br>Open</div>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -967,19 +959,16 @@
   <div class="why-cards">
     <div class="why-card reveal d1">
       <div class="why-card-num">01</div>
-      <div class="why-icon">🤝</div>
       <h3 class="why-title">Direct Access to Creators</h3>
       <p class="why-desc">Connect face-to-face with golf content creators at the Golf Creator Open Championship. Build authentic relationships with the voices that drive culture in digital golf.</p>
     </div>
     <div class="why-card reveal d2">
       <div class="why-card-num">02</div>
-      <div class="why-icon">🏆</div>
       <h3 class="why-title">Own the Weekend</h3>
       <p class="why-desc">Take over key moments across a multi-day experience built for visibility, hospitality, and content. From Friday's kickoff to Sunday's championship finish — your brand is front and center.</p>
     </div>
     <div class="why-card reveal d3">
       <div class="why-card-num">03</div>
-      <div class="why-icon">📱</div>
       <h3 class="why-title">Season Long App Activations</h3>
       <p class="why-desc">Extend your impact far beyond the event through branded challenges inside the Golf Creator Tour app. Reach an active, engaged creator community 365 days a year.</p>
     </div>
@@ -1050,6 +1039,27 @@
   </div>
 </section>
 
+<!-- INTERACTIVE HOLE MAP -->
+<section class="holemap section-light" id="hole-map">
+  <div class="holemap-header">
+    <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
+    <h2 class="section-title reveal d2">Claim Your Hole</h2>
+    <p class="section-body reveal d3" style="margin-top:18px;">Tap any open hole on the course to reserve it as a Hole Sponsor. Each of the 18 holes belongs to a single brand — first come, first serve. Holes already taken are marked as reserved.</p>
+  </div>
+
+  <div class="holemap-stage reveal-scale d2">
+    <div class="holemap-frame">
+      <img class="holemap-img" src="course-map.png" alt="PGA National Resort course map — 18 holes">
+      <div class="holemap-overlay" id="holemap-overlay"></div>
+    </div>
+    <div class="holemap-legend">
+      <div class="hm-leg"><span class="dot avail"></span> Available</div>
+      <div class="hm-leg"><span class="dot res"></span> Reserved</div>
+    </div>
+    <p class="holemap-note"><b id="hm-remaining">18</b> of 18 holes still available · Hover or tap a hole for details</p>
+  </div>
+</section>
+
 <!-- PACKAGES -->
 <section class="packages" id="packages">
   <div class="packages-aurora"></div>
@@ -1068,7 +1078,6 @@
       <div class="pkg-featured-banner">⭐ Most Exclusive — 1 Available</div>
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-title">🥇 Title Sponsor</div>
         <div class="pkg-name">Title Sponsor</div>
       </div>
       <div class="pkg-body">
@@ -1096,7 +1105,6 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
-        <div class="tier-badge tier-presenting">🎉 Creator Social Sponsor</div>
         <div class="pkg-name">Creator Social Sponsor</div>
       </div>
       <div class="pkg-body">
@@ -1132,7 +1140,6 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
-        <div class="tier-badge tier-purse">🏆 Purse Partner</div>
         <div class="pkg-name">Championship Purse Partner</div>
       </div>
       <div class="pkg-body">
@@ -1162,7 +1169,6 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">10 Available</div>
-        <div class="tier-badge tier-official">🤝 Official Partner</div>
         <div class="pkg-name">Official Partner</div>
       </div>
       <div class="pkg-body">
@@ -1200,7 +1206,6 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">Only 18 Spots Available</div>
-        <div class="tier-badge tier-hole">⛳ Hole Sponsor</div>
         <div class="pkg-name">Scramble Hole Sponsor</div>
       </div>
       <div class="pkg-body">
@@ -1245,7 +1250,6 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-availability">Unlimited Availability</div>
-        <div class="tier-badge tier-gifting">🎁 Gifting Partner</div>
         <div class="pkg-name">Gifting Partner</div>
       </div>
       <div class="pkg-body">
@@ -1271,27 +1275,6 @@
   </div>
 </section>
 
-<!-- INTERACTIVE HOLE MAP -->
-<section class="holemap section-light" id="hole-map">
-  <div class="holemap-header">
-    <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
-    <h2 class="section-title reveal d2">Claim Your Hole</h2>
-    <p class="section-body reveal d3" style="margin-top:18px;">Tap any open hole on the course to reserve it as a Hole Sponsor. Each of the 18 holes belongs to a single brand — first come, first serve. Holes already taken are marked as reserved.</p>
-  </div>
-
-  <div class="holemap-stage reveal-scale d2">
-    <div class="holemap-frame">
-      <img class="holemap-img" src="course-map.png" alt="PGA National Resort course map — 18 holes">
-      <div class="holemap-overlay" id="holemap-overlay"></div>
-    </div>
-    <div class="holemap-legend">
-      <div class="hm-leg"><span class="dot avail"></span> Available</div>
-      <div class="hm-leg"><span class="dot res"></span> Reserved</div>
-    </div>
-    <p class="holemap-note"><b id="hm-remaining">18</b> of 18 holes still available · Hover or tap a hole for details</p>
-  </div>
-</section>
-
 <!-- HOSPITALITY & VIP EXPERIENCES -->
 <section class="packages" id="hospitality">
   <div class="packages-aurora"></div>
@@ -1309,7 +1292,6 @@
       <div class="pkg-featured-banner hosp-banner">★ Flagship Hospitality — Limited Availability</div>
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">★ The Creator Club</div>
         <div class="pkg-name">The Creator Club</div>
         <div class="pkg-availability">Private access · Finishing-hole views</div>
       </div>
@@ -1332,7 +1314,6 @@
     <div class="pkg-card is-hosp reveal d2">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">🥂 18th Green Suites</div>
         <div class="pkg-name">18th Green Suites</div>
         <div class="pkg-availability">Overlooking the 18th · Gourmet dining</div>
       </div>
@@ -1354,7 +1335,6 @@
     <div class="pkg-card is-hosp reveal d3">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">⛱️ Signature Hole Cabanas</div>
         <div class="pkg-name">Signature Hole Cabanas</div>
         <div class="pkg-availability">Greenside at the signature hole</div>
       </div>
@@ -1376,7 +1356,6 @@
     <div class="pkg-card is-hosp reveal d1">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">🏆 Championship Club</div>
         <div class="pkg-name">Championship Club</div>
         <div class="pkg-availability">Indoor lounge · Stadium seating</div>
       </div>
@@ -1398,7 +1377,6 @@
     <div class="pkg-card is-hosp reveal d2">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">🍽️ Greenside Tables</div>
         <div class="pkg-name">Greenside Tables</div>
         <div class="pkg-availability">Reserved tables · Right at the rope</div>
       </div>
@@ -1419,7 +1397,6 @@
     <div class="pkg-card is-hosp reveal d3">
       <div class="pkg-shine"></div>
       <div class="pkg-header">
-        <div class="tier-badge tier-hosp">🌤️ The Terrace</div>
         <div class="pkg-name">The Terrace</div>
         <div class="pkg-availability">Open-air social deck</div>
       </div>
