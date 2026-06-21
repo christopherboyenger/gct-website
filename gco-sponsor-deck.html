@@ -22,6 +22,12 @@
       --white: #ffffff;
       --gray: #6b7a94;
       --gray2: #8a9ab5;
+      /* Light section palette (for alternating dark/light rhythm) */
+      --light: #f6f3ec;
+      --light2: #ece6db;
+      --ink: #141b2d;
+      --ink-soft: #5a6377;
+      --gold-ink: #a87d1e;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
@@ -775,6 +781,34 @@
       .hole-marker { border-width:1.5px; }
       .hole-pop { max-width: 200px; }
     }
+
+    /* ============================================================
+       LIGHT SECTIONS — alternating dark/light rhythm for contrast
+       ============================================================ */
+    .section-light { background: var(--light); color: var(--ink); }
+    .section-light .eyebrow { color: var(--gold-ink); }
+    .section-light .section-title { color: var(--ink); }
+    .section-light .section-body { color: var(--ink-soft); }
+    .section-light .btn-outline { color: var(--ink); border-color: rgba(20,27,45,0.28); }
+    .section-light .btn-outline:hover { color: var(--gold-ink); border-color: var(--gold-ink); }
+
+    /* ABOUT (light) — dark photo-collage frame floats on the light backdrop */
+    .about.section-light { background: var(--light); }
+    .about.section-light .about-quote { color: var(--ink-soft); border-color: rgba(201,152,42,0.30); }
+    .about.section-light .about-quote strong { color: var(--gold-ink); }
+
+    /* THE OPEN (light) — venue showcase + day cards stay dark on top */
+    .the-open.section-light { background: var(--light); }
+
+    /* HOLE MAP (light) */
+    .holemap.section-light { background: var(--light); }
+    .holemap.section-light .hm-leg { color: var(--ink-soft); }
+    .holemap.section-light .holemap-note { color: var(--ink-soft); }
+    .holemap.section-light .holemap-note b { color: var(--gold-ink); }
+
+    /* CONTACT (light) */
+    .contact.section-light { background: var(--light); }
+    .contact.section-light .contact-body { color: var(--ink-soft); }
   </style>
 </head>
 <body>
@@ -839,7 +873,7 @@
 </div>
 
 <!-- ABOUT -->
-<section class="about" id="about">
+<section class="about section-light" id="about">
   <div class="about-grid">
     <div class="collage-wrap reveal-left">
       <div class="collage-grid">
@@ -906,7 +940,7 @@
 </section>
 
 <!-- THE OPEN / VENUE -->
-<section class="the-open" id="schedule">
+<section class="the-open section-light" id="schedule">
   <div class="open-inner">
     <div class="open-head">
       <span class="eyebrow reveal">The Championship</span>
@@ -1191,7 +1225,7 @@
 </section>
 
 <!-- INTERACTIVE HOLE MAP -->
-<section class="holemap" id="hole-map">
+<section class="holemap section-light" id="hole-map">
   <div class="holemap-header">
     <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
     <h2 class="section-title reveal d2">Claim Your Hole</h2>
@@ -1359,7 +1393,7 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="contact section-light" id="contact">
   <div class="contact-inner">
     <div class="contact-header">
       <span class="eyebrow reveal">Ready to Lock In?</span>
