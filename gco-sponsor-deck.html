@@ -849,6 +849,12 @@
       box-shadow: none;
       transform: translateY(-2px);
     }
+
+    /* ── DESKTOP SCALE — render large screens at 80% so the layout matches the intended density ── */
+    @media (min-width: 1025px) {
+      html { zoom: 0.8; }
+      .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
+    }
   </style>
 </head>
 <body>
@@ -1425,8 +1431,9 @@
       <p class="contact-body reveal d3">We're happy to answer any and all questions. Book a call with our team to start the conversation about how your brand can be part of the 2026 Golf Creator Open.</p>
     </div>
 
-    <div style="text-align:center;margin-top:52px;" class="reveal d4">
+    <div style="text-align:center;margin-top:52px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal d4">
       <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="btn-gold">Book a Call</a>
+      <a href="gct-brands.html" class="btn-outline">Sponsor an App Challenge</a>
     </div>
   </div>
 </section>
