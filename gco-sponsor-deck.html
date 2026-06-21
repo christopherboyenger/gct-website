@@ -838,9 +838,24 @@
     .hole-activations { border-top-color: rgba(20,27,45,0.10); }
     .hole-activation-text p { color: var(--ink-soft); }
 
-    /* Outline CTA needs darker gold to read on a light card */
-    .pkg-cta-outline { color: var(--gold-ink); border-color: rgba(201,152,42,0.45); }
-    .pkg-cta-outline:hover { background: rgba(201,152,42,0.10); border-color: var(--gold-ink); }
+    /* Card CTAs: hollow (outlined), single gold color across all tiers */
+    .pkg-cta,
+    .pkg-cta-gold, .pkg-cta-silver, .pkg-cta-blue, .pkg-cta-green,
+    .pkg-cta-purple, .pkg-cta-hole, .pkg-cta-hosp, .pkg-cta-outline {
+      background: transparent;
+      color: var(--gold-ink);
+      border: 1.5px solid rgba(201,152,42,0.6);
+      box-shadow: none;
+    }
+    .pkg-cta:hover,
+    .pkg-cta-gold:hover, .pkg-cta-silver:hover, .pkg-cta-blue:hover, .pkg-cta-green:hover,
+    .pkg-cta-purple:hover, .pkg-cta-hole:hover, .pkg-cta-hosp:hover, .pkg-cta-outline:hover {
+      background: rgba(201,152,42,0.10);
+      color: var(--gold-ink);
+      border-color: var(--gold-ink);
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
