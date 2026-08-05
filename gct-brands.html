@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- All statistics on this page are sourced from /data/canonical.json.
+     Do not edit numbers inline. Update canonical.json and propagate. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,10 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
-  <meta name="description" content="Launch Sponsored Challenges inside the GCT app. Put your brand at the center of elite golf creator competition — 100+ creators, authentic content, guaranteed delivery.">
+  <meta name="description" content="Launch Sponsored Challenges inside the GCT app. 950+ verified golf creators compete to make content for your brand. First challenge free — 7 days, no card.">
   <meta property="og:title" content="Brands — The Golf Creator Tour">
-  <meta property="og:description" content="Launch a Sponsored Challenge inside the world's top golf creator competition. 100+ elite creators. Authentic content. Real results.">
+  <meta property="og:description" content="950+ verified golf creators compete to make content for your brand. First challenge free — 7 days, no card.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="The%20Golf%20Creator%20Tour%20logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="The%20Golf%20Creator%20Tour%20logo.png">
+  <link rel="canonical" href="https://www.golfcreatortour.com/gct-brands.html">
   <meta name="theme-color" content="#c9982a">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,7 +62,7 @@
 
     .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 140px 40px 80px; width: 100%; }
     .hero-label { display: inline-block; background: rgba(201,152,42,0.12); border: 1px solid rgba(201,152,42,0.3); color: var(--gold2); padding: 8px 20px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; }
-    .hero-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7vw, 100px); line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 22px; background: linear-gradient(180deg, #fff 20%, rgba(255,255,255,0.78) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5.4vw, 76px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 22px; background: linear-gradient(180deg, #fff 20%, rgba(255,255,255,0.78) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-p { font-size: 17px; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 36px; max-width: 500px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -312,18 +318,45 @@
       html { zoom: 0.8; }
       .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
     }
+
+    /* BRAND LOGO WALL */
+    .logo-wall-inline { margin-top: 40px; }
+    .logo-wall-title { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+    .logo-wall-grid { display: flex; flex-wrap: wrap; gap: 10px 28px; max-width: 560px; }
+    .logo-wall-item { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); filter: grayscale(1); transition: color 0.25s, filter 0.25s; white-space: nowrap; line-height: 1.4; }
+    .logo-wall-item:hover { color: var(--gold2); filter: grayscale(0); }
+
+    /* STAT SECONDARY LINE */
+    .stat-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 6px; line-height: 1.5; }
+
+    /* PARTNERSHIP LADDER (§2.13) */
+    .ladder { padding: 72px 40px; background: var(--bg); border-top: 1px solid rgba(255,255,255,0.05); }
+    .ladder-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .ladder-title { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray2); margin-bottom: 32px; }
+    .ladder-steps { display: flex; align-items: stretch; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .ladder-step { position: relative; flex: 1; min-width: 180px; max-width: 260px; padding: 22px 18px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .ladder-step + .ladder-step { border-left: none; }
+    .ladder-step:hover { background: rgba(201,152,42,0.05); }
+    .ladder-step.current { border-color: rgba(201,152,42,0.5); background: rgba(201,152,42,0.08); box-shadow: inset 0 0 0 1px rgba(201,152,42,0.3); }
+    .ladder-step-k { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold2); margin-bottom: 6px; }
+    .ladder-step-v { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .ladder-step-arrow { position: absolute; right: -7px; top: 50%; transform: translateY(-50%); z-index: 2; color: var(--gold2); font-size: 13px; }
+    .ladder-step:last-child .ladder-step-arrow { display: none; }
+    @media (max-width: 800px) { .ladder-steps { flex-direction: column; align-items: stretch; } .ladder-step { max-width: none; } .ladder-step + .ladder-step { border-left: 1px solid rgba(255,255,255,0.08); border-top: none; } .ladder-step-arrow { right: 50%; top: auto; bottom: -8px; transform: translateX(50%) rotate(90deg); } }
   </style>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
   <a href="gct-landing.html" class="nav-logo">
-    <img src="logo-gct-icon.png.png" alt="The Golf Creator Tour" height="40">
+    <img src="logo-gct-icon-nav.png" alt="The Golf Creator Tour" height="40">
   </a>
   <ul class="nav-links">
     <li><a href="gct-landing.html">Creators</a></li>
-    <li><a href="gco-sponsor-deck.html">Brands</a></li>
+    <li><a href="#" class="active">Brands</a></li>
+    <li><a href="gco-sponsor-deck.html">Golf Creator Open</a></li>
     <li><a href="gct-landing.html#contact">Contact</a></li>
   </ul>
   <a href="https://golfcreatortour.app/brands" class="nav-cta">Launch a Challenge</a>
@@ -334,7 +367,8 @@
 
 <div class="mobile-overlay" id="mobileOverlay">
   <a href="gct-landing.html" onclick="toggleMenu()">Creators</a>
-  <a href="gco-sponsor-deck.html" onclick="toggleMenu()">Brands</a>
+  <a href="gct-brands.html" onclick="toggleMenu()">Brands</a>
+  <a href="gco-sponsor-deck.html" onclick="toggleMenu()">Golf Creator Open</a>
   <a href="gct-landing.html#contact" onclick="toggleMenu()">Contact</a>
   <a href="https://golfcreatortour.app/brands" class="mob-cta" onclick="toggleMenu()">Launch a Challenge</a>
 </div>
@@ -349,16 +383,34 @@
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-label fi">GCT Brand Partnerships</div>
-      <h1 class="hero-h fi">Your Brand<br>Fuels the<br>Competition.</h1>
-      <p class="hero-p fi">Launch a Sponsored Challenge inside the GCT app and become one of the three ways creators earn points toward the Golf Creator Open. 100+ elite golf content creators compete to create your content — authentically, competitively, and at scale.</p>
+      <h1 class="hero-h fi">950+ Verified Golf Creators Will Compete to Make Content for Your Brand.</h1>
+      <p class="hero-p fi">Launch your first challenge free. 7 days. No card. Your brief becomes one of the three ways creators earn points toward the Golf Creator Open — they're competing to create your content, not just posting for a paycheck.</p>
       <div class="hero-actions fi">
-        <a href="https://golfcreatortour.app/brands" class="btn-gold">Launch a Challenge</a>
+        <a href="https://golfcreatortour.app/brands" class="btn-gold">Claim Your Free Challenge</a>
         <a href="#how" class="btn-outline">See How It Works</a>
+      </div>
+      <!-- §2.6: brand logo wall above the fold (partner list per canonical.json; confirm per fix spec §5.6) -->
+      <div class="logo-wall-inline fi d1">
+        <div class="logo-wall-title">Brands in the Game</div>
+        <div class="logo-wall-grid">
+          <span class="logo-wall-item">Callaway</span>
+          <span class="logo-wall-item">TaylorMade</span>
+          <span class="logo-wall-item">Srixon</span>
+          <span class="logo-wall-item">WHOOP</span>
+          <span class="logo-wall-item">G/FORE</span>
+          <span class="logo-wall-item">Malbon</span>
+          <span class="logo-wall-item">Under Armour Golf</span>
+          <span class="logo-wall-item">New Balance Golf</span>
+          <span class="logo-wall-item">GoPro</span>
+          <span class="logo-wall-item">Maui Jim</span>
+          <span class="logo-wall-item">L.A.B. Golf</span>
+          <span class="logo-wall-item">2K</span>
+        </div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="phone-frame fi d1">
-        <img src="screenshot-challenges.png.jpg" alt="Sponsored Challenges live in the GCT app">
+        <img src="screenshot-challenges.jpg" alt="Sponsored Challenges live in the GCT app">
       </div>
     </div>
   </div>
@@ -373,21 +425,25 @@
       <p class="fi">A global community of elite golf content creators — and the brands that power their competition.</p>
     </div>
     <div class="stats-grid">
+      <!-- §1.3: values are static in the HTML. Any count-up animation must animate
+           from a rendered value — never replace an empty or 0 node. -->
       <div class="stat fi">
-        <div class="stat-num" data-target="100" data-suffix="+">0</div>
-        <div class="stat-label">Elite Golf Content<br>Creators on Tour</div>
+        <div class="stat-num">950+</div>
+        <div class="stat-label">Verified Golf<br>Creators on Tour</div>
       </div>
       <div class="stat fi d1">
-        <div class="stat-num">97.6K</div>
-        <div class="stat-label">Average Creator<br>Audience Reach</div>
+        <div class="stat-num">68.7K</div>
+        <div class="stat-label">Average Creator<br>Reach</div>
+        <div class="stat-sub">7,245 median</div>
       </div>
       <div class="stat fi d2">
         <div class="stat-num">84%</div>
-        <div class="stat-label">Average Creator<br>Engagement Rate</div>
+        <div class="stat-label">US-Based<br>Creators</div>
       </div>
       <div class="stat fi d3">
-        <div class="stat-num">98%</div>
-        <div class="stat-label">Sponsored Challenge<br>Content Delivery Rate</div>
+        <div class="stat-num">85.6%</div>
+        <div class="stat-label">Automated Verification<br>Pass Rate</div>
+        <div class="stat-sub">Every submitted post is independently scraped and scored — no creator screenshots.</div>
       </div>
     </div>
   </div>
@@ -399,7 +455,7 @@
     <div class="spotlight-text fi">
       <div class="eyebrow">The Core Opportunity</div>
       <h2>Sponsored Challenges</h2>
-      <p>Sponsored Challenges are one of the three ways GCT creators earn points toward the Golf Creator Open. When you launch a challenge, 100+ creators are motivated to complete it — not because they have to, but because their ranking depends on it. That's built-in creator incentive no traditional influencer deal can match.</p>
+      <p>Sponsored Challenges are one of the three ways GCT creators earn points toward the Golf Creator Open. When you launch a challenge, 950+ creators are motivated to complete it — not because they have to, but because their ranking depends on it. That's built-in creator incentive no traditional influencer deal can match.</p>
       <a href="https://golfcreatortour.app/brands" class="btn-gold">Launch a Challenge</a>
     </div>
     <div class="spotlight-list">
@@ -413,7 +469,7 @@
       </div>
       <div class="spotlight-item fi">
         <div class="spotlight-check">✓</div>
-        <div class="spotlight-item-text"><strong>Scale from day one.</strong> Tap into 100+ pre-vetted golf content creators immediately. No sourcing, no cold outreach, no one-off negotiations. One campaign brief, 100+ creator reach.</div>
+        <div class="spotlight-item-text"><strong>Scale from day one.</strong> Tap into 950+ pre-vetted golf content creators immediately. No sourcing, no cold outreach, no one-off negotiations. One campaign brief, 950+ creators.</div>
       </div>
     </div>
   </div>
@@ -452,20 +508,20 @@
 <div class="ticker">
   <div class="ticker-inner">
     <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>100+ Creators</div>
+    <div class="t-item"><span class="t-dot"></span>950+ Creators</div>
     <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
     <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
-    <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
-    <div class="t-item"><span class="t-dot"></span>84% Avg Engagement</div>
-    <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
+    <div class="t-item"><span class="t-dot"></span>68.7K Avg Creator Reach</div>
+    <div class="t-item"><span class="t-dot"></span>84% US-Based Creators</div>
+    <div class="t-item"><span class="t-dot"></span>85.6% Verification Pass Rate</div>
     <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
     <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>100+ Creators</div>
+    <div class="t-item"><span class="t-dot"></span>950+ Creators</div>
     <div class="t-item"><span class="t-dot"></span>Authentic Content</div>
     <div class="t-item"><span class="t-dot"></span>Competition-Driven</div>
-    <div class="t-item"><span class="t-dot"></span>97.6K Avg Creator Reach</div>
-    <div class="t-item"><span class="t-dot"></span>84% Avg Engagement</div>
-    <div class="t-item"><span class="t-dot"></span>98% Content Delivery</div>
+    <div class="t-item"><span class="t-dot"></span>68.7K Avg Creator Reach</div>
+    <div class="t-item"><span class="t-dot"></span>84% US-Based Creators</div>
+    <div class="t-item"><span class="t-dot"></span>85.6% Verification Pass Rate</div>
     <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
   </div>
 </div>
@@ -483,24 +539,28 @@
       <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></div>
       <div class="step-tag">Step 1</div>
       <div class="step-title">Partner</div>
+      <div class="step-desc">Claim your free challenge and set your brief — product, message, and the content you want creators to make.</div>
     </div>
     <div class="step fi d1">
       <div class="step-n">02</div>
       <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 2l4 5h-3v6h-2V7H8l4-5z"/><path d="M5 14l-2 8 8-3"/><path d="M19 14l2 8-8-3"/></svg></div>
       <div class="step-tag">Step 2</div>
       <div class="step-title">Launch</div>
+      <div class="step-desc">Your challenge goes live in the GCT app, in front of 950+ creators whose season ranking depends on completing it.</div>
     </div>
     <div class="step fi d2">
       <div class="step-n">03</div>
       <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 6L5 3"/><path d="M12 6l-2-3"/><path d="M17 6l-2-3"/></svg></div>
       <div class="step-tag">Step 3</div>
       <div class="step-title">Capture</div>
+      <div class="step-desc">Creators post, and every submission is independently scraped, verified, and scored — you keep the content rights.</div>
     </div>
     <div class="step fi d3">
       <div class="step-n">04</div>
       <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
       <div class="step-tag">Step 4</div>
       <div class="step-title">Grow</div>
+      <div class="step-desc">Review performance reporting, re-run what worked, and scale up to a season partnership or event sponsorship.</div>
     </div>
   </div>
 </section>
@@ -537,6 +597,10 @@
     </div>
 
     <!-- Paid UGC Campaign Challenge -->
+    <!-- TODO(decision): challenge pricing — see fix spec §5.2. The $200/14-day price
+         below contradicts the sponsor deck's $2,500/30-day branded challenge ("$2,500
+         value" in every sponsorship tier). Do not publish a new challenge price until
+         the CEO decision is returned. -->
     <div class="price-card tier-premium reveal">
       <div class="tier-badge">Most Popular</div>
       <div class="tier-label"><span class="dot"></span>UGC Campaign</div>
@@ -548,7 +612,7 @@
         </div>
       </div>
       <div class="price-duration">14-Day Run</div>
-      <p class="price-desc">Keep the momentum going. Each campaign puts 100+ creators to work generating authentic content for your brand — at a fraction of traditional influencer costs.</p>
+      <p class="price-desc">Keep the momentum going. Each campaign puts 950+ creators to work generating authentic content for your brand — at a fraction of traditional influencer costs.</p>
       <ul class="price-features stagger">
         <li><span class="pf-check">✓</span><span>Everything in your free challenge</span></li>
         <li><span class="pf-check">✓</span><span>Full 14-day campaign run</span></li>
@@ -571,7 +635,7 @@
           <span class="per">unlimited challenges</span>
         </div>
       </div>
-      <div class="price-duration">Season Long</div>
+      <div class="price-duration">Season Long <span class="gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">· Commit by September 1, 2026</span></div>
       <p class="price-desc">Become an official Golf Creator Open event sponsor and run unlimited brand challenge campaigns all season — your brand woven through every leaderboard moment.</p>
       <ul class="price-features stagger">
         <li><span class="pf-check">✓</span><span>Everything in paid campaigns</span></li>
@@ -584,6 +648,8 @@
       <a href="https://www.golfcreatortour.com/gco-sponsor-deck.html" class="price-cta">Become an Event Sponsor</a>
     </div>
   </div>
+  <!-- TODO(decision): challenge pricing — see fix spec §5.2. Do not publish a new
+       challenge price here until the CEO decision is returned. -->
   <p class="pricing-footnote">Your first UGC campaign challenge is free for 7 days. After that, run campaigns à la carte for $200 each (14-day run) — or sponsor the Golf Creator Open for unlimited brand challenges all season.</p>
 
   <!-- Start Free CTA -->
@@ -592,12 +658,40 @@
   </div>
 </section>
 
+<!-- PARTNERSHIP LADDER (§2.13) -->
+<section class="ladder">
+  <div class="ladder-inner">
+    <div class="ladder-title">Your Path With GCT</div>
+    <div class="ladder-steps">
+      <a class="ladder-step current" href="#pricing">
+        <div class="ladder-step-k">You are here</div>
+        <div class="ladder-step-v">Free challenge</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step" href="#pricing">
+        <div class="ladder-step-k">Step 2</div>
+        <div class="ladder-step-v">Paid campaign</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step" href="#pricing">
+        <div class="ladder-step-k">Step 3</div>
+        <div class="ladder-step-v">Season partner</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step" href="gco-sponsor-deck.html">
+        <div class="ladder-step-k">Step 4</div>
+        <div class="ladder-step-v">Event sponsor — Golf Creator Open</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-links">
       <a href="gct-landing.html">Creators</a>
-      <a href="gco-sponsor-deck.html">Brands</a>
+      <a href="gco-sponsor-deck.html">Golf Creator Open — Sponsorships</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
     </div>
@@ -670,6 +764,26 @@
     m.classList.toggle('open');
     document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
   }
+
+  // §2.12: auto-hide deadline components after September 1, 2026.
+  document.querySelectorAll('.gct-deadline').forEach(el => {
+    if (new Date(el.dataset.deadline).getTime() <= Date.now()) el.style.display = 'none';
+  });
+
+  // §3.1: persist UTM parameters through outbound app / Calendly / Stripe handoffs.
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const utm = new URLSearchParams();
+    params.forEach((v, k) => { if (k.startsWith('utm_')) utm.append(k, v); });
+    utm.append('source_page', location.pathname.replace(/^\//, '') || 'index');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!/^https?:\/\/(golfcreatortour\.app|calendly\.com|buy\.stripe\.com|book\.stripe\.com)/.test(href)) return;
+      const url = new URL(href);
+      utm.forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.append(k, v); });
+      a.setAttribute('href', url.toString());
+    });
+  })();
 </script>
 </body>
 </html>
