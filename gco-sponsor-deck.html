@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- All statistics on this page are sourced from /data/canonical.json.
+     Do not edit numbers inline. Update canonical.json and propagate. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
-  <meta name="description" content="2026 Golf Creator Open Championship — Sponsorship Deck. October 2-4 2026, Palm Beach, Florida.">
+  <meta name="description" content="Sponsor the 2026 Golf Creator Open Championship — October 2–4, 2026, PGA National, Palm Beach Gardens, FL. 950+ verified golf creators, 634M verified views. Sponsor commitment deadline September 1.">
+  <meta property="og:title" content="2026 Golf Creator Open — Sponsorships">
+  <meta property="og:description" content="Sponsor the 2026 Golf Creator Open at PGA National, October 2–4. 950+ verified golf creators. Commitment deadline September 1.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="GCO%20Logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="GCO%20Logo.png">
+  <link rel="canonical" href="https://www.golfcreatortour.com/gco-sponsor-deck.html">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -71,7 +80,7 @@
     .hero-particles canvas { width: 100%; height: 100%; }
     .hero-bg-image {
       position: absolute; inset: 0; z-index: 0;
-      background-image: url('PGAHERO2.jpg');
+      background-image: url('PGAHERO2.webp');
       background-size: cover; background-position: center 35%;
       opacity: 0.18; filter: saturate(0.8);
     }
@@ -295,7 +304,7 @@
     }
     .venue-image {
       position: absolute; inset: -8% -2%; width: 104%; height: 116%;
-      background-image: url('PGAHERO2.jpg');
+      background-image: url('PGAHERO2.webp');
       background-size: cover; background-position: center;
       transform: scale(1.15) translateY(0);
       transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -855,7 +864,103 @@
       html { zoom: 0.8; }
       .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
     }
+
+    /* ── DEADLINE BAR (§2.12) ── */
+    .deadline-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: rgba(10,13,24,0.94); backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(201,152,42,0.35);
+      padding: 11px 20px; text-align: center;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+    .deadline-bar b { color: var(--gold2); }
+    .deadline-bar .db-count { color: var(--gold2); }
+
+    /* ── PROOF BAND (§2.7) ── */
+    .proof-band { padding: 88px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    .proof-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,152,42,0.07) 0%, transparent 70%); pointer-events: none; }
+    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.05); position: relative; z-index: 1; }
+    .proof-stat { background: var(--bg); padding: 38px 24px; text-align: center; }
+    .proof-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 5vw, 62px); line-height: 1; background: linear-gradient(135deg, var(--gold2), var(--gold3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .proof-lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.55; }
+    @media (max-width: 900px) { .proof-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .proof-grid { grid-template-columns: 1fr; } }
+
+    /* ── BRAND LOGO WALL (§2.6) ── */
+    .logo-wall { padding: 68px 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .logo-wall-title { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 34px; }
+    .logo-wall-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 42px; max-width: 1100px; margin: 0 auto; }
+    .logo-wall-item { font-family: 'Bebas Neue', sans-serif; font-size: 25px; letter-spacing: 0.06em; color: rgba(255,255,255,0.38); filter: grayscale(1); transition: color 0.25s, filter 0.25s; white-space: nowrap; line-height: 1.4; }
+    .logo-wall-item:hover { color: var(--gold2); filter: grayscale(0); }
+    @media (max-width: 600px) { .logo-wall-grid { gap: 10px 24px; } .logo-wall-item { font-size: 19px; } }
+
+    /* ── PACKAGE CARD DEADLINE LINE (§2.12) ── */
+    .pkg-deadline { margin-top: 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-ink); }
+
+    /* ── SCARCITY STATES (§2.9): Available / Pending / Sold ── */
+    .pkg-card.state-pending { opacity: 0.92; }
+    .pkg-card.state-sold { opacity: 0.72; }
+    .pkg-state-badge { display: inline-block; padding: 5px 12px; border-radius: 100px; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+    .pkg-state-badge.pending { background: rgba(245,160,50,0.14); border: 1px solid rgba(245,160,50,0.45); color: #e07820; }
+    .pkg-state-badge.sold { background: rgba(20,27,45,0.08); border: 1px solid rgba(20,27,45,0.3); color: var(--ink-soft); text-decoration: none; }
+    .pkg-card.state-sold .pkg-name { text-decoration: line-through; text-decoration-color: rgba(20,27,45,0.4); }
+    .pkg-card.state-sold .pkg-cta, .pkg-card.state-pending .pkg-cta.disabled { pointer-events: none; opacity: 0.45; }
+    .hole-marker.pending {
+      background: repeating-linear-gradient(45deg, #f5a032, #f5a032 4px, #d18626 4px, #d18626 8px); color: #1a1205;
+      border-color: #fff; box-shadow: 0 4px 14px rgba(245,160,50,0.4);
+    }
+    .hole-marker.pending::after {
+      content: '…'; position: absolute; top: -7px; right: -7px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #e07820; color: #fff; font-size: 9px; font-weight: 900; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--bg2);
+    }
+
+    /* ── PARTNERSHIP LADDER (§2.13) ── */
+    .ladder { padding: 72px 40px; background: var(--bg); border-top: 1px solid rgba(255,255,255,0.05); }
+    .ladder-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .ladder-title { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray2); margin-bottom: 32px; }
+    .ladder-steps { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+    .ladder-step { position: relative; flex: 1; min-width: 180px; max-width: 260px; padding: 22px 18px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .ladder-step + .ladder-step { border-left: none; }
+    .ladder-step:hover { background: rgba(201,152,42,0.05); }
+    .ladder-step.current { border-color: rgba(201,152,42,0.5); background: rgba(201,152,42,0.08); box-shadow: inset 0 0 0 1px rgba(201,152,42,0.3); }
+    .ladder-step-k { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold2); margin-bottom: 6px; }
+    .ladder-step-v { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .ladder-step-arrow { position: absolute; right: -7px; top: 50%; transform: translateY(-50%); z-index: 2; color: var(--gold2); font-size: 13px; }
+    .ladder-step:last-child .ladder-step-arrow { display: none; }
+    @media (max-width: 800px) { .ladder-steps { flex-direction: column; align-items: stretch; } .ladder-step { max-width: none; } .ladder-step + .ladder-step { border-left: 1px solid rgba(255,255,255,0.08); border-top: none; } .ladder-step-arrow { right: 50%; top: auto; bottom: -8px; transform: translateX(50%) rotate(90deg); } }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "2nd Annual Golf Creator Open",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-04",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "PGA National Resort",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Palm Beach Gardens",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "The Golf Creator Tour",
+      "url": "https://www.golfcreatortour.com"
+    },
+    "description": "The championship of The Golf Creator Tour. 950+ creators compete all season for 72 spots at PGA National. Sponsorship commitment deadline: September 1, 2026."
+  }
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -865,13 +970,20 @@
     <img src="GCO Logo.png" alt="GCO">
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+    <li><a href="gct-landing.html">Creators</a></li>
+    <li><a href="gct-brands.html">App Challenges</a></li>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="nav-cta">Become a Sponsor</a>
 </nav>
+
+<!-- SPONSOR DEADLINE BAR (§2.12 — auto-hides after September 1, 2026) -->
+<div class="deadline-bar gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">
+  Sponsor commitment deadline — <b>September 1, 2026</b> · <span class="db-count" data-cd="d">28</span> days left
+</div>
+
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -898,6 +1010,11 @@
         <div class="label">Location</div>
         <div class="value">PGA National</div>
       </div>
+      <div class="hero-meta-divider gct-deadline" data-deadline="2026-09-01T23:59:59-04:00"></div>
+      <div class="hero-meta-item gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">
+        <div class="label">Sponsor Deadline</div>
+        <div class="value">Sept 1, 2026</div>
+      </div>
     </div>
 
     <div class="hero-actions">
@@ -916,38 +1033,53 @@
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about section-light" id="about">
-  <div class="about-grid">
-    <div class="collage-wrap reveal-left">
-      <div class="collage-grid">
-        <div class="cg-item"><img src="Picture6.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture4.jpg" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture7.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture9.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture12.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture3.jpg" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture5.jpg" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture8.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture10.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture11.png" alt="GCO 2025" loading="lazy"></div>
-        <div class="cg-item"><img src="Picture13.png" alt="GCO 2025" loading="lazy"></div>
-      </div>
+<!-- PROOF BAND (§2.7 — platform statistics per canonical.json) -->
+<section class="proof-band">
+  <div class="section-inner" style="text-align:center;margin-bottom:52px;">
+    <span class="eyebrow reveal">The Platform Behind the Event</span>
+    <h2 class="section-title reveal d2">Proof, Not Promises</h2>
+  </div>
+  <div class="proof-grid reveal d2">
+    <div class="proof-stat">
+      <div class="proof-num">950+</div>
+      <div class="proof-lbl">Verified golf creators on tour</div>
     </div>
-    <div class="about-text">
-      <div class="reveal d1">
-        <span class="eyebrow">Our Story</span>
-        <h2 class="section-title">Built for<br>Creators</h2>
-      </div>
-      <div class="gold-line reveal d2"></div>
-      <p class="section-body reveal d3">What started in 2025 as the Golf Creator Open was built in just 90 days — driven by a simple idea: create a space where golf content creators of all backgrounds could come together, compete, and connect through the game and the content that unites them.</p>
-      <p class="section-body reveal d4">The response was immediate. The event proved there was a real demand for something different in golf — something more inclusive, more modern, and built for creators. In 2026, we evolved. The Golf Creator Tour was created to open the door wider, giving creators the opportunity to earn their place through a year-long points system.</p>
-      <div class="about-quote reveal d5">
-        The path to the championship is no longer <strong>selected</strong> — it's <strong>earned</strong>.
-      </div>
+    <div class="proof-stat">
+      <div class="proof-num">51.8M</div>
+      <div class="proof-lbl">Combined follower reach across all platforms</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">634M</div>
+      <div class="proof-lbl">Verified views across 4,220 independently scored posts</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-num">85.6%</div>
+      <div class="proof-lbl">Automated verification pass rate — no creator screenshots</div>
     </div>
   </div>
 </section>
+
+<!-- BRAND LOGO WALL (§2.6 — partner list per canonical.json; confirm per fix spec §5.6) -->
+<section class="logo-wall">
+  <div class="logo-wall-title">Brands in the Game</div>
+  <div class="logo-wall-grid">
+    <span class="logo-wall-item">Callaway</span>
+    <span class="logo-wall-item">TaylorMade</span>
+    <span class="logo-wall-item">Srixon</span>
+    <span class="logo-wall-item">WHOOP</span>
+    <span class="logo-wall-item">G/FORE</span>
+    <span class="logo-wall-item">Malbon</span>
+    <span class="logo-wall-item">Under Armour Golf</span>
+    <span class="logo-wall-item">New Balance Golf</span>
+    <span class="logo-wall-item">GoPro</span>
+    <span class="logo-wall-item">Maui Jim</span>
+    <span class="logo-wall-item">L.A.B. Golf</span>
+    <span class="logo-wall-item">2K</span>
+  </div>
+</section>
+
+
+
 
 
 <!-- WHY SPONSOR -->
@@ -964,18 +1096,18 @@
   <div class="why-cards">
     <div class="why-card reveal d1">
       <div class="why-card-num">01</div>
-      <h3 class="why-title">Direct Access to Creators</h3>
-      <p class="why-desc">Connect face-to-face with golf content creators at the Golf Creator Open Championship. Build authentic relationships with the voices that drive culture in digital golf.</p>
+      <h3 class="why-title">Skip the Outreach Entirely</h3>
+      <p class="why-desc">Brands want to work with creators, but outreach is hit or miss — lengthy negotiations, endless back and forth on rates and deliverables, and half of them never reply. One campaign puts your brief in front of 950+ verified golf creators.</p>
     </div>
     <div class="why-card reveal d2">
       <div class="why-card-num">02</div>
-      <h3 class="why-title">Own the Weekend</h3>
-      <p class="why-desc">Take over key moments across a multi-day experience built for visibility, hospitality, and content. From Friday's kickoff to Sunday's championship finish — your brand is front and center.</p>
+      <h3 class="why-title">Creators Who Actually Deliver</h3>
+      <p class="why-desc">Our creators compete all season for one of 72 championship spots at PGA National. A brief that carries ranking points doesn't get ghosted. That's structural, not a policy.</p>
     </div>
     <div class="why-card reveal d3">
       <div class="why-card-num">03</div>
-      <h3 class="why-title">Season Long App Activations</h3>
-      <p class="why-desc">Extend your impact far beyond the event through branded challenges inside the Golf Creator Tour app. Reach an active, engaged creator community 365 days a year.</p>
+      <h3 class="why-title">The Campaign and the Handshake, Same Deal</h3>
+      <p class="why-desc">Run the campaign online, then meet the creators in person across three days at PGA National. No one else sells both.</p>
     </div>
   </div>
 </section>
@@ -1014,7 +1146,7 @@
 
     <div class="open-grid">
       <div class="open-card reveal">
-        <div class="open-card-img" style="background-image: url('CARD1.png');"></div>
+        <div class="open-card-img" style="background-image: url('CARD1.webp');"></div>
         <div class="open-card-overlay"></div>
         <div class="open-card-body">
           <div class="open-card-num">Friday</div>
@@ -1023,7 +1155,7 @@
         </div>
       </div>
       <div class="open-card reveal d1">
-        <div class="open-card-img" style="background-image: url('CARD2.jpg');"></div>
+        <div class="open-card-img" style="background-image: url('CARD2.webp');"></div>
         <div class="open-card-overlay"></div>
         <div class="open-card-body">
           <div class="open-card-num">Saturday</div>
@@ -1032,7 +1164,7 @@
         </div>
       </div>
       <div class="open-card reveal d2">
-        <div class="open-card-img" style="background-image: url('CARD 3.jpg');"></div>
+        <div class="open-card-img" style="background-image: url('CARD 3.webp');"></div>
         <div class="open-card-overlay"></div>
         <div class="open-card-body">
           <div class="open-card-num">Sunday</div>
@@ -1044,26 +1176,7 @@
   </div>
 </section>
 
-<!-- INTERACTIVE HOLE MAP -->
-<section class="holemap section-light" id="hole-map">
-  <div class="holemap-header">
-    <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
-    <h2 class="section-title reveal d2">Claim Your Hole</h2>
-    <p class="section-body reveal d3" style="margin-top:18px;">Tap any open hole on the course to reserve it as a Hole Sponsor. Each of the 18 holes belongs to a single brand — first come, first serve. Holes already taken are marked as reserved.</p>
-  </div>
 
-  <div class="holemap-stage reveal-scale d2">
-    <div class="holemap-frame">
-      <img class="holemap-img" src="course-map.png" alt="PGA National Resort course map — 18 holes">
-      <div class="holemap-overlay" id="holemap-overlay"></div>
-    </div>
-    <div class="holemap-legend">
-      <div class="hm-leg"><span class="dot avail"></span> Available</div>
-      <div class="hm-leg"><span class="dot res"></span> Reserved</div>
-    </div>
-    <p class="holemap-note"><b id="hm-remaining">18</b> of 18 holes still available · Hover or tap a hole for details</p>
-  </div>
-</section>
 
 <!-- PACKAGES -->
 <section class="packages" id="packages">
@@ -1084,6 +1197,7 @@
       <div class="pkg-shine"></div>
       <div class="pkg-header">
         <div class="pkg-name">Title Sponsor</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body"></div>
       <div class="pkg-footer">
@@ -1097,6 +1211,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
         <div class="pkg-name">Creator Social Sponsor</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body"></div>
       <div class="pkg-footer">
@@ -1110,6 +1225,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">1 Available</div>
         <div class="pkg-name">Championship Purse Partner</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body"></div>
       <div class="pkg-footer">
@@ -1127,6 +1243,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">10 Available</div>
         <div class="pkg-name">Official Partner</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body">
         <div class="pkg-specifics" style="margin-top:0;padding-top:0;border-top:none;">
@@ -1154,6 +1271,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">Only 18 Spots Available</div>
         <div class="pkg-name">Scramble Hole Sponsor</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body"></div>
       <div class="pkg-footer">
@@ -1167,6 +1285,7 @@
       <div class="pkg-header">
         <div class="pkg-availability">Unlimited Availability</div>
         <div class="pkg-name">Gifting Partner</div>
+        <div class="pkg-deadline gct-deadline" data-deadline="2026-09-01T23:59:59-04:00">Commit by September 1, 2026</div>
       </div>
       <div class="pkg-body">
         <div class="pkg-specifics" style="margin-top:0;padding-top:0;border-top:none;">
@@ -1180,6 +1299,61 @@
       </div>
       <div class="pkg-footer">
         <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="pkg-cta pkg-cta-purple">Become a Sponsor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE HOLE MAP -->
+<section class="holemap section-light" id="hole-map">
+  <div class="holemap-header">
+    <span class="eyebrow reveal">⛳ Hole Sponsorships</span>
+    <h2 class="section-title reveal d2">Claim Your Hole</h2>
+    <p class="section-body reveal d3" style="margin-top:18px;">Tap any open hole on the course to reserve it as a Hole Sponsor. Each of the 18 holes belongs to a single brand — first come, first serve. Holes already taken are marked as reserved.</p>
+  </div>
+
+  <div class="holemap-stage reveal-scale d2">
+    <div class="holemap-frame">
+      <img class="holemap-img" src="course-map.webp" alt="PGA National Resort course map — 18 holes" loading="lazy">
+      <div class="holemap-overlay" id="holemap-overlay"></div>
+    </div>
+    <div class="holemap-legend">
+      <div class="hm-leg"><span class="dot avail"></span> Available</div>
+      <div class="hm-leg"><span class="dot avail" style="background:repeating-linear-gradient(45deg,#f5a032,#f5a032 3px,#d18626 3px,#d18626 6px);"></span> Pending</div>
+      <div class="hm-leg"><span class="dot res"></span> Sold</div>
+    </div>
+    <p class="holemap-note" id="hm-note"><b id="hm-remaining">17</b> of 18 holes remaining · Hover or tap a hole for details</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about section-light" id="about">
+  <div class="about-grid">
+    <div class="collage-wrap reveal-left">
+      <div class="collage-grid">
+        <div class="cg-item"><img src="Picture6.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture4.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture7.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture9.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture12.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture3.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture5.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture8.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture10.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture11.webp" alt="GCO 2025" loading="lazy"></div>
+        <div class="cg-item"><img src="Picture13.webp" alt="GCO 2025" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="reveal d1">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-title">Built for<br>Creators</h2>
+      </div>
+      <div class="gold-line reveal d2"></div>
+      <p class="section-body reveal d3">What started in 2025 as the Golf Creator Open was built in just 90 days — driven by a simple idea: create a space where golf content creators of all backgrounds could come together, compete, and connect through the game and the content that unites them.</p>
+      <p class="section-body reveal d4">The response was immediate. The event proved there was a real demand for something different in golf — something more inclusive, more modern, and built for creators. In 2026, we evolved. The Golf Creator Tour was created to open the door wider, giving creators the opportunity to earn their place through a year-long points system.</p>
+      <div class="about-quote reveal d5">
+        The path to the championship is no longer <strong>selected</strong> — it's <strong>earned</strong>.
       </div>
     </div>
   </div>
@@ -1201,6 +1375,35 @@
   </div>
 </section>
 
+
+<!-- PARTNERSHIP LADDER (§2.13) -->
+<section class="ladder">
+  <div class="ladder-inner">
+    <div class="ladder-title">Your Path With GCT</div>
+    <div class="ladder-steps">
+      <a class="ladder-step" href="gct-brands.html">
+        <div class="ladder-step-k">Step 1</div>
+        <div class="ladder-step-v">Free challenge</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step" href="gct-brands.html#pricing">
+        <div class="ladder-step-k">Step 2</div>
+        <div class="ladder-step-v">Paid campaign</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step" href="gct-brands.html#pricing">
+        <div class="ladder-step-k">Step 3</div>
+        <div class="ladder-step-v">Season partner</div>
+        <span class="ladder-step-arrow">›</span>
+      </a>
+      <a class="ladder-step current" href="#packages">
+        <div class="ladder-step-k">You are here</div>
+        <div class="ladder-step-v">Event sponsor — Golf Creator Open</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <a href="gct-landing.html" class="footer-logo">
@@ -1208,6 +1411,7 @@
   </a>
   <div class="footer-links">
     <a href="gct-landing.html">Home</a>
+    <a href="gct-brands.html">App Challenges</a>
     <a href="#about">About GCO</a>
     <a href="#packages">Packages</a>
     <a href="#contact">Contact</a>
@@ -1397,39 +1601,48 @@
       { n: 16, x: 64.7, y: 37.1 }, { n: 17, x: 50.8, y: 47.9 }, { n: 18, x: 25.5, y: 53.3 }
     ];
 
-    // Reserved holes — add an entry here when a brand buys a hole.
-    // Example: 5: { brand: 'Brand Name', logo: 'brand-logo.png' }
-    const RESERVED = {
-      2: { brand: 'Bogeys Beef', logo: 'sponsor-bogeys-beef.jpeg' }
+    // §2.9 — three states: available / pending / sold.
+    // Add an entry here when a brand commits to or buys a hole.
+    // Example: 5: { status: 'pending', brand: 'Brand Name' }
+    //          7: { status: 'sold', brand: 'Brand Name', logo: 'brand-logo.png' }
+    const HOLE_STATUS = {
+      2: { status: 'sold', brand: 'Bogeys Beef', logo: 'sponsor-bogeys-beef.jpeg' }
     };
 
     let remaining = 0;
 
     HOLES.forEach(h => {
-      const res = RESERVED[h.n];
+      const st = HOLE_STATUS[h.n];
+      const status = st ? st.status : 'available';
       const m = document.createElement('button');
       m.type = 'button';
-      m.className = 'hole-marker ' + (res ? 'reserved' : 'available');
+      m.className = 'hole-marker ' + (status === 'sold' ? 'reserved' : status);
       if (h.y < 24) m.classList.add('pop-below');
       m.style.left = h.x + '%';
       m.style.top = h.y + '%';
       m.textContent = h.n;
-      m.setAttribute('aria-label', res
-        ? ('Hole ' + h.n + ' — reserved by ' + res.brand)
+      m.setAttribute('aria-label',
+        status === 'sold' ? ('Hole ' + h.n + ' — sold to ' + st.brand)
+        : status === 'pending' ? ('Hole ' + h.n + ' — pending commitment')
         : ('Hole ' + h.n + ' — available, reserve now'));
 
       const pop = document.createElement('span');
       pop.className = 'hole-pop';
-      if (res) {
+      if (status === 'sold') {
         pop.innerHTML =
           '<div class="hole-pop-reserve">' +
-            '<img src="' + res.logo + '" alt="' + res.brand + ' logo">' +
+            (st.logo ? '<img src="' + st.logo + '" alt="' + st.brand + ' logo">' : '') +
             '<div>' +
               '<div class="rb-hole">Hole ' + h.n + '</div>' +
-              '<div class="rb-status">&#10003; Reserved by</div>' +
-              '<div class="rb-brand">' + res.brand + '</div>' +
+              '<div class="rb-status">&#10003; Sold to</div>' +
+              '<div class="rb-brand">' + st.brand + '</div>' +
             '</div>' +
           '</div>';
+      } else if (status === 'pending') {
+        pop.innerHTML =
+          '<div class="hole-pop-eyebrow" style="color:#e07820;">Pending</div>' +
+          '<div class="hole-pop-title">Hole ' + h.n + '</div>' +
+          '<div class="rb-hole">Commitment in progress</div>';
       } else {
         remaining++;
         pop.innerHTML =
@@ -1453,10 +1666,55 @@
 
     const rem = document.getElementById('hm-remaining');
     if (rem) rem.textContent = remaining;
+    // §2.9: suppress the remaining-count display when nothing has sold —
+    // "18 of 18 available" advertises that nothing has sold.
+    const note = document.getElementById('hm-note');
+    if (note && remaining >= HOLES.length) note.style.display = 'none';
 
     document.addEventListener('click', () => {
       document.querySelectorAll('.hole-marker.active').forEach(x => x.classList.remove('active'));
     });
+  })();
+
+  // §2.12: deadline components — static values in HTML, JS refreshes and
+  // auto-hides everything after September 1, 2026.
+  (function () {
+    const blocks = document.querySelectorAll('.gct-deadline');
+    if (!blocks.length) return;
+    function tick() {
+      blocks.forEach(block => {
+        const end = new Date(block.dataset.deadline).getTime();
+        const diff = end - Date.now();
+        if (diff <= 0) { block.style.display = 'none'; return; }
+        const el = block.querySelector('[data-cd="d"]');
+        if (el) el.textContent = Math.max(0, Math.floor(diff / 86400000));
+      });
+    }
+    tick();
+    setInterval(tick, 60000);
+  })();
+
+  // §3.1: persist UTM parameters through outbound Calendly / Stripe handoffs.
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const utm = new URLSearchParams();
+    params.forEach((v, k) => { if (k.startsWith('utm_')) utm.append(k, v); });
+    utm.append('source_page', location.pathname.replace(/^\//, '') || 'index');
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!/^https?:\/\/(golfcreatortour\.app|calendly\.com|buy\.stripe\.com|book\.stripe\.com)/.test(href)) return;
+      const url = new URL(href);
+      utm.forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.append(k, v); });
+      a.setAttribute('href', url.toString());
+    });
+    // Stripe links built at runtime (hole map popovers) get the same treatment.
+    new MutationObserver(() => {
+      document.querySelectorAll('.hole-pop-cta').forEach(a => {
+        const url = new URL(a.getAttribute('href'));
+        utm.forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.append(k, v); });
+        a.setAttribute('href', url.toString());
+      });
+    }).observe(document.getElementById('holemap-overlay') || document.body, { childList: true });
   })();
 </script>
 </body>

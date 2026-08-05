@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /gct-entry.html
+Disallow: /instagram-launch-posts.html
+
+Sitemap: https://www.golfcreatortour.com/sitemap.xml
