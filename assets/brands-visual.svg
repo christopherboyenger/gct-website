@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Campaign dashboard with matched creators">
+  <defs>
+    <linearGradient id="bvBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12294b"/>
+      <stop offset="1" stop-color="#0b1d38"/>
+    </linearGradient>
+    <linearGradient id="bvBar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#c9a24b"/>
+      <stop offset="1" stop-color="#e8cf8e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="420" rx="18" fill="url(#bvBg)"/>
+  <rect x="0.5" y="0.5" width="639" height="419" rx="17.5" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- header -->
+  <rect x="28" y="26" width="200" height="14" rx="7" fill="#ffffff" opacity="0.85"/>
+  <rect x="28" y="50" width="130" height="9" rx="4.5" fill="#ffffff" opacity="0.30"/>
+  <rect x="472" y="28" width="140" height="34" rx="17" fill="#c9a24b"/>
+  <rect x="496" y="42" width="92" height="7" rx="3.5" fill="#10233f"/>
+
+  <!-- stat chips -->
+  <g>
+    <rect x="28" y="84" width="180" height="66" rx="12" fill="#ffffff" opacity="0.06"/>
+    <text x="44" y="118" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#e8cf8e">10.8M</text>
+    <rect x="44" y="128" width="100" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
+  </g>
+  <g>
+    <rect x="222" y="84" width="180" height="66" rx="12" fill="#ffffff" opacity="0.06"/>
+    <text x="238" y="118" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff">82%</text>
+    <rect x="238" y="128" width="100" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
+  </g>
+  <g>
+    <rect x="416" y="84" width="196" height="66" rx="12" fill="#ffffff" opacity="0.06"/>
+    <text x="432" y="118" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff">1,685</text>
+    <rect x="432" y="128" width="110" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
+  </g>
+
+  <!-- chart panel -->
+  <rect x="28" y="170" width="374" height="222" rx="14" fill="#ffffff" opacity="0.05"/>
+  <g stroke="#ffffff" stroke-opacity="0.08">
+    <line x1="52" y1="352" x2="378" y2="352"/>
+    <line x1="52" y1="308" x2="378" y2="308"/>
+    <line x1="52" y1="264" x2="378" y2="264"/>
+    <line x1="52" y1="220" x2="378" y2="220"/>
+  </g>
+  <g>
+    <rect x="64"  y="318" width="30" height="34"  rx="4" fill="url(#bvBar)" opacity="0.55"/>
+    <rect x="112" y="296" width="30" height="56"  rx="4" fill="url(#bvBar)" opacity="0.65"/>
+    <rect x="160" y="300" width="30" height="52"  rx="4" fill="url(#bvBar)" opacity="0.6"/>
+    <rect x="208" y="268" width="30" height="84"  rx="4" fill="url(#bvBar)" opacity="0.8"/>
+    <rect x="256" y="244" width="30" height="108" rx="4" fill="url(#bvBar)" opacity="0.9"/>
+    <rect x="304" y="212" width="30" height="140" rx="4" fill="url(#bvBar)"/>
+    <rect x="352" y="196" width="26" height="156" rx="4" fill="url(#bvBar)"/>
+  </g>
+  <rect x="52" y="186" width="120" height="8" rx="4" fill="#ffffff" opacity="0.4"/>
+
+  <!-- matched creators panel -->
+  <rect x="416" y="170" width="196" height="222" rx="14" fill="#ffffff" opacity="0.05"/>
+  <rect x="432" y="186" width="120" height="8" rx="4" fill="#ffffff" opacity="0.4"/>
+  <g>
+    <circle cx="448" cy="222" r="14" fill="#e8cf8e"/>
+    <rect x="472" y="212" width="90" height="7" rx="3.5" fill="#ffffff" opacity="0.6"/>
+    <rect x="472" y="226" width="60" height="6" rx="3" fill="#ffffff" opacity="0.25"/>
+  </g>
+  <g>
+    <circle cx="448" cy="264" r="14" fill="#9fc0e8"/>
+    <rect x="472" y="254" width="96" height="7" rx="3.5" fill="#ffffff" opacity="0.6"/>
+    <rect x="472" y="268" width="52" height="6" rx="3" fill="#ffffff" opacity="0.25"/>
+  </g>
+  <g>
+    <circle cx="448" cy="306" r="14" fill="#c9a24b"/>
+    <rect x="472" y="296" width="80" height="7" rx="3.5" fill="#ffffff" opacity="0.6"/>
+    <rect x="472" y="310" width="66" height="6" rx="3" fill="#ffffff" opacity="0.25"/>
+  </g>
+  <g>
+    <circle cx="448" cy="348" r="14" fill="#d9d4c8"/>
+    <rect x="472" y="338" width="88" height="7" rx="3.5" fill="#ffffff" opacity="0.6"/>
+    <rect x="472" y="352" width="58" height="6" rx="3" fill="#ffffff" opacity="0.25"/>
+  </g>
+
+  <!-- verified badge -->
+  <g>
+    <circle cx="586" cy="212" r="13" fill="#3fae6a"/>
+    <path d="m580 212 4.5 4.5 8-9" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
