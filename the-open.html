@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Golf Creator Open – Golf Creator Tour</title>
+  <meta name="description" content="The Golf Creator Open is the annual Tour Championship: championship competition, creator-brand networking and on-site activations at PGA National, October 2–4, 2026. Follow the live leaderboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="Golf Creator Tour home">
+        <img src="assets/logo.png" alt="The Golf Creator Tour" class="brand-logo" />
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item has-dropdown">
+            <button class="nav-link" aria-haspopup="true" aria-expanded="false">Creators <span class="chev"></span></button>
+            <ul class="dropdown">
+              <li><a href="creators.html">Why the Tour</a></li>
+              <li><a href="creators.html#points">How Points Work</a></li>
+              <li><a href="creators.html#membership">Tour Membership</a></li>
+              <li><a href="creators.html#faq">Creator FAQ</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-dropdown">
+            <button class="nav-link" aria-haspopup="true" aria-expanded="false">Brands <span class="chev"></span></button>
+            <ul class="dropdown">
+              <li><a href="brands.html">Why GCT</a></li>
+              <li><a href="brands.html#formats">Campaign Formats</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener">Book a Call</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-dropdown">
+            <button class="nav-link" aria-haspopup="true" aria-expanded="false">Solutions <span class="chev"></span></button>
+            <ul class="dropdown">
+              <li><a href="index.html#solutions">Courses &amp; Destinations</a></li>
+              <li><a href="index.html#solutions">Agencies</a></li>
+              <li><a href="the-open.html#sponsor">Sponsors</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="the-open.html">The Open</a></li>
+          <li class="nav-item"><a class="nav-link" href="the-open.html#leaderboard">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Book Strategy Call</a>
+          <a href="https://golfcreatortour.com/apply" class="btn btn-solid btn-sm">Join the Tour</a>
+          <a href="https://golfcreatortour.com/auth" class="btn btn-outline btn-sm">Login</a>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero" style="background-image:url('assets/photos/swing.jpg')">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> / <span>The Open</span></p>
+        <p class="eyebrow gold">Golf Creator Open · Where the Season Ends</p>
+        <h1 class="display">2nd Annual<br />Golf Creator Open</h1>
+        <p class="lede"><strong>October 2–4, 2026 · PGA National.</strong> The annual Tour Championship — championship competition, creator-brand networking and on-site activations. The highest-ranked creators of the season earn their invite.</p>
+        <div class="btn-row">
+          <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="btn btn-solid">Sponsor the Open</a>
+          <a href="#leaderboard" class="btn btn-outline">Live Leaderboard</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIVE LEADERBOARD ============ -->
+    <section class="leaderboard-section" id="leaderboard">
+      <div class="container">
+        <p class="eyebrow center">The Race to the Open</p>
+        <h2 class="section-title center">Live Season Leaderboard</h2>
+        <p class="leaderboard-sub center">Synced live from the GCT app. Points come from verified social growth, engagement, challenges, matches and events — and the top of this board earns a tee time at PGA National.</p>
+        <div class="lb-widget" data-leaderboard data-limit="20" aria-live="polite"></div>
+        <div class="btn-row" style="justify-content:center">
+          <a href="https://golfcreatortour.com/apply" class="btn btn-solid">Start Your Climb</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT HAPPENS AT THE OPEN ============ -->
+    <section class="season section-slate">
+      <div class="container">
+        <p class="eyebrow center">Three Days at PGA National</p>
+        <h2 class="section-title center">What happens at the Open</h2>
+        <ol class="timeline">
+          <li class="tl-step">
+            <span class="tl-num">01</span>
+            <h3>Championship golf</h3>
+            <p>Qualified creators compete for the season title and the championship purse — real golf, real stakes, filmed and clipped all weekend.</p>
+          </li>
+          <li class="tl-step">
+            <span class="tl-num">02</span>
+            <h3>Content everywhere</h3>
+            <p>Every hole is a set. Creators produce a season's worth of content in three days, with sponsor products and activations in frame.</p>
+          </li>
+          <li class="tl-step">
+            <span class="tl-num">03</span>
+            <h3>Creator-brand networking</h3>
+            <p>Lounges, dinners and hosted hospitality connect brands with the exact creators they'll work with next season.</p>
+          </li>
+          <li class="tl-step">
+            <span class="tl-num">04</span>
+            <h3>Sponsor activations</h3>
+            <p>On-course tents, product showcases, closest-to-the-pin moments and gifting suites — owned moments with defined deliverables.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="work section-light" style="padding-top:90px">
+      <div class="container">
+        <h2 class="section-title dark center">Scenes from the 1st Annual Open</h2>
+        <p class="work-sub center">Creators, brands and championship golf — all in one weekend.</p>
+        <div class="gallery">
+          <a href="#" class="tile"><img src="assets/photos/huddle.jpg" alt="Creators come together at the Golf Creator Open" loading="lazy" /><span class="tile-tag">Community</span><span class="tile-cap">Creators come together at the Open</span></a>
+          <a href="#" class="tile"><img src="assets/photos/swing.jpg" alt="Championship competition at the Open" loading="lazy" /><span class="tile-tag">Competition</span><span class="tile-cap">Championship competition at the Open</span></a>
+          <a href="#" class="tile"><img src="assets/photos/course-record-tent.jpg" alt="Course Record on-course activation" loading="lazy" /><span class="tile-tag">Activation</span><span class="tile-cap">On-course sponsor activation</span></a>
+          <a href="#" class="tile"><img src="assets/photos/creators-group.jpg" alt="Creators at the Golf Creator Open" loading="lazy" /><span class="tile-tag">The Field</span><span class="tile-cap">The field at the 1st Annual Open</span></a>
+          <a href="#" class="tile"><img src="assets/photos/gift-bags.jpg" alt="Partner gifting for creators" loading="lazy" /><span class="tile-tag">Gifting</span><span class="tile-cap">Approved partner gifting suites</span></a>
+          <a href="#" class="tile"><img src="assets/photos/creators-night.jpg" alt="Sponsor hospitality and community" loading="lazy" /><span class="tile-tag">Hospitality</span><span class="tile-cap">Sponsor hospitality and community</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPONSOR ============ -->
+    <section class="solutions" id="sponsor">
+      <div class="container">
+        <p class="eyebrow center">Sponsorship</p>
+        <h2 class="section-title center">Own a moment at the Open</h2>
+        <div class="sol-grid">
+          <article class="sol-card">
+            <h3>Presenting &amp; Title</h3>
+            <p>Category-exclusive positioning across the championship — naming, broadcast-style content integration, hospitality and first pick of creator partnerships.</p>
+            <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="text-link">Talk Title Packages →</a>
+          </article>
+          <article class="sol-card">
+            <h3>Hole &amp; Activation</h3>
+            <p>Own a hole: on-course tent, product trial, contest moment and creator content shot at your activation all weekend — with rights to reuse it.</p>
+            <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="text-link">Reserve a Hole →</a>
+          </article>
+          <article class="sol-card">
+            <h3>Lounge &amp; Gifting</h3>
+            <p>Put product in creators' hands in the member lounge and gifting suites — approved, disclosed and tracked, so seeding turns into content.</p>
+            <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="text-link">Explore Gifting →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+      <div class="cta-bg"></div>
+      <div class="cta-gradient"></div>
+      <div class="container cta-inner">
+        <h2 class="section-title">Be there when the season ends</h2>
+        <p>Creators: climb the board and earn your invite. Brands: the Open is the highest-density golf creator moment of the year — book a call to build your package.</p>
+        <div class="btn-row">
+          <a href="https://golfcreatortour.com/apply" class="btn btn-solid">Join the Tour</a>
+          <a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener" class="btn btn-outline">Sponsor the Open</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <img src="assets/logo.png" alt="The Golf Creator Tour" class="brand-logo footer-logo" />
+          <p class="footer-tag">The marketing &amp; competitive ecosystem for golf creators.</p>
+          <h2>Contact us</h2>
+          <a href="mailto:hello@golfcreatortour.com" class="footer-mail">hello@golfcreatortour.com</a>
+        </div>
+        <div class="footer-col">
+          <h2>Discover</h2>
+          <ul>
+            <li><a href="creators.html#points">How Points Work</a></li>
+            <li><a href="the-open.html#leaderboard">Leaderboard</a></li>
+            <li><a href="the-open.html">Golf Creator Open</a></li>
+            <li><a href="creators.html#membership">Tour Membership</a></li>
+            <li><a href="creators.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Company</h2>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="brands.html">For Brands</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="the-open.html#sponsor">Sponsors &amp; Partners</a></li>
+            <li><a href="https://calendly.com/piff-golfcreatoropen/30min?month=2026-08&amp;date=2026-08-28" target="_blank" rel="noopener">Book a Call</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Connect with us</h2>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">X / Twitter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>On Tour</h2>
+          <ul>
+            <li><a href="#">Titleist</a></li>
+            <li><a href="#">Callaway</a></li>
+            <li><a href="#">PXG</a></li>
+            <li><a href="#">Topgolf</a></li>
+            <li><a href="#">PGA National Resort</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © <span id="year"></span> Golf Creator Tour. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/leaderboard.js"></script>
+</body>
+</html>

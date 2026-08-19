@@ -1,58 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 856 540" role="img" aria-label="Gold metal Golf Creator Tour membership card">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 856 540" role="img" aria-label="Gold metal Golf Creator Tour member card — front">
   <defs>
-    <linearGradient id="tcGold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0"    stop-color="#8a6a2a"/>
-      <stop offset="0.25" stop-color="#c9a24b"/>
-      <stop offset="0.5"  stop-color="#eed99a"/>
-      <stop offset="0.75" stop-color="#c9a24b"/>
-      <stop offset="1"    stop-color="#7d5f24"/>
+    <linearGradient id="tcBase" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#c19a45"/>
+      <stop offset="0.32" stop-color="#d9b862"/>
+      <stop offset="0.55" stop-color="#e9d084"/>
+      <stop offset="0.78" stop-color="#d3af58"/>
+      <stop offset="1"    stop-color="#b8913f"/>
     </linearGradient>
-    <linearGradient id="tcSheen" x1="0" y1="0" x2="1" y2="0.3">
+    <linearGradient id="tcSweep" x1="0" y1="0" x2="1" y2="0.65">
       <stop offset="0"    stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.35"/>
-      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.35"/>
-      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.58" stop-color="#fff7dd" stop-opacity="0.28"/>
+      <stop offset="0.75" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="tcEdge" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f7e7b6"/>
-      <stop offset="1" stop-color="#6d531f"/>
+      <stop offset="0" stop-color="#f2e2ac"/>
+      <stop offset="1" stop-color="#8a6a2a"/>
     </linearGradient>
+    <pattern id="tcBrush" width="6" height="540" patternUnits="userSpaceOnUse">
+      <rect width="6" height="540" fill="none"/>
+      <line x1="1.5" y1="0" x2="1.5" y2="540" stroke="#8a6a2a" stroke-opacity="0.10" stroke-width="1"/>
+      <line x1="4.5" y1="0" x2="4.5" y2="540" stroke="#fff6d8" stroke-opacity="0.12" stroke-width="1"/>
+    </pattern>
+    <clipPath id="tcClip"><rect x="6" y="6" width="844" height="528" rx="34"/></clipPath>
   </defs>
 
-  <rect width="856" height="540" rx="36" fill="url(#tcEdge)"/>
-  <rect x="6" y="6" width="844" height="528" rx="30" fill="url(#tcGold)"/>
-  <rect x="6" y="6" width="844" height="528" rx="30" fill="url(#tcSheen)"/>
-
-  <!-- brushed metal lines -->
-  <g stroke="#6d531f" stroke-opacity="0.10">
-    <line x1="6" y1="86"  x2="850" y2="86"/>
-    <line x1="6" y1="156" x2="850" y2="156"/>
-    <line x1="6" y1="226" x2="850" y2="226"/>
-    <line x1="6" y1="296" x2="850" y2="296"/>
-    <line x1="6" y1="366" x2="850" y2="366"/>
-    <line x1="6" y1="436" x2="850" y2="436"/>
+  <rect width="856" height="540" rx="40" fill="url(#tcEdge)"/>
+  <g clip-path="url(#tcClip)">
+    <rect x="6" y="6" width="844" height="528" fill="url(#tcBase)"/>
+    <rect x="6" y="6" width="844" height="528" fill="url(#tcBrush)"/>
+    <rect x="6" y="6" width="844" height="528" fill="url(#tcSweep)"/>
   </g>
 
-  <!-- crest: ball on tee in laurel -->
-  <g transform="translate(80,64)" fill="#3d2f10">
-    <circle cx="60" cy="46" r="26" fill="none" stroke="#3d2f10" stroke-width="5"/>
-    <g fill="#3d2f10">
-      <circle cx="52" cy="38" r="2.6"/><circle cx="62" cy="36" r="2.6"/><circle cx="70" cy="42" r="2.6"/>
-      <circle cx="54" cy="48" r="2.6"/><circle cx="64" cy="47" r="2.6"/><circle cx="58" cy="57" r="2.6"/>
+  <!-- wordmark -->
+  <text x="428" y="92" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif"
+        font-size="30" font-weight="700" letter-spacing="14" fill="#1c1608">GOLF CREATOR TOUR</text>
+
+  <!-- laurel + golf ball on tee -->
+  <g transform="translate(428 235)">
+    <!-- laurel left -->
+    <g fill="#1c1608">
+      <g transform="translate(-118 -44) rotate(-58)"><ellipse rx="9" ry="22"/></g>
+      <g transform="translate(-128 -12) rotate(-72)"><ellipse rx="9" ry="23"/></g>
+      <g transform="translate(-131 22) rotate(-86)"><ellipse rx="9" ry="24"/></g>
+      <g transform="translate(-126 56) rotate(-100)"><ellipse rx="9" ry="24"/></g>
+      <g transform="translate(-113 86) rotate(-116)"><ellipse rx="9" ry="23"/></g>
+      <g transform="translate(-84 -46) rotate(-30)"><ellipse rx="8" ry="20"/></g>
+      <g transform="translate(-96 -14) rotate(-44)"><ellipse rx="8" ry="21"/></g>
+      <g transform="translate(-100 20) rotate(-58)"><ellipse rx="8" ry="22"/></g>
+      <g transform="translate(-95 54) rotate(-74)"><ellipse rx="8" ry="22"/></g>
+      <g transform="translate(-82 84) rotate(-90)"><ellipse rx="8" ry="21"/></g>
     </g>
-    <path d="M50 76h20l-7 14v18h-6V90z"/>
-    <path d="M18 52c-6 14-2 34 12 46l4-5C23 83 20 66 24 55zM102 52c6 14 2 34-12 46l-4-5c11-10 14-27 10-38z" opacity="0.9"/>
+    <!-- laurel right (mirror) -->
+    <g fill="#1c1608" transform="scale(-1 1)">
+      <g transform="translate(-118 -44) rotate(-58)"><ellipse rx="9" ry="22"/></g>
+      <g transform="translate(-128 -12) rotate(-72)"><ellipse rx="9" ry="23"/></g>
+      <g transform="translate(-131 22) rotate(-86)"><ellipse rx="9" ry="24"/></g>
+      <g transform="translate(-126 56) rotate(-100)"><ellipse rx="9" ry="24"/></g>
+      <g transform="translate(-113 86) rotate(-116)"><ellipse rx="9" ry="23"/></g>
+      <g transform="translate(-84 -46) rotate(-30)"><ellipse rx="8" ry="20"/></g>
+      <g transform="translate(-96 -14) rotate(-44)"><ellipse rx="8" ry="21"/></g>
+      <g transform="translate(-100 20) rotate(-58)"><ellipse rx="8" ry="22"/></g>
+      <g transform="translate(-95 54) rotate(-74)"><ellipse rx="8" ry="22"/></g>
+      <g transform="translate(-82 84) rotate(-90)"><ellipse rx="8" ry="21"/></g>
+    </g>
+
+    <!-- ball -->
+    <circle cx="0" cy="-18" r="52" fill="#1c1608"/>
+    <g fill="#e9d084">
+      <circle cx="-22" cy="-38" r="3.4"/><circle cx="-4" cy="-42" r="3.4"/><circle cx="14" cy="-38" r="3.4"/>
+      <circle cx="-30" cy="-22" r="3.4"/><circle cx="-12" cy="-26" r="3.4"/><circle cx="6" cy="-26" r="3.4"/><circle cx="24" cy="-22" r="3.4"/>
+      <circle cx="-34" cy="-6" r="3.4"/><circle cx="-16" cy="-10" r="3.4"/><circle cx="2" cy="-10" r="3.4"/><circle cx="20" cy="-6" r="3.4"/><circle cx="34" cy="-10" r="3.4"/>
+      <circle cx="-26" cy="10" r="3.4"/><circle cx="-8" cy="6" r="3.4"/><circle cx="10" cy="6" r="3.4"/><circle cx="28" cy="10" r="3.4"/>
+    </g>
+    <!-- tee -->
+    <path d="M-30 40 L30 40 L14 62 L14 108 L-14 108 L-14 62 Z" fill="#1c1608"/>
   </g>
 
-  <text x="776" y="96" text-anchor="end" font-family="Georgia, serif" font-size="30" letter-spacing="6" fill="#3d2f10" font-weight="700">TOUR MEMBER</text>
-  <text x="776" y="130" text-anchor="end" font-family="Georgia, serif" font-size="17" letter-spacing="4" fill="#5c4718">SEASON 2026</text>
-
-  <text x="80" y="286" font-family="Georgia, serif" font-size="44" letter-spacing="3" fill="#2e2408" font-weight="700">THE GOLF CREATOR TOUR</text>
-  <rect x="80" y="308" width="330" height="4" rx="2" fill="#3d2f10" opacity="0.55"/>
-
-  <!-- member name / number: edit these -->
-  <text x="80" y="416" font-family="Georgia, serif" font-size="38" letter-spacing="5" fill="#3d2f10" font-weight="700">JORDAN WELLS</text>
-  <text x="80" y="466" font-family="Georgia, serif" font-size="24" letter-spacing="6" fill="#5c4718">MEMBER Nº 042</text>
-
-  <text x="776" y="466" text-anchor="end" font-family="Georgia, serif" font-size="19" letter-spacing="4" fill="#5c4718">EST. 2025</text>
+  <!-- member line -->
+  <text x="428" y="452" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif"
+        font-size="58" font-weight="700" letter-spacing="18" fill="#1c1608">TOUR MEMBER</text>
 </svg>
