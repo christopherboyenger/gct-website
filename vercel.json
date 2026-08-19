@@ -4,6 +4,7 @@
   "outputDirectory": ".",
   "installCommand": null,
   "rewrites": [
+    { "source": "/", "destination": "/gct-landing.html" },
     { "source": "/members", "destination": "/gct-entry.html" }
   ],
   "headers": [
