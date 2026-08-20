@@ -197,47 +197,14 @@
     .fi.vis { opacity: 1; transform: translateY(0); }
     .fi.d1 { transition-delay: 0.1s; } .fi.d2 { transition-delay: 0.2s; } .fi.d3 { transition-delay: 0.3s; }
 
-    /* PRICING */
-    .pricing { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg); }
-    .pricing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(201,152,42,0.08) 0%, transparent 65%); pointer-events: none; }
-    .pricing-header { text-align: center; max-width: 720px; margin: 0 auto 64px; position: relative; z-index: 2; }
-    .pricing-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 16px; line-height: 1; }
-    .pricing-header p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto 32px; position: relative; z-index: 2; }
-    .pricing-event-cta { display: flex; justify-content: center; margin-top: 56px; position: relative; z-index: 2; }
-    .price-card { position: relative; background: linear-gradient(180deg, rgba(26,38,64,0.85) 0%, rgba(15,21,36,0.9) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; overflow: hidden; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.5s; display: flex; flex-direction: column; }
-    .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--tier-accent, var(--gold2)) 50%, transparent); opacity: 0.7; }
-    .price-card::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, var(--tier-glow, rgba(201,152,42,0.12)) 0%, transparent 40%); opacity: 0; transition: opacity 0.6s; pointer-events: none; }
-    .price-card:hover { transform: translateY(-8px); border-color: var(--tier-accent, rgba(201,152,42,0.45)); box-shadow: 0 30px 80px -20px var(--tier-glow, rgba(201,152,42,0.25)); }
-    .price-card:hover::after { opacity: 1; }
-    .price-card.tier-standard { --tier-accent: rgba(255,255,255,0.45); --tier-glow: rgba(255,255,255,0.08); }
-    .price-card.tier-premium { --tier-accent: #8b5cf6; --tier-glow: rgba(139,92,246,0.18); border-color: rgba(139,92,246,0.28); }
-    .price-card.tier-elite { --tier-accent: var(--gold2); --tier-glow: rgba(232,184,75,0.2); border-color: rgba(201,152,42,0.4); }
-    .price-card.tier-elite { background: linear-gradient(180deg, rgba(64,46,12,0.55) 0%, rgba(15,21,36,0.92) 100%); }
-    .tier-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 24px; }
-    .tier-label .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--tier-accent); }
-    .tier-standard .tier-label { color: rgba(255,255,255,0.65); }
-    .tier-premium .tier-label { color: #b5a0f5; }
-    .tier-elite .tier-label { color: var(--gold2); }
-    .tier-badge { position: absolute; top: 18px; right: 18px; background: rgba(201,152,42,0.16); border: 1px solid rgba(201,152,42,0.4); color: var(--gold2); padding: 5px 12px; border-radius: 100px; font-size: 9px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
-    .price-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; line-height: 1.05; margin-bottom: 14px; }
-    .price-amount-block { margin-bottom: 14px; }
-    .price-amount { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
-    .price-amount .num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 72px); background: linear-gradient(135deg, #fff 30%, var(--tier-accent, var(--gold3)) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; letter-spacing: 0.01em; }
-    .price-amount .per { font-size: 15px; color: rgba(255,255,255,0.55); font-weight: 500; }
-    .price-duration { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 22px; }
-    .price-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 24px; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
-    .price-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 13.5px; color: rgba(255,255,255,0.78); line-height: 1.5; }
-    .price-features .pf-check { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--tier-accent, var(--gold2)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--tier-accent, var(--gold2)); margin-top: 2px; }
-    .price-cta { display: block; text-align: center; padding: 14px 24px; border-radius: 100px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
-    .tier-standard .price-cta { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.25); }
-    .tier-standard .price-cta:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
-    .tier-premium .price-cta { background: linear-gradient(135deg, #7c4dff, #a06cff); color: #fff; border: none; }
-    .tier-premium .price-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(139,92,246,0.45); }
-    .tier-elite .price-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; }
-    .tier-elite .price-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201,152,42,0.45); }
-    .pricing-footnote { text-align: center; font-size: 13px; color: rgba(255,255,255,0.45); max-width: 720px; margin: 24px auto 0; line-height: 1.7; }
+    /* GET STARTED */
+    .get-started { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg); }
+    .get-started::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(201,152,42,0.08) 0%, transparent 65%); pointer-events: none; }
+    .gs-header { text-align: center; max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+    .gs-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); letter-spacing: 0.02em; margin-bottom: 16px; line-height: 1; }
+    .gs-header p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .gs-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 44px; position: relative; z-index: 2; }
+    .gs-note { text-align: center; font-size: 13px; color: rgba(255,255,255,0.45); max-width: 720px; margin: 28px auto 0; line-height: 1.7; position: relative; z-index: 2; }
 
     /* PREMIUM REVEAL ANIMATIONS */
     .reveal { opacity: 0; transform: translateY(60px) scale(0.97); filter: blur(8px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease; will-change: opacity, transform, filter; }
@@ -255,14 +222,9 @@
     .stagger.in > *:nth-child(5) { transition-delay: 0.33s; }
     .stagger.in > *:nth-child(6) { transition-delay: 0.4s; }
     .stagger.in > *:nth-child(7) { transition-delay: 0.47s; }
-    .price-card.float-up { animation: floatUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
     @keyframes floatUp { 0% { opacity: 0; transform: translateY(80px) scale(0.94); filter: blur(10px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal-left, .reveal-right, .stagger > * { opacity: 1 !important; transform: none !important; filter: none !important; }
-    }
-    @media (max-width: 960px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-      .price-card { padding: 36px 28px; }
     }
 
     /* MOBILE NAV */
@@ -505,91 +467,18 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="pricing-header">
-    <div class="eyebrow reveal">Brand Challenge Pricing</div>
+<!-- GET STARTED -->
+<section class="get-started" id="get-started">
+  <div class="gs-header">
+    <div class="eyebrow reveal">Brand Challenges</div>
     <h2 class="reveal">Your First Challenge Is On Us.</h2>
-    <p class="reveal">Launch your first UGC campaign challenge inside the Golf Creator Tour app — completely free. Love the content? Keep running campaigns à la carte, or go all-in as an Event Sponsor for unlimited challenges all season.</p>
+    <p class="reveal">Launch your first UGC campaign challenge inside the Golf Creator Tour app — completely free, no card required. Love the content? Keep the campaigns running, or go all-in as an official Golf Creator Open event sponsor for unlimited challenges all season.</p>
   </div>
-  <div class="pricing-grid">
-    <!-- Free First Challenge -->
-    <div class="price-card tier-standard reveal-left">
-      <div class="tier-badge">Start Free</div>
-      <div class="tier-label"><span class="dot"></span>First Challenge</div>
-      <div class="price-title">Free<br>Challenge</div>
-      <div class="price-amount-block">
-        <div class="price-amount">
-          <span class="num">$0</span>
-          <span class="per">first challenge</span>
-        </div>
-      </div>
-      <div class="price-duration">7-Day Free Trial · No Card</div>
-      <p class="price-desc">Try the tour with zero risk. Launch your first UGC campaign challenge and watch GCT creators compete to make authentic content for your brand.</p>
-      <ul class="price-features stagger">
-        <li><span class="pf-check">✓</span><span>1 free UGC campaign challenge (7 days)</span></li>
-        <li><span class="pf-check">✓</span><span>GCT creator community access</span></li>
-        <li><span class="pf-check">✓</span><span>Leaderboard + points integration</span></li>
-        <li><span class="pf-check">✓</span><span>Brand logo on challenge card</span></li>
-        <li><span class="pf-check">✓</span><span>Performance recap included</span></li>
-      </ul>
-      <a href="https://golfcreatortour.app/brands" class="price-cta">Claim Your Free Challenge</a>
-    </div>
-
-    <!-- Paid UGC Campaign Challenge -->
-    <div class="price-card tier-premium reveal">
-      <div class="tier-badge">Most Popular</div>
-      <div class="tier-label"><span class="dot"></span>UGC Campaign</div>
-      <div class="price-title">Campaign<br>Challenge</div>
-      <div class="price-amount-block">
-        <div class="price-amount">
-          <span class="num">$200</span>
-          <span class="per">/challenge</span>
-        </div>
-      </div>
-      <div class="price-duration">14-Day Run</div>
-      <p class="price-desc">Keep the momentum going. Each campaign puts 100+ creators to work generating authentic content for your brand — at a fraction of traditional influencer costs.</p>
-      <ul class="price-features stagger">
-        <li><span class="pf-check">✓</span><span>Everything in your free challenge</span></li>
-        <li><span class="pf-check">✓</span><span>Full 14-day campaign run</span></li>
-        <li><span class="pf-check">✓</span><span>Premium tier creator access (250–300 pts)</span></li>
-        <li><span class="pf-check">✓</span><span>Creator-generated content rights</span></li>
-        <li><span class="pf-check">✓</span><span>Priority placement in challenge feed</span></li>
-        <li><span class="pf-check">✓</span><span>Mid-campaign + full performance reporting</span></li>
-      </ul>
-      <a href="https://golfcreatortour.app/brands" class="price-cta">Launch a Campaign</a>
-    </div>
-
-    <!-- Event Sponsor — Unlimited -->
-    <div class="price-card tier-elite reveal-right">
-      <div class="tier-badge">Best Value</div>
-      <div class="tier-label"><span class="dot"></span>Event Sponsor</div>
-      <div class="price-title">Unlimited<br>Season Pass</div>
-      <div class="price-amount-block">
-        <div class="price-amount">
-          <span class="num">Custom</span>
-          <span class="per">unlimited challenges</span>
-        </div>
-      </div>
-      <div class="price-duration">Season Long</div>
-      <p class="price-desc">Become an official Golf Creator Open event sponsor and run unlimited brand challenge campaigns all season — your brand woven through every leaderboard moment.</p>
-      <ul class="price-features stagger">
-        <li><span class="pf-check">✓</span><span>Everything in paid campaigns</span></li>
-        <li><span class="pf-check">✓</span><span>Unlimited UGC campaign challenges</span></li>
-        <li><span class="pf-check">✓</span><span>Elite tier creator access (500 pts)</span></li>
-        <li><span class="pf-check">✓</span><span>Hero placement across app + socials</span></li>
-        <li><span class="pf-check">✓</span><span>Dedicated brand strategist</span></li>
-        <li><span class="pf-check">✓</span><span>Full-season creative + performance recap</span></li>
-      </ul>
-      <a href="https://www.golfcreatortour.com/gco-sponsor-deck.html" class="price-cta">Become an Event Sponsor</a>
-    </div>
+  <div class="gs-actions reveal">
+    <a href="https://golfcreatortour.app/brands" class="btn-gold">Claim Your Free Challenge</a>
+    <a href="https://www.golfcreatortour.com/gco-sponsor-deck.html" class="btn-outline">Become an Event Sponsor</a>
   </div>
-  <p class="pricing-footnote">Your first UGC campaign challenge is free for 7 days. After that, run campaigns à la carte for $200 each (14-day run) — or sponsor the Golf Creator Open for unlimited brand challenges all season.</p>
-
-  <!-- Start Free CTA -->
-  <div class="pricing-event-cta reveal">
-    <a href="https://golfcreatortour.app/brands" class="btn-outline">Start Free — Launch Your First UGC Campaign Challenge On Us</a>
-  </div>
+  <p class="gs-note">Every challenge includes creator community access, leaderboard and points integration, brand placement on the challenge card, creator-generated content rights, and a full performance recap. Talk to us and we'll build the package around your season.</p>
 </section>
 
 <!-- FOOTER -->
@@ -621,17 +510,6 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach(el => revealObserver.observe(el));
-
-  // Subtle 3D tilt on pricing cards
-  document.querySelectorAll('.price-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `translateY(-8px) perspective(1000px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
 
   function animateCounter(el, target) {
     const duration = 2000;
