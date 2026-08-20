@@ -138,7 +138,7 @@
       line-height: 1.55;
     }
 
-    .pricing-grid {
+    .entry-grid {
       position: relative;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -194,34 +194,6 @@
       letter-spacing: -0.04em;
       text-transform: uppercase;
       margin-bottom: 14px;
-    }
-
-    .price {
-      position: relative;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .price strong {
-      font-size: 84px;
-      line-height: 1;
-      letter-spacing: -0.06em;
-      color: var(--white);
-    }
-
-    .price > span {
-      color: var(--muted);
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .price strong .count-up {
-      font-size: inherit;
-      font-weight: inherit;
-      color: inherit;
-      letter-spacing: inherit;
     }
 
     .description {
@@ -410,7 +382,7 @@
         height: 120px;
       }
 
-      .pricing-grid {
+      .entry-grid {
         grid-template-columns: 1fr;
       }
 
@@ -586,13 +558,6 @@
       }
     }
 
-    /* Price digit ticker */
-    .price strong .digit-roll {
-      display: inline-block;
-      min-width: 0.6em;
-      text-align: center;
-    }
-
     /* CTA subtle glow pulse on featured */
     .card.featured .cta.primary {
       box-shadow:
@@ -670,14 +635,6 @@
         border-radius: 24px;
       }
 
-      .price strong {
-        font-size: 56px;
-      }
-
-      .price > span {
-        font-size: 16px;
-      }
-
       .compare {
         border-radius: 20px;
       }
@@ -715,14 +672,10 @@
       </p>
     </section>
 
-    <section class="pricing-grid" aria-label="Golf Creator Tour pricing options">
+    <section class="entry-grid" aria-label="Golf Creator Tour entry options">
       <article class="card featured reveal reveal-left" style="--reveal-delay: 0ms;">
         <div class="badge">Best Value</div>
         <h2>Tour Member</h2>
-        <div class="price">
-          <strong>$<span class="count-up" data-target="200">200</span></strong>
-          <span>/ year</span>
-        </div>
         <p class="description">
           Built for creators who want full-season status, leaderboard access, brand challenge opportunities, and long-term Tour upside.
         </p>
@@ -747,10 +700,6 @@
       <article class="card reveal reveal-right" style="--reveal-delay: 160ms;">
         <div class="badge">Single Season</div>
         <h2>One-Time Entry</h2>
-        <div class="price">
-          <strong>$<span class="count-up" data-target="350">350</span></strong>
-          <span>one time</span>
-        </div>
         <p class="description">
           A single-season entry for creators who want to compete now without annual membership benefits or rollover protection.
         </p>
@@ -778,11 +727,6 @@
         <div class="compare-cell">Feature</div>
         <div class="compare-cell">Tour Member</div>
         <div class="compare-cell">One-Time Entry</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell">Price</div>
-        <div class="compare-cell">$200 per year</div>
-        <div class="compare-cell">$350 one time</div>
       </div>
       <div class="compare-row">
         <div class="compare-cell">Leaderboard access</div>
@@ -823,25 +767,6 @@
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Count-up: animate a number from 0 to data-target
-      function countUp(el) {
-        if (el.dataset.done === '1') return;
-        el.dataset.done = '1';
-        var target = parseInt(el.dataset.target, 10) || 0;
-        if (reduce) { el.textContent = target; return; }
-        var duration = 1400;
-        var start = performance.now();
-        function tick(now) {
-          var t = Math.min(1, (now - start) / duration);
-          // ease-out-expo
-          var eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-          el.textContent = Math.round(target * eased);
-          if (t < 1) requestAnimationFrame(tick);
-        }
-        el.textContent = '0';
-        requestAnimationFrame(tick);
-      }
-
       // Reveal on scroll
       var revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduce) {
@@ -850,10 +775,6 @@
             if (!entry.isIntersecting) return;
             var el = entry.target;
             el.classList.add('is-visible');
-            // Trigger count-ups inside this element
-            el.querySelectorAll('.count-up').forEach(function (n) {
-              setTimeout(function () { countUp(n); }, 280);
-            });
             io.unobserve(el);
           });
         }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
@@ -861,7 +782,6 @@
         revealEls.forEach(function (el) { io.observe(el); });
       } else {
         revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-        document.querySelectorAll('.count-up').forEach(countUp);
       }
 
       // Subtle parallax on the glow line
