@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Golf × Golf Creator Open — Partnership Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
+  <meta name="description" content="Custom partnership proposal for Performance Golf — RS1 Putter as the Official Putter of the 2026 Golf Creator Open, plus a CEO sponsor exemption. October 2-4, 2026, PGA National.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0d18;
+      --bg2: #0f1524;
+      --bg3: #131c30;
+      --navy: #1a2640;
+      --gold: #c9982a;
+      --gold2: #e8b84b;
+      --gold3: #f5d07a;
+      --white: #ffffff;
+      --gray: #6b7a94;
+      --gray2: #8a9ab5;
+      --pg: #d4263a;          /* Performance Golf red accent */
+      --pg2: #f0455a;
+      --light: #f6f3ec;
+      --ink: #141b2d;
+      --ink-soft: #5a6377;
+      --gold-ink: #a87d1e;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.5; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(.2,.8,.2,1), transform 0.9s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.9s cubic-bezier(.2,.8,.2,1), transform 0.9s cubic-bezier(.2,.8,.2,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; } .d5 { transition-delay: 0.5s; } .d6 { transition-delay: 0.6s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 48px); max-width: 1200px; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 26px;
+      background: rgba(10,13,24,0.88); backdrop-filter: blur(24px);
+      border-radius: 100px; border: 1px solid rgba(201,152,42,0.18);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-vs { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold2); letter-spacing: 0.08em; }
+    .nav-pg { font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+    .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 10px 22px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(201,152,42,0.45); }
+    @media (max-width: 768px) { .nav-pg { display: none; } }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--bg); }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background-image: url('PGAHERO2.jpg'); background-size: cover; background-position: center 35%; opacity: 0.16; filter: saturate(0.8); }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 120% 80% at 50% 0%, rgba(201,152,42,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 60% at 50% 100%, rgba(212,38,58,0.10) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(10,13,24,0.55) 0%, rgba(10,13,24,0.4) 40%, rgba(10,13,24,0.9) 100%);
+    }
+    .hero-content { position: relative; z-index: 3; text-align: center; padding: 150px 24px 90px; max-width: 1000px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border-radius: 100px; margin-bottom: 30px;
+      background: rgba(201,152,42,0.1); border: 1px solid rgba(201,152,42,0.35);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold2);
+      animation: fadeUp 1s ease both;
+    }
+    .hero-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold2); box-shadow: 0 0 10px var(--gold2); }
+    .lockup { display: flex; align-items: center; justify-content: center; gap: 26px; margin-bottom: 30px; flex-wrap: wrap; animation: fadeUp 1s ease 0.15s both; }
+    .lockup img { height: 96px; width: auto; }
+    .lockup .x { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: rgba(255,255,255,0.4); }
+    .lockup .pg-name { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; line-height: 0.9; color: #fff; text-align: left; }
+    .lockup .pg-name small { display: block; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pg2); margin-top: 4px; }
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(46px, 8vw, 104px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 22px;
+      background: linear-gradient(180deg, #ffffff 25%, rgba(255,255,255,0.72) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    .hero-headline span { display: block; background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold3), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: clamp(15px, 2vw, 19px); color: rgba(255,255,255,0.55); max-width: 660px; line-height: 1.7; margin-bottom: 44px; animation: fadeUp 1s ease 0.45s both; }
+    .hero-meta { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; animation: fadeUp 1s ease 0.55s both; }
+    .hero-meta-item { text-align: center; }
+    .hero-meta-item .label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .hero-meta-item .value { font-family: 'Bebas Neue', sans-serif; font-size: clamp(20px, 3vw, 32px); letter-spacing: 0.04em; color: var(--white); }
+    .hero-meta-divider { width: 1px; background: rgba(255,255,255,0.12); align-self: stretch; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.65s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 16px 40px; border-radius: 100px; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.28s; display: inline-block; }
+    .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(201,152,42,0.48); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.22); padding: 16px 40px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.28s; display: inline-block; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-4px); }
+
+    /* ── SECTION COMMON ── */
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5.5vw, 76px); line-height: 0.93; letter-spacing: 0.02em; }
+    .section-body { font-size: 16.5px; color: rgba(255,255,255,0.55); line-height: 1.78; }
+
+    /* ── OVERVIEW ── */
+    .overview { padding: 120px 40px; position: relative; overflow: hidden; }
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .overview-text .section-title { margin: 8px 0 20px; }
+    .overview-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ov-stat { background: linear-gradient(180deg, rgba(20,28,46,0.9), rgba(10,14,24,0.9)); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 26px 24px; }
+    .ov-stat .big { font-family: 'Bebas Neue', sans-serif; font-size: 46px; line-height: 1; color: var(--gold2); }
+    .ov-stat .sm { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.5; }
+    @media (max-width: 900px) { .overview-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── CENTERPIECE (RS1) ── */
+    .center { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg2); }
+    .center::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:1200px; height:700px; background: radial-gradient(ellipse at 50% 0%, rgba(212,38,58,0.12) 0%, transparent 62%); pointer-events:none; }
+    .center-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .center-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .center-tag { display:inline-flex; align-items:center; gap:8px; padding: 8px 18px; border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px; background: linear-gradient(135deg, var(--pg), var(--pg2)); color:#fff; box-shadow: 0 4px 20px rgba(212,38,58,0.35); }
+    .center-head .section-title { margin-bottom: 18px; }
+    .center-card {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: linear-gradient(180deg, #fdfcf9 0%, #f1ece1 100%); color: var(--ink);
+      border: 1px solid rgba(212,38,58,0.25);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      padding: 0;
+    }
+    .center-card-top { background: linear-gradient(120deg, #16110f 0%, #2a0f14 100%); color:#fff; padding: 40px clamp(28px,5vw,56px); position: relative; overflow: hidden; }
+    .center-card-top::after { content:''; position:absolute; top:-40%; right:-10%; width:420px; height:420px; background: radial-gradient(circle, rgba(212,38,58,0.4), transparent 65%); pointer-events:none; }
+    .center-rs1 { font-family:'Bebas Neue',sans-serif; font-size: clamp(44px,6vw,82px); line-height: 0.9; letter-spacing: 0.02em; position: relative; z-index:1; }
+    .center-rs1 span { color: var(--pg2); }
+    .center-rs1-sub { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 14px; position:relative; z-index:1; }
+    .center-body { padding: 40px clamp(28px,5vw,56px) 48px; }
+    .center-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 40px; }
+    .center-act { display: flex; gap: 14px; align-items: flex-start; }
+    .center-act .bar { width: 4px; flex-shrink: 0; border-radius: 3px; background: linear-gradient(180deg, var(--pg), var(--pg2)); align-self: stretch; min-height: 44px; }
+    .center-act b { display:block; font-size: 14px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+    .center-act p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+    @media (max-width: 760px) { .center-grid { grid-template-columns: 1fr; } }
+
+    /* ── EXEMPTION FEATURE ── */
+    .exempt { padding: 120px 40px; position: relative; overflow: hidden; }
+    .exempt-card {
+      max-width: 1100px; margin: 0 auto; position: relative;
+      border-radius: 28px; overflow: hidden;
+      background: linear-gradient(135deg, rgba(201,152,42,0.14), rgba(201,152,42,0.04));
+      border: 1px solid rgba(201,152,42,0.3);
+      display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: stretch;
+    }
+    .exempt-photo { position: relative; min-height: 340px; background-image: url('PGAHERO1.jpg'); background-size: cover; background-position: center; }
+    .exempt-photo::after { content:''; position:absolute; inset:0; background: linear-gradient(120deg, rgba(10,13,24,0.2), rgba(10,13,24,0.75)); }
+    .exempt-photo .seal { position:absolute; bottom: 24px; left: 24px; z-index:2; background: rgba(10,13,24,0.82); backdrop-filter: blur(14px); border: 1px solid rgba(201,152,42,0.4); border-radius: 14px; padding: 14px 20px; }
+    .exempt-photo .seal .k { font-family:'Bebas Neue',sans-serif; font-size: 30px; color: var(--gold2); line-height: 1; }
+    .exempt-photo .seal .v { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .exempt-body { padding: 48px clamp(28px,4vw,52px); }
+    .exempt-body .tag { display:inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold2); padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(201,152,42,0.4); margin-bottom: 18px; }
+    .exempt-body h3 { font-family:'Bebas Neue',sans-serif; font-size: clamp(34px,4.5vw,56px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 16px; }
+    .exempt-body p { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 18px; }
+    .exempt-list { list-style:none; display:flex; flex-direction:column; gap: 11px; }
+    .exempt-list li { display:flex; gap: 12px; align-items:flex-start; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .exempt-list .ck { width:20px; height:20px; border-radius:50%; background: rgba(201,152,42,0.14); border:1px solid rgba(201,152,42,0.4); color: var(--gold2); display:flex; align-items:center; justify-content:center; font-size: 10px; flex-shrink:0; margin-top:1px; }
+    @media (max-width: 860px) { .exempt-card { grid-template-columns: 1fr; } .exempt-photo { min-height: 240px; } }
+
+    /* ── PACKAGES ── */
+    .pkgs { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg2); }
+    .pkgs-head { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+    .pkgs-head .section-title { margin-bottom: 16px; }
+    .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .pkg {
+      position: relative; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;
+      background: linear-gradient(180deg, #fdfcf9 0%, #f1ece1 100%); color: var(--ink);
+      border: 1px solid rgba(20,27,45,0.1); box-shadow: 0 28px 64px rgba(0,0,0,0.45);
+      transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.5s;
+    }
+    .pkg:hover { transform: translateY(-8px); box-shadow: 0 44px 100px rgba(0,0,0,0.55); }
+    .pkg.is-feature { border-color: rgba(212,38,58,0.35); }
+    .pkg-banner { text-align:center; padding: 9px 12px; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+    .pkg-banner.gold { background: linear-gradient(90deg, #ffd700, #ffaa00); color:#000; }
+    .pkg-banner.red { background: linear-gradient(90deg, var(--pg), var(--pg2)); color:#fff; }
+    .pkg-h { padding: 30px 30px 22px; border-bottom: 1px solid rgba(20,27,45,0.1); }
+    .pkg-tier { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+    .pkg-name { font-family:'Bebas Neue',sans-serif; font-size: 34px; letter-spacing: 0.03em; line-height: 1; color: var(--ink); margin-bottom: 14px; }
+    .pkg-price { display:flex; align-items:baseline; gap:8px; }
+    .pkg-price .num { font-family:'Bebas Neue',sans-serif; font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: 0.01em; }
+    .pkg-price .per { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+    .pkg-b { padding: 24px 30px 30px; flex: 1; }
+    .pkg-list { list-style:none; display:flex; flex-direction:column; gap: 11px; }
+    .pkg-list li { display:flex; gap: 11px; align-items:flex-start; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+    .pkg-list .ck { width:19px; height:19px; border-radius:50%; background: rgba(201,152,42,0.14); border:1px solid rgba(201,152,42,0.45); color: var(--gold-ink); display:flex; align-items:center; justify-content:center; font-size: 9px; flex-shrink:0; margin-top:1px; }
+    .pkg.is-feature .pkg-list .ck { background: rgba(212,38,58,0.1); border-color: rgba(212,38,58,0.4); color: var(--pg); }
+    .pkg-list li em { color: var(--ink); font-style: normal; font-weight: 700; }
+    @media (max-width: 760px) { .pkg-grid { grid-template-columns: 1fr; max-width: 460px; } }
+
+    /* ── HOLE ZONES ── */
+    .zones { padding: 120px 40px; position: relative; overflow: hidden; }
+    .zones-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .zones-head .section-title { margin-bottom: 16px; }
+    .zones-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1140px; margin: 0 auto 36px; }
+    .zone {
+      position: relative; border-radius: 20px; padding: 30px 26px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(20,28,46,0.95) 0%, rgba(10,14,24,0.95) 100%);
+      border: 1px solid rgba(245,160,50,0.2); transition: transform 0.4s, border-color 0.4s;
+    }
+    .zone:hover { transform: translateY(-6px); border-color: rgba(245,160,50,0.5); }
+    .zone.bear { border-color: rgba(212,38,58,0.35); background: linear-gradient(180deg, rgba(42,15,20,0.95) 0%, rgba(14,10,16,0.95) 100%); }
+    .zone-num { font-family:'Bebas Neue',sans-serif; font-size: 30px; line-height: 1; color: var(--gold2); }
+    .zone.bear .zone-num { color: var(--pg2); }
+    .zone-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin: 8px 0 16px; }
+    .zone-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 18px; min-height: 76px; }
+    .zone-price { font-family:'Bebas Neue',sans-serif; font-size: 38px; line-height: 1; color: #fff; }
+    .zone-price small { font-family:'Inter',sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+    .zones-note { text-align:center; font-size: 13px; color: rgba(255,255,255,0.45); max-width: 760px; margin: 0 auto; line-height: 1.7; }
+    .zones-note b { color: var(--gold2); }
+    @media (max-width: 980px) { .zones-grid { grid-template-columns: 1fr 1fr; max-width: 560px; } }
+    @media (max-width: 480px) { .zones-grid { grid-template-columns: 1fr; max-width: 340px; } .zone-desc { min-height: 0; } }
+
+    /* ── INVESTMENT SUMMARY ── */
+    .invest { padding: 120px 40px; position: relative; overflow: hidden; background: var(--bg2); }
+    .invest::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:1100px; height:500px; background: radial-gradient(ellipse at 50% 0%, rgba(201,152,42,0.1) 0%, transparent 60%); pointer-events:none; }
+    .invest-inner { max-width: 860px; margin: 0 auto; position: relative; z-index:1; }
+    .invest-head { text-align: center; margin-bottom: 48px; }
+    .invest-head .section-title { margin-bottom: 16px; }
+    .invest-table {
+      background: linear-gradient(180deg, rgba(20,28,46,0.95), rgba(10,14,24,0.95));
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; overflow: hidden;
+    }
+    .it-row { display:flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 22px 30px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .it-row:last-child { border-bottom: none; }
+    .it-row .it-name { font-size: 15px; font-weight: 700; color: #fff; }
+    .it-row .it-sub { font-size: 12.5px; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.5; max-width: 460px; }
+    .it-row .it-amt { font-family:'Bebas Neue',sans-serif; font-size: 28px; color: var(--gold2); white-space: nowrap; }
+    .it-sub-row { background: rgba(255,255,255,0.02); }
+    .it-subtotal { display:flex; justify-content: space-between; align-items:center; padding: 20px 30px; background: rgba(255,255,255,0.03); }
+    .it-subtotal .l { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .it-subtotal .r { font-family:'Bebas Neue',sans-serif; font-size: 30px; color: rgba(255,255,255,0.7); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.3); }
+    .it-total { display:flex; justify-content: space-between; align-items:center; padding: 28px 30px; background: linear-gradient(135deg, rgba(201,152,42,0.16), rgba(201,152,42,0.05)); border-top: 1px solid rgba(201,152,42,0.3); }
+    .it-total .l .lab { font-family:'Bebas Neue',sans-serif; font-size: 30px; letter-spacing: 0.02em; color: #fff; }
+    .it-total .l .sub { font-size: 12px; color: var(--gold3); margin-top: 4px; }
+    .it-total .r { font-family:'Bebas Neue',sans-serif; font-size: 52px; line-height: 1; background: linear-gradient(135deg, #ffd700, #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .invest-foot { text-align:center; font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 24px; line-height: 1.7; }
+    .invest-foot b { color: var(--gold2); }
+    @media (max-width: 600px) { .it-row { flex-direction: column; gap: 8px; } .it-total { flex-direction: column; gap: 12px; text-align:center; } }
+
+    /* ── CTA ── */
+    .cta { padding: 130px 40px; text-align:center; position: relative; overflow: hidden; }
+    .cta::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:100%; height:2px; background: linear-gradient(90deg, transparent, rgba(201,152,42,0.4), transparent); }
+    .cta h2 { font-family:'Bebas Neue',sans-serif; font-size: clamp(40px,5.5vw,76px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 18px; }
+    .cta p { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ── FOOTER ── */
+    footer { padding: 44px 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+    .footer-logo img { height: 70px; margin-bottom: 14px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; line-height: 1.8; }
+    .footer-copy .draft { color: rgba(255,255,255,0.4); }
+
+    @media (min-width: 1025px) { html { zoom: 0.85; } .hero { min-height: 118vh; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="gco-sponsor-deck.html" class="nav-logo">
+    <img src="GCO Logo.png" alt="Golf Creator Open">
+    <span class="nav-vs">×</span>
+    <span class="nav-pg">Performance Golf</span>
+  </a>
+  <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Custom Partnership Proposal · Prepared June 2026</div>
+    <div class="lockup">
+      <img src="GCO Logo.png" alt="Golf Creator Open">
+      <span class="x">×</span>
+      <span class="pg-name">Performance<br>Golf<small>RS1 Putter</small></span>
+    </div>
+    <h1 class="hero-headline">Own The Roll<br><span>At The Open</span></h1>
+    <p class="hero-sub">A tailored integration making the <strong style="color:#fff;">RS1 Putter the Official Putter of the 2026 Golf Creator Open</strong> — with a sponsor exemption putting Performance Golf CEO Brixton Albert directly into the field at PGA National.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Event</div><div class="value">Golf Creator Open</div></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item"><div class="label">Dates</div><div class="value">Oct 2–4, 2026</div></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item"><div class="label">Venue</div><div class="value">PGA National</div></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#investment" class="btn-gold">See The Investment</a>
+      <a href="#centerpiece" class="btn-outline">The RS1 Centerpiece</a>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="overview-grid">
+    <div class="overview-text reveal">
+      <span class="eyebrow">The Opportunity</span>
+      <h2 class="section-title">Two Brands.<br>One Creator Audience.</h2>
+      <p class="section-body" style="margin-bottom:18px;">Performance Golf has built a category-defining following by teaching everyday golfers to play better — and the RS1 Putter is the product at the center of that mission. The Golf Creator Open puts that exact audience in one place: golf's most engaged content creators, on course, on camera, for three days at PGA National.</p>
+      <p class="section-body">This proposal builds Performance Golf's presence around the putter — owning the moment where every round is won or lost — and goes a step further by seating CEO Brixton Albert in the field as a sponsor exemption. Not a logo on a banner. A founder in the content.</p>
+    </div>
+    <div class="overview-stats reveal d2">
+      <div class="ov-stat"><div class="big">3 Days</div><div class="sm">Creator Social, 18-team Scramble & Championship Sunday</div></div>
+      <div class="ov-stat"><div class="big">100+</div><div class="sm">Golf content creators competing & capturing content</div></div>
+      <div class="ov-stat"><div class="big">365</div><div class="sm">Days of activation via the Golf Creator Tour app</div></div>
+      <div class="ov-stat"><div class="big">1 of 1</div><div class="sm">Exclusive Official Putter category — owned outright</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CENTERPIECE: RS1 -->
+<section class="center" id="centerpiece">
+  <div class="center-inner">
+    <div class="center-head reveal">
+      <span class="center-tag">★ The Centerpiece</span>
+      <h2 class="section-title">The Official Putter<br>Of The Golf Creator Open</h2>
+      <p class="section-body" style="margin-top:16px;">The RS1 doesn't sit on a sign — it gets put in creators' hands at the exact moment that matters. Here's how the putter becomes the through-line of the entire weekend.</p>
+    </div>
+
+    <div class="center-card reveal-scale d2">
+      <div class="center-card-top">
+        <div class="center-rs1">RS1 <span>PUTTER</span></div>
+        <div class="center-rs1-sub">Official Putter of the 2026 Golf Creator Open</div>
+      </div>
+      <div class="center-body">
+        <div class="center-grid">
+          <div class="center-act"><div class="bar"></div><div><b>Branded Practice Putting Green</b><p>The RS1 takes over the tournament putting green — branded turf flags, signage and roll-out mats greet every creator before they tee off.</p></div></div>
+          <div class="center-act"><div class="bar"></div><div><b>RS1 Demo &amp; Fitting Station</b><p>A staffed RS1 experience where creators try the putter on camera — the single highest-converting content moment of the weekend.</p></div></div>
+          <div class="center-act"><div class="bar"></div><div><b>"RS1 Putting Challenge"</b><p>An on-site putting contest with an RS1-funded prize — purpose-built for short-form video and leaderboard buzz.</p></div></div>
+          <div class="center-act"><div class="bar"></div><div><b>RS1 in Every Welcome Kit</b><p>RS1 product or premium offer placed in all player &amp; creator welcome kits — guaranteed hands-on distribution.</p></div></div>
+          <div class="center-act"><div class="bar"></div><div><b>Season-Long App Challenge</b><p>A 90-day branded "RS1 Putting Challenge" inside the Golf Creator Tour app, extending reach far beyond event week.</p></div></div>
+          <div class="center-act"><div class="bar"></div><div><b>Protected Category Exclusivity</b><p>No other putter or putting brand at the event. The RS1 owns the category outright, on course and in app.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR EXEMPTION -->
+<section class="exempt" id="exemption">
+  <div class="exempt-card reveal-scale">
+    <div class="exempt-photo">
+      <div class="seal"><div class="k">The Field</div><div class="v">Sponsor Exemption</div></div>
+    </div>
+    <div class="exempt-body">
+      <span class="tag">★ Headline Inclusion</span>
+      <h3>Brixton Albert<br>Plays The Open</h3>
+      <p>As part of the partnership, Performance Golf CEO Brixton Albert receives a sponsor exemption into the 2026 Golf Creator Open field — competing alongside the creators, not watching from the tent.</p>
+      <ul class="exempt-list">
+        <li><span class="ck">✓</span> Guaranteed playing spot in the tournament field at PGA National</li>
+        <li><span class="ck">✓</span> Full competitor credentials across all three days of the event</li>
+        <li><span class="ck">✓</span> Naturally featured in creator content, pairings &amp; event coverage</li>
+        <li><span class="ck">✓</span> Founder-led storytelling — the RS1 in the hands of the man who built it</li>
+        <li><span class="ck">✓</span> VIP all-access &amp; hospitality for the Performance Golf team</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="pkgs" id="packages">
+  <div class="pkgs-head reveal">
+    <span class="eyebrow">The Integration</span>
+    <h2 class="section-title">What's Included</h2>
+    <p class="section-body" style="margin-top:14px;">A custom build combining the top tier of the event with the putter category — anchored by the RS1.</p>
+  </div>
+
+  <div class="pkg-grid">
+
+    <!-- OFFICIAL PUTTER (FEATURE) -->
+    <div class="pkg is-feature reveal d1">
+      <div class="pkg-banner red">★ The Centerpiece</div>
+      <div class="pkg-h">
+        <div class="pkg-tier">Official Partner · Putter Category</div>
+        <div class="pkg-name">Official Putter — RS1</div>
+        <div class="pkg-price"><span class="num">$40,000</span><span class="per">/ event</span></div>
+      </div>
+      <div class="pkg-b">
+        <ul class="pkg-list">
+          <li><span class="ck">✓</span><span><em>Official Putter of the Golf Creator Open</em> — protected, category-exclusive designation</span></li>
+          <li><span class="ck">✓</span><span>Branded practice putting green takeover + RS1 demo &amp; fitting station</span></li>
+          <li><span class="ck">✓</span><span>"RS1 Putting Challenge" on-site contest with branded prize</span></li>
+          <li><span class="ck">✓</span><span>RS1 product / offer in every player &amp; creator welcome kit</span></li>
+          <li><span class="ck">✓</span><span>90-day branded RS1 app challenge in the Golf Creator Tour app</span></li>
+          <li><span class="ck">✓</span><span>2 dedicated event-owned social placements + logo on partner board &amp; site</span></li>
+          <li><span class="ck">✓</span><span>6 months of rights to event photo &amp; video assets</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TITLE SPONSOR -->
+    <div class="pkg reveal d2">
+      <div class="pkg-banner gold">⭐ Most Exclusive — 1 Available</div>
+      <div class="pkg-h">
+        <div class="pkg-tier">Top Tier · Event Naming Rights</div>
+        <div class="pkg-name">Title Sponsor</div>
+        <div class="pkg-price"><span class="num">$100,000</span><span class="per">/ event</span></div>
+      </div>
+      <div class="pkg-b">
+        <ul class="pkg-list">
+          <li><span class="ck">✓</span><span>Exclusive event naming rights — <em>Performance Golf Creator Open</em></span></li>
+          <li><span class="ck">✓</span><span>Largest logo across all materials, app, website &amp; step-and-repeat</span></li>
+          <li><span class="ck">✓</span><span><em>Sponsor exemption for CEO Brixton Albert into the field</em></span></li>
+          <li><span class="ck">✓</span><span>Brand mention in welcome, awards &amp; trophy presentation</span></li>
+          <li><span class="ck">✓</span><span>4 dedicated social placements + 1 dedicated email feature</span></li>
+          <li><span class="ck">✓</span><span>4 VIP all-access credentials + 2-day resort accommodations</span></li>
+          <li><span class="ck">✓</span><span>12 months of asset rights + first right to renew</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOLE ZONES -->
+<section class="zones" id="zones">
+  <div class="zones-head reveal">
+    <span class="eyebrow">On-Course Real Estate</span>
+    <h2 class="section-title">Signature Hole Zones</h2>
+    <p class="section-body" style="margin-top:14px;">The most-photographed holes on the course — branded feather flags, tee markers and pin flags placed where the content actually happens.</p>
+  </div>
+
+  <div class="zones-grid">
+    <div class="zone reveal d1">
+      <div class="zone-num">01</div>
+      <div class="zone-label">The Opener</div>
+      <div class="zone-desc">First tee, first nerves, first shots of every creator's round — the day's opening content moment.</div>
+      <div class="zone-price">$10,000 <small>/ hole</small></div>
+    </div>
+    <div class="zone reveal d2">
+      <div class="zone-num">09</div>
+      <div class="zone-label">The Turn</div>
+      <div class="zone-desc">High-traffic halfway point where players regroup, refuel and the cameras keep rolling.</div>
+      <div class="zone-price">$10,000 <small>/ hole</small></div>
+    </div>
+    <div class="zone reveal d3">
+      <div class="zone-num">18</div>
+      <div class="zone-label">The Finish</div>
+      <div class="zone-desc">The closing hole — every championship moment, celebration and final putt lands here.</div>
+      <div class="zone-price">$10,000 <small>/ hole</small></div>
+    </div>
+    <div class="zone bear reveal d4">
+      <div class="zone-num">15·16·17</div>
+      <div class="zone-label">The Bear Trap</div>
+      <div class="zone-desc">PGA National's legendary three-hole stretch — the most iconic, most-captured run on the course.</div>
+      <div class="zone-price">$20,000 <small>/ zone</small></div>
+    </div>
+  </div>
+  <p class="zones-note">Premium Hole Zones 1, 9 &amp; 18 are <b>$10,000 each — or all three for $25,000</b>. The <b>Bear Trap</b> bundles holes 15, 16 &amp; 17 — the famed championship gauntlet — as a single branded zone for <b>$20,000</b>.</p>
+</section>
+
+<!-- INVESTMENT SUMMARY -->
+<section class="invest" id="investment">
+  <div class="invest-inner">
+    <div class="invest-head reveal">
+      <span class="eyebrow">The Investment</span>
+      <h2 class="section-title">Custom Package Summary</h2>
+    </div>
+
+    <div class="invest-table reveal d2">
+      <div class="it-row">
+        <div><div class="it-name">Official Putter — RS1 (Centerpiece)</div><div class="it-sub">Official Putter of the GCO · putting green takeover · demo station · RS1 putting challenge · app challenge · category exclusivity</div></div>
+        <div class="it-amt">$40,000</div>
+      </div>
+      <div class="it-row">
+        <div><div class="it-name">Title Sponsor</div><div class="it-sub">Event naming rights · largest brand presence · includes CEO sponsor exemption · 4 VIP credentials + accommodations</div></div>
+        <div class="it-amt">$100,000</div>
+      </div>
+      <div class="it-row it-sub-row">
+        <div><div class="it-name">Premium Hole Zone 1 — The Opener</div></div>
+        <div class="it-amt">$10,000</div>
+      </div>
+      <div class="it-row it-sub-row">
+        <div><div class="it-name">Premium Hole Zone 9 — The Turn</div></div>
+        <div class="it-amt">$10,000</div>
+      </div>
+      <div class="it-row it-sub-row">
+        <div><div class="it-name">Premium Hole Zone 18 — The Finish</div></div>
+        <div class="it-amt">$10,000</div>
+      </div>
+      <div class="it-row">
+        <div><div class="it-name">Bear Trap Zone (Holes 15 · 16 · 17)</div><div class="it-sub">PGA National's signature three-hole stretch as one branded zone</div></div>
+        <div class="it-amt">$20,000</div>
+      </div>
+
+      <div class="it-subtotal">
+        <span class="l">À la carte total</span>
+        <span class="r">$190,000</span>
+      </div>
+
+      <div class="it-total">
+        <div class="l">
+          <div class="lab">Founding Partner Package</div>
+          <div class="sub">Bundled rate · CEO sponsor exemption included at no additional charge</div>
+        </div>
+        <div class="r">$170,000</div>
+      </div>
+    </div>
+
+    <p class="invest-foot">Bundled <b>Founding Partner</b> rate reflects a <b>$20,000</b> integration credit for committing across tiers. Premium Hole Zones 1, 9 &amp; 18 are also available as a 3-hole bundle for <b>$25,000</b>. Pricing valid through the 2026 event cycle. À la carte components are also available individually.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Let's Put The RS1<br>In Their Hands</h2>
+  <p>Ready to make the RS1 the Official Putter of the Golf Creator Open and put Brixton in the field? Let's lock the details.</p>
+  <div class="cta-actions">
+    <a href="https://calendly.com/golfcreatoropen/30min" target="_blank" rel="noopener" class="btn-gold">Book a Call</a>
+    <a href="gco-sponsor-deck.html" class="btn-outline">View Full Sponsor Deck</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="gct-landing.html" class="footer-logo"><img src="GCO Logo.png" alt="GCO"></a>
+  <p class="footer-copy">
+    <span class="draft">Custom proposal prepared for Performance Golf · performancegolf.com</span><br>
+    © 2026 Golf Creator Open Championship · PGA National, Palm Beach Gardens, FL<br>
+    Draft for discussion — pricing &amp; inclusions subject to final agreement.
+  </p>
+</footer>
+
+<script>
+  (function () {
+    const els = document.querySelectorAll('.reveal, .reveal-scale');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+</body>
+</html>
