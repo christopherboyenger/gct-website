@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "publication": "GCT Daily",
+  "categories": [
+    "Creator Economy",
+    "Brands",
+    "Sponsorship",
+    "Media",
+    "Golf Tech",
+    "Events",
+    "Money",
+    "Travel",
+    "People",
+    "GCT Data"
+  ],
+  "automation": {
+    "maxCandidateAgeHours": 96,
+    "maxDraftsPerRun": 3,
+    "minimumHeuristicScore": 55,
+    "minimumVerificationConfidence": 80,
+    "defaultModel": "gpt-5.6-luna"
+  },
+  "verificationRules": [
+    "Discovery feeds are never sufficient on their own.",
+    "A factual external story requires either one authoritative primary source or at least two credible independent sources.",
+    "Rumor, anonymous-source speculation, social reposts without an original source, and unverified screenshots are not publishable.",
+    "If material facts conflict across sources, mark the story not publishable and explain the conflict.",
+    "Do not manufacture quotes, metrics, valuations, contract values, dates, executive titles, creator audience figures, or deal terms.",
+    "Clearly distinguish announced facts from GCT analysis.",
+    "Pure tournament scoring/results are normally out of scope unless there is a meaningful creator, media, sponsorship, technology, event-business, or commercial angle.",
+    "Political stories are out of scope unless they materially affect golf business; any such coverage must remain factual and neutral.",
+    "The GCT Take may interpret business implications but must not invent private motives or undisclosed commercial facts."
+  ],
+  "commercialIntelligence": {
+    "enabled": true,
+    "signals": [
+      "new sponsorship budget",
+      "creator campaign activity",
+      "new product launch",
+      "new venue or destination",
+      "funding or acquisition",
+      "new marketing executive",
+      "event activation",
+      "creator signing",
+      "media expansion"
+    ],
+    "rule": "Editorial coverage and commercial outreach are separate decisions. A company may be newsworthy without being an appropriate sales target."
+  }
+}
