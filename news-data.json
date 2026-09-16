@@ -1,0 +1,46 @@
+{
+  "publication": {
+    "name": "GCT Daily",
+    "eyebrow": "Golf Creator Tour Intelligence",
+    "tagline": "The business of golf creators — in five minutes.",
+    "description": "News, deals, sponsorships, media, technology and market intelligence for the golf creator economy.",
+    "updatedAt": "2026-09-16T16:49:00-04:00"
+  },
+  "categories": [
+    "Creator Economy",
+    "Brands",
+    "Sponsorship",
+    "Media",
+    "Golf Tech",
+    "Events",
+    "Money",
+    "Travel",
+    "People",
+    "GCT Data"
+  ],
+  "stories": [
+    {
+      "slug": "introducing-gct-newsroom",
+      "category": "From GCT",
+      "kicker": "Launch Note",
+      "title": "Introducing the GCT Newsroom",
+      "dek": "GCT is building an intelligence layer for the golf creator economy — connecting news, creators, brands, sponsorship opportunities and proprietary data in one place.",
+      "date": "2026-09-16",
+      "readTime": "4 min read",
+      "featured": true,
+      "sourceName": "Golf Creator Tour",
+      "sourceUrl": "https://golfcreatortour.com",
+      "image": "PGAHERO.jpg",
+      "whatHappened": "Golf Creator Tour is expanding its website with a dedicated publication focused on the business behind golf creators. The newsroom is designed to cover creator partnerships, brand campaigns, sponsorships, media, events, golf technology, funding and the people shaping the space.",
+      "whyItMatters": "Golf creator news is fragmented across social platforms, press releases, brand channels and traditional golf media. Bringing those signals together gives creators and brands a faster way to understand where attention, money and opportunity are moving.",
+      "gctTake": "The publication is not intended to be a generic golf news feed. Its edge is the creator economy: combining public reporting with GCT's direct relationships, event activity, creator network and first-party market data.",
+      "body": [
+        "The golf creator economy is growing quickly, but the information layer around it is still fragmented. Creator deals are announced on Instagram. Brand campaigns live on separate channels. Sponsorship activity is scattered across events, press releases and social posts. Useful business intelligence often disappears into the feed within hours.",
+        "GCT Daily is being built to make that information easier to follow and more useful. The publication will focus on the intersection of creators, brands, media, sponsorship, technology, events and money in golf.",
+        "The long-term goal goes beyond publishing articles. Each story can become structured intelligence: which brands are activating, which creators are growing, which executives are making decisions, which destinations are investing, and where new partnership opportunities may exist.",
+        "That creates a flywheel for the broader Golf Creator Tour ecosystem. Strong reporting attracts creators and brands. Those relationships create better information. Better information creates stronger reporting, better partnerships and more valuable proprietary data.",
+        "This first version establishes the publishing layer on the GCT website. The next phase adds automated source monitoring, story scoring, fact verification, editorial approval, newsletter distribution and multi-channel repurposing."
+      ]
+    }
+  ]
+}
