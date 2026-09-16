@@ -5,7 +5,9 @@
   "installCommand": null,
   "rewrites": [
     { "source": "/", "destination": "/gct-landing.html" },
-    { "source": "/members", "destination": "/gct-entry.html" }
+    { "source": "/members", "destination": "/gct-entry.html" },
+    { "source": "/news", "destination": "/news.html" },
+    { "source": "/news/:slug", "destination": "/news-article.html?slug=:slug" }
   ],
   "headers": [
     {
