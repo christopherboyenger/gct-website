@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "notes": "Discovery feeds are leads, not publication authority. Every external story must be independently verified before publication.",
+  "sources": [
+    {
+      "id": "creator-economy",
+      "name": "Golf creator economy discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%22golf%20creator%22%20OR%20%22golf%20influencer%22%20OR%20%22golf%20content%20creator%22&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Creator Economy", "Media", "Sponsorship"],
+      "weight": 18,
+      "discoveryOnly": true
+    },
+    {
+      "id": "brand-sponsorship",
+      "name": "Golf brand and sponsorship discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=golf%20%28sponsorship%20OR%20partnership%29%20%28creator%20OR%20influencer%20OR%20YouTube%20OR%20Instagram%29&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Brands", "Sponsorship"],
+      "weight": 20,
+      "discoveryOnly": true
+    },
+    {
+      "id": "golf-brand-business",
+      "name": "Major golf brand business moves",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%28TaylorMade%20OR%20Titleist%20OR%20Callaway%20OR%20Topgolf%20OR%20PING%20OR%20Cobra%29%20%28partnership%20OR%20campaign%20OR%20acquisition%20OR%20launch%29&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Brands", "Money", "Sponsorship"],
+      "weight": 18,
+      "discoveryOnly": true
+    },
+    {
+      "id": "golf-tech",
+      "name": "Golf technology and startup discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%22golf%20technology%22%20OR%20%22golf%20startup%22%20OR%20%22golf%20simulator%22%20OR%20%22launch%20monitor%22&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Golf Tech", "Money"],
+      "weight": 16,
+      "discoveryOnly": true
+    },
+    {
+      "id": "golf-media",
+      "name": "Golf media discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%22golf%20media%22%20OR%20%22golf%20YouTube%22%20OR%20%22golf%20podcast%22%20OR%20%22creator%20golf%22&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Media", "Creator Economy", "Events"],
+      "weight": 16,
+      "discoveryOnly": true
+    },
+    {
+      "id": "golf-money",
+      "name": "Golf funding and M&A discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=golf%20%28funding%20OR%20acquisition%20OR%20investment%20OR%20earnings%20OR%20merger%29&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Money", "Brands", "Golf Tech"],
+      "weight": 18,
+      "discoveryOnly": true
+    },
+    {
+      "id": "golf-travel",
+      "name": "Golf resort and destination discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%22golf%20resort%22%20%28partnership%20OR%20opening%20OR%20campaign%20OR%20creator%29&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Travel", "Brands", "Sponsorship"],
+      "weight": 14,
+      "discoveryOnly": true
+    },
+    {
+      "id": "creator-events",
+      "name": "Creator golf event discovery",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=%28%22creator%20golf%22%20OR%20%22golf%20creator%22%29%20%28tournament%20OR%20event%20OR%20invitational%29&hl=en-US&gl=US&ceid=US%3Aen",
+      "focus": ["Events", "Creator Economy", "Sponsorship"],
+      "weight": 18,
+      "discoveryOnly": true
+    }
+  ]
+}
