@@ -6,7 +6,7 @@
   "rewrites": [
     { "source": "/", "destination": "/gct-network.html" },
     { "source": "/creators", "destination": "/gct-landing.html" },
-    { "source": "/brands", "destination": "/gct-brands.html" },
+    { "source": "/brands", "destination": "/gct-brands-network.html" },
     { "source": "/courses", "destination": "/gct-courses.html" },
     { "source": "/members", "destination": "/gct-entry.html" },
     { "source": "/news", "destination": "/news.html" },
