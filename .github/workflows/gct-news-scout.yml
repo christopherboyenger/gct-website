@@ -1,0 +1,84 @@
+name: GCT Daily News Scout
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Four editorial sweeps per day. Approx. 7am / 11am / 3pm / 7pm ET during daylight saving time.
+    - cron: '17 11,15,19,23 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: gct-daily-news-scout
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Discover and triage stories
+        run: node scripts/news/ingest.mjs
+
+      - name: Verify and draft stories
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        run: node scripts/news/draft.mjs
+
+      - name: Assemble publication proposal
+        run: node scripts/news/publish.mjs
+
+      - name: Preserve editorial audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gct-newsroom-run-${{ github.run_id }}
+          path: .newsroom/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Check for publishable changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet -- news-data.json; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "No verified story cleared the publish threshold."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Verified story draft(s) are ready for editorial review."
+          fi
+
+      - name: Open editorial review PR
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          BRANCH="automation/gct-daily-${GITHUB_RUN_ID}"
+          git config user.name "gct-newsroom-bot"
+          git config user.email "gct-newsroom-bot@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add news-data.json
+          git commit -m "Propose verified GCT Daily stories"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "GCT Daily editorial review — $(date -u +%Y-%m-%d)" \
+            --body-file .newsroom/pr-summary.md
