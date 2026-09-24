@@ -3,6 +3,44 @@
   var doc = document.documentElement;
   doc.classList.add('js');
 
+  // Brands that have run campaigns/challenges on GCT (logo strip + simplified case studies).
+  var LOGO = 'https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/challenge-logos/sponsors/';
+  var BRANDS = [
+    { name: 'PUR3 Golf', logo: LOGO + '760726bf-1908-42dd-994c-c930cb791c05-1787108059061.jpg', category: 'Golf gloves',
+      campaign: '3 always-on glove challenges',
+      summary: 'Seeded the Tour with gloves and built a library of on-course glove content from creators competing for points.',
+      stats: [['106', 'creators joined'], ['72', 'posts created'], ['30.6K', 'verified views']] },
+    { name: 'BLURRD', logo: LOGO + 'be559f17-71c9-4b1d-8958-a9ae8234a432-1787199611185.PNG', category: 'Golf gloves',
+      campaign: 'One Club Challenge · product seeding',
+      summary: 'A play-a-hole-with-one-club brief with an organic glove moment. Creator demand more than doubled the available spots.',
+      stats: [['48', 'creator applications'], ['20', 'spots available'], ['18', 'creators approved']] },
+    { name: 'Bad Cards', logo: LOGO + '70d84494-65b4-41bc-9d46-3b92834413ec-1787069380816.png', category: 'On-course card game',
+      campaign: 'On-Course Challenge · product seeding',
+      summary: 'Creators filmed themselves drawing a card and playing the hole. One brief put the game in the hands of creators nationwide.',
+      stats: [['27', 'creator applications'], ['21', 'creators approved'], ['30', 'creator spots']] },
+    { name: 'Malcontents', logo: LOGO + '51b70968-22b5-47d7-91b5-29c1378bc950-1781117481151.jpg', category: 'Golf apparel',
+      campaign: 'Fit Check challenge',
+      summary: 'An apparel fit-check challenge that turned creators into on-course models for the brand.',
+      stats: [['10', 'creators joined'], ['6', 'fit-check posts'], ['60%', 'of creators posted']] }
+  ];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function avatar(b) {
+    return '<span class="b-av"><img src="' + b.logo + '" alt="" loading="lazy" onerror="this.remove()"><span>' + esc(b.name.charAt(0)) + '</span></span>';
+  }
+  document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
+    host.innerHTML = BRANDS.map(function (b) { return '<div class="b-chip">' + avatar(b) + '<b>' + esc(b.name) + '</b></div>'; }).join('');
+  });
+  document.querySelectorAll('[data-case-studies]').forEach(function (host) {
+    host.innerHTML = BRANDS.map(function (b, i) {
+      return '<article class="card cs rv' + (i % 2 ? ' d1' : '') + '">' +
+        '<div class="cs-head">' + avatar(b) + '<div><b>' + esc(b.name) + '</b><small>' + esc(b.category) + '</small></div></div>' +
+        '<div class="cs-tag">' + esc(b.campaign) + '</div>' +
+        '<p>' + esc(b.summary) + '</p>' +
+        '<div class="cs-stats">' + b.stats.map(function (s) { return '<div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div>' +
+        '</article>';
+    }).join('');
+  });
+
   // Creator UGC carousel — 8s muted loops in assets/ugc/creators/<name>.mp4 (+ .jpg poster).
   // Add a clip by dropping the files in that folder and adding its name here.
   var CREATOR_CLIPS = [
