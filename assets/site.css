@@ -122,27 +122,29 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
   width: calc(100% - 28px); max-width: 1240px; height: 64px;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   padding: 0 10px 0 20px; border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78); border: 1px solid var(--line);
+  background: rgba(18, 27, 54, 0.96); border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
   transition: box-shadow .3s ease, background .3s ease;
 }
-.nav.scrolled { background: rgba(255, 255, 255, 0.92); box-shadow: var(--shadow); }
+.nav.scrolled { background: #121b36; box-shadow: var(--shadow); }
 .nav-logo { display: flex; align-items: center; gap: 10px; }
 .nav-logo img { height: 44px; width: auto; }
-.nav-logo span { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.02em; line-height: 1.1; }
+.nav-logo span { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.02em; line-height: 1.1; color: #fff; }
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a {
-  padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-2);
+  padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.78);
   transition: background .2s ease, color .2s ease;
 }
-.nav-links a:hover, .nav-links a.active { background: var(--soft); color: var(--ink); }
+.nav-links a:hover, .nav-links a.active { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.nav .btn { background: var(--gold-2); border-color: var(--gold-2); color: var(--ink); }
+.nav .btn:hover { background: #e4b85a; border-color: #e4b85a; }
 .nav-right { display: flex; align-items: center; gap: 8px; }
 .menu-btn {
-  display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
-  background: var(--surface); align-items: center; justify-content: center; cursor: pointer;
+  display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06); align-items: center; justify-content: center; cursor: pointer;
 }
 .menu-btn span, .menu-btn span::before, .menu-btn span::after {
-  display: block; width: 16px; height: 1.5px; background: var(--ink); border-radius: 2px; position: relative;
+  display: block; width: 16px; height: 1.5px; background: #fff; border-radius: 2px; position: relative;
   transition: transform .25s ease, background .25s ease;
 }
 .menu-btn span::before, .menu-btn span::after { content: ''; position: absolute; left: 0; }
