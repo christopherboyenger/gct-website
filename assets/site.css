@@ -226,6 +226,11 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 }
 .tile-play svg { width: 10px; height: 10px; margin-left: 2px; fill: var(--ink); }
 
+/* App store badges under the hero phones */
+.store-badges { display: flex; justify-content: center; gap: 14px; margin-top: -24px; flex-wrap: wrap; position: relative; z-index: 3; }
+.store-badges img { height: 52px; width: auto; border-radius: 10px; }
+@media (max-width: 640px) { .store-badges { margin-top: -8px; } .store-badges img { height: 44px; } }
+
 /* App screen recording in a tile: show the whole screen, letterboxed in the app's navy */
 .tile.app-screen { background: #0f1521; }
 .tile.app-screen video { object-fit: contain; }
