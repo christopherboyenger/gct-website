@@ -3,6 +3,30 @@
   var doc = document.documentElement;
   doc.classList.add('js');
 
+  // Creator UGC carousel — 8s muted loops in assets/ugc/creators/<name>.mp4 (+ .jpg poster).
+  // Add a clip by dropping the files in that folder and adding its name here.
+  var CREATOR_CLIPS = [
+    'gct-campaigns', 'headcovers', 'course-vlog', 'seed-golf', 'creator-kit',
+    'on-course', 'par-3', 'resort-stay', 'driver', 'backyard-green'
+  ];
+  document.querySelectorAll('[data-ugc-carousel]').forEach(function (host) {
+    var half = Math.ceil(CREATOR_CLIPS.length / 2);
+    [CREATOR_CLIPS.slice(0, half), CREATOR_CLIPS.slice(half)].forEach(function (row, i) {
+      var m = document.createElement('div');
+      m.className = 'marquee ugc-row' + (i ? ' reverse' : '');
+      var track = document.createElement('div');
+      track.className = 'marquee-track';
+      row.forEach(function (name) {
+        var src = 'assets/ugc/creators/' + name;
+        track.insertAdjacentHTML('beforeend',
+          '<div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="' + src + '.jpg">' +
+          '<source src="' + src + '.mp4" type="video/mp4"></video></div>');
+      });
+      m.appendChild(track);
+      host.appendChild(m);
+    });
+  });
+
   // Nav shadow once the page scrolls
   var nav = document.querySelector('.nav');
   if (nav) {

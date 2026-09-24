@@ -242,6 +242,11 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 .marquee .photo img { height: 100%; width: auto; object-fit: cover; }
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
+/* Creator UGC carousel (rows built by site.js from CREATOR_CLIPS) */
+.ugc-row .marquee-track { animation-duration: 48s; }
+.ugc-row .tile { width: 240px; }
+.ugc-row.reverse .marquee-track { animation-duration: 54s; }
+
 /* ---------- Stats ---------- */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); overflow: hidden; box-shadow: var(--shadow-sm); }
 .stats.three { grid-template-columns: repeat(3, 1fr); }
@@ -455,7 +460,7 @@ a.mcard:hover .media img, .mcard.hover:hover .media img { transform: scale(1.04)
   .mcard.tall .media { aspect-ratio: 4 / 3; }
   .float-chip { padding: 10px 12px 10px 10px; }
   .float-chip b { font-size: 15px; }
-  .marquee .tile { width: 170px; }
+  .marquee .tile, .ugc-row .tile { width: 170px; }
   .marquee .photo { height: 302px; }
   .wall { padding-bottom: 84px; }
   .feature { min-height: 480px; }
