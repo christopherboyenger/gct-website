@@ -7,35 +7,129 @@
   <meta name="description" content="Partner with Golf Creator Tour to bring golf creators to your course, resort or destination and turn hosted experiences into distributed creator media.">
   <meta property="og:title" content="Courses & Destinations — Golf Creator Tour">
   <meta property="og:description" content="Bring creators onsite. Turn golf experiences into distributed media.">
-  <meta name="theme-color" content="#0f1524">
+  <meta name="theme-color" content="#faf9f6">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:#0f1524;color:#fff;overflow-x:hidden}a{text-decoration:none;color:inherit}:root{--gold:#c9982a;--gold2:#e8b84b;--light:#f5f1e8;--ink:#141b2d;--muted:#9aa7bd}
-    nav{position:fixed;z-index:50;top:20px;left:50%;transform:translateX(-50%);width:calc(100% - 40px);max-width:1200px;padding:13px 20px;border:1px solid rgba(201,152,42,.2);border-radius:999px;background:rgba(9,13,24,.88);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between}.logo img{height:42px}.links{display:flex;gap:26px}.links a{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:rgba(255,255,255,.65)}.cta,.goldbtn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#080b11;border-radius:999px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.cta{padding:11px 20px;font-size:11px}.goldbtn{display:inline-flex;padding:16px 28px;font-size:12px}.outline{display:inline-flex;padding:15px 28px;border:1px solid rgba(255,255,255,.24);border-radius:999px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
-    .hero{min-height:86vh;position:relative;display:flex;align-items:end;padding:150px 28px 75px;background:linear-gradient(90deg,rgba(8,12,22,.96),rgba(8,12,22,.55)),url('PGAHERO1.jpg') center/cover}.wrap{width:100%;max-width:1200px;margin:auto}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:800;color:var(--gold2);margin-bottom:18px}.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,10vw,132px);line-height:.86;max-width:930px}.hero p{font-size:18px;line-height:1.7;color:rgba(255,255,255,.7);max-width:690px;margin:26px 0 32px}.actions{display:flex;gap:12px;flex-wrap:wrap}
-    section{padding:110px 28px}.light{background:var(--light);color:var(--ink)}.dark2{background:#121a2c}.head{max-width:800px;margin-bottom:50px}.head.center{text-align:center;margin-left:auto;margin-right:auto}.head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,82px);line-height:.95}.head p{font-size:16px;line-height:1.75;color:#616b7c;margin-top:18px}.dark2 .head p{color:rgba(255,255,255,.58)}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:30px;border-radius:20px;background:#fff;border:1px solid rgba(20,27,45,.08)}.card .num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(201,152,42,.3)}.card h3{font-size:19px;margin:16px 0 9px}.card p{font-size:14px;line-height:1.65;color:#667085}
-    .offers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.offer{padding:30px;border-radius:20px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.offer h3{font-family:'Bebas Neue',sans-serif;font-size:34px}.offer p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.58);margin-top:10px}.offer ul{list-style:none;margin-top:18px;display:grid;gap:8px}.offer li{font-size:13px;color:rgba(255,255,255,.78)}.offer li:before{content:'✓';color:var(--gold2);margin-right:8px;font-weight:900}
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.photo{min-height:520px;border-radius:24px;background:linear-gradient(180deg,transparent 40%,rgba(5,8,14,.75)),url('PGAHERO2.jpg') center/cover}.copy h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,82px);line-height:.95}.copy p{font-size:16px;line-height:1.75;color:#626d7f;margin:20px 0}.steps{display:grid;gap:12px;margin:28px 0}.step{padding:16px 18px;border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0}.step strong{display:block;font-size:14px}.step span{font-size:13px;color:#6d7585}
-    .final{text-align:center;background:#090d16}.final h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,108px);line-height:.9}.final p{max-width:660px;margin:20px auto 32px;line-height:1.7;color:rgba(255,255,255,.58)}footer{padding:30px 28px;border-top:1px solid rgba(255,255,255,.07);font-size:11px;color:rgba(255,255,255,.35)}.foot{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footlinks{display:flex;gap:18px}
-    @media(max-width:900px){.links{display:none}.grid3{grid-template-columns:1fr}.offers,.split{grid-template-columns:1fr}.hero{min-height:78vh}.photo{min-height:400px}}
-    @media(max-width:600px){section{padding:90px 20px}.hero{padding:135px 20px 60px}.hero h1{font-size:68px}.cta{display:none}}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<nav><a class="logo" href="/"><img src="logo-gct-icon.png.png" alt="Golf Creator Tour"></a><div class="links"><a href="/creators">Creators</a><a href="/brands">Brands</a><a href="/courses">Courses</a><a href="/creators#venue">Events</a></div><a class="cta" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Partner With GCT</a></nav>
+<nav class="nav" aria-label="Main">
+  <a class="nav-logo" href="/"><img src="assets/brand/gct-icon-white.png" alt="Golf Creator Tour"></a>
+  <div class="nav-links"><a href="/creators">Creators</a><a href="/brands">Brands</a><a href="/courses" class="active">Courses</a><a href="/creators#venue">Events</a></div>
+  <div class="nav-right">
+    <a class="btn sm" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Partner With GCT</a>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu"><a href="/creators">Creators</a><a href="/brands">Brands</a><a href="/courses">Courses</a><a href="/creators#venue">Events</a><a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Partner With GCT</a></div>
 
-<header class="hero"><div class="wrap"><div class="eyebrow">Courses · Resorts · Destinations</div><h1>Turn a Great Golf Experience Into <span style="color:var(--gold2)">Distributed Media.</span></h1><p>Bring GCT creators to your property, course or destination and give them something worth sharing. GCT helps connect the experience, the creators and the campaign objective.</p><div class="actions"><a class="goldbtn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Build a Partnership</a><a class="outline" href="/brands">Explore Brand Campaigns</a></div></div></header>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="h1 rv d1">Turn a Great Golf Experience Into <em>Distributed Media.</em></h1>
+      <p class="lead rv d2">Bring GCT creators to your property, course or destination and give them something worth sharing. GCT helps connect the experience, the creators and the campaign objective.</p>
+      <div class="actions rv d3"><a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Build a Partnership <span class="arr">→</span></a><a class="btn ghost" href="/brands">Explore Brand Campaigns</a></div>
+    </div>
+    <div class="rv d2" style="position:relative">
+      <div class="frame" style="aspect-ratio:4/5"><img src="assets/photos/pga-green.jpg" alt="PGA National Resort green"></div>
+      <div class="tile" style="position:absolute;width:38%;left:-10%;bottom:-36px;transform:rotate(-3deg)" aria-hidden="true"><video data-autoplay muted playsinline loop preload="metadata" poster="assets/ugc/tee.jpg"><source src="assets/ugc/tee.mp4" type="video/mp4"></video><div class="tile-tag"><span class="av"></span>@golfcreatortour</div></div>
+    </div>
+  </div>
+</header>
 
-<section class="light"><div class="wrap"><div class="head"><div class="eyebrow">Why GCT</div><h2>Creator Marketing Built Around the Property.</h2><p>A hosted round can be more than hospitality. With the right creators, objectives and deliverables, it becomes a content engine that introduces golfers to your course, resort or destination through people they already follow.</p></div><div class="grid3"><div class="card"><div class="num">01</div><h3>Host the Right Creators</h3><p>Build an activation around creator fit, geography, content style and the audience you want to reach.</p></div><div class="card"><div class="num">02</div><h3>Create the Experience</h3><p>Golf can be paired with lodging, dining, amenities, local businesses and destination experiences.</p></div><div class="card"><div class="num">03</div><h3>Distribute the Story</h3><p>Creators turn the hosted experience into social content and GCT campaign deliverables across the network.</p></div></div></div></section>
+<section class="wall" style="padding-top:70px" aria-label="Creator content">
+  <div data-ugc-carousel></div>
+</section>
 
-<section class="dark2"><div class="wrap"><div class="head center"><div class="eyebrow">Partnership formats</div><h2>Start Small or Build the Destination.</h2><p>Partnerships can range from individual hosted creator rounds to multi-day destination campaigns.</p></div><div class="offers"><div class="offer"><h3>Hosted Creator Round</h3><p>A lightweight activation for courses looking to generate authentic social content and introduce the property to new golfers.</p><ul><li>Creator matching</li><li>Hosted golf experience</li><li>Defined content deliverables</li><li>Campaign coordination</li></ul></div><div class="offer"><h3>Course Takeover</h3><p>Bring multiple creators onsite at the same time to create a concentrated burst of content and community activity.</p><ul><li>Multi-creator activation</li><li>Challenges or competition</li><li>Brand integration opportunities</li><li>On-property social moments</li></ul></div><div class="offer"><h3>Stay & Play Campaign</h3><p>Package golf, hotel and hospitality into a richer creator experience that tells the full resort story.</p><ul><li>Golf + lodging</li><li>Food and beverage</li><li>Property amenities</li><li>Multi-day content</li></ul></div><div class="offer"><h3>Destination Campaign</h3><p>Create a multi-property trip that turns golf travel into a coordinated creator media campaign.</p><ul><li>Multiple courses</li><li>Hotels and local partners</li><li>Travel-focused creators</li><li>Distributed destination storytelling</li></ul></div></div></div></section>
+<section class="section white">
+  <div class="wrap">
+    <div class="head rv"><div class="eyebrow">Why GCT</div><h2 class="h2">Creator Marketing <em>Built Around the Property.</em></h2><p class="lead">A hosted round can be more than hospitality. With the right creators, objectives and deliverables, it becomes a content engine that introduces golfers to your course, resort or destination through people they already follow.</p></div>
+    <div class="grid g3">
+      <div class="card rv"><span class="num">01</span><h3>Host the Right Creators</h3><p>Build an activation around creator fit, geography, content style and the audience you want to reach.</p></div>
+      <div class="card rv d1"><span class="num">02</span><h3>Create the Experience</h3><p>Golf can be paired with lodging, dining, amenities, local businesses and destination experiences.</p></div>
+      <div class="card rv d2"><span class="num">03</span><h3>Distribute the Story</h3><p>Creators turn the hosted experience into social content and GCT campaign deliverables across the network.</p></div>
+    </div>
+  </div>
+</section>
 
-<section class="light"><div class="wrap split"><div class="photo"></div><div class="copy"><div class="eyebrow">How it works</div><h2>From Property to Campaign.</h2><p>GCT can structure the creator side of the activation while your team focuses on delivering the experience guests should remember.</p><div class="steps"><div class="step"><strong>1. Define the objective</strong><span>Awareness, bookings, launch, destination exposure or reusable content.</span></div><div class="step"><strong>2. Build the creator mix</strong><span>Select for audience, location, platform, style and campaign fit.</span></div><div class="step"><strong>3. Host the experience</strong><span>Golf, hospitality and local moments become the content environment.</span></div><div class="step"><strong>4. Publish and measure</strong><span>Track the agreed campaign deliverables and performance.</span></div></div><a class="goldbtn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Discuss Your Property</a></div></div></section>
+<section class="wall" style="padding-top:100px" aria-label="Creator content from the Golf Creator Open">
+  <div class="wall-head"><div class="eyebrow">Golf Creator Open · 2025</div></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tournament-day.jpg" aria-label="Golf Creator Open tournament day"><source src="assets/ugc/gco/tournament-day.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-legato.jpg" alt="Legato golf balls at the Golf Creator Open" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/vip-night.jpg" aria-label="Golf Creator Open VIP Night"><source src="assets/ugc/gco/vip-night.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-champions.jpg" alt="Golf Creator Open champions with the trophy" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/social-crew.jpg" alt="Creators at the Golf Creator Open social" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/glove-giveaway.jpg" aria-label="PUR3 glove giveaway at the Golf Creator Open"><source src="assets/ugc/gco/glove-giveaway.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-polo.jpg" alt="Creator holding up a new polo" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/creators-red.jpg" alt="Creators on course" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tee-shot.jpg" aria-label="Creator tee shot at the Golf Creator Open"><source src="assets/ugc/gco/tee-shot.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/cart-ride.jpg" aria-label="Creators riding out to the course at the Golf Creator Open"><source src="assets/ugc/gco/cart-ride.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-vip-social.jpg" alt="Creators at the VIP social" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/merch-booth.jpg" alt="Brand merch booth with creators" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/trip-vlog.jpg" aria-label="Creator trip vlog from the Golf Creator Open"><source src="assets/ugc/gco/trip-vlog.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-creators-night.jpg" alt="Creators at the Golf Creator Open night event" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/creator-cart.jpg" alt="Creator with a golf cart" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/gco-cart-duo.jpg" alt="Creators in a golf cart at the Golf Creator Open" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/gco-champions-backdrop.jpg" alt="Champions on the Golf Creator Open step-and-repeat" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/social-night.jpg" alt="Creators at the creator social" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
-<section class="final"><div class="wrap"><div class="eyebrow">2027 partnerships</div><h2>Put Your Course Inside the Network.</h2><p>We are opening the next GCT season to more course, resort and destination partnerships. Start the conversation now and build the right activation before the season begins.</p><a class="goldbtn" href="mailto:info@golfcreatoropen.com?subject=2027%20GCT%20Course%20Partnership">Partner With GCT</a></div></section>
-<footer><div class="foot"><div>© 2026 Golf Creator Tour</div><div class="footlinks"><a href="/">Home</a><a href="/creators">Creators</a><a href="/brands">Brands</a><a href="mailto:info@golfcreatoropen.com">Contact</a></div></div></footer>
+<section class="section soft">
+  <div class="wrap">
+    <div class="head center rv"><div class="eyebrow">Partnership formats</div><h2 class="h2">Start Small or <em>Build the Destination.</em></h2><p class="lead">Partnerships can range from individual hosted creator rounds to multi-day destination campaigns.</p></div>
+    <div class="grid g2">
+      <div class="card mcard hover rv"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/creator-swing.jpg" alt="" loading="lazy" style="object-position:center 25%"></div><div class="content"><h3>Hosted Creator Round</h3><p>A lightweight activation for courses looking to generate authentic social content and introduce the property to new golfers.</p><ul class="checks" style="margin-top:20px"><li>Creator matching</li><li>Hosted golf experience</li><li>Defined content deliverables</li><li>Campaign coordination</li></ul></div></div>
+      <div class="card mcard hover rv d1"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/creators-huddle.jpg" alt="" loading="lazy"></div><div class="content"><h3>Course Takeover</h3><p>Bring multiple creators onsite at the same time to create a concentrated burst of content and community activity.</p><ul class="checks" style="margin-top:20px"><li>Multi-creator activation</li><li>Challenges or competition</li><li>Brand integration opportunities</li><li>On-property social moments</li></ul></div></div>
+      <div class="card mcard hover rv"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/open-sunday.jpg" alt="" loading="lazy"></div><div class="content"><h3>Stay &amp; Play Campaign</h3><p>Package golf, hotel and hospitality into a richer creator experience that tells the full resort story.</p><ul class="checks" style="margin-top:20px"><li>Golf + lodging</li><li>Food and beverage</li><li>Property amenities</li><li>Multi-day content</li></ul></div></div>
+      <div class="card mcard hover rv d1"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/pga-national.jpg" alt="" loading="lazy"></div><div class="content"><h3>Destination Campaign</h3><p>Create a multi-property trip that turns golf travel into a coordinated creator media campaign.</p><ul class="checks" style="margin-top:20px"><li>Multiple courses</li><li>Hotels and local partners</li><li>Travel-focused creators</li><li>Distributed destination storytelling</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="wrap split">
+    <div class="frame rv" style="aspect-ratio:4/5"><img src="assets/photos/pga-bear.jpg" alt="PGA National Resort" loading="lazy"></div>
+    <div class="rv d1">
+      <div class="eyebrow">How it works</div>
+      <h2 class="h2">From Property <em>to Campaign.</em></h2>
+      <p class="lead">GCT can structure the creator side of the activation while your team focuses on delivering the experience guests should remember.</p>
+      <div class="flow" style="margin-bottom:32px">
+        <div class="flow-row"><span class="n">1</span><strong>Define the objective<span>Awareness, bookings, launch, destination exposure or reusable content.</span></strong></div>
+        <div class="flow-row"><span class="n">2</span><strong>Build the creator mix<span>Select for audience, location, platform, style and campaign fit.</span></strong></div>
+        <div class="flow-row"><span class="n">3</span><strong>Host the experience<span>Golf, hospitality and local moments become the content environment.</span></strong></div>
+        <div class="flow-row"><span class="n">4</span><strong>Publish and measure<span>Track the agreed campaign deliverables and performance.</span></strong></div>
+      </div>
+      <a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Discuss Your Property <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-panel rv">
+      <div class="eyebrow">2027 partnerships</div>
+      <h2 class="h2">Put Your Course <em>Inside the Network.</em></h2>
+      <p>We are opening the next GCT season to more course, resort and destination partnerships. Start the conversation now and build the right activation before the season begins.</p>
+      <div class="actions center"><a class="btn gold" href="mailto:info@golfcreatoropen.com?subject=2027%20GCT%20Course%20Partnership">Partner With GCT <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="footer-brand" href="/"><img src="assets/brand/gct-full-ink.png" alt="Golf Creator Tour"></a>
+      <div class="footer-links"><a href="/">Home</a><a href="/creators">Creators</a><a href="/brands">Brands</a><a href="mailto:info@golfcreatoropen.com">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Golf Creator Tour</div></div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
 </body>
 </html>

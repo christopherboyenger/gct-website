@@ -6,7 +6,8 @@
   <title>The Golf Creator Tour — Create · Compete · Connect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
   <meta name="description" content="The global online competitive platform built for golf content creators. Earn points through Creator Matches, Sponsored Challenges, and Social Media Growth. Top 100 earn a spot at the 2nd Annual Golf Creator Open.">
   <meta property="og:title" content="The Golf Creator Tour — Create · Compete · Connect">
@@ -17,862 +18,7 @@
   <meta property="og:image:height" content="1200">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="The%20Golf%20Creator%20Tour%20logo.png">
-  <meta name="theme-color" content="#c9982a">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0f1524;
-      --bg2: #131c30;
-      --navy: #1a2640;
-      --gold: #c9982a;
-      --gold2: #e8b84b;
-      --gold3: #f5d07a;
-      --white: #ffffff;
-      --gray: #6b7a94;
-      --gray2: #8a9ab5;
-      /* Light section palette (for alternating dark/light rhythm) */
-      --light: #f6f3ec;
-      --light2: #ece6db;
-      --ink: #141b2d;
-      --ink-soft: #5a6377;
-      --gold-ink: #a87d1e;
-    }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; position: relative; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 48px); max-width: 1200px; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 28px;
-      background: rgba(12, 15, 26, 0.85); backdrop-filter: blur(24px);
-      border-radius: 100px; border: 1px solid rgba(201,152,42,0.18);
-      transition: background 0.3s;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { }
-    .nav-logo-text { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); text-transform: uppercase; line-height: 1.3; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 10px 26px; border-radius: 100px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s; }
-    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(201,152,42,0.4); }
-
-    /* HERO */
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-video {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      z-index: 0; opacity: 0.45;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        radial-gradient(ellipse 100% 100% at 100% 0%, rgba(15,21,36,0.70) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(8,9,15,0.52) 0%, rgba(12,18,32,0.45) 50%, rgba(8,12,24,0.52) 100%);
-    }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-    .hero-content {
-      position: relative; z-index: 3; text-align: center;
-      padding: 140px 24px 80px; max-width: 960px; width: 100%;
-    }
-    .hero-logo-wrap { margin: 0 auto 36px; width: 200px; height: 200px; }
-    .hero-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(58px, 9vw, 130px);
-      line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 18px;
-      background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.75) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-tagline-gold {
-      display: block; font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(22px, 3.5vw, 44px); letter-spacing: 0.12em;
-      background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold3), var(--gold2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-top: 8px;
-    }
-    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 44px; letter-spacing: 0.01em; line-height: 1.7; max-width: 680px; margin-left: auto; margin-right: auto; }
-    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; border: none; padding: 16px 40px; border-radius: 100px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; }
-    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201,152,42,0.45); }
-    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.25); padding: 16px 40px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-    /* Scroll badge */
-    .scroll-badge { position: absolute; bottom: 44px; left: 72px; width: 84px; height: 84px; z-index: 4; }
-    .scroll-badge-ring { width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; position: relative; }
-    .scroll-badge svg { position: absolute; top: 0; left: 0; animation: spin 12s linear infinite; }
-    .scroll-arrow { font-size: 16px; color: rgba(255,255,255,0.5); position: relative; z-index: 1; }
-
-    /* STATS */
-    .stats-bar { padding: 64px 40px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .stats-inner { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
-    .stat { text-align: center; }
-    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 6vw, 88px); line-height: 1; background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.75) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .stat-lbl { font-size: 12px; color: var(--gray2); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
-
-    /* TICKER */
-    .ticker { padding: 22px 0; overflow: hidden; background: rgba(201,152,42,0.035); border-bottom: 1px solid rgba(201,152,42,0.08); }
-    .ticker-inner { display: flex; width: max-content; animation: ticker-move 36s linear infinite; white-space: nowrap; will-change: transform; }
-    .t-item { display: inline-flex; align-items: center; gap: 20px; padding: 0 36px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); flex-shrink: 0; }
-    .t-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    @keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* PLATFORM */
-    .platform { padding: 130px 40px; text-align: center; position: relative; }
-    .platform::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(201,152,42,0.07) 0%, transparent 70%); pointer-events: none; }
-    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 80px); line-height: 1; letter-spacing: 0.02em; max-width: 820px; margin: 0 auto 22px; }
-    .section-body { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0 auto 48px; line-height: 1.75; }
-
-    /* CREATORS */
-    .creators { padding: 40px 40px 120px; }
-    .creators h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5vw, 64px); letter-spacing: 0.02em; text-align: center; margin-bottom: 56px; }
-    .creators-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
-    .creator-card {
-      position: relative; border-radius: 20px; overflow: hidden;
-      aspect-ratio: 3/4; border: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(160deg, #1a2640 0%, #0f1524 100%);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .creator-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
-    .creator-card-glow { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(201,152,42,0.08) 0%, rgba(9,13,22,0.7) 50%, rgba(8,9,15,0.95) 100%); }
-    .creator-card-body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
-    .creator-av { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold2)); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; color: #000; margin-bottom: 14px; border: 2px solid rgba(201,152,42,0.5); }
-    .creator-name { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
-    .creator-handle { font-size: 13px; color: var(--gold2); margin-bottom: 10px; }
-    .creator-pts { font-size: 22px; font-weight: 800; }
-    .creator-pts span { font-size: 12px; font-weight: 400; color: var(--gray2); margin-left: 3px; }
-    .creator-rank { display: inline-block; margin-top: 10px; background: rgba(201,152,42,0.15); border: 1px solid rgba(201,152,42,0.35); color: var(--gold2); padding: 4px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-
-    /* HOW IT WORKS */
-    .how { padding: 120px 40px; background: var(--bg2); position: relative; }
-    .how::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(201,152,42,0.055) 0%, transparent 70%); pointer-events: none; }
-    .how-header { text-align: center; margin-bottom: 72px; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.04); }
-    .step { background: var(--bg2); padding: 48px 32px; position: relative; transition: background 0.3s; }
-    .step:hover { background: rgba(201,152,42,0.035); }
-    .step-n { font-family: 'Bebas Neue', sans-serif; font-size: 90px; color: rgba(255,255,255,0.03); position: absolute; top: 16px; right: 20px; line-height: 1; }
-    .step-icon { font-size: 34px; margin-bottom: 22px; }
-    .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-    .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.02em; margin-bottom: 14px; }
-    .step-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
-
-    /* HOW — REDESIGNED */
-    .how { overflow: hidden; }
-    .aurora { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; opacity: 0.6; z-index: 0; }
-    .aurora-1 { width: 600px; height: 600px; top: -160px; left: -160px; background: radial-gradient(circle, rgba(201,152,42,0.18), transparent 60%); animation: drift 18s ease-in-out infinite alternate; }
-    .aurora-2 { width: 720px; height: 720px; bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(232,184,75,0.12), transparent 60%); animation: drift 22s ease-in-out infinite alternate-reverse; }
-    @keyframes drift {
-      0% { transform: translate(0,0) scale(1); }
-      100% { transform: translate(40px,30px) scale(1.1); }
-    }
-
-    .how-cards {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-      max-width: 1280px; margin: 0 auto; padding: 0 24px;
-      position: relative; z-index: 1;
-    }
-    .how-card {
-      position: relative; padding: 32px 28px 36px; border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(20,28,46,0.92) 0%, rgba(10,14,26,0.92) 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
-      overflow: hidden; isolation: isolate;
-      transition: transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.6s, border-color 0.6s;
-      transform-style: preserve-3d;
-    }
-    .how-card::before {
-      content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-      background: linear-gradient(140deg, rgba(201,152,42,0.55), rgba(255,255,255,0.04) 35%, rgba(201,152,42,0.0) 60%, rgba(232,184,75,0.45) 100%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      opacity: 0.55; transition: opacity 0.6s;
-      pointer-events: none;
-    }
-    .how-card:hover { border-color: rgba(201,152,42,0.25); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.5); }
-    .how-card:hover::before { opacity: 1; }
-    .hc-glow {
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,15%), rgba(201,152,42,0.20), transparent 55%);
-      opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 0;
-    }
-    .how-card:hover .hc-glow { opacity: 1; }
-    .hc-orbit {
-      position: absolute; width: 480px; height: 480px; right: -190px; top: -150px;
-      border: 1px solid rgba(201,152,42,0.10); border-radius: 50%;
-      animation: spin 28s linear infinite; pointer-events: none; z-index: 0;
-    }
-    .hc-orbit::after {
-      content: ''; position: absolute; left: 50%; top: -3px; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--gold2); box-shadow: 0 0 16px var(--gold2);
-      transform: translateX(-50%);
-    }
-
-    .hc-meta { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; position: relative; z-index: 2; }
-    .hc-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 1; letter-spacing: 0.02em;
-      background: linear-gradient(180deg, rgba(201,152,42,0.85), rgba(201,152,42,0.0));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hc-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
-
-    .hc-stage {
-      position: relative; height: 460px; display: flex; align-items: flex-end; justify-content: center;
-      perspective: 1400px; margin-bottom: 26px; z-index: 2;
-    }
-    .hc-stage::before {
-      content: ''; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
-      width: 78%; height: 36px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.65), transparent 70%);
-      filter: blur(6px); z-index: 0;
-    }
-
-    /* PHONE */
-    .phone {
-      position: relative; width: 248px; height: 510px; border-radius: 38px;
-      background: linear-gradient(160deg, #1a1d28, #06080e);
-      box-shadow:
-        0 28px 60px rgba(0,0,0,0.55),
-        inset 0 0 0 1px rgba(255,255,255,0.06),
-        inset 0 0 0 4px #0a0c14;
-      transform: translateY(40px) rotateX(8deg) rotateY(-12deg) rotateZ(-2deg);
-      transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
-      animation: float 6s ease-in-out infinite;
-    }
-    .how-card:hover .phone { transform: translateY(20px) rotateX(2deg) rotateY(-4deg) rotateZ(0); }
-    @keyframes float {
-      0%,100% { translate: 0 0; }
-      50% { translate: 0 -8px; }
-    }
-    .phone-2 { animation-delay: -2s; }
-    .phone-3 { animation-delay: -4s; }
-    .phone-notch {
-      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-      width: 78px; height: 16px; background: #000; border-radius: 100px; z-index: 3;
-    }
-    .phone-screen {
-      position: absolute; inset: 8px; border-radius: 32px; overflow: hidden;
-      background: #0a0d18;
-      font-family: 'Inter', sans-serif;
-    }
-    .phone-screen img.ps-shot {
-      display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center;
-    }
-
-    /* phone bottom nav */
-    .ps-nav {
-      position: absolute; left: 0; right: 0; bottom: 0; height: 32px;
-      background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex; align-items: center; justify-content: space-around;
-      padding: 0 8px;
-    }
-    .ps-nav-item { display: flex; flex-direction: column; align-items: center; gap: 1px; color: rgba(255,255,255,0.45); position: relative; }
-    .ps-nav-item svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
-    .ps-nav-item span { font-size: 6px; font-weight: 600; letter-spacing: 0.04em; }
-    .ps-nav-item.on { color: #fff; }
-    .ps-nav-item.on::after {
-      content: ''; position: absolute; bottom: -3px; width: 3px; height: 3px;
-      border-radius: 50%; background: var(--gold2);
-    }
-
-    /* status icons */
-    .ps-bed { display: inline-block; width: 7px; height: 5px; background: rgba(255,255,255,0.7); border-radius: 1px 1px 2px 2px; margin-left: 3px; vertical-align: middle; }
-    .ps-bed::before { content: ''; display: block; width: 7px; height: 1.5px; background: rgba(255,255,255,0.7); margin-top: -2px; border-radius: 1px; }
-
-    /* rank chip */
-    .ps-rank { font-style: normal; font-size: 6px; padding: 1px 4px; background: rgba(201,152,42,0.18); color: var(--gold2); border-radius: 3px; font-weight: 800; margin-left: 3px; }
-
-    /* dropdown row (connect) */
-    .ps-dd-row { display: flex; gap: 4px; }
-    .ps-dd { flex: 1; font-size: 7px; padding: 5px 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.85); }
-    .ps-dd::after { content: '▾'; font-size: 6px; color: rgba(255,255,255,0.4); }
-    .ps-section-lbl { display: flex; justify-content: space-between; font-size: 6px; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); padding: 0 2px; }
-
-    /* challenge points text variant */
-    .ps-points b.muted { color: rgba(255,255,255,0.85); text-shadow: none; }
-    .ps-chal-brand-name { font-size: 6px; color: rgba(255,255,255,0.5); font-weight: 600; margin-left: auto; }
-    .ps-chal-head { display: flex; align-items: center; gap: 4px; }
-    .chal-tag.standard-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
-
-    /* status row */
-    .ps-status { display: flex; justify-content: space-between; font-size: 8px; color: rgba(255,255,255,0.65); padding: 0 6px 2px; font-weight: 700; }
-    .ps-icons { letter-spacing: 0.05em; }
-
-    /* topbar */
-    .ps-topbar { display: flex; justify-content: space-between; align-items: center; padding: 0 4px; }
-    .ps-iconbtn { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
-    .ps-logo { font-size: 14px; color: var(--gold2); }
-
-    /* CONNECT (card 1) */
-    .ps-center { text-align: center; margin-top: 2px; }
-    .ps-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: rgba(255,255,255,0.85); }
-    .ps-subtle { font-size: 8px; color: rgba(255,255,255,0.45); margin-top: 2px; }
-    .ps-statrow { display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; }
-    .ps-statrow > div { display: flex; flex-direction: column; align-items: center; flex: 1; }
-    .ps-statrow b { font-family: 'Bebas Neue', sans-serif; font-size: 18px; line-height: 1; }
-    .ps-statrow span { font-size: 7px; color: rgba(255,255,255,0.45); margin-top: 2px; letter-spacing: 0.05em; }
-    .ps-divv { width: 1px; height: 18px; background: rgba(255,255,255,0.08); flex: 0 0 auto; }
-    .ps-tabs { display: flex; gap: 4px; }
-    .ps-tab { flex: 1; text-align: center; font-size: 8px; padding: 5px 0; border-radius: 6px; color: rgba(255,255,255,0.5); position: relative; }
-    .ps-tab.on { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; font-weight: 800; }
-    .ps-tab .ps-badge { position: absolute; top: -3px; right: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); color: #000; font-size: 7px; font-weight: 800; font-style: normal; display: inline-flex; align-items: center; justify-content: center; }
-    .ps-list { display: flex; flex-direction: column; gap: 5px; }
-    .ps-creator { display: flex; align-items: center; gap: 7px; padding: 7px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; opacity: 0; transform: translateY(8px); animation: rowIn 0.6s forwards; }
-    @keyframes rowIn { to { opacity: 1; transform: translateY(0); } }
-    .how-card:hover .ps-creator.s1 { animation-delay: 0.1s; }
-    .how-card:hover .ps-creator.s2 { animation-delay: 0.25s; }
-    .how-card:hover .ps-creator.s3 { animation-delay: 0.4s; }
-    .ps-creator.s1 { animation-delay: 0.2s; }
-    .ps-creator.s2 { animation-delay: 0.35s; }
-    .ps-creator.s3 { animation-delay: 0.5s; }
-    .ps-av { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, #444, #222); }
-    .av-a { background: linear-gradient(135deg, #4f6b8a, #1a2235); }
-    .av-b { background: linear-gradient(135deg, #d49b6b, #8a4a2a); }
-    .av-c { background: linear-gradient(135deg, #6a8c5a, #2a3a25); }
-    .ps-cr-info { flex: 1; display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-    .ps-cr-info b { font-size: 9px; font-weight: 700; display: flex; align-items: center; gap: 3px; }
-    .ps-cr-info span { font-size: 7px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-    .ps-pro { font-style: normal; font-size: 6px; padding: 1px 3px; background: rgba(201,152,42,0.18); color: var(--gold2); border-radius: 3px; font-weight: 800; letter-spacing: 0.05em; }
-    .ps-challenge { font-size: 8px; font-weight: 800; padding: 5px 9px; border-radius: 6px; border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000;
-      box-shadow: 0 0 0 0 rgba(232,184,75,0.6); animation: pulseBtn 2.4s ease-out infinite; }
-    @keyframes pulseBtn {
-      0% { box-shadow: 0 0 0 0 rgba(232,184,75,0.55); }
-      70% { box-shadow: 0 0 0 8px rgba(232,184,75,0); }
-      100% { box-shadow: 0 0 0 0 rgba(232,184,75,0); }
-    }
-    .ps-pending { font-size: 8px; padding: 5px 9px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
-
-    /* CHALLENGES (card 2) */
-    .ps-chal-top { display: flex; justify-content: space-between; align-items: center; font-size: 8px; color: rgba(255,255,255,0.55); padding: 0 4px; }
-    .ps-chal-top b { color: #fff; font-size: 8px; font-weight: 600; }
-    .ps-chal-mid { color: rgba(255,255,255,0.7); }
-    .ps-chal-actions i { font-style: normal; font-size: 7px; padding: 3px 6px; border-radius: 4px; margin-left: 3px; }
-    .act-go { background: rgba(56,180,100,0.18); color: #4dd285; border: 1px solid rgba(56,180,100,0.35); }
-    .act-drop { background: rgba(220,80,80,0.18); color: #ff7777; border: 1px solid rgba(220,80,80,0.35); }
-    .ps-chal-list { display: flex; flex-direction: column; gap: 8px; }
-    .ps-chal { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 9px; padding: 8px; position: relative; overflow: hidden; }
-    .ps-chal.elite { border-top: 2px solid #c9982a; }
-    .ps-chal.premium { border-top: 2px solid #8b6cf6; }
-    .ps-chal.hi { box-shadow: 0 0 0 1px rgba(201,152,42,0.5), 0 0 24px rgba(201,152,42,0.2); }
-    .ps-chal::after {
-      content: ''; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
-      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.08), transparent);
-      animation: shimmer 4s ease-in-out infinite;
-    }
-    .ps-chal.premium::after { animation-delay: 1.3s; }
-    .ps-chal.hi::after { animation-delay: 2.6s; }
-    @keyframes shimmer { 0% { left: -60%; } 60%,100% { left: 130%; } }
-    .ps-chal-row { display: flex; gap: 7px; align-items: flex-start; }
-    .ps-brand { width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0; }
-    .brand-a { background: linear-gradient(135deg, #5a1a1a, #2a0a0a); border: 1px solid #c9982a; }
-    .brand-b { background: linear-gradient(135deg, #1a3a2a, #0a1f15); border: 1px solid #8b6cf6; }
-    .brand-c { background: linear-gradient(135deg, #c41a1a, #5a0a0a); border: 1px solid #c9982a; }
-    .ps-chal-info { flex: 1; line-height: 1.2; min-width: 0; }
-    .chal-tag { font-style: normal; font-size: 6px; font-weight: 800; padding: 1px 4px; border-radius: 3px; letter-spacing: 0.05em; }
-    .elite-tag { background: var(--gold); color: #000; }
-    .premium-tag { background: #8b6cf6; color: #fff; }
-    .chal-cat { font-size: 7px; color: rgba(255,255,255,0.5); margin-left: 2px; }
-    .ps-chal-info b { display: block; font-size: 9px; font-weight: 700; margin-top: 3px; }
-    .ps-chal-info p { font-size: 7px; color: rgba(255,255,255,0.45); margin-top: 2px; line-height: 1.35; }
-    .ps-points { text-align: right; flex-shrink: 0; }
-    .ps-points b { font-family: 'Bebas Neue', sans-serif; font-size: 19px; line-height: 1; color: var(--gold2);
-      text-shadow: 0 0 10px rgba(232,184,75,0.4); }
-    .ps-points span { display: block; font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 1px; }
-    .ps-chal-foot { display: flex; justify-content: space-between; font-size: 7px; color: rgba(255,255,255,0.4); margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(255,255,255,0.05); }
-    .row-act i { font-style: normal; font-size: 7px; padding: 2px 5px; border-radius: 3px; margin-left: 2px; }
-
-    /* PROFILE / SOCIAL (card 3) */
-    .ps-profile { display: flex; gap: 8px; align-items: center; padding: 0 4px; }
-    .ps-pf-av { width: 38px; height: 38px; border-radius: 8px; background: linear-gradient(135deg, #d49b6b, #6a3a25); flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
-    .ps-pf-info { flex: 1; line-height: 1.2; }
-    .ps-pf-info b { display: block; font-size: 11px; font-weight: 700; }
-    .ps-pf-info > span { font-size: 8px; color: rgba(255,255,255,0.5); }
-    .ps-pf-tags { display: flex; gap: 4px; margin-top: 3px; }
-    .tag-elite { font-style: normal; font-size: 7px; font-weight: 800; padding: 2px 5px; background: var(--gold); color: #000; border-radius: 4px; }
-    .tag-loc { font-style: normal; font-size: 7px; padding: 2px 5px; background: rgba(255,255,255,0.06); border-radius: 4px; color: rgba(255,255,255,0.7); }
-    .ps-pf-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
-    .ps-pf-stats > div { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 7px; padding: 7px 4px; text-align: center; }
-    .ps-pf-stats span { font-size: 6px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
-    .ps-pf-stats b { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 16px; line-height: 1.1; margin-top: 2px; }
-    .goldnum { color: var(--gold2); }
-    .ps-pf-tabs { display: flex; gap: 4px; padding: 4px; background: rgba(255,255,255,0.03); border-radius: 7px; }
-    .ps-pf-tabs span { flex: 1; text-align: center; font-size: 8px; padding: 4px 0; color: rgba(255,255,255,0.5); border-radius: 5px; }
-    .ps-pf-tabs span.on { background: var(--gold); color: #000; font-weight: 800; }
-    .ps-reach { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; }
-    .ps-reach-row { display: flex; justify-content: space-between; align-items: flex-start; }
-    .ps-reach-row span { font-size: 7px; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
-    .ps-reach-row b { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 18px; line-height: 1.1; margin: 2px 0; }
-    .ps-reach-row i { font-style: normal; font-size: 7px; color: rgba(255,255,255,0.45); }
-    .ps-socials { display: flex; gap: 4px; }
-    .soc { font-style: normal; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 6px; font-weight: 800; }
-    .soc.ig { background: linear-gradient(135deg,#e85a8c,#c93584); color: #fff; }
-    .soc.tt { background: #25f4ee; color: #000; }
-    .soc.yt { background: #ff0000; color: #fff; }
-    .ps-sync { margin-top: 6px; width: 100%; font-size: 7px; padding: 4px 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border-radius: 5px; }
-    .ps-ig { background: rgba(232,90,140,0.06); border: 1px solid rgba(232,90,140,0.18); border-radius: 8px; padding: 8px; }
-    .ps-ig-row { display: flex; gap: 7px; align-items: center; }
-    .ps-ig-info { flex: 1; line-height: 1.2; }
-    .ps-ig-info b { font-size: 9px; }
-    .ps-ig-info span { font-size: 7px; color: rgba(255,255,255,0.45); }
-    .ps-ig-count { text-align: right; line-height: 1.2; }
-    .ps-ig-count b { font-size: 11px; }
-    .ps-conn { display: block; font-size: 6px; color: #e85a8c; }
-    .ps-ig-next { display: flex; justify-content: space-between; font-size: 7px; color: rgba(255,255,255,0.55); margin-top: 6px; }
-    .ps-pts { color: var(--gold2); font-weight: 700; }
-    .ps-progress { height: 4px; background: rgba(255,255,255,0.06); border-radius: 100px; margin-top: 4px; overflow: hidden; }
-    .ps-progress-fill {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, #e85a8c, #c93584);
-      border-radius: 100px;
-      box-shadow: 0 0 10px rgba(232,90,140,0.6);
-      animation: fillBar 2.4s ease-out 0.4s forwards;
-    }
-    @keyframes fillBar { to { width: 78%; } }
-    .ps-progress-lbl { font-size: 6px; color: rgba(232,90,140,0.7); margin-top: 3px; }
-    .ps-mile { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
-    .ps-mile i { font-style: normal; font-size: 6px; padding: 2px 5px; background: rgba(232,90,140,0.12); border: 1px solid rgba(232,90,140,0.25); color: #e85a8c; border-radius: 4px; }
-
-    /* CARD BODY */
-    .hc-body { position: relative; z-index: 2; }
-    .hc-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; margin-bottom: 10px; }
-    .hc-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px; }
-    .hc-foot { display: flex; gap: 8px; flex-wrap: wrap; }
-    .hc-pill { font-size: 10px; padding: 5px 11px; border-radius: 100px; background: rgba(201,152,42,0.08); border: 1px solid rgba(201,152,42,0.22); color: var(--gold2); letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
-
-    @media (max-width: 1100px) {
-      .how-cards { grid-template-columns: 1fr; max-width: 480px; gap: 32px; }
-      .hc-orbit { width: 360px; height: 360px; right: -120px; }
-    }
-
-    /* THE OPEN */
-    .the-open { padding: 140px 40px 120px; position: relative; overflow: hidden; background: var(--bg); }
-    .the-open::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1200px; height: 700px; background: radial-gradient(ellipse, rgba(201,152,42,0.10) 0%, transparent 65%); pointer-events: none; }
-    .open-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
-    .open-head { text-align: center; max-width: 880px; margin: 0 auto 72px; }
-
-    /* Venue showcase */
-    .venue-stage {
-      position: relative; border-radius: 28px; overflow: hidden;
-      background: linear-gradient(180deg, #0c1322 0%, #060810 100%);
-      border: 1px solid rgba(201,152,42,0.18);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .venue-image-wrap {
-      position: relative; height: clamp(420px, 62vh, 680px); overflow: hidden;
-    }
-    .venue-image {
-      position: absolute; inset: -8% -2%; width: 104%; height: 116%;
-      background-image: url('PGAHERO2.jpg');
-      background-size: cover; background-position: center;
-      transform: scale(1.15) translateY(0);
-      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
-      filter: saturate(1.05) contrast(1.02);
-    }
-    .venue-stage.in-view .venue-image { transform: scale(1.04) translateY(0); }
-    .venue-image-wrap::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(8,9,15,0.20) 0%, rgba(8,9,15,0.10) 35%, rgba(8,9,15,0.55) 75%, rgba(8,9,15,0.95) 100%),
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,152,42,0.18) 0%, transparent 60%);
-    }
-    .venue-image-wrap::before {
-      content: ''; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
-      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.10) 50%, transparent 70%);
-      transform: skewX(-18deg); pointer-events: none; z-index: 3;
-      transition: left 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
-    }
-    .venue-stage.in-view .venue-image-wrap::before { left: 130%; }
-
-    .venue-overlay {
-      position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column;
-      justify-content: space-between; padding: 36px clamp(28px, 5vw, 64px);
-    }
-    .venue-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
-    .venue-pill {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 18px; border-radius: 100px;
-      background: rgba(8,9,15,0.55); backdrop-filter: blur(18px);
-      border: 1px solid rgba(201,152,42,0.35);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold2);
-    }
-    .venue-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold2); box-shadow: 0 0 12px var(--gold2); animation: pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-    .venue-date-card {
-      text-align: right; padding: 14px 22px; border-radius: 14px;
-      background: rgba(8,9,15,0.55); backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .venue-date-card .vd-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-    .venue-date-card .vd-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1.1; color: #fff; letter-spacing: 0.04em; margin-top: 4px; }
-    .venue-date-card .vd-year { font-size: 11px; color: var(--gold2); font-weight: 700; letter-spacing: 0.16em; margin-top: 2px; }
-
-    .venue-bottom { position: relative; }
-    .venue-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .venue-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(46px, 7vw, 96px);
-      line-height: 0.92; letter-spacing: 0.02em; color: #fff;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.6);
-      max-width: 900px;
-    }
-    .venue-sub {
-      margin-top: 16px; font-size: 15px; color: rgba(255,255,255,0.72);
-      max-width: 620px; line-height: 1.55;
-    }
-    .venue-meta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
-    .venue-meta-item { display: flex; flex-direction: column; gap: 4px; }
-    .venue-meta-item .vm-k { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-    .venue-meta-item .vm-v { font-size: 14px; font-weight: 600; color: #fff; }
-
-    /* Reveal layers stagger inside stage */
-    .venue-stage .rv { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
-    .venue-stage.in-view .rv { opacity: 1; transform: translateY(0); }
-    .venue-stage.in-view .rv.r1 { transition-delay: 0.15s; }
-    .venue-stage.in-view .rv.r2 { transition-delay: 0.25s; }
-    .venue-stage.in-view .rv.r3 { transition-delay: 0.45s; }
-    .venue-stage.in-view .rv.r4 { transition-delay: 0.6s; }
-    .venue-stage.in-view .rv.r5 { transition-delay: 0.75s; }
-
-    /* Stats row redesigned */
-    .open-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; border-radius: 20px; overflow: hidden; }
-    .open-card { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.4s; }
-    .open-card:hover { transform: translateY(-4px); }
-    .open-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
-    .open-card:hover .open-card-img { transform: scale(1.05); }
-    .open-card-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,9,15,0.15) 0%, rgba(8,9,15,0.65) 55%, rgba(8,9,15,0.95) 100%); }
-    .open-card-body { position: relative; z-index: 2; padding: 28px 28px 32px; text-align: left; }
-    .open-card::after { content: ''; position: absolute; left: 28px; bottom: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--gold2), transparent); transition: width 0.5s ease; z-index: 3; }
-    .open-card:hover::after { width: calc(100% - 56px); }
-    .open-card-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1; background: linear-gradient(180deg, var(--gold2) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .open-card-label { font-size: 20px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em; }
-    .open-card-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.5; }
-
-    @media (max-width: 880px) {
-      .venue-image-wrap { height: 520px; }
-      .venue-overlay { padding: 24px; }
-      .venue-top { gap: 14px; }
-      .venue-date-card { text-align: left; }
-      .venue-meta { gap: 20px; }
-    }
-
-    /* LEADERBOARD SECTION */
-    .leaderboard-section { padding: 140px 40px; position: relative; overflow: hidden; }
-    .leaderboard-section::before {
-      content: ''; position: absolute; top: 50%; left: 65%; transform: translate(-50%,-50%);
-      width: 900px; height: 900px;
-      background: radial-gradient(ellipse at center, rgba(201,152,42,0.14) 0%, rgba(201,152,42,0.05) 35%, transparent 65%);
-      pointer-events: none; filter: blur(20px); opacity: 0; transition: opacity 1.4s ease;
-    }
-    .leaderboard-section.in-view::before { opacity: 1; }
-    .lb-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
-    .lb-text .lb-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold2); margin-bottom: 18px; display: inline-flex; align-items: center; gap: 10px; }
-    .lb-text .lb-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold2); }
-    .lb-text .big-stat { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 10vw, 140px); line-height: 0.92; color: #fff; letter-spacing: 0.01em; }
-    .lb-text .big-stat .lb-grad {
-      background: linear-gradient(180deg, #fff 0%, var(--gold2) 60%, var(--gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .lb-text .big-stat-label { font-size: 13px; color: var(--gray2); letter-spacing: 0.14em; text-transform: uppercase; margin: 14px 0 28px; }
-    .lb-text p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
-    .lb-stats-row { display: flex; gap: 28px; margin-bottom: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); max-width: 480px; }
-    .lb-stat { flex: 1; }
-    .lb-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; color: #fff; letter-spacing: 0.01em; }
-    .lb-stat-num .gold { color: var(--gold2); }
-    .lb-stat-lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 8px; }
-
-    /* Phone stage */
-    .lb-stage {
-      position: relative; height: 640px;
-      display: flex; align-items: center; justify-content: center;
-      perspective: 1600px;
-    }
-    .lb-stage::before {
-      content: ''; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      width: 76%; height: 44px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.7), transparent 70%);
-      filter: blur(8px); z-index: 0;
-    }
-    .lb-aurora-ring {
-      position: absolute; left: 50%; top: 50%; width: 520px; height: 520px;
-      transform: translate(-50%,-50%);
-      border-radius: 50%; pointer-events: none; z-index: 0;
-      background: conic-gradient(from 180deg, transparent 0deg, rgba(201,152,42,0.45) 90deg, transparent 180deg, rgba(201,152,42,0.25) 270deg, transparent 360deg);
-      filter: blur(40px); opacity: 0;
-      transition: opacity 1.4s ease;
-      animation: lb-spin 22s linear infinite;
-    }
-    .leaderboard-section.in-view .lb-aurora-ring { opacity: 0.9; }
-    @keyframes lb-spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
-
-    .lb-phone {
-      position: relative; width: 290px; height: 600px; border-radius: 44px;
-      background: linear-gradient(160deg, #1c2030, #06080e);
-      box-shadow:
-        0 60px 120px rgba(0,0,0,0.65),
-        0 30px 60px rgba(201,152,42,0.18),
-        inset 0 0 0 1px rgba(255,255,255,0.08),
-        inset 0 0 0 5px #0a0c14;
-      transform: translateY(80px) rotateX(18deg) rotateY(-14deg) rotateZ(-3deg) scale(0.92);
-      opacity: 0;
-      transition:
-        transform 1.4s cubic-bezier(.22,1,.36,1),
-        opacity 1.0s ease;
-      z-index: 2;
-      will-change: transform;
-    }
-    .leaderboard-section.in-view .lb-phone {
-      transform: translateY(0) rotateX(4deg) rotateY(-9deg) rotateZ(-1.5deg) scale(1);
-      opacity: 1;
-    }
-    .lb-phone::after {
-      content: ''; position: absolute; inset: 0; border-radius: 44px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 40%, transparent 70%, rgba(201,152,42,0.12));
-      pointer-events: none; mix-blend-mode: overlay;
-    }
-    .lb-phone-notch {
-      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      width: 92px; height: 18px; background: #000; border-radius: 100px; z-index: 5;
-    }
-    .lb-phone-screen {
-      position: absolute; inset: 9px; border-radius: 38px; overflow: hidden;
-      background: #0a0d18;
-    }
-    .lb-phone-screen img {
-      display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center;
-      transform: scale(1.02);
-      transition: transform 2.4s cubic-bezier(.22,1,.36,1);
-    }
-    .leaderboard-section.in-view .lb-phone-screen img { transform: scale(1); }
-
-    /* Floating chips */
-    .lb-chip {
-      position: absolute; z-index: 4;
-      background: rgba(14,18,30,0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      padding: 12px 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-      display: flex; align-items: center; gap: 10px;
-      opacity: 0; transform: translateY(20px) scale(0.92);
-      transition: opacity 0.7s ease, transform 0.9s cubic-bezier(.22,1,.36,1);
-    }
-    .leaderboard-section.in-view .lb-chip { opacity: 1; transform: translateY(0) scale(1); }
-    .leaderboard-section.in-view .lb-chip-1 { transition-delay: 0.55s; }
-    .leaderboard-section.in-view .lb-chip-2 { transition-delay: 0.75s; }
-    .leaderboard-section.in-view .lb-chip-3 { transition-delay: 0.95s; }
-    .lb-chip-1 { top: 8%; left: -4%; animation: lb-float-a 6s ease-in-out infinite 1.2s; }
-    .lb-chip-2 { top: 38%; right: -10%; animation: lb-float-b 7s ease-in-out infinite 1.4s; }
-    .lb-chip-3 { bottom: 12%; left: -2%; animation: lb-float-a 6.5s ease-in-out infinite 1.6s; }
-    @keyframes lb-float-a {
-      0%,100% { translate: 0 0; }
-      50% { translate: 0 -10px; }
-    }
-    @keyframes lb-float-b {
-      0%,100% { translate: 0 0; }
-      50% { translate: 0 -14px; }
-    }
-    .lb-chip-icon {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      display: flex; align-items: center; justify-content: center;
-      color: #0a0c14; font-weight: 800; font-size: 13px;
-      flex-shrink: 0;
-    }
-    .lb-chip-icon.dark { background: rgba(255,255,255,0.08); color: var(--gold2); }
-    .lb-chip-text { line-height: 1.2; }
-    .lb-chip-val { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #fff; letter-spacing: 0.02em; }
-    .lb-chip-val .up { color: #4ade80; font-size: 13px; margin-right: 4px; }
-    .lb-chip-lbl { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 1px; }
-
-    @media (max-width: 960px) {
-      .lb-stage { height: 560px; }
-      .lb-phone { width: 250px; height: 520px; }
-      .lb-chip-2 { right: 0; }
-      .lb-chip-1 { left: 0; }
-      .lb-chip-3 { left: 4%; }
-    }
-    @media (max-width: 600px) {
-      .lb-stage { height: 520px; }
-      .lb-phone { width: 230px; height: 480px; }
-      .lb-chip { padding: 10px 12px; }
-      .lb-chip-val { font-size: 15px; }
-      .lb-chip-icon { width: 24px; height: 24px; font-size: 11px; }
-    }
-
-    /* TESTIMONIALS */
-    .testimonials { padding: 120px 40px; }
-    .test-header { text-align: center; margin-bottom: 56px; }
-    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1200px; margin: 0 auto; }
-    .test-card { background: var(--navy); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 32px; transition: border-color 0.2s; }
-    .test-card:hover { border-color: rgba(201,152,42,0.28); }
-    .test-quote { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
-    .test-author { display: flex; align-items: center; gap: 12px; }
-    .test-av { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold2)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 15px; flex-shrink: 0; }
-    .test-name { font-weight: 600; font-size: 14px; }
-    .test-handle { font-size: 12px; color: var(--gold2); }
-
-    /* SPLIT */
-    .split { display: grid; grid-template-columns: 1fr 1fr; }
-    .split-panel { padding: 90px 64px; position: relative; overflow: hidden; }
-    .split-panel.s-dark { background: var(--bg); border-right: 1px solid rgba(255,255,255,0.05); }
-    .split-panel.s-navy { background: var(--navy); }
-    .split-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .split-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 58px); letter-spacing: 0.02em; margin-bottom: 18px; line-height: 1.05; }
-    .split-p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 36px; max-width: 400px; }
-
-    /* CTA */
-    .cta { padding: 140px 40px; text-align: center; position: relative; overflow: hidden; }
-    .cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.11) 0%, transparent 70%); pointer-events: none; }
-    .cta-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 10vw, 130px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 24px; }
-    .cta-sub { font-size: 16px; color: rgba(255,255,255,0.45); margin-bottom: 48px; letter-spacing: 0.04em; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 40px 36px; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; max-width: 1200px; margin: 0 auto; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; }
-    .footer-logo img { }
-    .footer-logo-text { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 12px; transition: color 0.2s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.8); }
-    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
-
-    /* CONTACT */
-    .contact { padding: 140px 40px; text-align: center; position: relative; overflow: hidden; }
-    .contact::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,152,42,0.11) 0%, transparent 70%); pointer-events: none; }
-    .contact-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 10vw, 130px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 24px; position: relative; }
-    .contact-sub { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 36px; letter-spacing: 0.04em; position: relative; }
-    .contact-email { display: inline-block; font-size: 18px; font-weight: 600; color: var(--gold, #c9982a); text-decoration: none; letter-spacing: 0.04em; margin-bottom: 40px; position: relative; transition: color 0.2s; }
-    .contact-email:hover { color: #fff; }
-    .contact-socials { display: flex; gap: 20px; justify-content: center; position: relative; }
-    .contact-socials a { width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all 0.2s; }
-    .contact-socials a:hover { color: #c9982a; border-color: #c9982a; transform: translateY(-2px); }
-    .contact-socials svg { width: 22px; height: 22px; fill: currentColor; }
-
-    /* FADE IN */
-    .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fi.vis { opacity: 1; transform: translateY(0); }
-    .fi.d1 { transition-delay: 0.1s; }
-    .fi.d2 { transition-delay: 0.2s; }
-    .fi.d3 { transition-delay: 0.3s; }
-
-    /* MOBILE NAV */
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .nav-hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.3s; display: block; }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-overlay { display: none; position: fixed; inset: 0; z-index: 99; background: rgba(8,9,15,0.97); backdrop-filter: blur(24px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
-    .mobile-overlay.open { display: flex; }
-    .mobile-overlay a { color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.08em; transition: color 0.2s; }
-    .mobile-overlay a:hover { color: var(--gold2); }
-    .mobile-overlay .mob-cta { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000 !important; padding: 14px 40px; border-radius: 100px; font-size: 18px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 16px; }
-
-    /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .creators-grid, .test-grid { grid-template-columns: 1fr 1fr; }
-      .steps, .open-grid { grid-template-columns: 1fr; }
-      .split, .lb-inner { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .stats-inner { gap: 40px; }
-      .split-panel { padding: 60px 36px; }
-      .scroll-badge { display: none; }
-      .ticker-inner { animation-duration: 20s; }
-      .t-item { padding: 0 24px; }
-    }
-    @media (max-width: 600px) {
-      .creators-grid, .steps, .test-grid, .open-grid { grid-template-columns: 1fr; }
-      .hero-content { padding: 130px 20px 80px; }
-      .platform, .creators, .leaderboard-section, .testimonials, .cta, .contact, .the-open { padding-left: 20px; padding-right: 20px; }
-      .stats-bar { padding-left: 20px; padding-right: 20px; }
-      .how { padding-left: 0; padding-right: 0; }
-      .how-cards { padding: 0 20px; }
-      footer { padding-left: 20px; padding-right: 20px; }
-    }
-
-    /* Touch device — use scroll-based reveal instead of hover */
-    @media (hover: none) {
-      .how-card .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
-      .how-card:hover { border-color: rgba(255,255,255,0.06); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
-      .how-card:hover::before { opacity: 0.55; }
-      .how-card:hover .hc-glow { opacity: 0; }
-      .how-card:hover .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
-      .how-card.in-view { border-color: rgba(201,152,42,0.25); box-shadow: 0 32px 90px rgba(201,152,42,0.18), 0 24px 60px rgba(0,0,0,0.5); }
-      .how-card.in-view::before { opacity: 1; }
-      .how-card.in-view .hc-glow { opacity: 1; }
-      .how-card.in-view .phone { transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0); }
-      .creator-card:hover { transform: none; box-shadow: none; }
-      .open-card:hover { transform: none; }
-      .open-card:hover .open-card-img { transform: none; }
-      .open-card:hover::after { width: 0; }
-      .test-card:hover { border-color: rgba(255,255,255,0.06); }
-      .brand-card:hover { transform: none; }
-    }
-
-    /* ============================================================
-       LIGHT SECTIONS — alternating dark/light rhythm for contrast
-       ============================================================ */
-    .section-light { background: var(--light); color: var(--ink); }
-
-    /* Shared text treatments inside any light section */
-    .section-light .eyebrow,
-    .section-light .split-eyebrow,
-    .section-light .venue-eyebrow,
-    .section-light .lb-eyebrow { color: var(--gold-ink); }
-    .section-light .section-title,
-    .section-light h2,
-    .section-light h3 { color: var(--ink); }
-    .section-light .section-body,
-    .section-light .split-p,
-    .section-light p { color: var(--ink-soft); }
-    .section-light .section-body strong,
-    .section-light .split-p strong { color: var(--ink); }
-
-    /* Outline button needs dark border/text on a light background */
-    .section-light .btn-outline { color: var(--ink); border-color: rgba(20,27,45,0.28); }
-    .section-light .btn-outline:hover { color: var(--gold-ink); border-color: var(--gold-ink); }
-
-    /* PLATFORM (light) — soften its gold glow for the brighter backdrop */
-    .platform.section-light { background: var(--light); }
-    .platform.section-light::before {
-      background: radial-gradient(ellipse, rgba(201,152,42,0.10) 0%, transparent 70%);
-    }
-
-    /* HOW IT WORKS (light) — keep the dark glass cards for layered contrast */
-    .how.section-light { background: var(--light); }
-    .how.section-light .aurora { opacity: 0.35; }
-    /* Cards stay dark, so restore their light-on-dark text */
-    .how.section-light .how-card .hc-title { color: var(--white); }
-    .how.section-light .how-card .hc-desc,
-    .how.section-light .how-card p { color: rgba(255,255,255,0.55); }
-
-    /* SPLIT (light) — two warm tones so the panel divide still reads */
-    .split.section-light .split-panel.s-dark {
-      background: var(--light);
-      border-right: 1px solid rgba(20,27,45,0.10);
-    }
-    .split.section-light .split-panel.s-navy { background: var(--light2); }
-
-    @media (max-width: 960px) {
-      .split.section-light .split-panel.s-dark { border-right: none; border-bottom: 1px solid rgba(20,27,45,0.10); }
-    }
-
-    /* ── DESKTOP SCALE — render large screens at 80% so the layout matches the intended density ── */
-    @media (min-width: 1025px) {
-      html { zoom: 0.8; }
-      .hero { min-height: 125vh; } /* 100vh ÷ 0.8 keeps the hero filling the viewport under zoom */
-    }
-  </style>
+  <meta name="theme-color" content="#faf9f6">
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -895,515 +41,249 @@
 <body>
 
 <!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-logo">
-    <img src="logo-gct-icon.png.png" alt="The Golf Creator Tour" height="40">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#" class="active">Creators</a></li>
-    <li><a href="gco-sponsor-deck.html">Brands</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="https://golfcreatortour.app/apply" class="nav-cta">Enter Tour</a>
-  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav class="nav" id="nav" aria-label="Main">
+  <a href="#" class="nav-logo"><img src="assets/brand/gct-icon-white.png" alt="The Golf Creator Tour"></a>
+  <div class="nav-links">
+    <a href="#" class="active">Creators</a>
+    <a href="/brands">Brands</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://golfcreatortour.app/auth" class="btn sm">Enter Tour</a>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
 </nav>
-
-<div class="mobile-overlay" id="mobileOverlay">
-  <a href="gct-landing.html" onclick="toggleMenu()">Creators</a>
-  <a href="gco-sponsor-deck.html" onclick="toggleMenu()">Brands</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="https://golfcreatortour.app/apply" class="mob-cta" onclick="toggleMenu()">Enter Tour</a>
+<div class="mobile-menu" id="mobileOverlay">
+  <a href="/creators">Creators</a>
+  <a href="/brands">Brands</a>
+  <a href="#contact">Contact</a>
+  <a href="https://golfcreatortour.app/auth" class="btn">Enter Tour</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
-    <source src="copy_45CD966A-420A-4868-977B-CC2B135EFB9C.MOV" type="video/mp4">
-  </video>
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-logo-wrap">
-      <img src="logo-gct-full.png" alt="The Golf Creator Tour" style="width:100%;height:100%;object-fit:contain;">
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-center">
+      <img class="hero-logo rv" src="assets/brand/gct-full-ink.png" alt="The Golf Creator Tour">
+      <h1 class="h1 rv d1">
+        The Tour<br><em>Starts Here.</em>
+        <span class="tagline">CREATE · COMPETE · CONNECT</span>
+      </h1>
+      <div class="actions rv d2" style="margin-top:36px">
+        <a href="https://golfcreatortour.app/auth" class="btn">Enter the Tour <span class="arr">→</span></a>
+        <a href="#how" class="btn ghost">How It Works</a>
+      </div>
     </div>
-    <h1 class="hero-headline">
-      The Tour<br>Starts Here.
-      <span class="hero-tagline-gold">CREATE · COMPETE · CONNECT</span>
-    </h1>
-    <div class="hero-actions">
-      <a href="https://golfcreatortour.app/apply" class="btn-gold">Enter the Tour</a>
-      <a href="#how" class="btn-outline">How It Works</a>
-    </div>
-  </div>
-
-  <div class="scroll-badge">
-    <div class="scroll-badge-ring">
-      <svg width="84" height="84" viewBox="0 0 84 84">
-        <defs><path id="cp" d="M 42,42 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0"/></defs>
-        <text fill="rgba(255,255,255,0.4)" font-size="7.5" letter-spacing="3.5" font-family="Inter,sans-serif" font-weight="600">
-          <textPath href="#cp">GCT · GCT · GCT · GCT · GCT ·</textPath>
-        </text>
-      </svg>
-      <span class="scroll-arrow">↓</span>
+    <div class="hero-media rv d3">
+      <div class="frame">
+        <video data-autoplay muted playsinline loop preload="metadata" poster="assets/gco-recap.jpg"><source src="assets/gco-recap.mp4" type="video/mp4"></video>
+      </div>
     </div>
   </div>
-</section>
+</header>
 
 <!-- STATS -->
-<section class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat fi"><div class="stat-num">100+</div><div class="stat-lbl">Season Creators</div></div>
-    <div class="stat fi d2"><div class="stat-num" data-target="20">20</div><div class="stat-lbl">Championship Spots</div></div>
-    <div class="stat fi d3"><div class="stat-num" data-target="18">18</div><div class="stat-lbl">Scramble Teams</div></div>
+<section class="section tight" style="padding-top:20px">
+  <div class="wrap">
+    <div class="stats three rv">
+      <div class="stat"><div class="stat-num">100<span class="u">+</span></div><div class="stat-lbl">Season Creators</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-lbl">Championship Spots</div></div>
+      <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Scramble Teams</div></div>
+    </div>
   </div>
 </section>
 
 <!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <div class="t-item"><span class="t-dot"></span>Creator Matches</div>
-    <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>Social Media Growth</div>
-    <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
-    <div class="t-item"><span class="t-dot"></span>Top 100 Earn the Open</div>
-    <div class="t-item"><span class="t-dot"></span>18-Team Scramble</div>
-    <div class="t-item"><span class="t-dot"></span>Championship · Season 2026</div>
-    <div class="t-item"><span class="t-dot"></span>Compete from Anywhere</div>
-    <div class="t-item"><span class="t-dot"></span>Creator Matches</div>
-    <div class="t-item"><span class="t-dot"></span>Sponsored Challenges</div>
-    <div class="t-item"><span class="t-dot"></span>Social Media Growth</div>
-    <div class="t-item"><span class="t-dot"></span>Golf Creator Open</div>
-    <div class="t-item"><span class="t-dot"></span>Top 100 Earn the Open</div>
-    <div class="t-item"><span class="t-dot"></span>18-Team Scramble</div>
-    <div class="t-item"><span class="t-dot"></span>Championship · Season 2026</div>
-    <div class="t-item"><span class="t-dot"></span>Compete from Anywhere</div>
+<div class="ticker marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="t-item">Creator Matches</div>
+    <div class="t-item">Sponsored Challenges</div>
+    <div class="t-item">Social Media Growth</div>
+    <div class="t-item">Golf Creator Open</div>
+    <div class="t-item">Top 100 Earn the Open</div>
+    <div class="t-item">18-Team Scramble</div>
+    <div class="t-item">Championship · Season 2026</div>
+    <div class="t-item">Compete from Anywhere</div>
   </div>
 </div>
 
+<!-- CREATOR CONTENT CAROUSEL -->
+<section class="wall" style="padding-top:90px" aria-label="Creator content">
+  <div data-ugc-carousel></div>
+</section>
+
 <!-- PLATFORM -->
-<section class="platform section-light">
-  <div class="eyebrow fi">The Platform</div>
-  <h2 class="section-title fi">The Global Online Competitive Platform for Golf Content Creators</h2>
-  <p class="section-body fi">Compete from anywhere in the world. Earn points through Creator Matches, Sponsored Brand Challenges, and Social Media Growth. The top creators on the leaderboard earn their spot at the 2nd Annual Golf Creator Open.</p>
-  <a href="https://golfcreatortour.app/apply" class="btn-gold fi">Enter the Tour</a>
+<section class="section">
+  <div class="wrap head center" style="margin-bottom:0">
+    <div class="eyebrow rv">The Platform</div>
+    <h2 class="h2 rv">The Global Online Competitive Platform for <em>Golf Content Creators</em></h2>
+    <p class="lead rv" style="max-width:640px;margin:22px auto 36px">Compete from anywhere in the world. Earn points through Creator Matches, Sponsored Brand Challenges, and Social Media Growth. The top creators on the leaderboard earn their spot at the 2nd Annual Golf Creator Open.</p>
+    <div class="actions center rv"><a href="https://golfcreatortour.app/auth" class="btn">Enter the Tour <span class="arr">→</span></a></div>
+  </div>
+</section>
+
+<!-- CREATOR CONTENT -->
+<section class="wall" aria-label="Creator content from the Golf Creator Open">
+  <div class="wall-head"><div class="eyebrow">Golf Creator Open · 2025</div></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tournament-day.jpg" aria-label="Golf Creator Open tournament day"><source src="assets/ugc/gco/tournament-day.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-legato.jpg" alt="Legato golf balls at the Golf Creator Open" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/vip-night.jpg" aria-label="Golf Creator Open VIP Night"><source src="assets/ugc/gco/vip-night.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-champions.jpg" alt="Golf Creator Open champions with the trophy" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/social-crew.jpg" alt="Creators at the Golf Creator Open social" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/glove-giveaway.jpg" aria-label="PUR3 glove giveaway at the Golf Creator Open"><source src="assets/ugc/gco/glove-giveaway.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-polo.jpg" alt="Creator holding up a new polo" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/creators-red.jpg" alt="Creators on course" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tee-shot.jpg" aria-label="Creator tee shot at the Golf Creator Open"><source src="assets/ugc/gco/tee-shot.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/cart-ride.jpg" aria-label="Creators riding out to the course at the Golf Creator Open"><source src="assets/ugc/gco/cart-ride.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-vip-social.jpg" alt="Creators at the VIP social" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/merch-booth.jpg" alt="Brand merch booth with creators" loading="lazy"></div>
+      <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/trip-vlog.jpg" aria-label="Creator trip vlog from the Golf Creator Open"><source src="assets/ugc/gco/trip-vlog.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
+      <div class="photo"><img src="assets/photos/gco-creators-night.jpg" alt="Creators at the Golf Creator Open night event" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/creator-cart.jpg" alt="Creator with a golf cart" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/gco-cart-duo.jpg" alt="Creators in a golf cart at the Golf Creator Open" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/gco-champions-backdrop.jpg" alt="Champions on the Golf Creator Open step-and-repeat" loading="lazy"></div>
+      <div class="photo"><img src="assets/photos/social-night.jpg" alt="Creators at the creator social" loading="lazy"></div>
+    </div>
+  </div>
 </section>
 
 <!-- THE OPEN / VENUE -->
-<section class="the-open" id="venue">
-  <div class="open-inner">
-    <div class="open-head">
-      <div class="eyebrow fi">The Championship</div>
-      <h2 class="section-title fi">The 2nd Annual<br>Golf Creator Open</h2>
-      <p class="section-body fi">The top creators on the season leaderboard travel to Palm Beach Gardens for three days of competition at one of the most iconic stages in professional golf.</p>
+<section class="section white" id="venue">
+  <div class="wrap">
+    <div class="head center rv">
+      <div class="eyebrow">The Championship</div>
+      <h2 class="h2">The 2nd Annual<br><em>Golf Creator Open</em></h2>
+      <p class="lead">The top creators on the season leaderboard travel to Palm Beach Gardens for three days of competition at one of the most iconic stages in professional golf.</p>
     </div>
 
-    <div class="venue-stage fi">
-      <div class="venue-image-wrap">
-        <div class="venue-image" aria-label="PGA National Resort, Palm Beach Gardens"></div>
-      </div>
-      <div class="venue-overlay">
-        <div class="venue-top">
-        </div>
-        <div class="venue-bottom">
-          <div class="venue-eyebrow rv r3">Host Venue</div>
-          <h3 class="venue-title rv r3">PGA National</h3>
-<div class="venue-meta rv r5">
-            <div class="venue-meta-item">
-              <span class="vm-k">Location</span>
-              <span class="vm-v">Palm Beach Gardens, FL</span>
-            </div>
-            <div class="venue-meta-item">
-              <span class="vm-k">Dates</span>
-              <span class="vm-v">October 2 – 4, 2026</span>
-            </div>
-          </div>
+    <div class="feature rv" style="min-height:600px">
+      <img src="assets/photos/pga-bear.jpg" alt="PGA National Resort, Palm Beach Gardens" loading="lazy">
+      <div class="feature-body">
+        <div class="eyebrow">Host Venue</div>
+        <h3 class="h1">PGA National</h3>
+        <div class="meta-row">
+          <div><span>Location</span><b>Palm Beach Gardens, FL</b></div>
+          <div><span>Dates</span><b>October 2 – 4, 2026</b></div>
         </div>
       </div>
     </div>
 
-    <div class="open-grid">
-      <div class="open-card fi">
-        <div class="open-card-img" style="background-image: url('CARD1.png');"></div>
-        <div class="open-card-overlay"></div>
-        <div class="open-card-body">
-          <div class="open-card-num">Friday</div>
-          <div class="open-card-label">Creator Social</div>
-          <div class="open-card-sub">Kick off the weekend with a creator social — meet your fellow competitors and celebrate the season</div>
-        </div>
-      </div>
-      <div class="open-card fi d1">
-        <div class="open-card-img" style="background-image: url('CARD2.jpg');"></div>
-        <div class="open-card-overlay"></div>
-        <div class="open-card-body">
-          <div class="open-card-num">Saturday</div>
-          <div class="open-card-label">Scramble</div>
-          <div class="open-card-sub">18 teams face off in the flagship scramble event — the heart of the Golf Creator Open</div>
-        </div>
-      </div>
-      <div class="open-card fi d2">
-        <div class="open-card-img" style="background-image: url('CARD 3.jpg');"></div>
-        <div class="open-card-overlay"></div>
-        <div class="open-card-body">
-          <div class="open-card-num">Sunday</div>
-          <div class="open-card-label">Championship</div>
-          <div class="open-card-sub">The Top 20 creators compete in the championship round — one champion crowned at PGA National</div>
-        </div>
-      </div>
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card mcard hover rv"><div class="media"><img src="assets/photos/open-friday.jpg" alt="" loading="lazy"><span class="tag">Friday</span></div><div class="content"><h3>Creator Social</h3><p>Kick off the weekend with a creator social — meet your fellow competitors and celebrate the season</p></div></div>
+      <div class="card mcard hover rv d1"><div class="media"><img src="assets/photos/open-saturday.jpg" alt="" loading="lazy"><span class="tag">Saturday</span></div><div class="content"><h3>Scramble</h3><p>18 teams face off in the flagship scramble event — the heart of the Golf Creator Open</p></div></div>
+      <div class="card mcard hover rv d2"><div class="media"><img src="assets/photos/open-sunday.jpg" alt="" loading="lazy"><span class="tag">Sunday</span></div><div class="content"><h3>Championship</h3><p>The Top 20 creators compete in the championship round — one champion crowned at PGA National</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how section-light" id="how">
-  <div class="aurora aurora-1"></div>
-  <div class="aurora aurora-2"></div>
-  <div class="how-header">
-    <div class="eyebrow fi">How to Earn Points</div>
-    <h2 class="section-title fi">Three Ways to Climb the Leaderboard</h2>
-    <p class="section-body fi" style="margin-bottom:0;">Every point you earn moves you closer to the Golf Creator Open.</p>
-  </div>
-
-  <div class="how-cards">
-
-    <!-- CARD 1 -->
-    <article class="how-card fi" data-tilt>
-      <div class="hc-orbit"></div>
-      <div class="hc-glow"></div>
-      <div class="hc-meta">
-        <div class="hc-num">01</div>
-      </div>
-      <div class="hc-stage">
-        <div class="phone phone-3">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img class="ps-shot" src="screenshot-social.png.jpg" alt="GCT Social profile screen" loading="lazy">
-          </div>
+<section class="section soft" id="how">
+  <div class="wrap">
+    <div class="head center rv">
+      <div class="eyebrow">How to Earn Points</div>
+      <h2 class="h2">Three Ways to <em>Climb the Leaderboard</em></h2>
+      <p class="lead">Every point you earn moves you closer to the Golf Creator Open.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card pcard hover rv">
+        <div class="stage"><span class="num">01</span><div class="phone"><img src="assets/photos/app-social.jpg" alt="GCT Social profile screen" loading="lazy"></div></div>
+        <div class="content">
+          <h3>Social Media Growth</h3>
+          <p>Grow your audience and earn points for it. GCT rewards creators who build their following — the bigger your reach, the higher you climb the board.</p>
+          <div class="pills"><span>IG · TikTok · YouTube</span><span>Auto-synced</span></div>
         </div>
-      </div>
-      <div class="hc-body">
-        <h3 class="hc-title">Social Media Growth</h3>
-        <p class="hc-desc">Grow your audience and earn points for it. GCT rewards creators who build their following — the bigger your reach, the higher you climb the board.</p>
-        <div class="hc-foot">
-          <span class="hc-pill">IG · TikTok · YouTube</span>
-          <span class="hc-pill">Auto-synced</span>
+      </article>
+      <article class="card pcard hover rv d1">
+        <div class="stage"><span class="num">02</span><div class="phone"><img src="assets/photos/app-challenges.jpg" alt="GCT sponsored challenges screen" loading="lazy"></div></div>
+        <div class="content">
+          <h3>Sponsored Challenges</h3>
+          <p>Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points — every challenge is an opportunity to score.</p>
+          <div class="pills"><span>Brand-funded</span><span>Up to 1000 pts</span></div>
         </div>
-      </div>
-    </article>
-
-    <!-- CARD 2 -->
-    <article class="how-card fi d1" data-tilt>
-      <div class="hc-orbit"></div>
-      <div class="hc-glow"></div>
-      <div class="hc-meta">
-        <div class="hc-num">02</div>
-      </div>
-      <div class="hc-stage">
-        <div class="phone phone-2">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img class="ps-shot" src="screenshot-challenges.png.jpg" alt="GCT sponsored challenges screen" loading="lazy">
-          </div>
+      </article>
+      <article class="card pcard hover rv d2">
+        <div class="stage"><span class="num">03</span><div class="phone"><img src="assets/photos/app-connect.jpg" alt="GCT creator connect screen" loading="lazy"></div></div>
+        <div class="content">
+          <h3>Creator Matches</h3>
+          <p>Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points.</p>
+          <div class="pills"><span>Head-to-head</span><span>Worldwide</span></div>
         </div>
-      </div>
-      <div class="hc-body">
-        <h3 class="hc-title">Sponsored Challenges</h3>
-        <p class="hc-desc">Brands launch challenges inside the GCT app. Complete the challenge, post your content, and earn points — every challenge is an opportunity to score.</p>
-        <div class="hc-foot">
-          <span class="hc-pill">Brand-funded</span>
-          <span class="hc-pill">Up to 1000 pts</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- CARD 3 -->
-    <article class="how-card fi d2" data-tilt>
-      <div class="hc-orbit"></div>
-      <div class="hc-glow"></div>
-      <div class="hc-meta">
-        <div class="hc-num">03</div>
-      </div>
-      <div class="hc-stage">
-        <div class="phone phone-1">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <img class="ps-shot" src="screenshot-connect.png.jpg" alt="GCT creator connect screen" loading="lazy">
-          </div>
-        </div>
-      </div>
-      <div class="hc-body">
-        <h3 class="hc-title">Creator Matches</h3>
-        <p class="hc-desc">Challenge other golf creators to head-to-head matches — match play, stroke play, skins, 2v2 scramble, and more. Win matches, earn points.</p>
-        <div class="hc-foot">
-          <span class="hc-pill">Head-to-head</span>
-          <span class="hc-pill">Worldwide</span>
-        </div>
-      </div>
-    </article>
-
+      </article>
+    </div>
   </div>
 </section>
 
 <!-- LEADERBOARD -->
-<section class="leaderboard-section" id="leaderboardSection" style="background: var(--bg2);">
-  <div class="lb-inner">
-    <div class="lb-text fi">
-      <div class="lb-eyebrow">Season 2026 · Live</div>
-      <div class="big-stat">See Where<br><span class="lb-grad">You Stand.</span></div>
-      <div class="big-stat-label">Earn a Spot at the Open</div>
-      <p>The season leaderboard is live. Every Creator Match won, every Sponsored Challenge completed, and every follower gained pushes you up the board. The Top 100 get their shot at the Golf Creator Open.</p>
-      <a href="https://golfcreatortour.app/apply" class="btn-gold">See the Leaderboard</a>
+<section class="section band-ink" id="leaderboardSection">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="eyebrow">Season 2026 · Live</div>
+      <div class="big-stat">See Where<br><span class="accent">You Stand.</span></div>
+      <div class="caps" style="color:rgba(255,255,255,.55);margin:20px 0 22px">Earn a Spot at the Open</div>
+      <p class="lead" style="max-width:500px;margin-bottom:34px">The season leaderboard is live. Every Creator Match won, every Sponsored Challenge completed, and every follower gained pushes you up the board. The Top 100 get their shot at the Golf Creator Open.</p>
+      <a href="https://golfcreatortour.app/auth" class="btn gold">See the Leaderboard <span class="arr">→</span></a>
     </div>
-
-    <div class="lb-stage fi d1">
-      <div class="lb-aurora-ring"></div>
-
-      <div class="lb-phone" id="lbPhone">
-        <div class="lb-phone-notch"></div>
-        <div class="lb-phone-screen">
-          <img src="leaderboard.jpeg" alt="GCT leaderboard screen" loading="lazy">
-        </div>
-      </div>
-
-      <div class="lb-chip lb-chip-1">
-        <div class="lb-chip-icon">#1</div>
-        <div class="lb-chip-text">
-          <div class="lb-chip-val">Keaton V.</div>
-          <div class="lb-chip-lbl">Season Leader</div>
-        </div>
-      </div>
-
-      <div class="lb-chip lb-chip-2">
-        <div class="lb-chip-icon dark">▲</div>
-        <div class="lb-chip-text">
-          <div class="lb-chip-val"><span class="up">+27</span>RANK</div>
-          <div class="lb-chip-lbl">This Week</div>
-        </div>
-      </div>
-
-      <div class="lb-chip lb-chip-3">
-        <div class="lb-chip-icon">★</div>
-        <div class="lb-chip-text">
-          <div class="lb-chip-val">294 PTS</div>
-          <div class="lb-chip-lbl">Top Score</div>
-        </div>
-      </div>
+    <div class="lb-stage rv d1">
+      <div class="phone"><img src="assets/photos/app-leaderboard.jpg" alt="GCT leaderboard screen" loading="lazy"></div>
     </div>
   </div>
 </section>
 
 <!-- FOR CREATORS / FOR BRANDS -->
-<div class="split section-light">
-  <div class="split-panel s-dark">
-    <div class="split-eyebrow">Creators</div>
-    <h3 class="split-h">Compete for Your Spot at the Open</h3>
-    <div class="split-p">
-      <strong>Creator Requirements:</strong>
-      <ul style="margin-top: 12px; padding-left: 24px;">
+<section class="section">
+  <div class="wrap grid g2">
+    <div class="card split-card rv">
+      <div class="card-img"><img src="assets/photos/creators-red.jpg" alt="" loading="lazy" style="object-position:center 30%"></div>
+      <div class="card-body">
+      <div class="eyebrow">Creators</div>
+      <h3 class="h3" style="margin-bottom:22px">Compete for Your Spot at the Open</h3>
+      <p style="color:var(--ink);font-weight:600;margin-bottom:14px">Creator Requirements:</p>
+      <ul class="checks" style="margin-bottom:34px">
         <li>Public social media</li>
         <li>Actively posting</li>
         <li>Minimum of 1000 followers</li>
       </ul>
+      <a href="https://golfcreatortour.app/auth" class="btn">Join as a Creator <span class="arr">→</span></a>
+      </div>
     </div>
-    <a href="https://golfcreatortour.app/apply" class="btn-gold">Join as a Creator</a>
+    <div class="card split-card rv d1">
+      <div class="card-img"><img src="assets/photos/merch-booth.jpg" alt="" loading="lazy"></div>
+      <div class="card-body">
+        <div class="eyebrow">Brands</div>
+        <h3 class="h3" style="margin-bottom:16px">Launch Sponsored Challenges</h3>
+        <p style="margin-bottom:30px">Put your brand at the center of GCT competition. Launch a Sponsored Challenge and watch 100+ elite golf content creators compete to create your content — authentic, competitive, and impossible to fake.</p>
+        <a href="/brands" class="btn ghost">Partner With Us <span class="arr">→</span></a>
+      </div>
+    </div>
   </div>
-  <div class="split-panel s-navy">
-    <div class="split-eyebrow">Brands</div>
-    <h3 class="split-h">Launch Sponsored Challenges</h3>
-    <p class="split-p">Put your brand at the center of GCT competition. Launch a Sponsored Challenge and watch 100+ elite golf content creators compete to create your content — authentic, competitive, and impossible to fake.</p>
-    <a href="gct-brands.html" class="btn-outline">Partner With Us</a>
-  </div>
-</div>
+</section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2 class="contact-h fi">Contact</h2>
-  <p class="contact-sub fi">Get in touch with The Golf Creator Tour.</p>
-  <a href="mailto:info@golfcreatoropen.com" class="contact-email fi">info@golfcreatoropen.com</a>
-  <div class="contact-socials fi">
-    <a href="https://instagram.com/golfcreatortour" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.8 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.2 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
-    </a>
-    <a href="https://tiktok.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="TikTok">
-      <svg viewBox="0 0 24 24"><path d="M19.6 6.8a5.5 5.5 0 0 1-3.4-1.2 5.5 5.5 0 0 1-2-3.5h-3.3v12.5a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.7a5.9 5.9 0 0 0-.8-.1 5.9 5.9 0 1 0 5.9 5.9V8.6a8.8 8.8 0 0 0 5.4 1.8z"/></svg>
-    </a>
-    <a href="https://youtube.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6z"/></svg>
-    </a>
+<section class="section white" id="contact">
+  <div class="wrap center" style="text-align:center">
+    <h2 class="h1 rv">Contact</h2>
+    <p class="lead rv" style="margin:18px 0 20px">Get in touch with The Golf Creator Tour.</p>
+    <a href="mailto:info@golfcreatoropen.com" class="contact-email rv">info@golfcreatoropen.com</a>
+    <div class="socials rv">
+      <a href="https://instagram.com/golfcreatortour" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.8 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.2 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+      <a href="https://tiktok.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.8a5.5 5.5 0 0 1-3.4-1.2 5.5 5.5 0 0 1-2-3.5h-3.3v12.5a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.7a5.9 5.9 0 0 0-.8-.1 5.9 5.9 0 1 0 5.9 5.9V8.6a8.8 8.8 0 0 0 5.4 1.8z"/></svg></a>
+      <a href="https://youtube.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6z"/></svg></a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2026 The Golf Creator Tour · GCT v4.0 · Season 2026</div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="padding-top:0">
+      <a class="footer-brand" href="#"><img src="assets/brand/gct-icon-ink.png" alt="The Golf Creator Tour" style="height:48px"></a>
+      <div>© 2026 The Golf Creator Tour · GCT v4.0 · Season 2026</div>
+    </div>
   </div>
 </footer>
 
-<script>
-  // Fade-in on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fi').forEach(el => observer.observe(el));
-
-  // Venue stage premium reveal (parallax image + staggered overlay)
-  const venueObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        venueObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.25 });
-  document.querySelectorAll('.venue-stage').forEach(el => venueObserver.observe(el));
-
-  // Subtle parallax drift on the venue image as user scrolls
-  const venueImg = document.querySelector('.venue-stage .venue-image');
-  const venueWrap = document.querySelector('.venue-stage');
-  if (venueImg && venueWrap) {
-    let raf = null;
-    const onScroll = () => {
-      const rect = venueWrap.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - vh / 2) / vh));
-      const ty = progress * -28;
-      venueImg.style.setProperty('--py', ty + 'px');
-      venueImg.style.transform = `scale(${venueWrap.classList.contains('in-view') ? 1.06 : 1.15}) translateY(${ty}px)`;
-    };
-    window.addEventListener('scroll', () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => { onScroll(); raf = null; });
-    }, { passive: true });
-    onScroll();
-  }
-
-  // Nav on scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.background = window.scrollY > 60
-      ? 'rgba(6, 7, 12, 0.96)'
-      : 'rgba(12, 15, 26, 0.85)';
-  });
-
-  // Counter animation
-  function animateCount(el, target, duration = 1400) {
-    const start = performance.now();
-    const update = t => {
-      const p = Math.min((t - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(ease * target);
-      if (p < 1) requestAnimationFrame(update);
-    };
-    requestAnimationFrame(update);
-  }
-
-  const statsObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.stat-num[data-target]').forEach(el => {
-          animateCount(el, +el.dataset.target);
-        });
-        statsObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  const sb = document.querySelector('.stats-bar');
-  if (sb) statsObserver.observe(sb);
-
-  // Tilt + glow tracking on how-cards (desktop / hover-capable devices only)
-  const canHover = window.matchMedia('(hover: hover)').matches;
-  if (canHover) {
-    document.querySelectorAll('.how-card[data-tilt]').forEach(card => {
-      const phone = card.querySelector('.phone');
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width;
-        const py = (e.clientY - r.top) / r.height;
-        card.style.setProperty('--mx', (px * 100) + '%');
-        card.style.setProperty('--my', (py * 100) + '%');
-        if (phone) {
-          const rx = (0.5 - py) * 8;
-          const ry = (px - 0.5) * 12;
-          phone.style.transform = `translateY(20px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-        }
-      });
-      card.addEventListener('mouseleave', () => {
-        if (phone) phone.style.transform = '';
-      });
-    });
-  }
-
-  // Touch devices: trigger card reveal on scroll instead of tap
-  const cardInViewObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-      } else {
-        e.target.classList.remove('in-view');
-      }
-    });
-  }, { threshold: 0.35 });
-  document.querySelectorAll('.how-card').forEach(c => cardInViewObserver.observe(c));
-
-  // Animate count-ups inside phone mockups when card enters view
-  const numObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.count[data-target]').forEach(el => {
-          animateCount(el, +el.dataset.target, 1800);
-        });
-        numObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.how-card').forEach(c => numObserver.observe(c));
-
-  // Leaderboard section: in-view trigger + scroll-driven phone parallax + count-ups
-  const lbSection = document.getElementById('leaderboardSection');
-  const lbPhone = document.getElementById('lbPhone');
-  if (lbSection) {
-    const lbObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in-view');
-          e.target.querySelectorAll('.lb-count[data-target]').forEach(el => {
-            animateCount(el, +el.dataset.target, 1800);
-          });
-          lbObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.25 });
-    lbObserver.observe(lbSection);
-
-    // Scroll-driven parallax rotation on the phone
-    if (lbPhone) {
-      let raf = null;
-      const onLbScroll = () => {
-        if (!lbSection.classList.contains('in-view')) return;
-        const r = lbSection.getBoundingClientRect();
-        const vh = window.innerHeight || 1;
-        const progress = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
-        const rx = 4 + progress * 4;
-        const ry = -9 + progress * 5;
-        const rz = -1.5 + progress * 1;
-        const ty = progress * -24;
-        lbPhone.style.transform = `translateY(${ty}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
-      };
-      window.addEventListener('scroll', () => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => { onLbScroll(); raf = null; });
-      }, { passive: true });
-    }
-  }
-
-  function toggleMenu() {
-    const h = document.getElementById('hamburger');
-    const m = document.getElementById('mobileOverlay');
-    h.classList.toggle('open');
-    m.classList.toggle('open');
-    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
-  }
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

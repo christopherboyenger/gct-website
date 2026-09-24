@@ -3,34 +3,97 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "installCommand": null,
+  "redirects": [
+    {
+      "source": "/gco-sponsor-deck.html",
+      "destination": "/brands",
+      "permanent": true
+    },
+    {
+      "source": "/gct-brands.html",
+      "destination": "/brands",
+      "permanent": true
+    },
+    {
+      "source": "/gct-landing.html",
+      "destination": "/creators",
+      "permanent": true
+    },
+    {
+      "source": "/gct-brands-network.html",
+      "destination": "/brands",
+      "permanent": true
+    },
+    {
+      "source": "/gct-courses.html",
+      "destination": "/courses",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/", "destination": "/gct-network.html" },
-    { "source": "/creators", "destination": "/gct-landing.html" },
-    { "source": "/brands", "destination": "/gct-brands-network.html" },
-    { "source": "/courses", "destination": "/gct-courses.html" },
-    { "source": "/members", "destination": "/gct-entry.html" },
-    { "source": "/news", "destination": "/news.html" },
-    { "source": "/news/:slug", "destination": "/news-article.html?slug=:slug" }
+    {
+      "source": "/",
+      "destination": "/gct-network.html"
+    },
+    {
+      "source": "/creators",
+      "destination": "/gct-landing.html"
+    },
+    {
+      "source": "/brands",
+      "destination": "/gct-brands-network.html"
+    },
+    {
+      "source": "/courses",
+      "destination": "/gct-courses.html"
+    },
+    {
+      "source": "/members",
+      "destination": "/gct-entry.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/news.html"
+    },
+    {
+      "source": "/news/:slug",
+      "destination": "/news-article.html?slug=:slug"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
       ]
     },
     {
       "source": "/members",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/gct-entry.html",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
   ]
