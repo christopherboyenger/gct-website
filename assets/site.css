@@ -229,6 +229,11 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 }
 .tile-play svg { width: 10px; height: 10px; margin-left: 2px; fill: var(--ink); }
 
+/* App screen recording in a tile: show the whole screen, letterboxed in the app's navy */
+.tile.app-screen { background: #0f1521; }
+.tile.app-screen video { object-fit: contain; }
+.tile.app-screen::after { display: none; }
+
 /* Marquee wall */
 .wall { padding: 20px 0 110px; overflow: hidden; }
 .wall-head { text-align: center; padding: 0 var(--gutter); margin-bottom: 36px; }
