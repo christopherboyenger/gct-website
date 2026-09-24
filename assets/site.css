@@ -243,9 +243,9 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
 /* Creator UGC carousel (rows built by site.js from CREATOR_CLIPS) */
-.ugc-row .marquee-track { animation-duration: 48s; }
+.ugc-row .marquee-track { animation-duration: 64s; }
 .ugc-row .tile { width: 240px; }
-.ugc-row.reverse .marquee-track { animation-duration: 54s; }
+.ugc-row.reverse .marquee-track { animation-duration: 70s; }
 
 /* ---------- Stats ---------- */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); overflow: hidden; box-shadow: var(--shadow-sm); }

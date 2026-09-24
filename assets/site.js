@@ -6,8 +6,8 @@
   // Creator UGC carousel — 8s muted loops in assets/ugc/creators/<name>.mp4 (+ .jpg poster).
   // Add a clip by dropping the files in that folder and adding its name here.
   var CREATOR_CLIPS = [
-    'gct-campaigns', 'headcovers', 'course-vlog', 'seed-golf', 'creator-kit',
-    'on-course', 'par-3', 'resort-stay', 'driver', 'backyard-green'
+    'gct-campaigns', 'lab-putter', 'headcovers', 'cliff-hanger', 'course-vlog', 'seed-golf', 'backyard-challenge', 'creator-kit',
+    'on-course', 'gift-box', 'par-3', 'putter-unboxing', 'resort-stay', 'driver', 'backyard-green'
   ];
   document.querySelectorAll('[data-ugc-carousel]').forEach(function (host) {
     var half = Math.ceil(CREATOR_CLIPS.length / 2);
