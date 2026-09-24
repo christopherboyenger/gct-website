@@ -9,19 +9,19 @@
     { name: 'PUR3 Golf', logo: LOGO + '760726bf-1908-42dd-994c-c930cb791c05-1787108059061.jpg', category: 'Golf gloves',
       campaign: '3 always-on glove challenges',
       summary: 'Seeded the Tour with gloves and built a library of on-course glove content from creators competing for points.',
-      stats: [['106', 'creators joined'], ['72', 'posts created'], ['30.6K', 'verified views']] },
+      stats: [['2.2M', 'combined creator reach'], ['69', 'creators activated'], ['72', 'posts created']] },
     { name: 'BLURRD', logo: LOGO + 'be559f17-71c9-4b1d-8958-a9ae8234a432-1787199611185.PNG', category: 'Golf gloves',
       campaign: 'One Club Challenge · product seeding',
-      summary: 'A play-a-hole-with-one-club brief with an organic glove moment. Creator demand more than doubled the available spots.',
-      stats: [['48', 'creator applications'], ['20', 'spots available'], ['18', 'creators approved']] },
+      summary: 'A play-a-hole-with-one-club brief with an organic glove moment. All 20 spots were claimed in under 10 hours, and applications kept coming.',
+      stats: [['9 hrs', 'to fill every spot'], ['2.4×', 'oversubscribed'], ['736K', 'combined creator reach']] },
     { name: 'Bad Cards', logo: LOGO + '70d84494-65b4-41bc-9d46-3b92834413ec-1787069380816.png', category: 'On-course card game',
       campaign: 'On-Course Challenge · product seeding',
-      summary: 'Creators filmed themselves drawing a card and playing the hole. One brief put the game in the hands of creators nationwide.',
-      stats: [['27', 'creator applications'], ['21', 'creators approved'], ['30', 'creator spots']] },
+      summary: 'Creators filmed themselves drawing a card and playing the hole. One brief put the game in front of 1.8 million followers.',
+      stats: [['1.8M', 'combined creator reach'], ['19', 'applications in 24 hrs'], ['22', 'creators seeded']] },
     { name: 'Malcontents', logo: 'assets/brands/malcontents.jpg', category: 'Golf apparel',
       campaign: 'Fit Check challenge',
-      summary: 'An apparel fit-check challenge that turned creators into on-course models for the brand.',
-      stats: [['10', 'creators joined'], ['6', 'fit-check posts'], ['60%', 'of creators posted']] }
+      summary: 'An apparel fit-check challenge that turned creators into on-course models for the brand, fully booked in less than a day.',
+      stats: [['18 hrs', 'to fill every spot'], ['216K', 'combined creator reach'], ['100%', 'of spots claimed']] }
   ];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function avatar(b) {
