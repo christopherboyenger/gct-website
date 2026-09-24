@@ -36,7 +36,7 @@
     { name: 'ShipSticks', logo: 'assets/brands/shipsticks.jpg' }
   ]);
   document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
-    host.innerHTML = '<div class="marquee-track">' + STRIP.map(function (b) {
+    host.innerHTML = '<div class="brand-track">' + STRIP.map(function (b) {
       return b.wide
         ? '<div class="b-chip"><img class="b-word" src="' + b.logo + '" alt="' + esc(b.name) + '" loading="lazy"></div>'
         : '<div class="b-chip">' + avatar(b) + '<b>' + esc(b.name) + '</b></div>';
@@ -51,6 +51,33 @@
         '<div class="cs-stats">' + b.stats.map(function (s) { return '<div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div>' +
         '</article>';
     }).join('');
+  });
+
+  // Brand strip: manual scroll carousel (arrows + drag on desktop, swipe on touch).
+  document.querySelectorAll('.brand-scroller').forEach(function (sc) {
+    var row = sc.querySelector('.brand-row');
+    var step = function () { return Math.max(240, row.clientWidth * 0.7); };
+    sc.querySelector('.prev').addEventListener('click', function () { row.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    sc.querySelector('.next').addEventListener('click', function () { row.scrollBy({ left: step(), behavior: 'smooth' }); });
+    var sync = function () {
+      sc.classList.toggle('at-start', row.scrollLeft < 4);
+      sc.classList.toggle('at-end', row.scrollLeft + row.clientWidth >= row.scrollWidth - 4);
+    };
+    row.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+    var down = false, startX = 0, startLeft = 0, moved = false;
+    row.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      down = true; moved = false; startX = e.clientX; startLeft = row.scrollLeft; row.classList.add('dragging');
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX; if (Math.abs(dx) > 3) moved = true;
+      row.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', function () { down = false; row.classList.remove('dragging'); });
+    row.addEventListener('dragstart', function (e) { e.preventDefault(); });
   });
 
   // Creator UGC carousel — 8s muted loops in assets/ugc/creators/<name>.mp4 (+ .jpg poster).

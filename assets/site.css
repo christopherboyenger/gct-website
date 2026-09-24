@@ -247,9 +247,21 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 /* Brand strip (Trybe-style "brands choose us" row) */
 .brand-strip { padding: 44px var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .brand-strip p { text-align: center; font-size: 17px; color: var(--muted); margin-bottom: 26px; }
-.brand-row .marquee-track { animation-duration: 40s; gap: 0; padding: 0; align-items: center; }
-.brand-row .b-chip { padding: 0 28px; }
-.b-word { height: 52px; width: auto; border-radius: 6px; }
+.brand-scroller { position: relative; max-width: var(--wrap); margin: 0 auto; }
+.brand-row { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; cursor: grab; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.brand-row::-webkit-scrollbar { display: none; }
+.brand-row.dragging { cursor: grabbing; scroll-snap-type: none; }
+.brand-row.dragging * { pointer-events: none; }
+.brand-track { display: flex; align-items: center; width: max-content; padding: 6px 48px; }
+.brand-row .b-chip { padding: 0 36px; scroll-snap-align: center; user-select: none; }
+.brand-row .b-chip b { font-size: 26px; }
+.brand-row .b-av { width: 72px; height: 72px; border-radius: 18px; }
+.brand-row .b-av span { font-size: 24px; }
+.b-word { height: 84px; width: auto; border-radius: 8px; }
+.bs-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); background: #fff; box-shadow: var(--shadow-sm); font-size: 24px; line-height: 1; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity .2s ease; }
+.bs-btn.prev { left: -6px; }
+.bs-btn.next { right: -6px; }
+.at-start .bs-btn.prev, .at-end .bs-btn.next { opacity: 0; pointer-events: none; }
 .b-chip { display: flex; align-items: center; gap: 12px; flex-shrink: 0; white-space: nowrap; }
 .b-chip b { font-family: var(--display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-2); }
 .b-av { position: relative; width: 44px; height: 44px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: var(--soft); border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center; }
@@ -500,8 +512,12 @@ a.mcard:hover .media img, .mcard.hover:hover .media img { transform: scale(1.04)
   .nav-logo img { height: 32px; }
   .g2, .g3, .g4, .hiw, .cs-grid { grid-template-columns: 1fr; }
   .b-chip b { font-size: 17px; }
-  .brand-row .b-chip { padding: 0 18px; }
-  .b-word { height: 36px; }
+  .brand-row .b-chip { padding: 0 20px; }
+  .brand-row .b-chip b { font-size: 20px; }
+  .brand-row .b-av { width: 56px; height: 56px; border-radius: 14px; }
+  .b-word { height: 64px; }
+  .bs-btn { display: none; }
+  .brand-track { padding: 6px 16px; }
   .stats.three { grid-template-columns: 1fr; }
   .stats.three .stat { border-right: 0; border-bottom: 1px solid var(--line); }
   .stats.three .stat:last-child { border-bottom: 0; }
