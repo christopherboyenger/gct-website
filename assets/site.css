@@ -158,9 +158,11 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 .mobile-menu {
   position: fixed; inset: 0; z-index: 55; background: var(--bg);
   display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 100px 28px 40px;
-  opacity: 0; pointer-events: none; transition: opacity .25s ease;
+  /* visibility (not just opacity/pointer-events) so the closed menu's links,
+     incl. the app sign-up button, can never catch a tap through the page on iOS */
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s ease, visibility 0s linear .25s;
 }
-.menu-open .mobile-menu { opacity: 1; pointer-events: auto; }
+.menu-open .mobile-menu { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .25s ease, visibility 0s; }
 .mobile-menu a:not(.btn) {
   font-family: var(--display); font-size: 36px; font-weight: 600; letter-spacing: -0.035em;
   padding: 8px 0; border-bottom: 1px solid var(--line);
@@ -236,6 +238,8 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 @media (max-width: 640px) { .store-badges { margin-top: -8px; gap: 10px; } .store-badges img { height: 22px; border-radius: 5px; } }
 
 /* App screen recording in a tile: show the whole screen, letterboxed in the app's navy */
+/* Hero phones are decorative: taps pass straight through them */
+.collage, .collage * { pointer-events: none; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 .tile.app-screen { background: #0f1521; }
 .tile.app-screen video { object-fit: contain; }
 .tile.app-screen::after { display: none; }
