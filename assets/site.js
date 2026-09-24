@@ -39,7 +39,15 @@
     { name: 'ShipSticks', logo: 'assets/brands/shipsticks.jpg' },
     byName('PUR3 Golf'),
     byName('BLURRD'),
-    byName('Bad Cards')
+    byName('Bad Cards'),
+    { name: 'RIVO', logo: 'assets/brands/rivo.jpg', wide: true },
+    { name: 'Course Record', logo: 'assets/brands/course-record.jpg', wide: true },
+    { name: 'Legato', logo: 'assets/brands/legato.jpg', wide: true },
+    { name: 'Caddy Splash', logo: 'assets/brands/caddy-splash.jpg', wide: true },
+    { name: 'Greg Norman', logo: 'assets/brands/greg-norman.jpg', wide: true },
+    { name: 'Dunning', logo: 'assets/brands/dunning.jpg', wide: true },
+    { name: 'Smartpin', logo: 'assets/brands/smartpin.jpg', wide: true },
+    { name: 'Kismet', logo: 'assets/brands/kismet.jpg', wide: true }
   ];
   document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
     host.innerHTML = '<div class="brand-track">' + STRIP.map(function (b) {
