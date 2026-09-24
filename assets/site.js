@@ -60,8 +60,7 @@
     'on-course', 'gift-box', 'par-3', 'putter-unboxing', 'resort-stay', 'driver', 'backyard-green'
   ];
   document.querySelectorAll('[data-ugc-carousel]').forEach(function (host) {
-    var half = Math.ceil(CREATOR_CLIPS.length / 2);
-    [CREATOR_CLIPS.slice(0, half), CREATOR_CLIPS.slice(half)].forEach(function (row, i) {
+    [CREATOR_CLIPS].forEach(function (row, i) {
       var m = document.createElement('div');
       m.className = 'marquee ugc-row' + (i ? ' reverse' : '');
       var track = document.createElement('div');
@@ -105,6 +104,21 @@
     clone.setAttribute('aria-hidden', 'true');
     m.appendChild(clone);
   });
+
+  // Content walls scroll at one constant speed (px/s) whatever their length,
+  // so the creator carousel and the Golf Creator Open strip move at the same pace.
+  var WALL_SPEED = 100;
+  function paceWalls() {
+    document.querySelectorAll('.wall .marquee').forEach(function (m) {
+      var w = m.querySelector('.marquee-track').scrollWidth;
+      if (!w) return;
+      m.querySelectorAll('.marquee-track').forEach(function (t) { t.style.animationDuration = (w / WALL_SPEED) + 's'; });
+    });
+  }
+  paceWalls();
+  window.addEventListener('load', paceWalls);
+  window.addEventListener('resize', paceWalls);
+  document.querySelectorAll('.wall img').forEach(function (img) { img.addEventListener('load', paceWalls); });
 
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });

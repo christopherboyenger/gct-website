@@ -236,16 +236,13 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 .marquee + .marquee { margin-top: 18px; }
 .marquee-track { display: flex; gap: 18px; padding-right: 18px; flex-shrink: 0; animation: slide 60s linear infinite; }
 .marquee.reverse .marquee-track { animation-direction: reverse; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee .tile { width: 220px; flex-shrink: 0; box-shadow: var(--shadow); border-width: 3px; }
 .marquee .photo { height: 391px; width: auto; aspect-ratio: auto; flex-shrink: 0; border-radius: 22px; overflow: hidden; border: 3px solid #fff; box-shadow: var(--shadow); background: var(--soft-2); }
 .marquee .photo img { height: 100%; width: auto; object-fit: cover; }
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
 /* Creator UGC carousel (rows built by site.js from CREATOR_CLIPS) */
-.ugc-row .marquee-track { animation-duration: 64s; }
 .ugc-row .tile { width: 240px; }
-.ugc-row.reverse .marquee-track { animation-duration: 70s; }
 
 /* Brand strip (Trybe-style "brands choose us" row) */
 .brand-strip { padding: 44px var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
