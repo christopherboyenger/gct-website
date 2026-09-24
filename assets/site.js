@@ -18,7 +18,7 @@
       campaign: 'On-Course Challenge · product seeding',
       summary: 'Creators filmed themselves drawing a card and playing the hole. One brief put the game in the hands of creators nationwide.',
       stats: [['27', 'creator applications'], ['21', 'creators approved'], ['30', 'creator spots']] },
-    { name: 'Malcontents', logo: LOGO + '51b70968-22b5-47d7-91b5-29c1378bc950-1781117481151.jpg', category: 'Golf apparel',
+    { name: 'Malcontents', logo: 'assets/brands/malcontents.jpg', category: 'Golf apparel',
       campaign: 'Fit Check challenge',
       summary: 'An apparel fit-check challenge that turned creators into on-course models for the brand.',
       stats: [['10', 'creators joined'], ['6', 'fit-check posts'], ['60%', 'of creators posted']] }
@@ -27,8 +27,20 @@
   function avatar(b) {
     return '<span class="b-av"><img src="' + b.logo + '" alt="" loading="lazy" onerror="this.remove()"><span>' + esc(b.name.charAt(0)) + '</span></span>';
   }
+  // Logo strip: case-study brands plus other brands GCT has worked with.
+  // wide: true = the logo already contains the brand name (shown on its own).
+  var STRIP = BRANDS.concat([
+    { name: 'Dryvebox', logo: 'assets/brands/dryvebox.jpg', wide: true },
+    { name: 'PopStroke', logo: 'assets/brands/popstroke.jpg', wide: true },
+    { name: 'Performance Golf', logo: 'assets/brands/performance-golf.jpg' },
+    { name: 'ShipSticks', logo: 'assets/brands/shipsticks.jpg' }
+  ]);
   document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
-    host.innerHTML = BRANDS.map(function (b) { return '<div class="b-chip">' + avatar(b) + '<b>' + esc(b.name) + '</b></div>'; }).join('');
+    host.innerHTML = '<div class="marquee-track">' + STRIP.map(function (b) {
+      return b.wide
+        ? '<div class="b-chip"><img class="b-word" src="' + b.logo + '" alt="' + esc(b.name) + '" loading="lazy"></div>'
+        : '<div class="b-chip">' + avatar(b) + '<b>' + esc(b.name) + '</b></div>';
+    }).join('') + '</div>';
   });
   document.querySelectorAll('[data-case-studies]').forEach(function (host) {
     host.innerHTML = BRANDS.map(function (b, i) {
