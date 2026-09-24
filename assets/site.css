@@ -58,10 +58,7 @@ ul { list-style: none; }
   font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--ink-2); margin-bottom: 20px;
 }
-.eyebrow::before {
-  content: ''; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft);
-}
+.eyebrow::before { display: none; }
 .eyebrow.pill {
   padding: 7px 14px 7px 12px; border-radius: 999px;
   background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
