@@ -293,6 +293,15 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 .hiw h3 { padding: 0 12px; margin: 8px 0; }
 .hiw p { padding: 0 12px; }
 
+/* Pricing */
+.price { display: flex; flex-direction: column; padding: 34px; }
+.price-n { font-family: var(--display); font-size: clamp(48px, 5vw, 64px); font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
+.price-l { margin: 10px 0 24px; font-size: 15px; color: var(--muted); }
+.price.feat { background: var(--navy); border-color: var(--navy); }
+.price.feat .price-n { color: var(--gold-2); }
+.price.feat .price-l { color: rgba(255, 255, 255, 0.66); }
+.price.feat .checks li { color: #fff; }
+
 /* Case studies */
 .cs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .cs { display: flex; flex-direction: column; padding: 30px; }
