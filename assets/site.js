@@ -140,7 +140,7 @@
 
   // Content walls scroll at one constant speed (px/s) whatever their length,
   // so the creator carousel and the Golf Creator Open strip move at the same pace.
-  var WALL_SPEED = 100;
+  var WALL_SPEED = 80;
   function paceWalls() {
     document.querySelectorAll('.wall .marquee').forEach(function (m) {
       var w = m.querySelector('.marquee-track').scrollWidth;
