@@ -36,6 +36,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* In-page anchors (/#creators, /#brands, /#events) land below the fixed nav */
+section[id] { scroll-margin-top: 88px; }
 body {
   font-family: var(--font); background: var(--bg); color: var(--ink);
   font-size: 16px; line-height: 1.6; overflow-x: hidden;
@@ -231,7 +233,7 @@ a:hover .link .arr, .link:hover .arr { transform: translateX(3px); }
 /* App store badges under the hero phones */
 .store-badges { display: flex; justify-content: center; gap: 14px; margin-top: -24px; flex-wrap: wrap; position: relative; z-index: 3; }
 .store-badges img { height: 52px; width: auto; border-radius: 10px; }
-@media (max-width: 640px) { .store-badges { margin-top: -8px; } .store-badges img { height: 44px; } }
+@media (max-width: 640px) { .store-badges { margin-top: -8px; gap: 10px; } .store-badges img { height: 22px; border-radius: 5px; } }
 
 /* App screen recording in a tile: show the whole screen, letterboxed in the app's navy */
 .tile.app-screen { background: #0f1521; }
@@ -506,6 +508,8 @@ a.mcard:hover .media img, .mcard.hover:hover .media img { transform: scale(1.04)
 @media (max-width: 1080px) {
   .hiw { grid-template-columns: repeat(2, 1fr); }
   .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  /* Stacked layout: phones and store badges first, then the headline and CTAs */
+  .hero-grid .hero-visual { order: -1; }
   .collage { height: 540px; max-width: 560px; margin: 0 auto; width: 100%; }
   .g4 { grid-template-columns: repeat(2, 1fr); }
   .split { grid-template-columns: 1fr; gap: 48px; }
