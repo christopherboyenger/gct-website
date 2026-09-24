@@ -36,6 +36,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* In-page anchors (/#creators, /#brands, /#events) land below the fixed nav */
+section[id] { scroll-margin-top: 88px; }
 body {
   font-family: var(--font); background: var(--bg); color: var(--ink);
   font-size: 16px; line-height: 1.6; overflow-x: hidden;

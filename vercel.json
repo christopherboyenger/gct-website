@@ -5,23 +5,33 @@
   "installCommand": null,
   "redirects": [
     {
+      "source": "/creators",
+      "destination": "/#creators",
+      "permanent": true
+    },
+    {
+      "source": "/brands",
+      "destination": "/#brands",
+      "permanent": true
+    },
+    {
       "source": "/gco-sponsor-deck.html",
-      "destination": "/brands",
+      "destination": "/#brands",
       "permanent": true
     },
     {
       "source": "/gct-brands.html",
-      "destination": "/brands",
+      "destination": "/#brands",
       "permanent": true
     },
     {
       "source": "/gct-landing.html",
-      "destination": "/creators",
+      "destination": "/#creators",
       "permanent": true
     },
     {
       "source": "/gct-brands-network.html",
-      "destination": "/brands",
+      "destination": "/#brands",
       "permanent": true
     },
     {
@@ -34,14 +44,6 @@
     {
       "source": "/",
       "destination": "/gct-network.html"
-    },
-    {
-      "source": "/creators",
-      "destination": "/gct-landing.html"
-    },
-    {
-      "source": "/brands",
-      "destination": "/gct-brands-network.html"
     },
     {
       "source": "/courses",
