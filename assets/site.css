@@ -483,12 +483,12 @@ a.mcard:hover .media img, .mcard.hover:hover .media img { transform: scale(1.04)
 
 /* ---------- Footer ---------- */
 .footer { padding: 72px var(--gutter) 40px; border-top: 1px solid var(--line); background: var(--surface); }
-.footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
+.footer-top { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
 .footer-brand img { height: 96px; width: auto; }
-.footer-links { display: flex; gap: 8px 28px; flex-wrap: wrap; align-items: center; }
+.footer-links { display: flex; gap: 8px 28px; flex-wrap: wrap; align-items: center; justify-content: center; }
 .footer-links a { font-size: 14px; color: var(--ink-2); }
 .footer-links a:hover { color: var(--gold); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 28px; font-size: 13px; color: var(--faint); }
+.footer-bottom { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 20px; flex-wrap: wrap; padding-top: 28px; font-size: 13px; color: var(--faint); }
 .socials { display: flex; gap: 10px; }
 .socials a {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); display: inline-flex;
