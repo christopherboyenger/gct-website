@@ -29,12 +29,18 @@
   }
   // Logo strip: case-study brands plus other brands GCT has worked with.
   // wide: true = the logo already contains the brand name (shown on its own).
-  var STRIP = BRANDS.concat([
+  // Order = display order: the strongest-recognition brands lead.
+  var byName = function (n) { return BRANDS.filter(function (b) { return b.name === n; })[0]; };
+  var STRIP = [
+    byName('Malcontents'),
     { name: 'Dryvebox', logo: 'assets/brands/dryvebox.jpg', wide: true },
     { name: 'PopStroke', logo: 'assets/brands/popstroke.jpg', wide: true },
     { name: 'Performance Golf', logo: 'assets/brands/performance-golf.jpg' },
-    { name: 'ShipSticks', logo: 'assets/brands/shipsticks.jpg' }
-  ]);
+    { name: 'ShipSticks', logo: 'assets/brands/shipsticks.jpg' },
+    byName('PUR3 Golf'),
+    byName('BLURRD'),
+    byName('Bad Cards')
+  ];
   document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
     host.innerHTML = '<div class="brand-track">' + STRIP.map(function (b) {
       return b.wide
