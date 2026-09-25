@@ -49,12 +49,17 @@
     { name: 'Smartpin', logo: 'assets/brands/smartpin.jpg', wide: true },
     { name: 'Kismet', logo: 'assets/brands/kismet.jpg', wide: true }
   ];
+  // The strip is rendered twice so the auto-scroll can loop seamlessly; the copy is hidden from screen readers.
   document.querySelectorAll('[data-brand-strip]').forEach(function (host) {
-    host.innerHTML = '<div class="brand-track">' + STRIP.map(function (b) {
-      return b.wide
-        ? '<div class="b-chip"><img class="b-word" src="' + b.logo + '" alt="' + esc(b.name) + '" loading="lazy"></div>'
-        : '<div class="b-chip">' + avatar(b) + '<b>' + esc(b.name) + '</b></div>';
-    }).join('') + '</div>';
+    var chips = function (dup) {
+      var attr = dup ? ' aria-hidden="true"' : '';
+      return STRIP.map(function (b) {
+        return b.wide
+          ? '<div class="b-chip"' + attr + '><img class="b-word" src="' + b.logo + '" alt="' + (dup ? '' : esc(b.name)) + '"></div>'
+          : '<div class="b-chip"' + attr + '>' + avatar(b) + '<b>' + esc(b.name) + '</b></div>';
+      }).join('');
+    };
+    host.innerHTML = '<div class="brand-track">' + chips(false) + chips(true) + '</div>';
   });
   document.querySelectorAll('[data-case-studies]').forEach(function (host) {
     host.innerHTML = BRANDS.map(function (b, i) {
@@ -67,31 +72,67 @@
     }).join('');
   });
 
-  // Brand strip: manual scroll carousel (arrows + drag on desktop, swipe on touch).
+  // Brand strip: auto-rotating loop that still takes arrows, drag on desktop and swipe on touch.
+  // Auto-scroll pauses on hover/touch and for a moment after any manual interaction.
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.brand-scroller').forEach(function (sc) {
     var row = sc.querySelector('.brand-row');
-    var step = function () { return Math.max(240, row.clientWidth * 0.7); };
-    sc.querySelector('.prev').addEventListener('click', function () { row.scrollBy({ left: -step(), behavior: 'smooth' }); });
-    sc.querySelector('.next').addEventListener('click', function () { row.scrollBy({ left: step(), behavior: 'smooth' }); });
-    var sync = function () {
-      sc.classList.toggle('at-start', row.scrollLeft < 4);
-      sc.classList.toggle('at-end', row.scrollLeft + row.clientWidth >= row.scrollWidth - 4);
+    var chips = row.querySelectorAll('.b-chip');
+    var half = chips.length / 2;
+    // Width of one full set of logos: the distance from the first logo to its duplicate.
+    var loop = function () { return chips[half].offsetLeft - chips[0].offsetLeft; };
+    var wrap = function () {
+      var l = loop();
+      if (l <= 0) return;
+      if (row.scrollLeft >= l) row.scrollLeft -= l;
+      else if (row.scrollLeft <= 0) row.scrollLeft += l;
     };
-    row.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
-    var down = false, startX = 0, startLeft = 0, moved = false;
+    var hover = false, down = false, resumeAt = 0;
+    var hold = function (ms) { resumeAt = Date.now() + (ms || 3000); };
+    var step = function () { return Math.max(240, row.clientWidth * 0.7); };
+    sc.querySelector('.prev').addEventListener('click', function () { hold(); wrap(); row.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    sc.querySelector('.next').addEventListener('click', function () { hold(); wrap(); row.scrollBy({ left: step(), behavior: 'smooth' }); });
+    row.addEventListener('mouseenter', function () { hover = true; });
+    row.addEventListener('mouseleave', function () { hover = false; });
+    row.addEventListener('touchstart', function () { hold(4000); }, { passive: true });
+    row.addEventListener('touchmove', function () { hold(4000); }, { passive: true });
+    row.addEventListener('wheel', function () { hold(); }, { passive: true });
+
+    var startX = 0, startLeft = 0;
     row.addEventListener('pointerdown', function (e) {
       if (e.pointerType !== 'mouse') return;
-      down = true; moved = false; startX = e.clientX; startLeft = row.scrollLeft; row.classList.add('dragging');
+      down = true; startX = e.clientX; startLeft = row.scrollLeft; row.classList.add('dragging');
     });
     window.addEventListener('pointermove', function (e) {
       if (!down) return;
-      var dx = e.clientX - startX; if (Math.abs(dx) > 3) moved = true;
-      row.scrollLeft = startLeft - dx;
+      row.scrollLeft = startLeft - (e.clientX - startX);
     });
-    window.addEventListener('pointerup', function () { down = false; row.classList.remove('dragging'); });
+    window.addEventListener('pointerup', function () {
+      if (!down) return;
+      down = false; row.classList.remove('dragging'); hold(); wrap();
+    });
     row.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    if (reduceMotion) return;
+    var SPEED = 40; // px per second
+    var pos = row.scrollLeft, set = pos, last = 0;
+    var tick = function (t) {
+      var dt = last ? Math.min(t - last, 100) : 0;
+      last = t;
+      // Pick up wherever the user (or keyboard/scrollbar) left it.
+      if (Math.abs(row.scrollLeft - set) > 2) pos = row.scrollLeft;
+      if (hover || down || Date.now() < resumeAt) {
+        pos = row.scrollLeft;
+      } else {
+        var l = loop();
+        pos += SPEED * dt / 1000;
+        if (l > 0 && pos >= l) pos -= l;
+        row.scrollLeft = pos;
+      }
+      set = row.scrollLeft;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   });
 
   // Creator UGC carousel — 8s muted loops in assets/ugc/creators/<name>.mp4 (+ .jpg poster).
