@@ -2,28 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=gct-network.html">
-  <title>Golf Creator Tour — Golf's Creator Network</title>
-  <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
-  <meta name="description" content="Golf's creator network connecting creators, brands, courses, destinations and events.">
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '2407012946455158');
-  fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2407012946455158&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A New Season Starts November 1 | Golf Creator Tour</title>
+  <meta name="description" content="The next Golf Creator Tour season starts November 1, 2026. Creators and brands: join the waitlist and be part of what comes next.">
+  <meta name="theme-color" content="#f7f5ee">
+  <meta property="og:title" content="Your next chapter in golf. | Golf Creator Tour">
+  <meta property="og:description" content="A new season starts November 1. Join the creator and brand waitlist.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.golfcreatortour.com/">
+  <meta property="og:image" content="https://www.golfcreatortour.com/assets/photos/pga-green.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.golfcreatortour.com/">
+  <link rel="icon" type="image/jpeg" href="/appfavicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/season.css">
+  <script src="/assets/season.js" defer></script>
 </head>
-<body></body>
+<body>
+  <a class="skip-link" href="#waitlist">Skip to waitlist</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Golf Creator Tour home">
+        <span class="brand-mark"><img src="/logo-gct-full.png" alt="" width="84" height="84"></span>
+        <span>GOLF CREATOR TOUR<span class="brand-subtitle">The game. The content. The community.</span></span>
+      </a>
+      <span class="site-status"><span class="status-dot" aria-hidden="true"></span>A new season is coming</span>
+    </header>
+
+    <main class="main-grid">
+      <section class="season-intro" aria-labelledby="season-title">
+        <p class="eyebrow"><span class="short-rule" aria-hidden="true"></span>2027 SEASON · NOVEMBER 1</p>
+        <h1 id="season-title">Your next<br><em>chapter in golf.</em></h1>
+        <p class="intro-copy">New season. New connections. More possibilities.</p>
+        <p class="support-copy">We’re getting the next Golf Creator Tour ready. A place for creators to grow, brands to connect, and the golf community to come together.</p>
+        <div class="countdown-block">
+          <p class="countdown-caption" id="countdown-caption">The season starts in</p>
+          <div class="countdown" role="timer" aria-label="Countdown to November 1, 2026 at midnight Eastern" aria-live="off">
+            <div><span class="countdown-number" data-time="days">—</span><span class="countdown-unit">Days</span></div>
+            <span class="countdown-divider" aria-hidden="true">:</span>
+            <div><span class="countdown-number" data-time="hours">—</span><span class="countdown-unit">Hours</span></div>
+            <span class="countdown-divider" aria-hidden="true">:</span>
+            <div><span class="countdown-number" data-time="minutes">—</span><span class="countdown-unit">Minutes</span></div>
+            <span class="countdown-divider" aria-hidden="true">:</span>
+            <div><span class="countdown-number" data-time="seconds">—</span><span class="countdown-unit">Seconds</span></div>
+          </div>
+          <p class="launch-date"><time datetime="2026-11-01T00:00:00-04:00">November 1, 2026</time><span aria-hidden="true"> / </span>12:00 AM Eastern</p>
+          <noscript><p class="no-script">The new season begins November 1, 2026 at midnight Eastern. Enable JavaScript to see the live countdown and join the waitlist.</p></noscript>
+        </div>
+        <div class="intro-note"><span class="note-symbol" aria-hidden="true">↗</span><p>The website is getting an upgrade.<br><strong>The next chapter starts with you.</strong></p></div>
+      </section>
+
+      <section class="waitlist-card" id="waitlist" aria-labelledby="waitlist-title">
+        <div class="card-photo">
+          <img src="/assets/photos/pga-green.jpg" alt="A green overlooking the water at PGA National" width="1400" height="836" fetchpriority="high">
+          <span class="photo-label">GOLF CREATOR TOUR<span>See you on the next tee.</span></span>
+          <span class="season-stamp" aria-hidden="true">’27</span>
+        </div>
+        <div class="card-body">
+          <p class="eyebrow card-eyebrow">GET IN ON WHAT’S NEXT</p>
+          <h2 id="waitlist-title">Join the waitlist.</h2>
+          <p class="form-intro">Be first to hear about the new season.</p>
+          <form id="waitlist-form" method="post" action="https://qvuqjpcxnnikbigixupb.supabase.co/functions/v1/website-waitlist">
+            <fieldset class="audience-fieldset">
+              <legend>I’m joining as a</legend>
+              <div class="audience-options">
+                <label class="audience-option"><input type="radio" name="audience" value="creator" checked required><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 21v-3a7 7 0 0 1 14 0v3"></path></svg>Creator</span></label>
+                <label class="audience-option"><input type="radio" name="audience" value="brand" required><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"></rect><path d="M8 7V4h8v3M3 12a23 23 0 0 0 18 0M12 12v4"></path></svg>Brand</span></label>
+              </div>
+            </fieldset>
+            <div class="field-row">
+              <label class="field" for="name">Your name<input id="name" name="name" autocomplete="name" maxlength="100" placeholder="First and last name" required></label>
+              <label class="field" for="email">Email address<input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required></label>
+            </div>
+            <label class="field profile-field" for="profile"><span><span id="profile-label">Social handle or profile</span> <span class="optional">(optional)</span></span><input id="profile" name="profile" maxlength="200" placeholder="@yourhandle" autocomplete="off"></label>
+            <div class="honey-field" aria-hidden="true"><label for="website">Leave this field empty<input id="website" name="website" autocomplete="off" tabindex="-1"></label></div>
+            <label class="consent"><input id="consent" name="consent" type="checkbox" required><span>Email me about the new GCT season and opportunities for <span id="consent-audience">creators</span>.</span></label>
+            <button class="submit-button" type="submit"><span id="submit-label">Join the creator waitlist</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
+          </form>
+          <details class="privacy-note"><summary>Your information &amp; privacy</summary><p>Golf Creator Tour uses your name, email and optional profile or company details to manage this waitlist and contact you about the new season. Entries are stored in GCT’s database. To withdraw your signup or request deletion, email <a href="mailto:info@golfcreatoropen.com">info@golfcreatoropen.com</a>.</p></details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>© 2026 Golf Creator Tour</p>
+      <span class="footer-mantra">CREATORS. BRANDS. ONE GAME.</span>
+      <div><a href="https://www.instagram.com/golfcreatortour/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="mailto:info@golfcreatoropen.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+    </footer>
+  </div>
+</body>
 </html>
