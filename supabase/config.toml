@@ -1,0 +1,4 @@
+project_id = "qvuqjpcxnnikbigixupb"
+
+[functions.website-waitlist]
+verify_jwt = true

@@ -1,65 +1,39 @@
 {
   "framework": null,
-  "buildCommand": null,
-  "outputDirectory": ".",
+  "buildCommand": "node scripts/build-season.mjs",
+  "outputDirectory": "season-dist",
   "installCommand": null,
   "redirects": [
     {
       "source": "/creators",
       "destination": "/#creators",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/brands",
       "destination": "/#brands",
-      "permanent": true
-    },
-    {
-      "source": "/gco-sponsor-deck.html",
-      "destination": "/#brands",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/gct-brands.html",
       "destination": "/#brands",
-      "permanent": true
-    },
-    {
-      "source": "/gct-landing.html",
-      "destination": "/#creators",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/gct-brands-network.html",
       "destination": "/#brands",
-      "permanent": true
+      "permanent": false
     },
     {
-      "source": "/gct-courses.html",
-      "destination": "/courses",
-      "permanent": true
+      "source": "/gct-landing.html",
+      "destination": "/#creators",
+      "permanent": false
     }
   ],
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/gct-network.html"
-    },
-    {
-      "source": "/courses",
-      "destination": "/gct-courses.html"
-    },
-    {
-      "source": "/members",
-      "destination": "/gct-entry.html"
-    },
-    {
-      "source": "/news",
-      "destination": "/news.html"
-    },
-    {
-      "source": "/news/:slug",
-      "destination": "/news-article.html?slug=:slug"
+      "source": "/((?!assets/|appfavicon[.]jpg$|logo-gct-full[.]png$).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -75,26 +49,25 @@
           "value": "DENY"
         },
         {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action https://qvuqjpcxnnikbigixupb.supabase.co"
         }
       ]
     },
     {
-      "source": "/members",
+      "source": "/((?!assets/|appfavicon[.]jpg$|logo-gct-full[.]png$).*)",
       "headers": [
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/gct-entry.html",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
         }
       ]
     }
