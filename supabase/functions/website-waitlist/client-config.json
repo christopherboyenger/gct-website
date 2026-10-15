@@ -1,0 +1,5 @@
+{
+  "url": "https://qvuqjpcxnnikbigixupb.supabase.co/functions/v1/website-waitlist",
+  "anonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF2dXFqcGN4bm5pa2JpZ2l4dXBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNDI1OTIsImV4cCI6MjA4OTgxODU5Mn0.KapJSHim09aVHucFvnsvuRVKNocvAnIeVIrqI565YfY",
+  "note": "Public client credential. Send as apikey and Authorization: Bearer. Never put the service_role key in browser code."
+}
