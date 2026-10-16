@@ -13,7 +13,7 @@ const files = [
   'index.html',
   'assets/season.css',
   'assets/season.js',
-  'assets/photos/pga-green.jpg',
+  'assets/brand/gct-crest-white.png',
   'logo-gct-full.png',
   'appfavicon.jpg',
 ];
