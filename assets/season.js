@@ -21,6 +21,21 @@
   updateCountdown();
   if (Date.now() < launch) interval = setInterval(updateCountdown, 1000);
 
+  var dialog = document.getElementById('waitlist');
+  var openButton = document.getElementById('open-waitlist');
+  function openWaitlist() {
+    if (!dialog.open) dialog.showModal();
+    document.body.classList.add('waitlist-open');
+  }
+  openButton.addEventListener('click', openWaitlist);
+  document.getElementById('close-waitlist').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('close', function () { document.body.classList.remove('waitlist-open'); });
+  dialog.addEventListener('click', function (event) {
+    if (event.target !== dialog) return;
+    var bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+
   var form = document.getElementById('waitlist-form');
   var button = form.querySelector('button[type="submit"]');
   var status = document.getElementById('form-status');
@@ -41,6 +56,9 @@
       var audience = location.hash === '#brands' ? 'brand' : 'creator';
       form.querySelector('input[value="' + audience + '"]').checked = true;
       updateAudience();
+      openWaitlist();
+    } else if (location.hash === '#waitlist') {
+      openWaitlist();
     }
   }
   applyAudienceLink();
