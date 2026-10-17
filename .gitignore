@@ -5,3 +5,8 @@
 gco_pics/
 season-dist/
 work/
+
+node_modules/
+.env*
+site-dist/
+supabase/.temp/
