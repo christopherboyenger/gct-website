@@ -5,3 +5,5 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 @media(max-width:600px){input,textarea,select{font-size:16px}}
+
+.password-label{margin-bottom:7px}.password-entry{position:relative}.password-entry input{padding-right:70px}.password-entry button{position:absolute;right:3px;top:3px;bottom:3px;min-height:30px;border:0;background:transparent;color:#285ea8}.password-entry button:hover{background:#edf1f7}.password-help{font-size:11px;line-height:1.6;margin:10px 0 18px;color:#596779}
