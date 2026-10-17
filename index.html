@@ -18,7 +18,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/season.css">
+  <link rel="stylesheet" href="/assets/preview.css">
   <script src="/assets/season.js" defer></script>
+  <script src="/assets/preview.js" defer></script>
 </head>
 <body>
   <main class="landing" aria-labelledby="season-title">
@@ -39,6 +41,7 @@
         <div><span class="countdown-number" data-time="seconds">—</span><span class="countdown-unit">Seconds</span></div>
       </div>
       <button id="open-waitlist" class="waitlist-button" type="button" aria-haspopup="dialog" aria-controls="waitlist">Join the Waitlist</button>
+      <button id="open-preview" class="preview-link" type="button" aria-haspopup="dialog" aria-controls="preview-dialog">Preview website</button>
       <noscript><p class="no-script">The new season starts November 1, 2026 at midnight Eastern. Enable JavaScript to see the countdown and sign up, or email <a href="mailto:info@golfcreatoropen.com">info@golfcreatoropen.com</a>.</p></noscript>
     </div>
   </main>
@@ -66,6 +69,16 @@
       <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
     </form>
     <details class="privacy-note"><summary>Your information &amp; privacy</summary><p>Golf Creator Tour uses your name, email and optional profile or company details to manage this waitlist and contact you about the new season. Entries are stored in GCT’s database. To withdraw your signup or request deletion, email <a href="mailto:info@golfcreatoropen.com">info@golfcreatoropen.com</a>.</p></details>
+  </dialog>
+  <dialog class="waitlist-dialog" id="preview-dialog" aria-labelledby="preview-title" aria-describedby="preview-intro">
+    <button class="dialog-close" id="close-preview" type="button" aria-label="Close preview access">×</button>
+    <h2 id="preview-title">Website preview</h2>
+    <p class="form-intro" id="preview-intro">Enter your password to view the website while we make updates.</p>
+    <form id="preview-form" method="post" action="/api/preview?action=login">
+      <label class="field" for="preview-password">Password<input id="preview-password" name="password" type="password" autocomplete="current-password" maxlength="256" required></label>
+      <button class="submit-button" type="submit">Open website</button>
+      <p id="preview-status" class="form-status error" role="status" aria-live="polite" hidden></p>
+    </form>
   </dialog>
 </body>
 </html>
