@@ -95,6 +95,24 @@ test('the alternate homepage is protected and keeps anchors inside its preview r
   assert.doesNotMatch(page.body, /71\.4B|\$10M\+|3,000\+ brands/);
 });
 
+test('dedicated creators page keeps login, navigation and anchors protected', async () => {
+  assertLocked(await request('GET', '/preview/creators'), 'creators');
+  const { response, cookie } = await login('creators');
+  assert.deepEqual(JSON.parse(response.body), { next: '/preview/creators' });
+  const page = await request('GET', '/preview/creators', { headers: { cookie } });
+  assert.equal(page.status, 200);
+  assert.match(page.body, /Your golf content\./);
+  assert.match(page.body, /href="\/preview\/creators#opportunities"/);
+  assert.match(page.body, /href="\/preview\/v2#goals"/);
+  assert.doesNotMatch(page.body, /href="(?:gct-|#)/);
+  assert.match(page.body, /Exit preview/);
+  for (const html of [page.body, (await request('GET', '/preview/v2', { headers: { cookie } })).body]) {
+    const nav = html.match(/<div class="desktop-nav">([\s\S]*?)<div class="nav-actions">/)[1];
+    assert.match(nav, /^\s*<a class="creator-nav"[^>]*>Creators<\/a><div class="nav-dropdown"><button[^>]*>Brands /);
+    assert.doesNotMatch(nav, />For creators|>For brands/);
+  }
+});
+
 test('wrong or absent passwords never create a session', async () => {
   for (const password of ['wrong-password', '', undefined, ['not-a-string']]) {
     const response = await request('POST', '/api/preview?action=login', { body: { password } });
@@ -238,7 +256,7 @@ test('public build contains the countdown and assets but no private website HTML
       'appfavicon.jpg', 'The Golf Creator Tour logo.png',
       'assets/preview.js', 'assets/preview.css', 'assets/site.js', 'assets/site.css',
     ];
-    for (const file of [...publicFiles, 'gct-network.html', 'gct-courses.html', 'gct-brands.html', '.env.local']) {
+    for (const file of [...publicFiles, 'gct-network.html', 'gct-courses.html', 'gct-brands.html', 'gct-v2.html', 'gct-creators.html', '.env.local']) {
       await mkdir(dirname(join(fixture, file)), { recursive: true });
       await writeFile(join(fixture, file), publicFiles.includes(file) ? `public fixture: ${file}` : `PRIVATE ${PASSWORD}`);
     }

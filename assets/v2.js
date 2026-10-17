@@ -75,6 +75,9 @@
   });
   videoDialog.addEventListener('close', function () { player.pause(); player.removeAttribute('src'); player.load(); });
 
+  // Creator pages share navigation and media dialogs without the brand planner.
+  if (!document.getElementById('brief-dialog')) return;
+
   var briefDialog = document.getElementById('brief-dialog');
   var goalSelect = document.getElementById('brief-goal');
   var briefMessage = document.getElementById('brief-message');

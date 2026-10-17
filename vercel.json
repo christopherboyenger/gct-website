@@ -48,6 +48,10 @@
       "destination": "/api/preview?page=v2"
     },
     {
+      "source": "/preview/creators",
+      "destination": "/api/preview?page=creators"
+    },
+    {
       "source": "/preview/:path*",
       "destination": "/api/preview?page=missing"
     },
@@ -108,7 +112,7 @@
   ],
   "functions": {
     "api/preview.js": {
-      "includeFiles": "gct-{network,courses,v2}.html",
+      "includeFiles": "gct-{network,courses,v2,creators}.html",
       "maxDuration": 10
     }
   }

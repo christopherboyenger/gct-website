@@ -11,7 +11,7 @@
   opener.addEventListener('click', open);
   document.getElementById('close-preview').addEventListener('click', function () { dialog.close(); });
   dialog.addEventListener('close', function () { password.value = ''; status.hidden = true; });
-  if (['network', 'brands', 'courses', 'v2'].includes(requestedPage)) open();
+  if (['network', 'brands', 'courses', 'v2', 'creators'].includes(requestedPage)) open();
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (button.disabled || !form.reportValidity()) return;
