@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A New Season Starts November 1 | Golf Creator Tour</title>
   <meta name="description" content="The next Golf Creator Tour season starts November 1, 2026. Creators and brands: join the waitlist and be part of what comes next.">
-  <meta name="theme-color" content="#111b34">
+  <meta name="theme-color" content="#fafafa">
   <meta property="og:title" content="A New Season Starts November 1 | Golf Creator Tour">
   <meta property="og:description" content="A new season starts November 1. Join the creator and brand waitlist.">
   <meta property="og:type" content="website">
@@ -14,9 +14,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://www.golfcreatortour.com/">
   <link rel="icon" type="image/jpeg" href="/appfavicon.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/season.css">
   <link rel="stylesheet" href="/assets/preview.css">
   <script src="/assets/season.js" defer></script>
@@ -24,30 +23,27 @@
 </head>
 <body>
   <main class="landing" aria-labelledby="season-title">
-    <h1 id="season-title" class="sr-only">Golf Creator Tour — a new season starts November 1</h1>
     <div class="landing-content">
-      <div class="crest">
-        <img src="/assets/brand/gct-crest-white.png" alt="Golf Creator Tour crest" width="494" height="505" fetchpriority="high">
-      </div>
-      <p class="launch-date"><time datetime="2026-11-01T00:00:00-04:00">November 1, 2026</time></p>
+      <img class="landing-logo" src="/assets/brand/gct-full-ink.png" alt="Golf Creator Tour" width="520" height="520" fetchpriority="high">
+      <span class="eyebrow">The 2027 season</span>
+      <h1 id="season-title" class="display-hero sheen">A new season starts November&nbsp;1.</h1>
+      <p class="lead">Creators and brands: join the waitlist and be part of what comes next.</p>
       <p id="countdown-caption" class="sr-only">The season starts in</p>
       <div class="countdown" role="timer" aria-label="Countdown to November 1, 2026 at midnight Eastern" aria-live="off">
-        <div><span class="countdown-number" data-time="days">—</span><span class="countdown-unit">Days</span></div>
-        <span class="countdown-divider" aria-hidden="true">:</span>
-        <div><span class="countdown-number" data-time="hours">—</span><span class="countdown-unit">Hours</span></div>
-        <span class="countdown-divider" aria-hidden="true">:</span>
-        <div><span class="countdown-number" data-time="minutes">—</span><span class="countdown-unit">Minutes</span></div>
-        <span class="countdown-divider" aria-hidden="true">:</span>
-        <div><span class="countdown-number" data-time="seconds">—</span><span class="countdown-unit">Seconds</span></div>
+        <div class="count"><span class="countdown-number" data-time="days">—</span><span class="countdown-unit">Days</span></div>
+        <div class="count"><span class="countdown-number" data-time="hours">—</span><span class="countdown-unit">Hours</span></div>
+        <div class="count"><span class="countdown-number" data-time="minutes">—</span><span class="countdown-unit">Minutes</span></div>
+        <div class="count"><span class="countdown-number" data-time="seconds">—</span><span class="countdown-unit">Seconds</span></div>
       </div>
-      <button id="open-waitlist" class="waitlist-button" type="button" aria-haspopup="dialog" aria-controls="waitlist">Join the Waitlist</button>
+      <p class="launch-date"><time datetime="2026-11-01T00:00:00-04:00">November 1, 2026</time> · Midnight Eastern</p>
+      <button id="open-waitlist" class="btn btn-primary btn-lg waitlist-button" type="button" aria-haspopup="dialog" aria-controls="waitlist"><span>Join the Waitlist</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
       <button id="open-preview" class="preview-link" type="button" aria-haspopup="dialog" aria-controls="preview-dialog">Preview website</button>
       <noscript><p class="no-script">The new season starts November 1, 2026 at midnight Eastern. Enable JavaScript to see the countdown and sign up, or email <a href="mailto:info@golfcreatoropen.com">info@golfcreatoropen.com</a>.</p></noscript>
     </div>
   </main>
 
   <dialog class="waitlist-dialog" id="waitlist" aria-labelledby="waitlist-title" aria-describedby="waitlist-intro">
-    <button class="dialog-close" id="close-waitlist" type="button" aria-label="Close waitlist">×</button>
+    <button class="dialog-close" id="close-waitlist" type="button" aria-label="Close waitlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <h2 id="waitlist-title">Join the waitlist.</h2>
     <p class="form-intro" id="waitlist-intro">Be first to hear about the new season.</p>
     <form id="waitlist-form" method="post" action="https://qvuqjpcxnnikbigixupb.supabase.co/functions/v1/website-waitlist">
@@ -65,18 +61,18 @@
       <label class="field profile-field" for="profile"><span><span id="profile-label">Social handle or profile</span> <span class="optional">(optional)</span></span><input id="profile" name="profile" maxlength="200" placeholder="@yourhandle" autocomplete="off"></label>
       <div class="honey-field" aria-hidden="true"><label for="website">Leave this field empty<input id="website" name="website" autocomplete="off" tabindex="-1"></label></div>
       <label class="consent"><input id="consent" name="consent" type="checkbox" required><span>Email me about the new GCT season and opportunities for <span id="consent-audience">creators</span>.</span></label>
-      <button class="submit-button" type="submit"><span id="submit-label">Join the creator waitlist</span></button>
+      <button class="btn btn-primary btn-lg submit-button" type="submit"><span id="submit-label">Join the creator waitlist</span></button>
       <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
     </form>
     <details class="privacy-note"><summary>Your information &amp; privacy</summary><p>Golf Creator Tour uses your name, email and optional profile or company details to manage this waitlist and contact you about the new season. Entries are stored in GCT’s database. To withdraw your signup or request deletion, email <a href="mailto:info@golfcreatoropen.com">info@golfcreatoropen.com</a>.</p></details>
   </dialog>
   <dialog class="waitlist-dialog" id="preview-dialog" aria-labelledby="preview-title" aria-describedby="preview-intro">
-    <button class="dialog-close" id="close-preview" type="button" aria-label="Close preview access">×</button>
+    <button class="dialog-close" id="close-preview" type="button" aria-label="Close preview access"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <h2 id="preview-title">Website preview</h2>
     <p class="form-intro" id="preview-intro">Enter your password to view the website while we make updates.</p>
     <form id="preview-form" method="post" action="/api/preview?action=login">
       <label class="field" for="preview-password">Password<input id="preview-password" name="password" type="password" autocomplete="current-password" maxlength="256" required></label>
-      <button class="submit-button" type="submit">Open website</button>
+      <button class="btn btn-primary btn-lg submit-button" type="submit">Open website</button>
       <p id="preview-status" class="form-status error" role="status" aria-live="polite" hidden></p>
     </form>
   </dialog>

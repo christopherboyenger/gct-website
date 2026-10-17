@@ -1,5 +1,5 @@
-.preview-link { margin-top: 20px; min-height: 36px; padding: 6px 12px; border: 0; background: transparent; color: #b4bac7; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
-.preview-link:hover { color: #fff; }
-#preview-form .submit-button { margin-top: 20px; }
+.preview-link { margin-top: var(--space-4, 16px); min-height: 40px; padding: 6px 12px; border: 0; background: transparent; color: var(--site-muted, #616161); font-size: 14px; font-weight: 450; text-decoration: underline; text-underline-offset: 4px; }
+.preview-link:hover { color: var(--ds-text-primary, #202020); }
 .preview-exit { border: 0; background: transparent; color: inherit; padding: 4px 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.preview-exit:hover { color: var(--ds-text-primary, #202020); }
 .preview-exit:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
