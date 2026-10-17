@@ -83,6 +83,18 @@ test('correct password creates a secure session and serves the protected website
   assert.match(page.headers['x-robots-tag'], /noindex/);
 });
 
+test('the alternate homepage is protected and keeps anchors inside its preview route', async () => {
+  assertLocked(await request('GET', '/preview/v2'), 'v2');
+  const { response, cookie } = await login('v2');
+  assert.deepEqual(JSON.parse(response.body), { next: '/preview/v2' });
+  const page = await request('GET', '/preview/v2', { headers: { cookie } });
+  assert.equal(page.status, 200);
+  assert.match(page.body, /Turn golf creator marketing/);
+  assert.match(page.body, /href="\/preview\/v2#workflow"/);
+  assert.doesNotMatch(page.body, /href="#/);
+  assert.doesNotMatch(page.body, /71\.4B|\$10M\+|3,000\+ brands/);
+});
+
 test('wrong or absent passwords never create a session', async () => {
   for (const password of ['wrong-password', '', undefined, ['not-a-string']]) {
     const response = await request('POST', '/api/preview?action=login', { body: { password } });

@@ -44,6 +44,10 @@
       "destination": "/api/preview?page=brands"
     },
     {
+      "source": "/preview/v2",
+      "destination": "/api/preview?page=v2"
+    },
+    {
       "source": "/preview/:path*",
       "destination": "/api/preview?page=missing"
     },
@@ -104,7 +108,7 @@
   ],
   "functions": {
     "api/preview.js": {
-      "includeFiles": "gct-{network,courses}.html",
+      "includeFiles": "gct-{network,courses,v2}.html",
       "maxDuration": 10
     }
   }
