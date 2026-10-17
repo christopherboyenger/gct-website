@@ -256,7 +256,7 @@ test('public build contains the countdown and assets but no private website HTML
       'appfavicon.jpg', 'The Golf Creator Tour logo.png',
       'assets/preview.js', 'assets/preview.css', 'assets/site.js', 'assets/site.css',
     ];
-    for (const file of [...publicFiles, 'gct-network.html', 'gct-courses.html', 'gct-brands.html', 'gct-v2.html', 'gct-creators.html', '.env.local']) {
+    for (const file of [...publicFiles, 'gct-network.html', 'gct-courses.html', 'gct-brands.html', 'gct-v2.html', 'gct-creators.html', 'editor.html', '.env.local']) {
       await mkdir(dirname(join(fixture, file)), { recursive: true });
       await writeFile(join(fixture, file), publicFiles.includes(file) ? `public fixture: ${file}` : `PRIVATE ${PASSWORD}`);
     }

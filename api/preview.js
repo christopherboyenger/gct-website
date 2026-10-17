@@ -111,18 +111,32 @@ module.exports = async function handler(req, res) {
     return json(res, 405, { error: 'Method not allowed.' });
   }
   if (action || !Object.hasOwn(destinations, page)) return json(res, 404, { error: 'Preview page not found.' });
-  if (!config.ready || !validSession(req, config)) return redirect(res, `/?preview=${page}`);
+  let editorAccess = false;
+  if (process.env.GCT_EDITOR_RENDER_PRIVATE_KEY && /(?:__Host-)?gct_editor=/.test(req.headers.cookie || '')) {
+    try {
+      const session = await require('./editor.js').sessionForPreview(req, res);
+      await require('../lib/editor-store.cjs').call('load', page === 'brands' ? 'network' : page, {}, session.access_token);
+      editorAccess = true;
+    } catch { /* A preview password is still required when editor access ends. */ }
+  }
+  if (!editorAccess && (!config.ready || !validSession(req, config))) return redirect(res, `/?preview=${page}`);
   if (page === 'brands') return redirect(res, '/preview#brands');
 
   try {
     let html = await readFile(join(process.cwd(), pages[page]), 'utf8');
+    if (process.env.GCT_EDITOR_RENDER_PRIVATE_KEY) {
+      const saved = await require('../lib/editor-store.cjs').call('render', page);
+      const { renderPage } = await import('../lib/editor-render.mjs');
+      html = (await renderPage({ page, source: html, document: saved.document, site: saved.site })).html;
+    }
     html = html.replace('<head>', '<head>\n  <base href="/">\n  <meta name="robots" content="noindex,nofollow,noarchive">\n  <link rel="stylesheet" href="/assets/preview.css">');
     html = html.replaceAll('href="gct-network.html', 'href="/preview').replaceAll('href="gct-courses.html"', 'href="/preview/courses"');
     html = html.replaceAll('href="gct-creators.html', 'href="/preview/creators').replaceAll('href="gct-v2.html', 'href="/preview/v2');
     if (page === 'v2' || page === 'creators') html = html.replaceAll('href="#', `href="${destinations[page]}#`);
     html = html.replace('<div class="footer-bottom">', '<div class="footer-bottom"><form method="post" action="/api/preview?action=logout"><button class="preview-exit" type="submit">Exit preview</button></form>');
+    if (editorAccess) html = html.replace('</body>', '<a href="/editor?page=' + page + '" style="position:fixed;bottom:20px;right:20px;z-index:9999;padding:12px 18px;border-radius:999px;background:#20242b;color:#fff;font:13px Arial,sans-serif;box-shadow:0 4px 18px #0002">Edit this page</a></body>');
     // The existing website uses inline styles and small inline navigation handlers.
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://qvuqjpcxnnikbigixupb.supabase.co; media-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https:; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.statusCode = 200;
     res.end(req.method === 'HEAD' ? '' : html);
