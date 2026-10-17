@@ -10,127 +10,166 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="The%20Golf%20Creator%20Tour%20logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="#fafafa">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
 <nav class="nav" aria-label="Main">
-  <a class="nav-logo" href="gct-network.html"><img src="assets/brand/gct-icon-white.png" alt="Golf Creator Tour"></a>
-  <div class="nav-links">
-    <a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a>
+  <div class="nav-start">
+    <a class="nav-logo" href="gct-network.html"><img src="assets/brand/gct-icon-ink.png" alt="" width="38" height="39"><span>Golf Creator Tour</span></a>
+    <div class="nav-links"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a></div>
   </div>
-  <div class="nav-right">
-    <a class="btn sm" href="https://golfcreatortour.app/auth">Join Creator Waitlist</a>
+  <div class="nav-end">
+    <a class="btn btn-secondary btn-sm" href="https://golfcreatortour.app/brands"><span>Start a Campaign</span></a>
+    <a class="btn btn-primary btn-sm" href="https://golfcreatortour.app/auth"><span>Join Creator Waitlist</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobile"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a><a class="btn" href="https://golfcreatortour.app/auth">Join Creator Waitlist</a></div>
+<div class="mobile-menu" id="mobile"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a><a class="btn btn-primary btn-lg" href="https://golfcreatortour.app/auth"><span>Join Creator Waitlist</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1 class="h1 rv d1">Where golf creators <em>and brands grow together.</em></h1>
-      <p class="lead rv d2">GCT connects golf creators with brand opportunities, competition and a year-round community. Creators join free. Brands find creators to bring their products to life.</p>
-      <div class="actions rv d3"><a class="btn" href="https://golfcreatortour.app/brands">Start a Campaign <span class="arr">→</span></a><a class="btn ghost" href="https://golfcreatortour.app/auth">Join Free as a Creator</a></div>
-    </div>
-    <div class="hero-visual">
-    <div class="collage rv d2" aria-hidden="true" inert>
-      <div class="tile t1"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/hero-left.jpg"><source src="assets/ugc/hero-left.mp4" type="video/mp4"></video></div>
-      <div class="tile t2 app-screen"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/app-intro.jpg" aria-label="The Golf Creator Tour app"><source src="assets/ugc/app-intro.mp4" type="video/mp4"></video></div>
-      <div class="tile t3"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/hero-right.jpg"><source src="assets/ugc/hero-right.mp4" type="video/mp4"></video></div>
-    </div>
-    <div class="store-badges rv d3">
-      <img src="assets/brand/app-store-soon.png" alt="Coming soon to the App Store" width="204" height="62">
-      <img src="assets/brand/google-play-soon.png" alt="Coming soon to Google Play" width="212" height="61">
-    </div>
-    </div>
+  <div class="hero-copy">
+    <h1 class="display-hero sheen rv d1">Where golf creators and brands grow together.</h1>
+    <p class="lead rv d2">GCT connects golf creators with brand opportunities, competition and a year-round community. Creators join free. Brands find creators to bring their products to life.</p>
+    <div class="actions rv d3"><a class="btn btn-primary btn-lg" href="https://golfcreatortour.app/brands"><span>Start a Campaign</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-secondary btn-lg" href="https://golfcreatortour.app/auth"><span>Join Free as a Creator</span></a></div>
+  </div>
+  <div class="collage rv d2" aria-hidden="true" inert>
+    <div class="tile t1"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/hero-left.jpg"><source src="assets/ugc/hero-left.mp4" type="video/mp4"></video></div>
+    <div class="tile t2 app-screen"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/app-intro.jpg"><source src="assets/ugc/app-intro.mp4" type="video/mp4"></video></div>
+    <div class="tile t3"><video data-autoplay muted playsinline loop disablepictureinpicture disableremoteplayback preload="metadata" poster="assets/ugc/hero-right.jpg"><source src="assets/ugc/hero-right.mp4" type="video/mp4"></video></div>
+  </div>
+  <div class="store-badges rv d3">
+    <img src="assets/brand/app-store-soon.png" alt="Coming soon to the App Store" width="204" height="62">
+    <img src="assets/brand/google-play-soon.png" alt="Coming soon to Google Play" width="212" height="61">
   </div>
 </header>
 
+<section class="brand-strip" id="brands" aria-label="Brands on GCT">
+  <p class="small">Brands that have run campaigns and challenges on <b>GCT</b></p>
+  <div class="brand-scroller">
+    <button class="bs-btn prev" type="button" aria-label="Previous brands"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    <div class="brand-row" data-brand-strip></div>
+    <button class="bs-btn next" type="button" aria-label="More brands"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+  </div>
+</section>
+
 <section class="wall" aria-label="Creator content">
+  <div class="intro rv"><span class="eyebrow">Creator content</span><h2 class="display-section sheen">Real golf creators, real content.</h2><p class="body-lg">Clips from golf creators on the Tour, made on the course, at home and on the road.</p></div>
   <div data-ugc-carousel></div>
 </section>
 
-<section class="section white" id="how-it-works">
+<section class="section band" id="how-it-works">
   <div class="wrap">
-    <div class="head center rv"><h2 class="h2">How it <em>works</em></h2><p class="lead">GCT streamlines everything from creator matching and briefs to content submissions, Meta partnership ads, creator payouts and sales tracking.</p></div>
-    <div class="hiw">
-      <div class="card rv">
-        <div class="mock"><div class="mock-card"><div class="row"><span class="b-av"><img src="https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/challenge-logos/sponsors/760726bf-1908-42dd-994c-c930cb791c05-1787108059061.jpg" alt="" onerror="this.remove()"><span>P</span></span><div><b>Glove Check</b><small>PUR3 Golf · Challenge</small></div></div><div class="row" style="justify-content:space-between"><span class="pill-n">+ Tour points</span><span class="pill-n">Free product</span></div></div></div>
-        <div class="step-n">01</div><h3>Start with a clear brief</h3><p>Set your goals, deliverables, creator compensation and content usage rights before the campaign begins.</p>
-      </div>
-      <div class="card rv d1">
-        <div class="mock"><div class="mock-card"><div class="row"><span class="b-av"><img src="https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/challenge-logos/sponsors/be559f17-71c9-4b1d-8958-a9ae8234a432-1787199611185.PNG" alt="" onerror="this.remove()"><span>B</span></span><div><b>BLURRD</b><small>One Club Challenge</small></div></div><div class="row"><span class="stack"><i style="background:#f4a8a0"></i><i style="background:#f7d774"></i><i style="background:#9fe0b0"></i><i style="background:#a9c8f5"></i></span><span class="pill-n">48 creators applied</span></div><div class="row"><span class="m-btn">✓ Joined</span></div></div></div>
-        <div class="step-n">02</div><h3>Connect with golf creators</h3><p>Creators discover your campaign in the GCT app and choose opportunities that fit their content and audience.</p>
-      </div>
-      <div class="card rv d2">
-        <div class="mock"><div class="mock-card"><div class="row" style="justify-content:space-between"><div><b>Partnership ad</b><small>@creator × Your brand</small></div><span class="m-ok">● Live on Meta</span></div><div class="row" style="justify-content:space-between"><span class="pill-n">Paid partnership</span><span class="m-btn">Launch ad</span></div></div></div>
-        <div class="step-n">03</div><h3>Put creator content to work</h3><p>With creator permission and agreed usage rights, selected content can support Meta partnership ads.</p>
-      </div>
-      <div class="card rv d3">
-        <div class="mock"><div class="mock-card"><div class="row" style="justify-content:space-between"><div><b>Creator payout</b><small>Sent via GCT</small></div><span class="m-ok">✓ Paid</span></div><div class="row" style="display:block"><small>Attributed sales</small><div class="m-bar"><i style="width:72%"></i></div></div></div></div>
-        <div class="step-n">04</div><h3>Review results and pay creators</h3><p>Review campaign performance and pay creators through GCT according to the agreed terms.</p>
-      </div>
-    </div>
+    <div class="intro rv"><span class="eyebrow">How it works</span><h2 class="display-section sheen">Run creator campaigns from brief to payout.</h2><p class="body-lg">GCT streamlines everything from creator matching and briefs to content submissions, Meta partnership ads, creator payouts and sales tracking.</p></div>
+    <ol class="steps">
+      <li class="step rv">
+        <div class="step-copy">
+          <p class="step-label"><span class="step-number">01</span><span>Plan the campaign</span></p>
+          <h3 class="heading-step sheen">Start with a clear brief.</h3>
+          <p class="body-lg">Set your goals, deliverables, creator compensation and content usage rights before the campaign begins.</p>
+        </div>
+        <div class="step-art" aria-hidden="true">
+          <div class="frag">
+            <div class="frag-card">
+              <div class="frag-row"><span class="b-av"><img src="https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/challenge-logos/sponsors/760726bf-1908-42dd-994c-c930cb791c05-1787108059061.jpg" alt="" onerror="this.remove()"><span>P</span></span><div><span class="frag-title">Glove Check</span><span class="frag-sub">PUR3 Golf · Challenge</span></div></div>
+              <div class="frag-row"><span class="chip">+ Tour points</span><span class="chip neutral">Free product</span></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step flip rv">
+        <div class="step-copy">
+          <p class="step-label"><span class="step-number">02</span><span>Find creators</span></p>
+          <h3 class="heading-step sheen">Connect with golf creators.</h3>
+          <p class="body-lg">Creators discover your campaign in the GCT app and choose opportunities that fit their content and audience.</p>
+        </div>
+        <div class="step-art" aria-hidden="true">
+          <div class="frag">
+            <div class="frag-card">
+              <div class="frag-row"><span class="b-av"><img src="https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/challenge-logos/sponsors/be559f17-71c9-4b1d-8958-a9ae8234a432-1787199611185.PNG" alt="" onerror="this.remove()"><span>B</span></span><div><span class="frag-title">BLURRD</span><span class="frag-sub">One Club Challenge</span></div></div>
+              <div class="frag-row between"><span class="faces"><i></i><i></i><i></i><i></i></span><span class="frag-sub">48 creators applied</span><span class="pill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg><span>Joined</span></span></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step rv">
+        <div class="step-copy">
+          <p class="step-label"><span class="step-number">03</span><span>Run ads</span></p>
+          <h3 class="heading-step sheen">Put creator content to work.</h3>
+          <p class="body-lg">With creator permission and agreed usage rights, selected content can support Meta partnership ads.</p>
+        </div>
+        <div class="step-art" aria-hidden="true">
+          <div class="frag">
+            <div class="frag-card">
+              <div class="frag-row between"><div><span class="frag-title">Partnership ad</span><span class="frag-sub">@creator × Your brand</span></div><span class="tracked"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Live on Meta</span></div>
+              <div class="frag-row between"><span class="chip neutral">Paid partnership</span><span class="mini-btn">Launch ad</span></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step flip rv">
+        <div class="step-copy">
+          <p class="step-label"><span class="step-number">04</span><span>Pay creators</span></p>
+          <h3 class="heading-step sheen">Review results and pay creators.</h3>
+          <p class="body-lg">Review campaign performance and pay creators through GCT according to the agreed terms.</p>
+        </div>
+        <div class="step-art" aria-hidden="true">
+          <div class="frag">
+            <div class="row"><span class="row-copy"><span>Creator payout</span><span>Sent via GCT</span></span><span class="pill"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg><span>Paid</span></span></div>
+            <div class="frag-card"><span class="frag-sub">Attributed sales</span><div class="meter"><i style="width:72%"></i></div></div>
+          </div>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 
-<section class="brand-strip" id="brands" aria-label="Brands on GCT">
-  <div class="brand-scroller">
-    <button class="bs-btn prev" type="button" aria-label="Previous brands">‹</button>
-    <div class="brand-row" data-brand-strip></div>
-    <button class="bs-btn next" type="button" aria-label="More brands">›</button>
+<section class="section" id="case-studies">
+  <div class="wrap">
+    <div class="intro rv"><span class="eyebrow">Case studies</span><h2 class="display-section sheen">Real brands. Real creator content.</h2><p class="body-lg">A look at what brands have run on GCT so far.</p></div>
+    <div class="case-grid" data-case-studies></div>
   </div>
 </section>
 
-<section class="section soft" id="case-studies">
+<section class="section band" id="creators">
   <div class="wrap">
-    <div class="head center rv"><div class="eyebrow">Case studies</div><h2 class="h2">Real brands. <em>Real creator content.</em></h2><p class="lead">A look at what brands have run on GCT so far.</p></div>
-    <div class="cs-grid" data-case-studies></div>
-  </div>
-</section>
-
-<section class="section white" id="creators">
-  <div class="wrap">
-    <div class="head center rv"><div class="eyebrow">For creators</div><h2 class="h2">Compete, create <em>and get paid.</em></h2><p class="lead">Join free to connect with other golf creators, discover brand opportunities and compete throughout the season. Build relationships on and off the course.</p></div>
+    <div class="intro rv"><span class="eyebrow">For creators</span><h2 class="display-section sheen">Compete, create and get paid.</h2><p class="body-lg">Join free to connect with other golf creators, discover brand opportunities and compete throughout the season. Build relationships on and off the course.</p></div>
     <div class="grid g3">
-      <article class="card pcard hover rv">
-        <div class="stage"><span class="num">01</span><div class="phone"><img src="assets/photos/app-challenges.jpg" alt="GCT brand challenges screen" loading="lazy"></div></div>
-        <div class="content"><h3>Brand challenges</h3><p>Find golf brand campaigns that fit your content. Review the brief, product offer and payment terms before joining.</p></div>
+      <article class="card lift rv">
+        <div class="phone-stage"><span class="num">01</span><div class="phone"><img src="assets/photos/app-challenges.jpg" alt="GCT brand challenges screen" loading="lazy"></div></div>
+        <div class="card-body"><h3>Brand challenges</h3><p>Find golf brand campaigns that fit your content. Review the brief, product offer and payment terms before joining.</p></div>
       </article>
-      <article class="card pcard hover rv d1">
-        <div class="stage"><span class="num">02</span><div class="phone"><img src="assets/photos/app-connect.jpg" alt="GCT creator matches screen" loading="lazy"></div></div>
-        <div class="content"><h3>Creator matches</h3><p>Challenge other golf creators head-to-head in match play, stroke play, skins or a 2v2 scramble.</p></div>
+      <article class="card lift rv d1">
+        <div class="phone-stage"><span class="num">02</span><div class="phone"><img src="assets/photos/app-connect.jpg" alt="GCT creator matches screen" loading="lazy"></div></div>
+        <div class="card-body"><h3>Creator matches</h3><p>Challenge other golf creators head-to-head in match play, stroke play, skins or a 2v2 scramble.</p></div>
       </article>
-      <article class="card pcard hover rv d2">
-        <div class="stage"><span class="num">03</span><div class="phone"><img src="assets/photos/app-leaderboard.jpg" alt="GCT season leaderboard screen" loading="lazy"></div></div>
-        <div class="content"><h3>The season leaderboard</h3><p>Follow your progress through the season and work toward the Golf Creator Open under the published qualification rules.</p></div>
+      <article class="card lift rv d2">
+        <div class="phone-stage"><span class="num">03</span><div class="phone"><img src="assets/photos/app-leaderboard.jpg" alt="GCT season leaderboard screen" loading="lazy"></div></div>
+        <div class="card-body"><h3>The season leaderboard</h3><p>Follow your progress through the season and work toward the Golf Creator Open under the published qualification rules.</p></div>
       </article>
     </div>
-    <div class="actions center rv" style="margin-top:36px"><a class="btn" href="https://golfcreatortour.app/auth">Join Free as a Creator <span class="arr">→</span></a></div>
-    <p class="rv" style="margin-top:14px;text-align:center;font-size:13px;color:var(--muted)">Public social account, actively posting, 1,000+ followers.</p>
+    <div class="actions center rv" style="margin-top:var(--space-10)"><a class="btn btn-primary btn-lg" href="https://golfcreatortour.app/auth"><span>Join Free as a Creator</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <p class="note rv" style="text-align:center">Public social account, actively posting, 1,000+ followers.</p>
   </div>
 </section>
 
-<section class="section soft" id="network">
+<section class="section" id="network">
   <div class="wrap">
-    <div class="head rv"><div class="eyebrow">Built for the golf creator economy</div><h2 class="h2">One Network. <em>Four Ways In.</em></h2><p class="lead">Create with golf brands, meet other creators, host a creator experience or connect at the Golf Creator Open. Find your place in GCT.</p></div>
+    <div class="intro rv"><span class="eyebrow">Built for the golf creator economy</span><h2 class="display-section sheen">One network. Four ways in.</h2><p class="body-lg">Create with golf brands, meet other creators, host a creator experience or connect at the Golf Creator Open. Find your place in GCT.</p></div>
     <div class="grid g4">
-      <a class="card mcard tall rv" href="gct-network.html#creators"><div class="media"><img src="assets/photos/creator-swing.jpg" alt="" loading="lazy"><span class="tag">01</span></div><div class="content"><h3>Creators</h3><p>Compete on Tour, build your profile, connect with peers, earn opportunities and qualify for flagship events.</p><span class="link">Explore Creator Tour <span class="arr">→</span></span></div></a>
-      <a class="card mcard tall rv d1" href="gct-network.html#brands"><div class="media"><img src="assets/photos/merch-booth.jpg" alt="" loading="lazy"><span class="tag">02</span></div><div class="content"><h3>Brands</h3><p>Launch creator campaigns, sponsored challenges and event activations built specifically for the golf audience.</p><span class="link">Launch a Campaign <span class="arr">→</span></span></div></a>
-      <a class="card mcard tall rv d2" href="gct-courses.html"><div class="media"><img src="assets/photos/pga-green.jpg" alt="" loading="lazy"><span class="tag">03</span></div><div class="content"><h3>Courses &amp; Destinations</h3><p>Bring creators to your property and show golfers what makes the experience worth visiting.</p><span class="link">Become a GCT Partner <span class="arr">→</span></span></div></a>
-      <a class="card mcard tall rv d3" href="gct-network.html#events"><div class="media"><img src="assets/photos/social-night.jpg" alt="" loading="lazy"><span class="tag">04</span></div><div class="content"><h3>Events</h3><p>Experience the network in real life through the Golf Creator Open, creator socials and future GCT activations.</p><span class="link">Explore the Open <span class="arr">→</span></span></div></a>
+      <a class="card tall rv" href="gct-network.html#creators"><div class="card-media"><img src="assets/photos/creator-swing.jpg" alt="" loading="lazy"><span class="num">01</span></div><div class="card-body"><h3>Creators</h3><p>Compete on Tour, build your profile, connect with peers, earn opportunities and qualify for flagship events.</p><span class="link">Explore Creator Tour<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></a>
+      <a class="card tall rv d1" href="gct-network.html#brands"><div class="card-media"><img src="assets/photos/merch-booth.jpg" alt="" loading="lazy"><span class="num">02</span></div><div class="card-body"><h3>Brands</h3><p>Launch creator campaigns, sponsored challenges and event activations built specifically for the golf audience.</p><span class="link">Launch a Campaign<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></a>
+      <a class="card tall rv d2" href="gct-courses.html"><div class="card-media"><img src="assets/photos/pga-green.jpg" alt="" loading="lazy"><span class="num">03</span></div><div class="card-body"><h3>Courses &amp; destinations</h3><p>Bring creators to your property and show golfers what makes the experience worth visiting.</p><span class="link">Become a GCT Partner<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></a>
+      <a class="card tall rv d3" href="gct-network.html#events"><div class="card-media"><img src="assets/photos/social-night.jpg" alt="" loading="lazy"><span class="num">04</span></div><div class="card-body"><h3>Events</h3><p>Experience the network in real life through the Golf Creator Open, creator socials and future GCT activations.</p><span class="link">Explore the Open<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></a>
     </div>
   </div>
 </section>
 
-<section class="wall" style="padding-top:110px" aria-label="Creator content from the Golf Creator Open">
-  <div class="wall-head"><div class="eyebrow">Golf Creator Open · 2025</div></div>
+<section class="wall" aria-label="Creator content from the Golf Creator Open">
+  <div class="intro rv"><span class="eyebrow">Golf Creator Open · 2025</span><h2 class="display-compact sheen">Scenes from the Golf Creator Open.</h2></div>
   <div class="marquee">
     <div class="marquee-track">
       <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tournament-day.jpg" aria-label="Golf Creator Open tournament day"><source src="assets/ugc/gco/tournament-day.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
@@ -155,28 +194,28 @@
   </div>
 </section>
 
-<section class="section band-ink" id="events">
-  <div class="wrap split" style="align-items:stretch">
-    <div class="feature rv" style="min-height:520px">
+<section class="section band" id="events">
+  <div class="wrap split">
+    <div class="frame rv" style="aspect-ratio:4/5">
       <img src="assets/photos/pga-bear.jpg" alt="PGA National Resort" loading="lazy">
-      <div class="feature-body"><div class="eyebrow">The flagship event</div><h3 class="h2">Golf Creator Open</h3></div>
+      <div class="frame-caption"><b>Golf Creator Open</b><span>The flagship event</span></div>
     </div>
-    <div class="glass rv d1" style="display:flex;flex-direction:column;justify-content:center">
-      <div class="eyebrow">Golf, creators and community</div>
-      <h2 class="h2">The Network <em>Comes to Life.</em></h2>
-      <p class="lead" style="margin:22px 0 32px">The Golf Creator Open is the championship expression of GCT: creators, brands, competition, content and community together in one weekend.</p>
-      <div class="actions"><a class="btn gold" href="https://golfcreatortour.app/auth">Join the 2027 Season <span class="arr">→</span></a><a class="btn outline-light" href="gct-network.html#brands">Explore Brand Campaigns</a></div>
+    <div class="rv d1">
+      <span class="eyebrow">Golf, creators and community</span>
+      <h2 class="display-section sheen" style="margin-top:var(--space-4)">The network comes to life.</h2>
+      <p class="body-lg">The Golf Creator Open is the championship expression of GCT: creators, brands, competition, content and community together in one weekend.</p>
+      <div class="actions"><a class="btn btn-primary btn-lg" href="https://golfcreatortour.app/auth"><span>Join the 2027 Season</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-secondary btn-lg" href="gct-network.html#brands"><span>Explore Brand Campaigns</span></a></div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="cta-panel rv">
-      <div class="eyebrow">2027 season</div>
-      <h2 class="h2">The Next Season<br><em>Starts November 1.</em></h2>
+    <div class="cta-panel night rv">
+      <span class="eyebrow">2027 season</span>
+      <h2 class="sheen-white">The next season starts November 1.</h2>
       <p>Creators can join the waitlist now. Brands, courses and destinations can begin planning 2027 activations with GCT today.</p>
-      <div class="actions center"><a class="btn gold" href="https://golfcreatortour.app/auth">Join Creator Waitlist <span class="arr">→</span></a><a class="btn outline-light" href="mailto:info@golfcreatoropen.com?subject=GCT%20Brand%20Partnership">Build a Partnership</a></div>
+      <div class="actions"><a class="btn btn-blue btn-lg" href="https://golfcreatortour.app/auth"><span>Join Creator Waitlist</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-secondary btn-lg" href="mailto:info@golfcreatoropen.com?subject=GCT%20Brand%20Partnership"><span>Build a Partnership</span></a></div>
     </div>
   </div>
 </section>
@@ -184,8 +223,8 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
-      <a class="footer-brand" href="gct-network.html"><img src="assets/brand/gct-full-ink.png" alt="Golf Creator Tour"></a>
-      <div class="footer-links"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="mailto:info@golfcreatoropen.com">Contact</a></div>
+      <div class="footer-brand"><a href="gct-network.html"><img src="assets/brand/gct-full-ink.png" alt="Golf Creator Tour" width="92" height="92"></a><p>Golf’s creator network: creators, brands, courses and events.</p></div>
+      <nav class="footer-links" aria-label="Footer"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a><a href="mailto:info@golfcreatoropen.com">Contact</a></nav>
     </div>
     <div class="footer-bottom">
       <div>© 2026 Golf Creator Tour</div>
@@ -193,7 +232,7 @@
         <a href="https://instagram.com/golfcreatortour" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.8 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.2 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
         <a href="https://tiktok.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.8a5.5 5.5 0 0 1-3.4-1.2 5.5 5.5 0 0 1-2-3.5h-3.3v12.5a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.7a5.9 5.9 0 0 0-.8-.1 5.9 5.9 0 1 0 5.9 5.9V8.6a8.8 8.8 0 0 0 5.4 1.8z"/></svg></a>
         <a href="https://youtube.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6z"/></svg></a>
-      </div>
+        </div>
     </div>
   </div>
 </footer>

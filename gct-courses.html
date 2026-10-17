@@ -7,54 +7,57 @@
   <meta name="description" content="Bring golf creators to your course, resort or destination. Plan a creator visit with GCT and show golfers what makes your property worth visiting.">
   <meta property="og:title" content="Courses & Destinations — Golf Creator Tour">
   <meta property="og:description" content="Host golf creators. Show golfers what makes your property worth visiting.">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="#fafafa">
   <link rel="icon" type="image/jpeg" href="appfavicon.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <nav class="nav" aria-label="Main">
-  <a class="nav-logo" href="gct-network.html"><img src="assets/brand/gct-icon-white.png" alt="Golf Creator Tour"></a>
-  <div class="nav-links"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html" class="active">Courses</a><a href="gct-network.html#events">Events</a></div>
-  <div class="nav-right">
-    <a class="btn sm" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Plan a Creator Visit</a>
+  <div class="nav-start">
+    <a class="nav-logo" href="gct-network.html"><img src="assets/brand/gct-icon-ink.png" alt="" width="38" height="39"><span>Golf Creator Tour</span></a>
+    <div class="nav-links"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html" class="active" aria-current="page">Courses</a><a href="gct-network.html#events">Events</a></div>
+  </div>
+  <div class="nav-end">
+    <a class="btn btn-primary btn-sm" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership"><span>Plan a Creator Visit</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false"><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a><a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Plan a Creator Visit</a></div>
+<div class="mobile-menu"><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-courses.html">Courses</a><a href="gct-network.html#events">Events</a><a class="btn btn-primary btn-lg" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership"><span>Plan a Creator Visit</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1 class="h1 rv d1">Give Golfers a Reason <em>to Visit Your Course.</em></h1>
+  <div class="wrap hero-split">
+    <div class="hero-copy">
+      <span class="eyebrow rv">Courses &amp; destinations</span>
+      <h1 class="display-hero sheen rv d1">Give golfers a reason to visit your course.</h1>
       <p class="lead rv d2">Bring golf creators to your course, resort or destination. GCT helps you plan the experience and content so golfers can see what makes your property worth visiting.</p>
-      <div class="actions rv d3"><a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Plan a Creator Visit <span class="arr">→</span></a><a class="btn ghost" href="gct-network.html#brands">Explore Brand Campaigns</a></div>
+      <div class="actions rv d3"><a class="btn btn-primary btn-lg" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership"><span>Plan a Creator Visit</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-secondary btn-lg" href="gct-network.html#brands"><span>Explore Brand Campaigns</span></a></div>
     </div>
-    <div class="rv d2" style="position:relative">
-      <div class="frame" style="aspect-ratio:4/5"><img src="assets/photos/pga-green.jpg" alt="PGA National Resort green"></div>
-      <div class="tile" style="position:absolute;width:38%;left:-10%;bottom:-36px;transform:rotate(-3deg)" aria-hidden="true"><video data-autoplay muted playsinline loop preload="metadata" poster="assets/ugc/tee.jpg"><source src="assets/ugc/tee.mp4" type="video/mp4"></video><div class="tile-tag"><span class="av"></span>@golfcreatortour</div></div>
+    <div class="hero-media rv d2">
+      <div class="frame"><img src="assets/photos/pga-green.jpg" alt="PGA National Resort green"></div>
+      <div class="tile" aria-hidden="true"><video data-autoplay muted playsinline loop preload="metadata" poster="assets/ugc/tee.jpg"><source src="assets/ugc/tee.mp4" type="video/mp4"></video><div class="tile-tag"><span class="av"></span><span>@golfcreatortour</span></div></div>
     </div>
   </div>
 </header>
 
-<section class="wall" style="padding-top:70px" aria-label="Creator content">
+<section class="wall" aria-label="Creator content">
+  <div class="intro rv"><span class="eyebrow">Creator content</span><h2 class="display-section sheen">Real creators on real courses.</h2><p class="body-lg">The kind of content a hosted round can produce: the course, the shots and the people playing them.</p></div>
   <div data-ugc-carousel></div>
 </section>
 
-<section class="section white">
+<section class="section band">
   <div class="wrap">
-    <div class="head rv"><div class="eyebrow">Why GCT</div><h2 class="h2">Creator Marketing <em>Built Around the Property.</em></h2><p class="lead">A hosted round can be more than hospitality. With the right creators, objectives and deliverables, it becomes a content engine that introduces golfers to your course, resort or destination through people they already follow.</p></div>
+    <div class="intro rv"><span class="eyebrow">Why GCT</span><h2 class="display-section sheen">Creator marketing built around the property.</h2><p class="body-lg">A hosted round can be more than hospitality. With the right creators, objectives and deliverables, it becomes a content engine that introduces golfers to your course, resort or destination through people they already follow.</p></div>
     <div class="grid g3">
-      <div class="card rv"><span class="num">01</span><h3>Host the Right Creators</h3><p>Build an activation around creator fit, geography, content style and the audience you want to reach.</p></div>
-      <div class="card rv d1"><span class="num">02</span><h3>Create the Experience</h3><p>Golf can be paired with lodging, dining, amenities, local businesses and destination experiences.</p></div>
-      <div class="card rv d2"><span class="num">03</span><h3>Distribute the Story</h3><p>Creators turn the hosted experience into social content and GCT campaign deliverables across the network.</p></div>
+      <div class="card rv"><div class="card-body"><span class="num">01</span><h3 class="spaced">Host the right creators</h3><p>Build an activation around creator fit, geography, content style and the audience you want to reach.</p></div></div>
+      <div class="card rv d1"><div class="card-body"><span class="num">02</span><h3 class="spaced">Create the experience</h3><p>Golf can be paired with lodging, dining, amenities, local businesses and destination experiences.</p></div></div>
+      <div class="card rv d2"><div class="card-body"><span class="num">03</span><h3 class="spaced">Distribute the story</h3><p>Creators turn the hosted experience into social content and GCT campaign deliverables across the network.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="wall" style="padding-top:100px" aria-label="Creator content from the Golf Creator Open">
-  <div class="wall-head"><div class="eyebrow">Golf Creator Open · 2025</div></div>
+<section class="wall" aria-label="Creator content from the Golf Creator Open">
+  <div class="intro rv"><span class="eyebrow">Golf Creator Open · 2025</span><h2 class="display-compact sheen">Scenes from the Golf Creator Open.</h2></div>
   <div class="marquee">
     <div class="marquee-track">
       <div class="tile"><video data-autoplay muted playsinline loop preload="none" poster="assets/ugc/gco/tournament-day.jpg" aria-label="Golf Creator Open tournament day"><source src="assets/ugc/gco/tournament-day.mp4" type="video/mp4"></video><span class="tile-play"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></div>
@@ -79,43 +82,46 @@
   </div>
 </section>
 
-<section class="section soft">
+<section class="section band">
   <div class="wrap">
-    <div class="head center rv"><div class="eyebrow">Partnership formats</div><h2 class="h2">Start Small or <em>Build the Destination.</em></h2><p class="lead">Partnerships can range from individual hosted creator rounds to multi-day destination campaigns.</p></div>
+    <div class="intro rv"><span class="eyebrow">Partnership formats</span><h2 class="display-section sheen">Start small or build the destination.</h2><p class="body-lg">Partnerships can range from individual hosted creator rounds to multi-day destination campaigns.</p></div>
     <div class="grid g2">
-      <div class="card mcard hover rv"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/creator-swing.jpg" alt="" loading="lazy" style="object-position:center 25%"></div><div class="content"><h3>Hosted Creator Round</h3><p>A lightweight activation for courses looking to generate authentic social content and introduce the property to new golfers.</p><ul class="checks" style="margin-top:20px"><li>Creator matching</li><li>Hosted golf experience</li><li>Defined content deliverables</li><li>Campaign coordination</li></ul></div></div>
-      <div class="card mcard hover rv d1"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/creators-huddle.jpg" alt="" loading="lazy"></div><div class="content"><h3>Course Takeover</h3><p>Bring multiple creators onsite at the same time to create a concentrated burst of content and community activity.</p><ul class="checks" style="margin-top:20px"><li>Multi-creator activation</li><li>Challenges or competition</li><li>Brand integration opportunities</li><li>On-property social moments</li></ul></div></div>
-      <div class="card mcard hover rv"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/open-sunday.jpg" alt="" loading="lazy"></div><div class="content"><h3>Stay &amp; Play Campaign</h3><p>Package golf, hotel and hospitality into a richer creator experience that tells the full resort story.</p><ul class="checks" style="margin-top:20px"><li>Golf + lodging</li><li>Food and beverage</li><li>Property amenities</li><li>Multi-day content</li></ul></div></div>
-      <div class="card mcard hover rv d1"><div class="media" style="aspect-ratio:16/9"><img src="assets/photos/pga-national.jpg" alt="" loading="lazy"></div><div class="content"><h3>Destination Campaign</h3><p>Create a multi-property trip that turns golf travel into a coordinated creator media campaign.</p><ul class="checks" style="margin-top:20px"><li>Multiple courses</li><li>Hotels and local partners</li><li>Travel-focused creators</li><li>Distributed destination storytelling</li></ul></div></div>
+      <div class="card wide lift rv"><div class="card-media"><img src="assets/photos/creator-swing.jpg" alt="" loading="lazy" style="object-position:center 25%"></div><div class="card-body"><h3>Hosted creator round</h3><p>A lightweight activation for courses looking to generate authentic social content and introduce the property to new golfers.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Creator matching</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Hosted golf experience</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Defined content deliverables</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Campaign coordination</li></ul></div></div>
+      <div class="card wide lift rv d1"><div class="card-media"><img src="assets/photos/creators-huddle.jpg" alt="" loading="lazy"></div><div class="card-body"><h3>Course takeover</h3><p>Bring multiple creators onsite at the same time to create a concentrated burst of content and community activity.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Multi-creator activation</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Challenges or competition</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Brand integration opportunities</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>On-property social moments</li></ul></div></div>
+      <div class="card wide lift rv"><div class="card-media"><img src="assets/photos/open-sunday.jpg" alt="" loading="lazy"></div><div class="card-body"><h3>Stay &amp; play campaign</h3><p>Package golf, hotel and hospitality into a richer creator experience that tells the full resort story.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Golf + lodging</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Food and beverage</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Property amenities</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Multi-day content</li></ul></div></div>
+      <div class="card wide lift rv d1"><div class="card-media"><img src="assets/photos/pga-national.jpg" alt="" loading="lazy"></div><div class="card-body"><h3>Destination campaign</h3><p>Create a multi-property trip that turns golf travel into a coordinated creator media campaign.</p><ul class="checks"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Multiple courses</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Hotels and local partners</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Travel-focused creators</li><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Distributed destination storytelling</li></ul></div></div>
     </div>
   </div>
 </section>
 
-<section class="section white">
+<section class="section">
   <div class="wrap split">
-    <div class="frame rv" style="aspect-ratio:4/5"><img src="assets/photos/pga-bear.jpg" alt="PGA National Resort" loading="lazy"></div>
+    <div class="frame rv" style="aspect-ratio:4/5">
+      <img src="assets/photos/pga-bear.jpg" alt="PGA National Resort" loading="lazy">
+      <div class="frame-caption"><b>PGA National Resort</b></div>
+    </div>
     <div class="rv d1">
-      <div class="eyebrow">How it works</div>
-      <h2 class="h2">From Property <em>to Campaign.</em></h2>
-      <p class="lead">GCT can structure the creator side of the activation while your team focuses on delivering the experience guests should remember.</p>
-      <div class="flow" style="margin-bottom:32px">
-        <div class="flow-row"><span class="n">1</span><strong>Define the objective<span>Awareness, bookings, launch, destination exposure or reusable content.</span></strong></div>
-        <div class="flow-row"><span class="n">2</span><strong>Build the creator mix<span>Select for audience, location, platform, style and campaign fit.</span></strong></div>
-        <div class="flow-row"><span class="n">3</span><strong>Host the experience<span>Golf, hospitality and local moments become the content environment.</span></strong></div>
-        <div class="flow-row"><span class="n">4</span><strong>Publish and measure<span>Track the agreed campaign deliverables and performance.</span></strong></div>
-      </div>
-      <a class="btn" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership">Plan a Creator Visit <span class="arr">→</span></a>
+      <span class="eyebrow">How it works</span>
+      <h2 class="display-section sheen" style="margin-top:var(--space-4)">From property to campaign.</h2>
+      <p class="body-lg" style="margin:var(--space-4) 0 0">GCT can structure the creator side of the activation while your team focuses on delivering the experience guests should remember.</p>
+      <ol class="flow">
+        <li class="flow-row"><span class="num">1</span><strong>Define the objective<span>Awareness, bookings, launch, destination exposure or reusable content.</span></strong></li>
+        <li class="flow-row"><span class="num">2</span><strong>Build the creator mix<span>Select for audience, location, platform, style and campaign fit.</span></strong></li>
+        <li class="flow-row"><span class="num">3</span><strong>Host the experience<span>Golf, hospitality and local moments become the content environment.</span></strong></li>
+        <li class="flow-row"><span class="num">4</span><strong>Publish and measure<span>Track the agreed campaign deliverables and performance.</span></strong></li>
+      </ol>
+      <a class="btn btn-primary btn-lg" href="mailto:info@golfcreatoropen.com?subject=GCT%20Course%20or%20Destination%20Partnership"><span>Plan a Creator Visit</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="cta-panel rv">
-      <div class="eyebrow">2027 partnerships</div>
-      <h2 class="h2">Turn Your Property Into <em>Their Next Golf Trip.</em></h2>
+    <div class="cta-panel night rv">
+      <span class="eyebrow">2027 partnerships</span>
+      <h2 class="sheen-white">Turn your property into their next golf trip.</h2>
       <p>Tell us about your property, the golfers you want to reach and the experience you can host. We’ll help shape a creator campaign around your goals.</p>
-      <div class="actions center"><a class="btn gold" href="mailto:info@golfcreatoropen.com?subject=2027%20GCT%20Course%20Partnership">Plan a Creator Visit <span class="arr">→</span></a></div>
+      <div class="actions"><a class="btn btn-blue btn-lg" href="mailto:info@golfcreatoropen.com?subject=2027%20GCT%20Course%20Partnership"><span>Plan a Creator Visit</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -123,10 +129,17 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
-      <a class="footer-brand" href="gct-network.html"><img src="assets/brand/gct-full-ink.png" alt="Golf Creator Tour"></a>
-      <div class="footer-links"><a href="gct-network.html">Home</a><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="mailto:info@golfcreatoropen.com">Contact</a></div>
+      <div class="footer-brand"><a href="gct-network.html"><img src="assets/brand/gct-full-ink.png" alt="Golf Creator Tour" width="92" height="92"></a><p>Golf’s creator network: creators, brands, courses and events.</p></div>
+      <nav class="footer-links" aria-label="Footer"><a href="gct-network.html">Home</a><a href="gct-network.html#creators">Creators</a><a href="gct-network.html#brands">Brands</a><a href="gct-network.html#events">Events</a><a href="mailto:info@golfcreatoropen.com">Contact</a></nav>
     </div>
-    <div class="footer-bottom"><div>© 2026 Golf Creator Tour</div></div>
+    <div class="footer-bottom">
+      <div>© 2026 Golf Creator Tour</div>
+      <div class="socials">
+        <a href="https://instagram.com/golfcreatortour" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.8 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.2 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2.1a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+        <a href="https://tiktok.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.8a5.5 5.5 0 0 1-3.4-1.2 5.5 5.5 0 0 1-2-3.5h-3.3v12.5a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V8.7a5.9 5.9 0 0 0-.8-.1 5.9 5.9 0 1 0 5.9 5.9V8.6a8.8 8.8 0 0 0 5.4 1.8z"/></svg></a>
+        <a href="https://youtube.com/@golfcreatortour" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6z"/></svg></a>
+        </div>
+    </div>
   </div>
 </footer>
 
