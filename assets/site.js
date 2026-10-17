@@ -55,19 +55,21 @@
       var attr = dup ? ' aria-hidden="true"' : '';
       return STRIP.map(function (b) {
         return b.wide
-          ? '<div class="b-chip"' + attr + '><img class="b-word" src="' + b.logo + '" alt="' + (dup ? '' : esc(b.name)) + '"></div>'
+          ? '<div class="b-chip word"' + attr + '><img class="b-word" src="' + b.logo + '" alt="' + (dup ? '' : esc(b.name)) + '"></div>'
           : '<div class="b-chip"' + attr + '>' + avatar(b) + '<b>' + esc(b.name) + '</b></div>';
       }).join('');
     };
     host.innerHTML = '<div class="brand-track">' + chips(false) + chips(true) + '</div>';
   });
   document.querySelectorAll('[data-case-studies]').forEach(function (host) {
+    // The first stat leads as the headline result; the other two sit in the footer row.
     host.innerHTML = BRANDS.map(function (b, i) {
-      return '<article class="card cs rv' + (i % 2 ? ' d1' : '') + '">' +
-        '<div class="cs-head">' + avatar(b) + '<div><b>' + esc(b.name) + '</b><small>' + esc(b.category) + '</small></div></div>' +
-        '<div class="cs-tag">' + esc(b.campaign) + '</div>' +
+      return '<article class="case rv' + (i % 2 ? ' d1' : '') + '">' +
+        '<div class="case-head">' + avatar(b) + '<div><span class="case-kicker">Case study · ' + esc(b.category) + '</span><span class="case-brand">' + esc(b.name) + '</span></div></div>' +
+        '<div class="case-result">' + esc(b.stats[0][0]) + '<span class="case-unit">' + esc(b.stats[0][1]) + '</span></div>' +
+        '<div class="case-campaign">' + esc(b.campaign) + '</div>' +
         '<p>' + esc(b.summary) + '</p>' +
-        '<div class="cs-stats">' + b.stats.map(function (s) { return '<div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div>' +
+        '<div class="case-stats">' + b.stats.slice(1).map(function (s) { return '<div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div>' +
         '</article>';
     }).join('');
   });
