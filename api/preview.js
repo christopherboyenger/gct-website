@@ -3,8 +3,14 @@ const { readFile } = require('node:fs/promises');
 const { join } = require('node:path');
 
 const SESSION_SECONDS = 8 * 60 * 60;
-const pages = Object.freeze({ network: 'gct-network.html', courses: 'gct-courses.html' });
-const destinations = Object.freeze({ network: '/preview', brands: '/preview#brands', courses: '/preview/courses' });
+const pages = Object.freeze({
+  network: 'gct-network.html', creators: 'gct-creators.html', brands: 'gct-brands.html',
+  courses: 'gct-courses.html', events: 'gct-events.html',
+});
+const destinations = Object.freeze({
+  network: '/preview', creators: '/preview/creators', brands: '/preview/brands',
+  courses: '/preview/courses', events: '/preview/events',
+});
 const hash = value => createHash('sha256').update(value).digest();
 const equal = (a, b) => timingSafeEqual(hash(a), hash(b));
 
@@ -79,7 +85,8 @@ module.exports = async function handler(req, res) {
   const config = settings();
   const url = new URL(req.url, `https://${req.headers.host}`);
   const action = req.query?.action ?? url.searchParams.get('action');
-  const pathPage = url.pathname === '/preview/courses' ? 'courses' : url.pathname === '/preview/brands' ? 'brands' : 'network';
+  const pathMatch = /^\/preview\/([a-z]+)$/.exec(url.pathname);
+  const pathPage = pathMatch ? pathMatch[1] : 'network';
   const page = req.query?.page ?? url.searchParams.get('page') ?? pathPage;
 
   if (req.method === 'POST') {
@@ -112,12 +119,12 @@ module.exports = async function handler(req, res) {
   }
   if (action || !Object.hasOwn(destinations, page)) return json(res, 404, { error: 'Preview page not found.' });
   if (!config.ready || !validSession(req, config)) return redirect(res, `/?preview=${page}`);
-  if (page === 'brands') return redirect(res, '/preview#brands');
-
   try {
     let html = await readFile(join(process.cwd(), pages[page]), 'utf8');
     html = html.replace('<head>', '<head>\n  <base href="/">\n  <meta name="robots" content="noindex,nofollow,noarchive">\n  <link rel="stylesheet" href="/assets/preview.css">');
-    html = html.replaceAll('href="gct-network.html', 'href="/preview').replaceAll('href="gct-courses.html"', 'href="/preview/courses"');
+    for (const [name, file] of Object.entries(pages)) {
+      html = html.replaceAll(`href="${file}`, `href="${destinations[name]}`);
+    }
     html = html.replace('<div class="footer-bottom">', '<div class="footer-bottom"><form method="post" action="/api/preview?action=logout"><button class="preview-exit" type="submit">Exit preview</button></form>');
     // The existing website uses inline styles and small inline navigation handlers.
     res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://qvuqjpcxnnikbigixupb.supabase.co; media-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
