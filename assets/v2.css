@@ -25,4 +25,4 @@ dialog{margin:auto;border:1px solid #e8e8e8;border-radius:24px;box-shadow:0 25px
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.brand-marquee,.video-marquees{overflow-x:auto}.video-track{width:max-content}.video-tile[aria-hidden=true],.brand-logo[aria-hidden=true]{display:none}}
 
 /* Match the GCT capital height to the adjacent header crest. */
-.site-header .wordmark{font-size:36px;line-height:1;letter-spacing:-1.3px}.site-header .wordmark>span:last-child{transform:translateY(1px)}@media(max-width:1279px){.site-header .wordmark{font-size:33px}}@media(max-width:767px){.site-header .wordmark{font-size:30px}}@media(max-width:370px){.site-header .wordmark{font-size:27px}}
+.site-header .wordmark{font-size:36px;line-height:1;letter-spacing:.04em}.site-header .wordmark>span:last-child{transform:translateY(1px)}@media(max-width:1279px){.site-header .wordmark{font-size:33px}}@media(max-width:767px){.site-header .wordmark{font-size:30px}}@media(max-width:370px){.site-header .wordmark{font-size:27px}}
