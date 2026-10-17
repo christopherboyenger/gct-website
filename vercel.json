@@ -32,7 +32,23 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|appfavicon[.]jpg$|logo-gct-full[.]png$).*)",
+      "source": "/preview",
+      "destination": "/api/preview?page=network"
+    },
+    {
+      "source": "/preview/courses",
+      "destination": "/api/preview?page=courses"
+    },
+    {
+      "source": "/preview/brands",
+      "destination": "/api/preview?page=brands"
+    },
+    {
+      "source": "/preview/:path*",
+      "destination": "/api/preview?page=missing"
+    },
+    {
+      "source": "/((?!api/|assets/|appfavicon[.]jpg$|logo-gct-full[.]png$|The%20Golf%20Creator%20Tour%20logo[.]png$).*)",
       "destination": "/index.html"
     }
   ],
@@ -55,10 +71,6 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action https://qvuqjpcxnnikbigixupb.supabase.co"
         }
       ]
     },
@@ -70,6 +82,30 @@
           "value": "no-store, max-age=0"
         }
       ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://qvuqjpcxnnikbigixupb.supabase.co"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://qvuqjpcxnnikbigixupb.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://qvuqjpcxnnikbigixupb.supabase.co"
+        }
+      ]
     }
-  ]
+  ],
+  "functions": {
+    "api/preview.js": {
+      "includeFiles": "gct-{network,courses}.html",
+      "maxDuration": 10
+    }
+  }
 }

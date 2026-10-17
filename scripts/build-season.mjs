@@ -1,5 +1,5 @@
-// Publish only the temporary page and its assets. Original website sources stay in Git.
-import { copyFile, mkdir, rm } from 'node:fs/promises';
+// Only the countdown HTML is public. Full-site HTML is bundled with the authenticated function.
+import { copyFile, cp, mkdir, rm } from 'node:fs/promises';
 import { resolve, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,6 +16,7 @@ const files = [
   'assets/brand/gct-crest-white.png',
   'logo-gct-full.png',
   'appfavicon.jpg',
+  'The Golf Creator Tour logo.png',
 ];
 
 for (const file of files) {
@@ -23,4 +24,5 @@ for (const file of files) {
   await mkdir(dirname(destination), { recursive: true });
   await copyFile(resolve(root, file), destination);
 }
-console.log(`Temporary season site ready (${files.length} files).`);
+await cp(resolve(root, 'assets'), resolve(output, 'assets'), { recursive: true });
+console.log('Countdown and shared media ready. Preview HTML remains outside the public output.');
