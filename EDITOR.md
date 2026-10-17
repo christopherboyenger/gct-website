@@ -20,6 +20,8 @@ The editor supports the Brands/Homepage candidate, Creators, Courses & destinati
 
 The Edge Function uses its existing server-only service key. All four editor tables have RLS enabled and revoke access from `anon` and `authenticated`. The narrowly scoped RPCs are callable only by `service_role`. Editor access does not grant app administration rights. Public media has no anonymous/app-user upload policy.
 
+Writes stay `SECURITY INVOKER` and reuse the existing verified-session lookup; they do not need direct access to `auth.users`. Live checks run as `service_role` confirm save/publish succeeds, invalid sessions fail and ordinary app users cannot execute commits. The verified-session migration was applied through the SQL connector after the migration connector returned an expired request-state error; its idempotent migration file is included for the next migration reconciliation.
+
 Vercel requires `GCT_EDITOR_RENDER_PRIVATE_KEY`: an Ed25519 PKCS#8 PEM, held only as a sensitive environment variable. Its public key is committed in `lib/editor-config.json`. The key signs read-only published-content requests; it cannot authorize edits or publication. The encrypted cookie key is domain-separated from this key. Keep private keys out of the repository.
 
 `GCT_EDITOR_NAMESPACE` is optional. Without it, production uses `production`; previews use `gct-preview-v2`. Draft/published content and history are isolated by namespace. Preview and production credentials/configuration must be provisioned separately.

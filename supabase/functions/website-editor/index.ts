@@ -18,7 +18,7 @@ async function user(req:Request){
  const r=await fetch(url+'/auth/v1/user',{headers:{apikey:config.publishableKey,Authorization:auth}});if(!r.ok)return null;const u=await r.json();if(!u.email_confirmed_at)return null;
  let session;try{session=JSON.parse(atob(auth.slice(7).split('.')[1].replace(/-/g,'+').replace(/_/g,'/'))).session_id;}catch{return null;}
  if(!uuid(session))return null;
- const members=await db('rpc/website_editor_member','POST',{p_user:u.id,p_session:session});return members[0]||null;
+ const members=await db('rpc/website_editor_member','POST',{p_user:u.id,p_session:session});return members[0]?{...members[0],session_id:session}:null;
 }
 async function readBody(req:Request){const reader=req.body?.getReader();if(!reader)throw Object.assign(Error('Request body missing'),{status:400});let text='',size=0;const decoder=new TextDecoder();while(true){const r=await reader.read();if(r.done)break;size+=r.value.byteLength;if(size>800000){await reader.cancel();throw Object.assign(Error('Page is too large'),{status:413});}text+=decoder.decode(r.value,{stream:true});}return text+decoder.decode();}
 Deno.serve(async(req:Request)=>{
@@ -35,7 +35,7 @@ Deno.serve(async(req:Request)=>{
   const member=await user(req);if(!member)return reply({error:'This GCT account does not have website editing access.'},403);
   if(action==='load'){
    const rows=await db('website_editor_pages?namespace=eq.'+namespace+'&page=in.('+page+',site)');
-   return reply({member,page:rows.find((x:any)=>x.page===page)||{draft:{},published:{},version:0,published_version:0},site:rows.find((x:any)=>x.page==='site')||{draft:{},published:{},version:0,published_version:0}});
+   return reply({member:{user_id:member.user_id,role:member.role,email:member.email},page:rows.find((x:any)=>x.page===page)||{draft:{},published:{},version:0,published_version:0},site:rows.find((x:any)=>x.page==='site')||{draft:{},published:{},version:0,published_version:0}});
   }
   if(['save','publish','restore'].includes(action)){
    if(action==='publish'&&!['publisher','owner'].includes(member.role))return reply({error:'Publishing access is required.'},403);
@@ -44,10 +44,10 @@ Deno.serve(async(req:Request)=>{
    if(action==='restore'&&body.revision==='published'){
     const rows=await db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published,published_version');
     if(!rows[0]?.published_version)return reply({error:'This page has not been published yet.'},404);
-    const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:normalizeDocument(rows[0].published),p_action:'save',p_actor:member.user_id,p_revision:null});return reply({page:saved});
+    const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:normalizeDocument(rows[0].published),p_action:'save',p_actor:member.user_id,p_session:member.session_id,p_revision:null});return reply({page:saved});
    }
    if(action==='restore'&&!uuid(body.revision))return reply({error:'Version not found.'},400);
-   const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:document,p_action:action,p_actor:member.user_id,p_revision:action==='restore'?body.revision:null});return reply({page:saved});
+   const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:document,p_action:action,p_actor:member.user_id,p_session:member.session_id,p_revision:action==='restore'?body.revision:null});return reply({page:saved});
   }
   if(action==='history'){
    const [revisions,rows]=await Promise.all([db('website_editor_revisions?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,version,action,actor_email,created_at&order=created_at.desc&limit=100'),db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published_version,published_at')]);
