@@ -2,7 +2,7 @@
   "framework": null,
   "buildCommand": "node scripts/build-season.mjs",
   "outputDirectory": "season-dist",
-  "installCommand": null,
+  "installCommand": "npm ci --ignore-scripts",
   "redirects": [
     {
       "source": "/creators",
@@ -32,6 +32,10 @@
   ],
   "rewrites": [
     {
+      "source": "/editor",
+      "destination": "/api/editor?action=ui"
+    },
+    {
       "source": "/preview",
       "destination": "/api/preview?page=network"
     },
@@ -42,6 +46,14 @@
     {
       "source": "/preview/brands",
       "destination": "/api/preview?page=brands"
+    },
+    {
+      "source": "/preview/v2",
+      "destination": "/api/preview?page=v2"
+    },
+    {
+      "source": "/preview/creators",
+      "destination": "/api/preview?page=creators"
     },
     {
       "source": "/preview/:path*",
@@ -104,8 +116,12 @@
   ],
   "functions": {
     "api/preview.js": {
-      "includeFiles": "gct-{network,courses}.html",
-      "maxDuration": 10
+      "includeFiles": "gct-{network,courses,v2,creators}.html",
+      "maxDuration": 30
+    },
+    "api/editor.js": {
+      "includeFiles": "{editor.html,gct-{network,courses,v2,creators}.html,data/editor-assets.json}",
+      "maxDuration": 30
     }
   }
 }
