@@ -41,10 +41,19 @@ Deno.serve(async(req:Request)=>{
    if(action==='publish'&&!['publisher','owner'].includes(member.role))return reply({error:'Publishing access is required.'},403);
    if(!Number.isSafeInteger(body.version)||body.version<0)return reply({error:'Reload the draft and try again.'},400);
    let document={};try{if(action==='save')document=normalizeDocument(body.document);}catch(e){return reply({error:(e as Error).message},400);}
+   if(action==='restore'&&body.revision==='published'){
+    const rows=await db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published,published_version');
+    if(!rows[0]?.published_version)return reply({error:'This page has not been published yet.'},404);
+    const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:normalizeDocument(rows[0].published),p_action:'save',p_actor:member.user_id,p_revision:null});return reply({page:saved});
+   }
    if(action==='restore'&&!uuid(body.revision))return reply({error:'Version not found.'},400);
    const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:document,p_action:action,p_actor:member.user_id,p_revision:action==='restore'?body.revision:null});return reply({page:saved});
   }
-  if(action==='history')return reply({revisions:await db('website_editor_revisions?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,version,action,actor_email,created_at&order=created_at.desc&limit=100')});
+  if(action==='history'){
+   const [revisions,rows]=await Promise.all([db('website_editor_revisions?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,version,action,actor_email,created_at&order=created_at.desc&limit=100'),db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published_version,published_at')]);
+   const published=rows[0]?.published_version?{id:'published',current:true,version:rows[0].published_version,action:'publish',actor_email:'Published website',created_at:rows[0].published_at}:null;
+   return reply({revisions,published});
+  }
   if(action==='media')return reply({media:(await db('website_editor_media?status=eq.ready&select=id,name,path,mime,size_bytes,created_at&order=created_at.desc&limit=200')).map((m:any)=>({...m,src:url+'/storage/v1/object/public/'+bucket+'/'+m.path}))});
   if(action==='upload'){
    const types:Record<string,string>={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','image/avif':'avif','video/mp4':'mp4','video/webm':'webm'};

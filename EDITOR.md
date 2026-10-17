@@ -12,7 +12,7 @@ The editor supports the Brands/Homepage candidate, Creators, Courses & destinati
 - Page settings include search title/description, social title/description/image, canonical URL, indexing preference and favicon. Protected previews always remain noindex.
 - Sections can be reordered and hidden. Static sections can be duplicated; interactive form/tab sections retain their original controls.
 - Media contains existing assets and authorized uploads. Uploaded files are public website assets, with private metadata. HTML and SVG uploads are not accepted. Maximum size: 25 MB.
-- Drafts autosave. Undo/redo stays in the editing window. History retains the latest 100 saved/published/restored snapshots per page. Restore creates a draft; publishing remains explicit.
+- Drafts autosave. Undo/redo stays in the editing window. History retains the latest 100 saved/published/restored snapshots per page. The current published page is also kept separately and can always be restored as a draft. Restore creates a draft; publishing remains explicit.
 
 ## Persistence and access
 
