@@ -222,6 +222,11 @@ a:hover .link svg, .link:hover svg { transform: translateX(2px); }
 .store-badges { position: relative; z-index: 3; display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
 .store-badges img { height: 44px; width: auto; border-radius: var(--radius-10); }
 
+/* Hero image with an overlapping creator clip */
+.hero-media { position: relative; }
+.hero-media .frame { aspect-ratio: 4 / 5; }
+.hero-media .tile { position: absolute; width: 38%; left: -10%; bottom: -36px; transform: rotate(-3deg); }
+
 /* ---------- Video tiles ---------- */
 .tile {
   position: relative; aspect-ratio: 9 / 16; overflow: hidden; border-radius: var(--radius-24);
@@ -233,6 +238,7 @@ a:hover .link svg, .link:hover svg { transform: translateX(2px); }
 .tile-play { position: absolute; z-index: 2; top: var(--space-3); right: var(--space-3); display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #ffffffe6; box-shadow: var(--shadow-row); }
 .tile-play svg { width: 12px; height: 12px; margin-left: 1px; fill: var(--ds-text-primary); }
 .tile-tag { position: absolute; z-index: 2; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2); color: var(--color-white); font-size: 13px; font-weight: 550; letter-spacing: -0.02em; text-shadow: 0 1px 2px #0006; }
+.tile-tag > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tile-tag .av { width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; border: 1.5px solid var(--color-white); background: var(--color-white) url('brand/gct-icon-ink.png') center/70% no-repeat; }
 
 /* ---------- Marquee walls ---------- */
@@ -336,6 +342,7 @@ a.card:hover, .card.lift:hover { transform: translateY(-3px); box-shadow: var(--
 .card h3 { font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; }
 .card p { flex: 1; font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--site-muted); }
 .card .link { margin-top: var(--space-3); }
+.card h3.spaced { margin-top: var(--space-4); }
 .num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radius-10); background: var(--blue-tile); color: var(--ds-blue-ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--hero-wash-200); }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
@@ -412,6 +419,8 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
   .hero-split .hero-copy .actions { justify-content: center; }
   .step, .step.flip { grid-template-columns: 1fr; gap: var(--space-6); }
   .step.flip .step-copy { order: 0; }
+  .hero-media { width: 100%; max-width: 520px; margin: 0 auto var(--space-8); }
+  .hero-media .tile { left: 0; width: 40%; bottom: -24px; }
   .steps { gap: 64px; }
 }
 @media (max-width: 900px) {
@@ -442,6 +451,8 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
   .footer-top { flex-direction: column; }
   .actions .btn { flex: 1 1 auto; }
   .store-badges img { height: 38px; }
+  .tile-tag { font-size: 11px; gap: 6px; }
+  .tile-tag .av { width: 20px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none !important; }
