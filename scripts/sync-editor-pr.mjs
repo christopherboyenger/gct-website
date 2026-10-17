@@ -55,7 +55,7 @@ export async function syncEditorReviews({github,backend}){
 
 async function run(){
  if(process.env.GITHUB_REPOSITORY!==repo||!process.env.GITHUB_TOKEN)throw Error('Run from the GCT website review workflow.');
- const github=async(path,body,method='GET')=>{const r=await fetch(api+path,{method,headers:{Authorization:'Bearer '+process.env.GITHUB_TOKEN,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},...(body?{body:JSON.stringify(body)}:{})});if(!r.ok)throw Object.assign(Error('GitHub request failed ('+r.status+').'),{status:r.status});return r.json();};
+ const github=async(path,body,method='GET')=>{const r=await fetch(api+path,{method,headers:{Authorization:'Bearer '+process.env.GITHUB_TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},...(body?{body:JSON.stringify(body)}:{})});if(!r.ok)throw Object.assign(Error('GitHub request failed ('+r.status+').'),{status:r.status});return r.json();};
  const backend=async(action,body={})=>{
   const oidcURL=new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);oidcURL.searchParams.set('audience','gct-website-editor-pr');
   const tokenResponse=await fetch(oidcURL,{headers:{Authorization:'Bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});if(!tokenResponse.ok)throw Error('GitHub workflow identity was unavailable.');const {value}=await tokenResponse.json();
