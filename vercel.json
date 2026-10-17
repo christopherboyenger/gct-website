@@ -36,12 +36,20 @@
       "destination": "/api/preview?page=network"
     },
     {
-      "source": "/preview/courses",
-      "destination": "/api/preview?page=courses"
+      "source": "/preview/creators",
+      "destination": "/api/preview?page=creators"
     },
     {
       "source": "/preview/brands",
       "destination": "/api/preview?page=brands"
+    },
+    {
+      "source": "/preview/courses",
+      "destination": "/api/preview?page=courses"
+    },
+    {
+      "source": "/preview/events",
+      "destination": "/api/preview?page=events"
     },
     {
       "source": "/preview/:path*",
@@ -104,7 +112,7 @@
   ],
   "functions": {
     "api/preview.js": {
-      "includeFiles": "gct-{network,courses}.html",
+      "includeFiles": "gct-{network,creators,brands,courses,events}.html",
       "maxDuration": 10
     }
   }

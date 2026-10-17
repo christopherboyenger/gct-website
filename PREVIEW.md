@@ -12,13 +12,15 @@ Missing configuration fails closed. Changing either value and redeploying invali
 Routes:
 
 - `/`: public countdown and waitlist.
-- `/preview`: authenticated current network website.
+- `/preview`: authenticated network homepage.
+- `/preview/creators`: authenticated page for creators.
+- `/preview/brands`: authenticated page for brands.
 - `/preview/courses`: authenticated courses and destinations page.
-- `/preview/brands`: authenticated redirect to the network’s Brands section.
+- `/preview/events`: authenticated events page.
 
-`api/preview.js` serves only the two explicitly allowed source HTML files. The public `season-dist` build contains only the countdown HTML and shared media/assets. The full website HTML is bundled into the server function with `includeFiles`; direct HTML filenames still reach the countdown. Existing photos, videos and source files in this public repository are not confidential materials.
+`api/preview.js` serves only these five explicitly allowed source HTML files. The public `season-dist` build contains only the countdown HTML and shared media/assets. The full website HTML is bundled into the server function with `includeFiles`; direct HTML filenames still reach the countdown. Existing photos, videos and source files in this public repository are not confidential materials.
 
-The retired dark `gct-brands.html` is removed. The current Brands destination is the network page, consistent with the prior removal of the separate brand landing page.
+`gct-brands.html` is now the light, design-system Brands page served only behind preview at `/preview/brands`; the public `/gct-brands.html` and `/brands` URLs still redirect to the countdown's brand waitlist.
 
 Run `node scripts/build-season.mjs` and `node --test tests/preview.test.cjs` for build and server checks. Local HTTP testing may set `GCT_PREVIEW_LOCAL_HTTP=true`; this is ignored when `VERCEL=1`. Production always uses the Secure `__Host-gct_preview` cookie.
 

@@ -76,7 +76,10 @@ test('correct password creates a secure session and serves the protected website
   assert.equal(page.status, 200);
   assert.match(page.headers['content-type'], /^text\/html/);
   assert.match(page.body, /href="\/preview\/courses"/);
-  assert.match(page.body, /href="\/preview#brands"/);
+  for (const path of ['/preview/creators', '/preview/brands', '/preview/events']) {
+    assert.ok(page.body.includes(`href="${path}"`), `Network page missing a link to ${path}`);
+  }
+  assert.doesNotMatch(page.body, /href="gct-[a-z]+\.html/);
   assert.match(page.body, /Exit preview/);
   assert.match(page.headers['cache-control'], /no-store/);
   assert.equal(page.headers['vercel-cdn-cache-control'], 'no-store');
@@ -172,7 +175,8 @@ test('only allowed pages and redirect destinations are accepted', async () => {
   const response = await login('https://other.example.test');
   assert.deepEqual(JSON.parse(response.response.body), { next: '/preview' });
   const brands = await request('GET', '/api/preview?page=brands', { headers: { cookie } });
-  assert.equal(brands.headers.location, '/preview#brands');
+  assert.equal(brands.status, 200);
+  assert.match(brands.body.match(/<title>(.*?)<\/title>/s)?.[1] || '', /Brands/);
 });
 
 test('courses resolve through both rewritten URLs and Vercel query helpers', async () => {
@@ -188,19 +192,37 @@ test('courses resolve through both rewritten URLs and Vercel query helpers', asy
   }
 });
 
+test('every audience page resolves through its rewritten URL and the query helper', async () => {
+  const { cookie } = await login();
+  for (const [page, title] of [['creators', /Creators/], ['brands', /Brands/], ['events', /Events/]]) {
+    for (const [url, query] of [[`/preview/${page}`, undefined], ['/api/preview', { page }]]) {
+      const response = await request('GET', url, { headers: { cookie }, query });
+      assert.equal(response.status, 200, `${url} ${page}`);
+      assert.match(response.body.match(/<title>(.*?)<\/title>/s)?.[1] || '', title);
+      assert.match(response.body, /Exit preview/);
+      // Pages are served under <base href="/">, so a bare #fragment link would leave the page.
+      assert.doesNotMatch(response.body, /href="#/);
+    }
+  }
+  const missing = await request('GET', '/preview/unknown', { headers: { cookie } });
+  assert.equal(missing.status, 404);
+  const login2 = await login('creators');
+  assert.deepEqual(JSON.parse(login2.response.body), { next: '/preview/creators' });
+});
+
 test('form submissions and streamed JSON work without disclosing secrets', async () => {
   const form = await request('POST', '/api/preview?action=login', {
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     rawBody: new URLSearchParams({ password: PASSWORD, page: 'brands' }).toString(),
   });
   assert.equal(form.status, 303);
-  assert.equal(form.headers.location, '/preview#brands');
+  assert.equal(form.headers.location, '/preview/brands');
   const json = await request('POST', '/api/preview?action=login', {
     rawBody: JSON.stringify({ password: PASSWORD }),
   });
   assert.equal(json.status, 200);
   const cookie = json.headers['set-cookie'].split(';')[0];
-  for (const page of ['network', 'courses']) {
+  for (const page of ['network', 'creators', 'brands', 'courses', 'events']) {
     const response = await request('GET', `/api/preview?page=${page}`, { headers: { cookie } });
     assert.equal(response.status, 200);
     assert.ok(!response.body.includes(PASSWORD));
@@ -226,7 +248,7 @@ test('public build contains the countdown and assets but no private website HTML
       'appfavicon.jpg', 'The Golf Creator Tour logo.png',
       'assets/preview.js', 'assets/preview.css', 'assets/site.js', 'assets/site.css',
     ];
-    for (const file of [...publicFiles, 'gct-network.html', 'gct-courses.html', 'gct-brands.html', '.env.local']) {
+    for (const file of [...publicFiles, 'gct-network.html', 'gct-creators.html', 'gct-brands.html', 'gct-courses.html', 'gct-events.html', '.env.local']) {
       await mkdir(dirname(join(fixture, file)), { recursive: true });
       await writeFile(join(fixture, file), publicFiles.includes(file) ? `public fixture: ${file}` : `PRIVATE ${PASSWORD}`);
     }
