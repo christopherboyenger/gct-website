@@ -2,3 +2,6 @@ project_id = "qvuqjpcxnnikbigixupb"
 
 [functions.website-waitlist]
 verify_jwt = true
+
+[functions.website-editor]
+verify_jwt = false

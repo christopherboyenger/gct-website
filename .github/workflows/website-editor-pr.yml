@@ -1,0 +1,32 @@
+name: Website editor review
+on:
+  schedule:
+    - cron: '3-59/5 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [codex/website-editor-pr-sync]
+    paths: [.github/workflows/website-editor-pr.yml, scripts/sync-editor-pr.mjs, lib/editor-workflow-auth.mjs]
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+concurrency:
+  group: website-editor-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: node scripts/sync-editor-pr.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

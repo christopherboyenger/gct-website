@@ -2,7 +2,7 @@
   "framework": null,
   "buildCommand": "node scripts/build-season.mjs",
   "outputDirectory": "season-dist",
-  "installCommand": null,
+  "installCommand": "npm ci --ignore-scripts",
   "redirects": [
     {
       "source": "/creators",
@@ -31,6 +31,10 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/editor",
+      "destination": "/api/editor?action=ui"
+    },
     {
       "source": "/preview",
       "destination": "/api/preview?page=network"
@@ -112,8 +116,12 @@
   ],
   "functions": {
     "api/preview.js": {
-      "includeFiles": "gct-{network,creators,brands,courses,events}.html",
-      "maxDuration": 10
+      "includeFiles": "{gct-{network,creators,brands,courses,events}.html,data/website-content/*.json}",
+      "maxDuration": 30
+    },
+    "api/editor.js": {
+      "includeFiles": "{editor.html,gct-{network,creators,brands,courses,events}.html,data/**/*.json}",
+      "maxDuration": 30
     }
   }
 }

@@ -120,7 +120,8 @@ module.exports = async function handler(req, res) {
   if (action || !Object.hasOwn(destinations, page)) return json(res, 404, { error: 'Preview page not found.' });
   if (!config.ready || !validSession(req, config)) return redirect(res, `/?preview=${page}`);
   try {
-    let html = await readFile(join(process.cwd(), pages[page]), 'utf8');
+    const renderer=await import('../lib/editor-render.mjs');
+    let html=(await renderer.renderPage({page})).html;
     html = html.replace('<head>', '<head>\n  <base href="/">\n  <meta name="robots" content="noindex,nofollow,noarchive">\n  <link rel="stylesheet" href="/assets/preview.css">');
     for (const [name, file] of Object.entries(pages)) {
       html = html.replaceAll(`href="${file}`, `href="${destinations[name]}`);
