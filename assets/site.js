@@ -74,6 +74,36 @@
     }).join('');
   });
 
+  // Pricing: pick a monthly creator spend to see each plan's GCT cost; the cheapest plan becomes the fit.
+  // Each plan card carries its subscription (data-plan-base) and fee on paid creator work (data-plan-rate).
+  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  document.querySelectorAll('[data-pricing]').forEach(function (section) {
+    var plans = [].slice.call(section.querySelectorAll('[data-plan-base]'));
+    if (!plans.length) return;
+    var buttons = section.querySelectorAll('[data-spend]');
+    var out = function (root, name, text) { var el = root.querySelector('[data-out="' + name + '"]'); if (el) el.textContent = text; };
+    var choose = function (spend) {
+      var costs = plans.map(function (p) {
+        var fee = spend * Number(p.getAttribute('data-plan-rate'));
+        var cost = Number(p.getAttribute('data-plan-base')) + fee;
+        out(p, 'fee', money(fee));
+        out(p, 'cost', money(cost) + '/mo');
+        return { plan: p, cost: cost, name: (p.querySelector('.plan-name') || {}).textContent };
+      }).sort(function (a, b) { return a.cost - b.cost; });
+      var fit = costs[0], next = costs[1];
+      plans.forEach(function (p) { p.classList.toggle('fit', p === fit.plan); });
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-spend')) === spend)); });
+      out(section, 'spend', money(spend));
+      out(section, 'fit', fit.name);
+      out(section, 'saving', next && next.cost - fit.cost >= 1 ? ', ' + money(next.cost - fit.cost) + ' a month less than ' + next.name : '');
+    };
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { choose(Number(b.getAttribute('data-spend'))); });
+    });
+    var start = section.querySelector('[data-spend][aria-pressed="true"]');
+    if (start) choose(Number(start.getAttribute('data-spend')));
+  });
+
   // Brand strip: auto-rotating loop that still takes arrows, drag on desktop and swipe on touch.
   // Auto-scroll pauses on hover/touch and for a moment after any manual interaction.
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
