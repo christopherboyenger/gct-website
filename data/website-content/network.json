@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "page": "network",
+  "namespace": "production",
+  "version": 44,
+  "submissionId": "1142c416-da0a-449b-8ac7-f2c10e00b644",
+  "document": {
+    "schema": 1,
+    "templateHash": "35b8038fdc104f99430935d65d83afd270a7509917baf5455e22886a41953837",
+    "elements": {
+      "n09e1f21d7f50": {
+        "style": {
+          "backgroundColor": "#111b34"
+        }
+      },
+      "n10dc84d750f2": {
+        "style": {
+          "color": "#111934"
+        }
+      },
+      "n221aa968d957": {
+        "style": {
+          "color": "#ffffff"
+        }
+      },
+      "n2d763ff3eab2": {
+        "style": {
+          "color": "#ffffff"
+        }
+      },
+      "n794c79601581": {
+        "style": {
+          "color": "#ffffff"
+        }
+      },
+      "na6d8a867afa5": {
+        "style": {
+          "backgroundColor": "#111934"
+        }
+      },
+      "na8876e9d82f4": {
+        "src": "https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/website-editor-media/27202237-9e70-4262-86e7-d7a6f9d44085.jpg",
+        "style": {
+          "objectFit": "contain",
+          "objectPosition": "100% 100%"
+        }
+      },
+      "nac2bda404f55": {
+        "text": "Join as a Creator"
+      },
+      "nad13a75ec1b2": {
+        "style": {
+          "color": "#212121",
+          "backgroundColor": "#111934"
+        }
+      },
+      "ncd46e0c1e50b": {
+        "text": "GCT",
+        "style": {
+          "color": "#ffffff",
+          "fontSize": 25
+        }
+      },
+      "nef49b68e3e05": {
+        "style": {
+          "color": "#ffffff"
+        }
+      }
+    },
+    "theme": {
+      "textColor": "#111934"
+    },
+    "meta": {},
+    "sections": {
+      "order": [],
+      "hidden": [],
+      "copies": []
+    }
+  }
+}
