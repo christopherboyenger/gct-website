@@ -10,7 +10,7 @@ test('workflow identity rejects forks, wrong workflows, expired tokens and inval
  const wrong=generateKeyPairSync('rsa',{modulusLength:2048});assert.equal(await verifyWorkflowToken(token({},wrong.privateKey),{fetcher,now}),null);
 });
 test('submitted edits create one content PR and later submissions update it without exporting private drafts',async()=>{
- const{syncEditorReviews}=await import('../scripts/sync-editor-pr.mjs');const source='<h1>Current website source</h1>',hash=createHash('sha256').update('gct-editor-template-v1').update(source).digest('hex');
+ const{syncEditorReviews}=await import('../scripts/sync-editor-pr.mjs');const{canonicalTemplate}=await import('../lib/editor-schema.mjs');const source='<h1>Current website source</h1>',hash=createHash('sha256').update(canonicalTemplate(source)).digest('hex');
  let rows=[{id:'11111111-1111-4111-8111-111111111111',namespace:'gct-preview-v2',page:'creators',version:1,document:{schema:1,templateHash:hash,elements:{n1:{text:'Saved for review'}}},status:'queued'}],head=null,pr=null,created=0,trees=[];const acks=[];
  const backend=async(action,body)=>{if(action==='review-pending')return{submissions:structuredClone(rows)};acks.push(body);return{updated:true};};
  const github=async(route,body,method='GET')=>{
@@ -30,3 +30,5 @@ test('submitted edits create one content PR and later submissions update it with
  rows[0].id='22222222-2222-4222-8222-222222222222';rows[0].version=2;rows[0].document.elements.n1.text='Updated saved edit';await syncEditorReviews({github,backend});assert.equal(created,1);assert.equal(JSON.parse(trees[1].tree[0].content).document.elements.n1.text,'Updated saved edit');
  rows[0].document.templateHash='changed';await assert.rejects(()=>syncEditorReviews({github,backend}),/layout changed/);assert.equal(trees.length,2);assert.equal(acks.at(-1).status,'error');
 });
+
+test('Windows and hosted copies of the same source have identical template hashes',async()=>{const {renderPage}=await import('../lib/editor-render.mjs');const html='<html>\n<head><title>Current build</title></head>\n<body><h1>Heading</h1></body></html>';assert.equal((await renderPage({page:'creators',source:html})).templateHash,(await renderPage({page:'creators',source:html.replace(/\n/g,'\r\n')})).templateHash);});

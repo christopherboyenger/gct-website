@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
-import {normalizeDocument,PAGE_KEYS} from '../lib/editor-schema.mjs';
+import {normalizeDocument,PAGE_KEYS,canonicalTemplate} from '../lib/editor-schema.mjs';
 import config from '../lib/editor-config.json' with {type:'json'};
 
 const repo='christopherboyenger/gct-website',api='https://api.github.com/repos/'+repo;
@@ -28,7 +28,7 @@ export async function syncEditorReviews({github,backend}){
     if(![...PAGE_KEYS,'site'].includes(row.page))throw Error('Unsupported website page.');
     const document=normalizeDocument(row.document),file='gct-'+(row.page==='site'?'network':row.page)+'.html';
     const source=await github('/contents/'+file+'?ref='+main.object.sha);
-    const hash=createHash('sha256').update('gct-editor-template-v1').update(Buffer.from(source.content,'base64')).digest('hex');
+    const hash=createHash('sha256').update(canonicalTemplate(Buffer.from(source.content,'base64').toString('utf8'))).digest('hex');
     if(row.page!=='site'&&document.templateHash!==hash)throw Error('The '+row.page+' page layout changed. Reload the current website in the editor and save a fresh draft.');
     if(row.page==='site'&&(Object.keys(document.elements).length||document.sections.copies.length||document.sections.order.length||document.sections.hidden.length))throw Error('Shared styles cannot contain page element overrides.');
     tree.push({path:'data/website-content/'+row.page+'.json',mode:'100644',type:'blob',content:JSON.stringify({schema:1,page:row.page,namespace,version:row.version,submissionId:row.id,document},null,2)+'\n'});
