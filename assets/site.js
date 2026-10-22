@@ -74,34 +74,69 @@
     }).join('');
   });
 
-  // Pricing: pick a monthly creator spend to see each plan's GCT cost; the cheapest plan becomes the fit.
-  // Each plan card carries its subscription (data-plan-base) and fee on paid creator work (data-plan-rate).
-  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  // Pricing: pick a monthly creator spend and how many paid collaborations it covers to compare each
+  // plan's GCT cost; the cheapest plan that allows that kind of hiring becomes the fit.
+  // Each plan card carries its subscription (data-plan-base), GCT service fee rate (data-plan-rate),
+  // an optional minimum fee per paid collaboration (data-plan-min) and, on a plan without campaigns,
+  // its cap on new direct hires a month (data-plan-hires).
+  // GCT fee per paid collaboration = max(round(creator pay × rate), minimum), worked in cents. The fee
+  // is added to the brand's total, so creators receive their agreed fee.
+  function money(cents) {
+    var n = Math.round(cents) / 100;
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  }
+  function serviceFee(payCents, rate, minCents) { return Math.max(Math.round(payCents * rate), minCents); }
   document.querySelectorAll('[data-pricing]').forEach(function (section) {
     var plans = [].slice.call(section.querySelectorAll('[data-plan-base]'));
     if (!plans.length) return;
-    var buttons = section.querySelectorAll('[data-spend]');
+    var spendButtons = section.querySelectorAll('[data-spend]');
+    var hireButtons = section.querySelectorAll('[data-hires]');
+    var num = function (el, name) { return Number(el.getAttribute(name) || 0); };
     var out = function (root, name, text) { var el = root.querySelector('[data-out="' + name + '"]'); if (el) el.textContent = text; };
-    var choose = function (spend) {
+    var pressed = function (buttons, name, fallback) {
+      var on = [].filter.call(buttons, function (b) { return b.getAttribute('aria-pressed') === 'true'; })[0];
+      return on ? on.getAttribute(name) : fallback;
+    };
+    var spend = Number(pressed(spendButtons, 'data-spend', 0));
+    var hires = pressed(hireButtons, 'data-hires', '1');
+    var choose = function () {
+      // "campaign" covers campaigns and 3+ hires; otherwise the spend is split evenly across 1 or 2 hires.
+      var count = hires === 'campaign' ? 0 : Number(hires);
       var costs = plans.map(function (p) {
-        var fee = spend * Number(p.getAttribute('data-plan-rate'));
-        var cost = Number(p.getAttribute('data-plan-base')) + fee;
+        var cap = num(p, 'data-plan-hires');
+        var name = (p.querySelector('.plan-name') || {}).textContent;
+        if (cap && !(count && count <= cap)) {
+          out(p, 'fee', '—');
+          out(p, 'cost', 'Not available');
+          return { plan: p, name: name, cap: cap };
+        }
+        var n = count || 1;
+        var fee = n * serviceFee(spend * 100 / n, Number(p.getAttribute('data-plan-rate')), num(p, 'data-plan-min') * 100);
+        var cost = num(p, 'data-plan-base') * 100 + fee;
         out(p, 'fee', money(fee));
         out(p, 'cost', money(cost) + '/mo');
-        return { plan: p, cost: cost, name: (p.querySelector('.plan-name') || {}).textContent };
-      }).sort(function (a, b) { return a.cost - b.cost; });
-      var fit = costs[0], next = costs[1];
-      plans.forEach(function (p) { p.classList.toggle('fit', p === fit.plan); });
-      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-spend')) === spend)); });
-      out(section, 'spend', money(spend));
-      out(section, 'fit', fit.name);
-      out(section, 'saving', next && next.cost - fit.cost >= 1 ? ', ' + money(next.cost - fit.cost) + ' a month less than ' + next.name : '');
+        return { plan: p, name: name, cost: cost };
+      });
+      var open = costs.filter(function (c) { return !c.cap; }).sort(function (a, b) { return a.cost - b.cost; });
+      var closed = costs.filter(function (c) { return c.cap; });
+      var fit = open[0], next = open[1];
+      plans.forEach(function (p) { p.classList.toggle('fit', !!fit && p === fit.plan); });
+      spendButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-spend')) === spend)); });
+      hireButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-hires') === hires)); });
+      out(section, 'spend', money(spend * 100));
+      out(section, 'hires', count ? 'across ' + count + ' paid collaboration' + (count > 1 ? 's' : '') : 'through a campaign or 3+ hires');
+      out(section, 'fit', fit ? fit.name : '');
+      out(section, 'saving', closed.length
+        ? closed.map(function (c) { return '. ' + c.name + ' can’t run campaigns or make more than ' + c.cap + ' new direct hires a month'; }).join('')
+        : next && next.cost - fit.cost >= 100 ? ', ' + money(next.cost - fit.cost) + ' a month less than ' + next.name : '');
     };
-    buttons.forEach(function (b) {
-      b.addEventListener('click', function () { choose(Number(b.getAttribute('data-spend'))); });
+    spendButtons.forEach(function (b) {
+      b.addEventListener('click', function () { spend = Number(b.getAttribute('data-spend')); choose(); });
     });
-    var start = section.querySelector('[data-spend][aria-pressed="true"]');
-    if (start) choose(Number(start.getAttribute('data-spend')));
+    hireButtons.forEach(function (b) {
+      b.addEventListener('click', function () { hires = b.getAttribute('data-hires'); choose(); });
+    });
+    if (spend) choose();
   });
 
   // Brand strip: auto-rotating loop that still takes arrows, drag on desktop and swipe on touch.

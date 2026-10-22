@@ -138,63 +138,67 @@
 
 <section class="section" id="pricing" data-pricing>
   <div class="wrap">
-    <div class="intro rv"><span class="eyebrow">Pricing</span><h2 class="display-section sheen">Start hiring golf creators. No subscription required.</h2><p class="body-lg">Find talent, review creator rate cards, or post a campaign and receive applications. Upgrade when you’re ready to scale.</p></div>
+    <div class="intro rv"><span class="eyebrow">Pricing</span><h2 class="display-section sheen">Start hiring golf creators. No subscription required.</h2><p class="body-lg">Find creators, review their rate cards and hire directly on Starter. Upgrade to Pro to run open and invite-only campaigns.</p></div>
     <div class="plan-finder rv">
       <p class="small" id="spend-label">Monthly creator spend</p>
-      <div class="segmented" role="group" aria-labelledby="spend-label"><button type="button" data-spend="1000" aria-pressed="false">$1k</button><button type="button" data-spend="2500" aria-pressed="true">$2.5k</button><button type="button" data-spend="5000" aria-pressed="false">$5k</button><button type="button" data-spend="10000" aria-pressed="false">$10k</button></div>
-      <p class="plan-fit" aria-live="polite">At <b data-out="spend">$2,500</b> a month in creator pay, <b data-out="fit">Free</b> is the fit<span data-out="saving">, $74 a month less than Pro</span>.</p>
-      <p class="small">Creator pay goes to your creators and is separate from GCT’s plans and fees.</p>
+      <div class="segmented" role="group" aria-labelledby="spend-label"><button type="button" data-spend="200" aria-pressed="false">$200</button><button type="button" data-spend="2500" aria-pressed="true">$2.5k</button><button type="button" data-spend="5000" aria-pressed="false">$5k</button><button type="button" data-spend="10000" aria-pressed="false">$10k</button></div>
+      <p class="small" id="hires-label">Paid collaborations a month</p>
+      <div class="segmented" role="group" aria-labelledby="hires-label"><button type="button" data-hires="1" aria-pressed="true">1</button><button type="button" data-hires="2" aria-pressed="false">2</button><button type="button" data-hires="campaign" aria-pressed="false">3+ or a campaign</button></div>
+      <p class="plan-fit" aria-live="polite">At <b data-out="spend">$2,500</b> a month in creator pay <span data-out="hires">across 1 paid collaboration</span>, <b data-out="fit">Starter</b> is the fit<span data-out="saving">, $174 a month less than Pro</span>.</p>
+      <p class="small">Creators receive their agreed fee. GCT’s platform fee is added to the brand’s total.</p>
     </div>
     <div class="plans">
-      <article class="plan fit rv" data-plan-base="0" data-plan-rate="0.10">
+      <article class="plan fit rv" data-plan-base="0" data-plan-rate="0.12" data-plan-min="25" data-plan-hires="2">
         <span class="plan-badge">Best fit</span>
-        <h3 class="plan-name">Free</h3>
+        <h3 class="plan-name">Starter</h3>
         <p class="plan-price"><b>$0</b><span>/ month</span></p>
-        <p class="plan-fee">+ 10% GCT fee on paid creator work</p>
-        <div class="plan-cost"><div><span>Subscription</span><span>$0</span></div><div><span>GCT fee · 10%</span><span data-out="fee">$250</span></div><div class="total"><span>Total GCT cost</span><span data-out="cost">$250/mo</span></div></div>
+        <p class="plan-fee">+ 12% GCT service fee on paid collaborations, $25 minimum per collaboration</p>
+        <div class="plan-cost"><div><span>Subscription</span><span>$0</span></div><div><span>GCT fee · 12%, $25 min</span><span data-out="fee">$300</span></div><div class="total"><span>Total GCT cost</span><span data-out="cost">$300/mo</span></div></div>
         <p class="plan-includes">Everything to start hiring:</p>
         <ul class="checks">
           <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Golf creator profiles and rate cards</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Direct messages and hires</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Open campaigns with creator applications</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Contracts, payments and delivery in one place</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Basic audience insights and reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Up to 2 new direct hires per calendar month</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>1 active paid collaboration at a time</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Payments and delivery handled through GCT</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>1 team seat</li>
         </ul>
-        <a class="btn btn-secondary btn-lg plan-cta" href="https://golfcreatortour.app/brands"><span>Start Free</span></a>
-        <p class="plan-foot">No subscription. Pay only when you hire.</p>
+        <a class="btn btn-secondary btn-lg plan-cta" href="https://golfcreatortour.app/brands"><span>Get Started Free</span></a>
+        <p class="plan-foot">No subscription. Public and invite-only campaigns need Pro.</p>
       </article>
-      <article class="plan rv d1" data-plan-base="199" data-plan-rate="0.05">
+      <article class="plan rv d1" data-plan-base="299" data-plan-rate="0.07">
         <span class="plan-badge">Best fit</span>
         <h3 class="plan-name">Pro</h3>
-        <p class="plan-price"><b>$199</b><span>/ month</span></p>
-        <p class="plan-fee">+ 5% GCT fee on paid creator work</p>
-        <div class="plan-cost"><div><span>Subscription</span><span>$199</span></div><div><span>GCT fee · 5%</span><span data-out="fee">$125</span></div><div class="total"><span>Total GCT cost</span><span data-out="cost">$324/mo</span></div></div>
-        <p class="plan-includes">Everything in Free, plus:</p>
+        <p class="plan-price"><b>$299</b><span>/ month</span></p>
+        <p class="plan-fee">or $2,988 billed annually (equivalent to $249 a month)</p>
+        <p class="plan-fee">+ 7% GCT service fee on paid collaborations, no minimum</p>
+        <div class="plan-cost"><div><span>Subscription</span><span>$299</span></div><div><span>GCT fee · 7%</span><span data-out="fee">$175</span></div><div class="total"><span>Total GCT cost</span><span data-out="cost">$474/mo</span></div></div>
+        <p class="plan-includes">All Starter tools, plus:</p>
         <ul class="checks">
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Half the GCT fee on paid creator work</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Enhanced recruiting and campaign tools</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Advanced audience insights</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Enhanced shortlists, CRM and reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>No fixed cap on direct hires (fair use applies)</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Open and invite-only campaigns</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Up to 3 active campaigns at a time</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Review and select campaign applicants</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Up to 3 team seats</li>
         </ul>
-        <a class="btn btn-secondary btn-lg plan-cta" href="https://golfcreatortour.app/brands"><span>Start with Pro</span></a>
-        <p class="plan-foot">Billed monthly. Creator pay is separate.</p>
+        <a class="btn btn-secondary btn-lg plan-cta" href="https://golfcreatortour.app/brands"><span>Start Pro</span></a>
+        <p class="plan-foot">Subscription billed separately from your collaborations.</p>
       </article>
       <article class="plan rv d2">
         <h3 class="plan-name">Managed</h3>
         <p class="plan-price"><b>Custom</b></p>
-        <p class="plan-fee">A scoped retainer for creator programs run by GCT</p>
+        <p class="plan-fee">A custom quote for creator campaigns run by GCT, set out in a written scope of work</p>
         <p class="plan-includes">GCT runs your creator program:</p>
         <ul class="checks">
           <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Creator strategy and campaign planning</li>
           <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Creator recruitment and briefs</li>
           <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Campaigns run by the GCT team</li>
-          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Ongoing results reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-2.59a.75.75 0 1 0-1.22-.86l-3.454 4.892-1.64-1.64a.75.75 0 1 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.15-.09l4.034-5.612Z" clip-rule="evenodd"/></svg>Results reporting</li>
         </ul>
-        <a class="btn btn-secondary btn-lg plan-cta" href="mailto:info@golfcreatoropen.com?subject=GCT%20Managed%20Creator%20Program"><span>Talk to Us</span></a>
-        <p class="plan-foot">Quoted for your creator program.</p>
+        <a class="btn btn-secondary btn-lg plan-cta" href="mailto:info@golfcreatoropen.com?subject=GCT%20Managed%20Creator%20Program"><span>Talk to GCT</span></a>
+        <p class="plan-foot">Available with Starter or Pro. Quoted for your campaign.</p>
       </article>
     </div>
-    <p class="plan-notes rv">Creators join free, and GCT doesn’t take a percentage of a creator’s agreed rate. Creator applications, gifting and product seeding aren’t charged a GCT fee. Prices in USD.</p>
+    <p class="plan-notes rv">Product gifting isn’t charged a GCT fee. Creators join free. Prices in USD.</p>
   </div>
 </section>
 
@@ -206,9 +210,12 @@
       <details><summary>Who sets the terms?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>You do. Set your goals, deliverables, creator compensation and content usage rights before the campaign begins.</p></details>
       <details><summary>Can I use creator content in ads?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>With creator permission and agreed usage rights, selected content can support Meta partnership ads.</p></details>
       <details><summary>How are creators paid?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Review campaign performance, then pay creators through GCT according to the agreed terms.</p></details>
-      <details><summary>What does GCT cost?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Free has no subscription and adds a 10% GCT fee to paid creator work processed through GCT. Pro is $199 a month and lowers that fee to 5%. Managed programs are quoted separately. Creator pay goes to your creators and is separate from GCT’s fees.</p></details>
-      <details><summary>What does a hire cost?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Hire a creator at an $800 rate and you pay $880 on Free ($800 plus an $80 fee) or $840 on Pro ($800 plus a $40 fee), with Pro’s monthly subscription on top. A campaign with eight creators at $500 each comes to $4,400 on Free or $4,200 on Pro.</p></details>
-      <details><summary>When is Pro worth it?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Once you spend more than about $3,980 a month on creators through GCT, Pro’s lower fee more than covers its $199 subscription. Below that, Free costs less.</p></details>
+      <details><summary>What does GCT cost?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Starter has no subscription and adds a 12% GCT service fee to each paid collaboration, with a $25 minimum per collaboration. Pro is $299 a month, or $2,988 billed annually, and lowers the fee to 7% with no minimum. Managed campaigns are quoted separately.</p></details>
+      <details><summary>Does the creator receive their full rate?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Yes. Creators receive their agreed fee. GCT’s platform fee is added to the brand’s total.</p></details>
+      <details><summary>What does a hire cost?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>On Starter, a $500 hire costs $560: $500 to the creator plus a $60 fee (12%). A $100 hire costs $125, because the $25 minimum fee applies instead of $12. On Pro, the same $500 hire costs $535 ($500 plus a $35 fee), with the Pro subscription billed separately.</p></details>
+      <details><summary>Can Starter launch campaigns?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>No. Open and invite-only campaigns are part of Pro, with up to 3 active at a time. A Pro campaign with 10 creators at $250 each comes to $2,675: $2,500 to the creators plus a $175 fee. Starter is for direct hires: up to 2 new hires per calendar month and 1 active paid collaboration at a time.</p></details>
+      <details><summary>When is Pro worth it?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>On fees alone, Pro’s 7% rate covers its $299 monthly subscription once you pay creators more than about $5,980 a month through GCT. On the annual plan, $2,988 billed annually (equivalent to $249 a month), that point is about $4,980 a month. Whatever you spend, campaigns and more than 2 new hires a month need Pro.</p></details>
+      <details><summary>Do gifts require posting?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>No. Product gifting is voluntary: creators aren’t required to post, and gifting isn’t charged a GCT fee. Gifting campaigns run on Pro. If you need content, agree it with the creator as a paid collaboration.</p></details>
       <details><summary>Can we activate at events?<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Yes. Brands can plan activations at the Golf Creator Open and GCT creator socials. Get in touch to plan 2027 activations.</p></details>
     </div>
   </div>
