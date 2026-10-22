@@ -232,3 +232,14 @@ test('gifting is voluntary and creators are paid for approved work, not for perf
     assert.doesNotMatch(squash(read(file)), /Review campaign performance(,| and) (then )?pay creators/, file);
   }
 });
+
+test('course and event content deliverables are paid and agreed, and event gifting is voluntary', () => {
+  const courses = parseHTML(read('gct-courses.html')).document;
+  const promises = [...courses.querySelectorAll('p, li, strong')].map(el => squash(el.textContent)).filter(t => /deliverable/i.test(t));
+  assert.ok(promises.length >= 4);
+  for (const t of promises) assert.match(t, /agreed/i, t);
+  assert.ok(promises.some(t => t === 'Paid, agreed content deliverables'));
+  const events = parseHTML(read('gct-events.html')).document;
+  const activation = [...events.querySelectorAll('.card')].find(c => text(c, 'h3') === 'Brand activations');
+  assert.match(text(activation, 'p'), /no post required.*paid and agreed/);
+});
