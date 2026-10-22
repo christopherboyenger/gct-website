@@ -198,3 +198,17 @@ test('superseded prices, plan names and CTAs are gone from the website', () => {
     assert.doesNotMatch(source, /<span>Start Free<\/span>/, `${file} still has the old Start Free CTA`);
   }
 });
+
+const PAGES = ['gct-brands.html', 'gct-network.html', 'gct-creators.html', 'gct-courses.html', 'gct-events.html'];
+
+test('brand app CTAs offer an action every plan can take (campaigns are Pro)', () => {
+  for (const file of PAGES) {
+    const { document: d } = parseHTML(read(file));
+    for (const a of d.querySelectorAll('a')) {
+      assert.doesNotMatch(squash(a.textContent), /^(Start|Launch|Create) a Campaign$/i, `${file}: campaign CTA aimed at every brand`);
+    }
+    for (const a of d.querySelectorAll('a[href="https://golfcreatortour.app/brands"]')) {
+      assert.ok(['Hire Creators', 'Get Started Free', 'Start Pro'].includes(squash(a.textContent)), `${file}: ${squash(a.textContent)}`);
+    }
+  }
+});
