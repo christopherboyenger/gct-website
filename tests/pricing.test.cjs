@@ -212,3 +212,23 @@ test('brand app CTAs offer an action every plan can take (campaigns are Pro)', (
     }
   }
 });
+
+test('brand-facing copy never offers Tour Points as something a brand gives or pays with', () => {
+  // Static Brands page copy. (Case studies rendered from assets/site.js are historical and await a founder decision.)
+  assert.doesNotMatch(squash(parseHTML(read('gct-brands.html')).document.body.textContent), /points/i);
+  // The Home page's brand "How it works" section.
+  const home = parseHTML(read('gct-network.html')).document;
+  assert.doesNotMatch(squash(home.querySelector('#how-it-works').textContent), /points/i);
+});
+
+test('gifting is voluntary and creators are paid for approved work, not for performance', () => {
+  const brands = parseHTML(read('gct-brands.html')).document;
+  const seeding = [...brands.querySelectorAll('#formats .card')].find(c => text(c, 'h3') === 'Product seeding');
+  assert.match(text(seeding, 'p'), /opt in.*voluntary.*aren't required to post/);
+  assert.doesNotMatch(squash(read('gct-brands.html')), /film it on the course/);
+  const creators = parseHTML(read('gct-creators.html')).document;
+  assert.ok(![...creators.querySelectorAll('#earn .checks li')].some(li => squash(li.textContent) === 'Free product from golf brands'));
+  for (const file of ['gct-brands.html', 'gct-network.html']) {
+    assert.doesNotMatch(squash(read(file)), /Review campaign performance(,| and) (then )?pay creators/, file);
+  }
+});
