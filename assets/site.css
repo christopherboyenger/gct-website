@@ -439,16 +439,44 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
 .board-line { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-2) 0; font-size: 12px; font-weight: 550; color: var(--ds-blue-ink); }
 .board-line::before, .board-line::after { content: ''; flex: 1; height: 1px; background: var(--ds-blue); opacity: .35; }
 
-/* Tour member card */
-.member-card { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1.586; padding: var(--space-6); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; border-radius: var(--radius-24); box-shadow: var(--shadow-panel); transform: rotate(-3deg); }
-.member-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, #fff0 30%, #ffffff1f 45%, #fff0 60%); }
-.member-top { display: flex; align-items: flex-start; justify-content: space-between; }
-.member-top img { width: 64px; height: auto; }
-.member-kicker { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #ffffffb3; }
-.member-name { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
-.member-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-2); font-size: 14px; font-weight: 450; color: var(--plan-muted-dark); }
-.member-meta .chip { background: #ffffff1f; color: var(--color-white); }
-.member-stage { display: flex; align-items: center; justify-content: center; padding: var(--space-12) var(--space-6); background: radial-gradient(50% 50% at 50% 50%, var(--blue-tile), transparent); }
+/* Tour member card: the app's brushed-gold metal Tour Card (components/tour-card-interactive.tsx
+   in the app repo). Every size is the app's px value times --u, so the card scales with its column. */
+.member-stage { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--space-12) var(--space-6); background: radial-gradient(50% 50% at 50% 50%, var(--blue-tile), transparent); }
+.tour-card { --u: min(1.6px, calc((100vw - 96px) / 256)); --gold: #c9a84c; --gold-lt: #e8c96a; --gold-dk: #a3832e; position: relative; width: calc(256 * var(--u)); padding: calc(8 * var(--u)) 0 calc(14 * var(--u)); perspective: calc(1100 * var(--u)); perspective-origin: 50% 45%; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.tour-card.grabbing { cursor: grabbing; }
+.tour-card:focus-visible { outline: 2px solid var(--ds-blue); outline-offset: 4px; border-radius: var(--radius-16); }
+.tc-shadow { position: absolute; left: 50%; bottom: calc(4 * var(--u)); width: calc(180 * var(--u)); height: calc(22 * var(--u)); transform: translateX(-50%); background: radial-gradient(ellipse, #00000073 0%, #0000 70%); filter: blur(calc(3 * var(--u))); pointer-events: none; }
+.tc-float { transform-style: preserve-3d; animation: tc-float 5s ease-in-out infinite; }
+.tc-rot { position: relative; width: calc(248 * var(--u)); height: calc(156 * var(--u)); margin: 0 auto; transform-style: preserve-3d; will-change: transform; }
+.tc-face { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: calc(14 * var(--u)); border: 1px solid #fff4d68c; background: linear-gradient(135deg, var(--gold-lt) 0%, var(--gold) 32%, var(--gold-dk) 58%, var(--gold) 80%, var(--gold-lt) 100%); box-shadow: inset 0 1px 2px #ffffff80, inset 0 -2px 6px #785a1473; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.tc-front { align-items: center; justify-content: center; padding: calc(12 * var(--u)) calc(16 * var(--u)); transform: translateZ(calc(2.25 * var(--u))); }
+.tc-back { justify-content: space-between; padding: calc(16 * var(--u)) calc(18 * var(--u)); transform: rotateY(180deg) translateZ(calc(2.25 * var(--u))); }
+.tc-brushed { position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, transparent 0 1px, #ffffff0b 1px 2px, transparent 2px 3px); pointer-events: none; }
+.tc-emblem { width: calc(60 * var(--u)); height: calc(60 * var(--u)); object-fit: contain; filter: brightness(0) saturate(100%) opacity(.82); }
+.tc-org { position: absolute; top: calc(12 * var(--u)); left: 0; right: 0; text-align: center; font-size: calc(7.5 * var(--u)); font-weight: 800; letter-spacing: calc(2.4 * var(--u)); color: #1e1200b3; }
+.tc-label { margin-top: calc(5 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 800; letter-spacing: calc(3.2 * var(--u)); color: #1a1000e0; }
+.tc-watermark { position: absolute; right: calc(-12 * var(--u)); bottom: calc(-12 * var(--u)); opacity: .12; }
+.tc-watermark .tc-emblem { width: calc(108 * var(--u)); height: calc(108 * var(--u)); }
+.tc-season { font-size: calc(7.5 * var(--u)); font-weight: 800; letter-spacing: calc(2.4 * var(--u)); color: #1e120099; }
+.tc-holder { position: relative; }
+.tc-kicker { margin-bottom: calc(2 * var(--u)); font-size: calc(7.5 * var(--u)); font-weight: 700; letter-spacing: calc(1.5 * var(--u)); color: #1e12008c; }
+.tc-name { font-size: calc(17 * var(--u)); font-weight: 800; letter-spacing: calc(.2 * var(--u)); line-height: 1.1; color: #160d00eb; text-shadow: 0 1px 0 #ffffff40; }
+.tc-number { margin-top: calc(6 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 700; letter-spacing: calc(2 * var(--u)); font-variant-numeric: tabular-nums; color: #1a1000cc; text-shadow: 0 1px 0 #ffffff33; }
+.tc-sheen { position: absolute; top: 0; bottom: 0; left: 0; width: calc(92 * var(--u)); background: linear-gradient(90deg, transparent, #ffffffd9, transparent); filter: blur(calc(3 * var(--u))); opacity: 0; pointer-events: none; }
+/* Metal rim: each strip is inset by the corner radius so it never squares off the rounded corners. */
+.tc-edge { position: absolute; top: 50%; left: 50%; border-radius: 2px; box-shadow: inset 0 0 2px #ffffff73; }
+.tc-edge-l, .tc-edge-r { width: calc(4.5 * var(--u)); height: calc(128 * var(--u)); background: linear-gradient(to bottom, var(--gold-dk) 0%, var(--gold) 16%, #f3e0a0 50%, var(--gold) 84%, var(--gold-dk) 100%); }
+.tc-edge-t, .tc-edge-b { width: calc(220 * var(--u)); height: calc(4.5 * var(--u)); background: linear-gradient(to right, var(--gold-dk) 0%, var(--gold) 16%, #f3e0a0 50%, var(--gold) 84%, var(--gold-dk) 100%); }
+.tc-edge-r { transform: translate(-50%, -50%) rotateY(90deg) translateZ(calc(124 * var(--u))); }
+.tc-edge-l { transform: translate(-50%, -50%) rotateY(-90deg) translateZ(calc(124 * var(--u))); }
+.tc-edge-t { transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(78 * var(--u))); }
+.tc-edge-b { transform: translate(-50%, -50%) rotateX(-90deg) translateZ(calc(78 * var(--u))); }
+.tc-hint { display: none; }
+.js .tc-hint { display: flex; align-items: center; gap: 6px; margin-top: var(--space-2); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--site-muted); transition: opacity .5s ease; animation: tc-hint 2.4s ease-in-out infinite; }
+.js .tc-hint.gone { opacity: 0; animation: none; }
+.tc-hint svg { width: 14px; height: 14px; flex-shrink: 0; }
+@keyframes tc-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(calc(-5 * var(--u))); } }
+@keyframes tc-hint { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
 
 /* ---------- Pricing: spend picker and plan cards ---------- */
 /* The plan that costs least at the chosen spend crossfades onto the night surface and takes the badge. */
@@ -574,8 +602,6 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
   .phone-pair .float.f1 { bottom: 24px; }
   .phone-pair .float.f2 { top: 8px; }
   .faq details p { max-width: none; }
-  .member-name { font-size: 22px; }
-  .member-card { padding: var(--space-5); }
   .board { padding: var(--space-4); }
   .board-row { padding: 10px 8px; gap: var(--space-2); }
   .tile-tag .av { width: 20px; height: 20px; }
@@ -587,4 +613,5 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
   .js .rv { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .btn, .card, .phone, .card-media img, .plan, .plan::before { transition: none; }
+  .tc-float, .js .tc-hint { animation: none; }
 }
