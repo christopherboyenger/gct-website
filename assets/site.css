@@ -177,7 +177,7 @@ a:hover .link svg, .link:hover svg { transform: translateX(2px); }
 .nav.scrolled { background: #fffffff2; }
 .nav-start { display: flex; align-items: center; gap: var(--space-8); }
 .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 650; letter-spacing: -0.035em; color: var(--ds-text-primary); white-space: nowrap; }
-.nav-logo img { width: 38px; height: auto; }
+.nav-logo img { width: auto; height: 36px; }
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a { display: inline-flex; align-items: center; height: var(--cta-sm); padding: 0 10px; border-radius: var(--radius-8); font-size: 15px; font-weight: 450; line-height: 1; letter-spacing: -0.02em; transition: opacity .15s; }
 .nav-links a:hover { opacity: .7; }
@@ -550,7 +550,7 @@ a.card:hover .card-media img, .card.lift:hover .card-media img { transform: scal
   .hero { padding-top: 112px; padding-bottom: 56px; }
   .nav { top: 10px; width: calc(100% - 20px); height: 58px; padding-left: var(--space-4); }
   .nav-logo { font-size: 15px; }
-  .nav-logo img { width: 32px; }
+  .nav-logo img { height: 30px; }
   .g2, .g3, .g4, .case-grid { grid-template-columns: 1fr; }
   .collage { margin-top: var(--space-8); }
   .marquee .tile, .ugc-row .tile { width: 170px; }
