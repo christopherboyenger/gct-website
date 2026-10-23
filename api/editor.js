@@ -35,14 +35,14 @@ module.exports=async function(req,res){
   const loaded=await store.call('load',page,{},s.access_token);if(!loaded.page.version)loaded.page.draft=await render.committedDocument(page);if(!loaded.site.version)loaded.site.draft=await render.committedDocument('site');const output=await render.renderPage({page:page==='site'?'network':page,document:page==='site'?{}:loaded.page.draft,site:loaded.site.draft,edit:url.searchParams.get('mode')!=='preview'});
   res.setHeader('X-Frame-Options','SAMEORIGIN');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; media-src 'self' https:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'none'");res.setHeader('Content-Type','text/html; charset=utf-8');return res.end(render.protectedLinks(output.html.replace('<head>','<head><base href="/">'),page==='site'?'network':page));
  }
- if(['session','load','history','media','review-status'].includes(action)&&req.method==='GET'){
+ if(['session','load','history','media','review-status','changes'].includes(action)&&req.method==='GET'){
   const data=await store.call(action==='session'?'load':action,page,{},s.access_token);if(data.page&&!data.page.version)data.page.draft=await render.committedDocument(page);if(data.site&&!data.site.version)data.site.draft=await render.committedDocument('site');
   if(action==='session')return json(res,200,{member:data.member,pages:render.PAGES});
   if(action==='load')return json(res,200,{...data,document:schema.normalizeDocument(data.page.draft),global:schema.normalizeDocument(data.site.draft),pages:render.PAGES});
   if(action==='media'){const existing=JSON.parse(await readFile(join(process.cwd(),'data/editor-assets.json'),'utf8'));return json(res,200,{media:[...data.media,...existing]});}
   return json(res,200,data);
  }
- if(action==='publish')return json(res,409,{error:'Save to PR, then merge the pull request to update the website.'});
+ if(action==='publish')return json(res,409,{error:'Save changes, then merge the pull request to update the website.'});
  if(action==='submit'&&req.method==='POST'){
   checkOrigin(req);const input=await body(req);const loaded=await store.call('load',page,{},s.access_token);
   const rendered=await render.renderPage({page:page==='site'?'network':page,document:loaded.page.draft,edit:false});
@@ -51,9 +51,12 @@ module.exports=async function(req,res){
  }
  if(['save','restore','upload','finish-upload'].includes(action)&&req.method==='POST'){
   checkOrigin(req);const input=await body(req);
-  if(action==='restore'&&input.revision==='build')return json(res,200,await store.call('save',page,{version:input.version,document:await render.committedDocument(page)},s.access_token));
+  // Element labels and the checked-in page let the change log describe edits in plain words.
+  const context=async()=>({labels:page==='site'?{}:await render.templateLabels(page),...(input.version===0?{base:await render.committedDocument(page)}:{})});
+  if(action==='restore'&&input.revision==='build')return json(res,200,await store.call('save',page,{version:input.version,document:await render.committedDocument(page),...await context()},s.access_token));
   if(action==='save'){try{input.document=schema.normalizeDocument(input.document);}catch(e){return json(res,400,{error:e.message});}}
   const payload=Object.fromEntries(['version','document','revision','name','mime','size','id'].filter(k=>Object.hasOwn(input,k)).map(k=>[k,input[k]]));
+  if(['save','restore'].includes(action))Object.assign(payload,await context());
   return json(res,200,await store.call(action,page,payload,s.access_token));
  }
  return json(res,404,{error:'Editor action not found.'});

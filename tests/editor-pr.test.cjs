@@ -28,7 +28,7 @@ test('submitted edits create one content PR and later submissions update it with
  };
  await syncEditorReviews({github,backend});assert.equal(created,1);assert.equal(acks[0].status,'in_pr');assert.deepEqual(trees[0].tree.map(x=>x.path),['data/website-content/creators.json']);assert(!trees[0].tree[0].content.includes('submitted_by'));
  rows[0].id='22222222-2222-4222-8222-222222222222';rows[0].version=2;rows[0].document.elements.n1.text='Updated saved edit';await syncEditorReviews({github,backend});assert.equal(created,1);assert.equal(JSON.parse(trees[1].tree[0].content).document.elements.n1.text,'Updated saved edit');
- rows[0].document.templateHash='changed';await assert.rejects(()=>syncEditorReviews({github,backend}),/layout changed/);assert.equal(trees.length,2);assert.equal(acks.at(-1).status,'error');
+ rows[0].document.templateHash='changed';await syncEditorReviews({github,backend});assert.equal(trees.length,2);assert.equal(acks.at(-1).status,'stale');assert.match(acks.at(-1).error,/layout changed.*Start from updated page/);
 });
 
 test('Windows and hosted copies of the same source have identical template hashes',async()=>{const {renderPage}=await import('../lib/editor-render.mjs');const html='<html>\n<head><title>Current build</title></head>\n<body><h1>Heading</h1></body></html>';assert.equal((await renderPage({page:'creators',source:html})).templateHash,(await renderPage({page:'creators',source:html.replace(/\n/g,'\r\n')})).templateHash);});

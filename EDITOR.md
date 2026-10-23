@@ -7,10 +7,18 @@ The canvas uses the current website's actual Home/Network, Creators, Brands, Cou
 Open `/editor` with an approved existing GCT account. `chris@golfcreatoropen.com` and `piff@golfcreatoropen.com` have active publisher memberships. Passwords are verified through GCT Auth; no account passwords were read or changed. The shared preview password grants review access, not editing access.
 
 1. Choose a page, then select content or double-click text. Change appearance, images, video, links and page metadata in the inspector.
-2. Edits autosave as private drafts. **Save draft** also saves privately.
-3. Use **Preview draft** to inspect unsent changes. **Save to PR** captures the saved page as a review submission. Shared styles are submitted separately and join the same workspace PR.
-4. The GitHub workflow creates or updates one draft content PR per editor workspace. The editor shows queued, in-PR, merged, closed or error status and a PR link. Later unsent edits are identified separately.
-5. Review and merge the content PR to apply its JSON snapshots to the website build. A subsequent submission after merging opens a new PR. There is no direct-publish action.
+2. Edits save automatically about a second after each change, and every save joins the review queue. **Save changes** saves immediately and confirms the page is queued. Shared styles join the same workspace PR.
+3. Use **Preview draft** to inspect the saved page. The GitHub workflow adds queued pages to one draft content PR per editor workspace. The editor shows queued, in-PR, merged, closed, stale or error status and a PR link.
+4. Review and merge the content PR to apply its JSON snapshots to the website build. The PR description lists what changes on each page and who last saved it. Saves after a merge open a new PR. There is no direct-publish action.
+5. If a page's source layout changed after its edits were saved, the editor shows **This page was updated** and offers **Start from updated page** (with a backup download). Edits are not accepted until then, and the prompt reappears on any edit attempt. The review workflow marks that page `stale` and keeps syncing other pages.
+
+## Change log and daily email
+
+`website_editor_changes` is a permanent log; it is never pruned (version history keeps the latest 100 snapshots per page). Saves by one person on one page within 30 minutes form a session. For each field, a session keeps the value before the session and the latest value, so typing and autosaves read as one change and edits that are undone drop out. Each session stores the structured changes and plain-language summary lines, for example `Changed text in “How it works”: “Apply in minutes” → “Apply today”`.
+
+The edge function computes changes from the stored draft and the saved document; `website_editor_commit` writes the session in the same transaction as the save. Element labels come from the page templates on the server (`templateLabels`). A save still succeeds if the log cannot be built. Sessions record the PR they entered and whether it merged or closed.
+
+The editor's **Changes** tab lists the latest 100 sessions across all pages. A daily email digest of the previous 24 hours is sent by a scheduled Claude task that reads `website_editor_changes` and sends through Gmail; it sends nothing on days without changes.
 
 The countdown remains the public homepage. Its preview password, session validation, CSP and other security headers are preserved. Merging content changes does not remove the countdown. A template hash stops old element edits from targeting a changed source layout.
 
@@ -18,11 +26,11 @@ History restores saved versions or the **current checked-in website** as a new p
 
 ## Pull-request automation
 
-`.github/workflows/website-editor-pr.yml` runs approximately every five minutes on the default branch; GitHub can delay scheduled runs. It can also be run manually. A narrow push trigger on `codex/website-editor-pr-sync` verifies the integration before merge. The schedule activates after this workflow reaches `main`.
+`.github/workflows/website-editor-pr.yml` is scheduled every five minutes on the default branch, but GitHub throttles it: in practice it runs about every four to five hours. Run it manually from the Actions tab to update the PR sooner. A narrow push trigger on `codex/website-editor-pr-sync` verifies the integration before merge. The schedule activates after this workflow reaches `main`.
 
 The job uses GitHub's short-lived `GITHUB_TOKEN` to write content branches and draft PRs. No GitHub token, personal access token or GitHub private key is stored in Vercel, Supabase or the browser. The backend verifies the job's GitHub OIDC signature, audience, immutable repository/owner IDs, workflow path, trusted ref, event and expiry before exposing submitted snapshots. This endpoint cannot edit app drafts or memberships.
 
-Only explicitly submitted snapshots are exported. The worker writes `data/website-content/{page}.json`, starting from current `main`; it validates documents and source hashes. It rejects a review branch edited outside this automation. Closed PRs are not reopened automatically. Conditional acknowledgements use the submission UUID so an older run cannot mark a newer submission as processed. Workflow concurrency prevents simultaneous branch writers.
+Only queued snapshots are exported. The worker writes `data/website-content/{page}.json`, starting from current `main`; it validates documents and source hashes. A page whose layout changed is marked `stale` and left out without blocking other pages. The repository is public, so PR descriptions and commit messages name editors by the part of their email before `@`, escape Markdown, and break `@` and `#` in website copy so they don't mention people or link issues. It rejects a review branch edited outside this automation. Closed PRs are not reopened automatically. Conditional acknowledgements use the submission UUID so an older run cannot mark a newer submission as processed. Workflow concurrency prevents simultaneous branch writers.
 
 Repository Actions settings must allow GitHub Actions to create pull requests. Permission failures are shown in the editor and workflow logs. Checks run in this workflow because PRs created by `GITHUB_TOKEN` do not normally trigger other Actions workflows. Make further content changes in the editor rather than editing the managed branch manually.
 
@@ -33,6 +41,8 @@ Repository Actions settings must allow GitHub Actions to create pull requests. P
 `GCT_EDITOR_RENDER_PRIVATE_KEY` is the existing sensitive server signing/cookie key; never commit or expose it. Preview password/session settings remain separate. Production key provisioning is still pending explicit approval from the earlier rejected production upload. The PR workflow itself adds no long-lived credentials.
 
 `GCT_EDITOR_NAMESPACE` is optional. Production defaults to `production` and previews to `gct-preview-v2`. Drafts/submissions are isolated by workspace; checked-in snapshots are shared by the website build.
+
+Version conflicts raise SQLSTATE `PT409`, which PostgREST returns as HTTP 409. Earlier functions raised `40001`, which PostgREST retries as a serialization failure, so a conflicting save could loop instead of reporting the conflict.
 
 The verified-session migration was previously applied through the SQL connector after migration tooling returned an expired request-state error. Its idempotent file is included for reconciliation. The pull-request submissions migration is recorded normally.
 

@@ -1,6 +1,7 @@
 import { normalizeDocument } from '../../../lib/editor-schema.mjs';
 import config from '../../../lib/editor-config.json' with { type: 'json' };
 import { verifyWorkflowToken } from '../../../lib/editor-workflow-auth.mjs';
+import { diffDocuments, mergeChanges } from '../../../lib/editor-changes.mjs';
 
 const url = Deno.env.get('SUPABASE_URL')!;
 const service = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -9,7 +10,7 @@ const bucket = 'website-editor-media';
 const pageKeys = ['v2','network','creators','brands','courses','events','site'];
 const uuid = (v:unknown) => typeof v==='string' && /^[0-9a-f-]{36}$/i.test(v);
 function reply(data:unknown,status=200){return new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}});}
-async function db(path:string,method='GET',body?:unknown){const r=await fetch(url+'/rest/v1/'+path,{method,headers:{...headers,Prefer:'return=representation'},...(body===undefined?{}:{body:JSON.stringify(body)})});const data=await r.json();if(!r.ok)throw Object.assign(Error(data.message||'Storage request failed'),{status:data.code==='40001'?409:500});return data;}
+async function db(path:string,method='GET',body?:unknown){const r=await fetch(url+'/rest/v1/'+path,{method,headers:{...headers,Prefer:'return=representation'},...(body===undefined?{}:{body:JSON.stringify(body)})});const data=await r.json();if(!r.ok)throw Object.assign(Error(data.message||'Storage request failed'),{status:['PT409','40001'].includes(data.code)?409:500});return data;}
 async function serviceRequest(req:Request,raw:string){
  const time=req.headers.get('x-gct-time')||'';if(!/^\d{10}$/.test(time)||Math.abs(Date.now()/1000-Number(time))>30)return false;
  try{const key=await crypto.subtle.importKey('spki',Uint8Array.from(atob(config.renderPublicKey),c=>c.charCodeAt(0)),{name:'Ed25519'},false,['verify']);const s=(req.headers.get('x-gct-signature')||'').replace(/-/g,'+').replace(/_/g,'/');return await crypto.subtle.verify('Ed25519',key,Uint8Array.from(atob(s),c=>c.charCodeAt(0)),new TextEncoder().encode(time+'\n'+raw));}catch{return false;}
@@ -21,23 +22,49 @@ async function user(req:Request){
  if(!uuid(session))return null;
  const members=await db('rpc/website_editor_member','POST',{p_user:u.id,p_session:session});return members[0]?{...members[0],session_id:session}:null;
 }
+// Saves by the same person on the same page within 30 minutes form one change-log session.
+// The log is written by website_editor_commit in the same transaction as the save.
+async function changeLog(namespace:string,page:string,member:any,version:number,next:unknown,body:any){
+ try{
+  const [rows,last]=await Promise.all([db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=draft,version'),db('website_editor_changes?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,actor,version_to,ended_at,changes&order=ended_at.desc&limit=1')]);
+  if((rows[0]?.version||0)!==version)return null;
+  let before=rows[0]?.draft||{};if(!version&&body.base){try{before=normalizeDocument(body.base);}catch{}}
+  const open=last[0]&&last[0].actor===member.user_id&&last[0].version_to===version&&Date.now()-Date.parse(last[0].ended_at)<1800000?last[0]:null;
+  const changes=mergeChanges(open?.changes||[],diffDocuments(before,next),body.labels,page);
+  return open||changes.length?{...(open?{id:open.id}:{}),changes,summary:changes.map((c:any)=>c.text)}:null;
+ }catch(e){console.error('Change log skipped',(e as Error).message);return null;}
+}
+async function commit(namespace:string,page:string,member:any,body:any,document:unknown,action:string,revision:string|null){
+ const next=action==='restore'?(await db('website_editor_revisions?id=eq.'+revision+'&namespace=eq.'+namespace+'&page=eq.'+page+'&select=document'))[0]?.document:document;
+ const change=next?await changeLog(namespace,page,member,body.version,next,body):null;
+ return db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:document,p_action:action,p_actor:member.user_id,p_session:member.session_id,p_revision:revision,...(change?{p_change:change}:{})});
+}
+// Records the pull request state on change-log sessions so the log shows what is in review or merged.
+async function markChanges(filter:string,update:Record<string,unknown>){try{await db('website_editor_changes?'+filter,'PATCH',update);}catch(e){console.error('Change log PR status skipped',(e as Error).message);}}
 async function readBody(req:Request){const reader=req.body?.getReader();if(!reader)throw Object.assign(Error('Request body missing'),{status:400});let text='',size=0;const decoder=new TextDecoder();while(true){const r=await reader.read();if(r.done)break;size+=r.value.byteLength;if(size>800000){await reader.cancel();throw Object.assign(Error('Page is too large'),{status:413});}text+=decoder.decode(r.value,{stream:true});}return text+decoder.decode();}
 Deno.serve(async(req:Request)=>{
  try{
   if(req.method!=='POST')return reply({error:'Use the website editor.'},405);
   const raw=await readBody(req);let body;try{body=JSON.parse(raw);}catch{return reply({error:'Invalid request.'},400);}
   const {action,namespace,page}=body;
-  if(action==='review-pending'||action==='review-result'){
+  if(action==='review-pending'||action==='review-result'||action==='review-pr'){
    const authorization=req.headers.get('Authorization')||'';
    if(!authorization.startsWith('Bearer ')||!await verifyWorkflowToken(authorization.slice(7)))return reply({error:'Approved website workflow required.'},403);
    if(action==='review-pending')return reply({submissions:await db('website_editor_submissions?status=in.(queued,in_pr,error)&order=submitted_at.asc&limit=100')});
-   if(!uuid(body.id)||!['in_pr','merged','closed','error'].includes(body.status))return reply({error:'Invalid review result.'},400);
-   const update:any={status:body.status,error:body.status==='error'?String(body.error||'Review could not be updated.').slice(0,500):null};
-   if(body.status!=='error'){
+   if(action==='review-pr'){
+    if(!Number.isSafeInteger(body.pr_number)||body.pr_number<1||!['merged','closed'].includes(body.status))return reply({error:'Invalid pull request.'},400);
+    await markChanges('pr_number=eq.'+body.pr_number+'&pr_status=eq.in_pr',{pr_status:body.status});return reply({updated:true});
+   }
+   if(!uuid(body.id)||!['in_pr','merged','closed','error','stale'].includes(body.status))return reply({error:'Invalid review result.'},400);
+   const problem=['error','stale'].includes(body.status),update:any={status:body.status,error:problem?String(body.error||'Review could not be updated.').slice(0,500):null};
+   if(!problem){
     if(!Number.isSafeInteger(body.pr_number)||body.pr_number<1||body.pr_url!=='https://github.com/christopherboyenger/gct-website/pull/'+body.pr_number||typeof body.branch!=='string'||!/^codex\/editor-content-[a-z0-9_-]{1,60}$/.test(body.branch)||!/^([0-9a-f]{40})$/.test(body.commit_sha))return reply({error:'Invalid pull request.'},400);
     Object.assign(update,{pr_number:body.pr_number,pr_url:body.pr_url,branch:body.branch,commit_sha:body.commit_sha});
    }
-   const saved=await db('website_editor_submissions?id=eq.'+body.id,'PATCH',update);return reply({updated:saved.length===1});
+   const saved=await db('website_editor_submissions?id=eq.'+body.id,'PATCH',update),s=saved[0];
+   if(s&&body.status==='in_pr')await markChanges('namespace=eq.'+s.namespace+'&page=eq.'+s.page+'&version_to=lte.'+s.version+'&or=(pr_number.is.null,pr_status.eq.closed)',{pr_number:body.pr_number,pr_status:'in_pr'});
+   if(s&&['merged','closed'].includes(body.status))await markChanges('pr_number=eq.'+body.pr_number+'&pr_status=eq.in_pr',{pr_status:body.status});
+   return reply({updated:saved.length===1});
   }
   if(typeof namespace!=='string'||!/^[a-z0-9][a-z0-9_-]{0,59}$/.test(namespace)||!pageKeys.includes(page))return reply({error:'Page not found.'},400);
   if(action==='render'){
@@ -51,7 +78,8 @@ Deno.serve(async(req:Request)=>{
    const submission=await db('rpc/website_editor_submit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_actor:member.user_id,p_session:member.session_id});return reply({submission});
   }
   if(action==='review-status')return reply({submission:(await db('website_editor_submissions?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,version,status,submitted_at,pr_number,pr_url,error'))[0]||null});
-  if(action==='publish')return reply({error:'Save to PR, then review and merge the pull request to update the website.'},409);
+  if(action==='changes')return reply({sessions:await db('website_editor_changes?namespace=eq.'+namespace+'&summary=neq.%7B%7D&select=id,page,actor_email,started_at,ended_at,saves,summary,pr_number,pr_status&order=ended_at.desc&limit=100')});
+  if(action==='publish')return reply({error:'Save changes, then review and merge the pull request to update the website.'},409);
   if(action==='load'){
    const rows=await db('website_editor_pages?namespace=eq.'+namespace+'&page=in.('+page+',site)');
    return reply({member:{user_id:member.user_id,role:member.role,email:member.email},page:rows.find((x:any)=>x.page===page)||{draft:{},published:{},version:0,published_version:0},site:rows.find((x:any)=>x.page==='site')||{draft:{},published:{},version:0,published_version:0}});
@@ -63,10 +91,10 @@ Deno.serve(async(req:Request)=>{
    if(action==='restore'&&body.revision==='published'){
     const rows=await db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published,published_version');
     if(!rows[0]?.published_version)return reply({error:'This page has not been published yet.'},404);
-    const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:normalizeDocument(rows[0].published),p_action:'save',p_actor:member.user_id,p_session:member.session_id,p_revision:null});return reply({page:saved});
+    return reply({page:await commit(namespace,page,member,body,normalizeDocument(rows[0].published),'save',null)});
    }
    if(action==='restore'&&!uuid(body.revision))return reply({error:'Version not found.'},400);
-   const saved=await db('rpc/website_editor_commit','POST',{p_namespace:namespace,p_page:page,p_expected:body.version,p_document:document,p_action:action,p_actor:member.user_id,p_session:member.session_id,p_revision:action==='restore'?body.revision:null});return reply({page:saved});
+   return reply({page:await commit(namespace,page,member,body,document,action,action==='restore'?body.revision:null)});
   }
   if(action==='history'){
    const [revisions,rows]=await Promise.all([db('website_editor_revisions?namespace=eq.'+namespace+'&page=eq.'+page+'&select=id,version,action,actor_email,created_at&order=created_at.desc&limit=100'),db('website_editor_pages?namespace=eq.'+namespace+'&page=eq.'+page+'&select=published_version,published_at')]);
