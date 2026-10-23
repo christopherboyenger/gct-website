@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "page": "site",
+  "namespace": "production",
+  "version": 17,
+  "submissionId": "c4856dfe-9db2-4131-a750-b9ef748198a3",
+  "document": {
+    "schema": 1,
+    "templateHash": "",
+    "elements": {},
+    "theme": {
+      "logoSize": 60,
+      "logoText": "GCT",
+      "textColor": "#111934",
+      "buttonColor": "#111934",
+      "buttonRadius": 10,
+      "logoTextSize": 23,
+      "logoLetterSpacing": 2
+    },
+    "meta": {},
+    "sections": {
+      "order": [],
+      "hidden": [],
+      "copies": []
+    }
+  }
+}
