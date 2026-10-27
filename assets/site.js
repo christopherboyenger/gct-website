@@ -74,34 +74,69 @@
     }).join('');
   });
 
-  // Pricing: pick a monthly creator spend to see each plan's GCT cost; the cheapest plan becomes the fit.
-  // Each plan card carries its subscription (data-plan-base) and fee on paid creator work (data-plan-rate).
-  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  // Pricing: pick a monthly creator spend and how many paid collaborations it covers to compare each
+  // plan's GCT cost; the cheapest plan that allows that kind of hiring becomes the fit.
+  // Each plan card carries its subscription (data-plan-base), GCT service fee rate (data-plan-rate),
+  // an optional minimum fee per paid collaboration (data-plan-min) and, on a plan without campaigns,
+  // its cap on new direct hires a month (data-plan-hires).
+  // GCT fee per paid collaboration = max(round(creator pay × rate), minimum), worked in cents. The fee
+  // is added to the brand's total, so creators receive their agreed fee.
+  function money(cents) {
+    var n = Math.round(cents) / 100;
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  }
+  function serviceFee(payCents, rate, minCents) { return Math.max(Math.round(payCents * rate), minCents); }
   document.querySelectorAll('[data-pricing]').forEach(function (section) {
     var plans = [].slice.call(section.querySelectorAll('[data-plan-base]'));
     if (!plans.length) return;
-    var buttons = section.querySelectorAll('[data-spend]');
+    var spendButtons = section.querySelectorAll('[data-spend]');
+    var hireButtons = section.querySelectorAll('[data-hires]');
+    var num = function (el, name) { return Number(el.getAttribute(name) || 0); };
     var out = function (root, name, text) { var el = root.querySelector('[data-out="' + name + '"]'); if (el) el.textContent = text; };
-    var choose = function (spend) {
+    var pressed = function (buttons, name, fallback) {
+      var on = [].filter.call(buttons, function (b) { return b.getAttribute('aria-pressed') === 'true'; })[0];
+      return on ? on.getAttribute(name) : fallback;
+    };
+    var spend = Number(pressed(spendButtons, 'data-spend', 0));
+    var hires = pressed(hireButtons, 'data-hires', '1');
+    var choose = function () {
+      // "campaign" covers campaigns and 3+ hires; otherwise the spend is split evenly across 1 or 2 hires.
+      var count = hires === 'campaign' ? 0 : Number(hires);
       var costs = plans.map(function (p) {
-        var fee = spend * Number(p.getAttribute('data-plan-rate'));
-        var cost = Number(p.getAttribute('data-plan-base')) + fee;
+        var cap = num(p, 'data-plan-hires');
+        var name = (p.querySelector('.plan-name') || {}).textContent;
+        if (cap && !(count && count <= cap)) {
+          out(p, 'fee', '—');
+          out(p, 'cost', 'Not available');
+          return { plan: p, name: name, cap: cap };
+        }
+        var n = count || 1;
+        var fee = n * serviceFee(spend * 100 / n, Number(p.getAttribute('data-plan-rate')), num(p, 'data-plan-min') * 100);
+        var cost = num(p, 'data-plan-base') * 100 + fee;
         out(p, 'fee', money(fee));
         out(p, 'cost', money(cost) + '/mo');
-        return { plan: p, cost: cost, name: (p.querySelector('.plan-name') || {}).textContent };
-      }).sort(function (a, b) { return a.cost - b.cost; });
-      var fit = costs[0], next = costs[1];
-      plans.forEach(function (p) { p.classList.toggle('fit', p === fit.plan); });
-      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-spend')) === spend)); });
-      out(section, 'spend', money(spend));
-      out(section, 'fit', fit.name);
-      out(section, 'saving', next && next.cost - fit.cost >= 1 ? ', ' + money(next.cost - fit.cost) + ' a month less than ' + next.name : '');
+        return { plan: p, name: name, cost: cost };
+      });
+      var open = costs.filter(function (c) { return !c.cap; }).sort(function (a, b) { return a.cost - b.cost; });
+      var closed = costs.filter(function (c) { return c.cap; });
+      var fit = open[0], next = open[1];
+      plans.forEach(function (p) { p.classList.toggle('fit', !!fit && p === fit.plan); });
+      spendButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.getAttribute('data-spend')) === spend)); });
+      hireButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-hires') === hires)); });
+      out(section, 'spend', money(spend * 100));
+      out(section, 'hires', count ? 'across ' + count + ' paid collaboration' + (count > 1 ? 's' : '') : 'through a campaign or 3+ hires');
+      out(section, 'fit', fit ? fit.name : '');
+      out(section, 'saving', closed.length
+        ? closed.map(function (c) { return '. ' + c.name + ' can’t run campaigns or make more than ' + c.cap + ' new direct hires a month'; }).join('')
+        : next && next.cost - fit.cost >= 100 ? ', ' + money(next.cost - fit.cost) + ' a month less than ' + next.name : '');
     };
-    buttons.forEach(function (b) {
-      b.addEventListener('click', function () { choose(Number(b.getAttribute('data-spend'))); });
+    spendButtons.forEach(function (b) {
+      b.addEventListener('click', function () { spend = Number(b.getAttribute('data-spend')); choose(); });
     });
-    var start = section.querySelector('[data-spend][aria-pressed="true"]');
-    if (start) choose(Number(start.getAttribute('data-spend')));
+    hireButtons.forEach(function (b) {
+      b.addEventListener('click', function () { hires = b.getAttribute('data-hires'); choose(); });
+    });
+    if (spend) choose();
   });
 
   // Brand strip: auto-rotating loop that still takes arrows, drag on desktop and swipe on touch.
@@ -235,6 +270,124 @@
   window.addEventListener('load', paceWalls);
   window.addEventListener('resize', paceWalls);
   document.querySelectorAll('.wall img').forEach(function (img) { img.addEventListener('load', paceWalls); });
+
+  // Tour member card: the app's metal Tour Card with the same physics (tour-card-interactive.tsx).
+  // Drag or tap to spin it; momentum coasts under friction and, 3s after the last touch, it
+  // eases home to the front. The shine follows the rotation angle. While it is on screen and
+  // untouched it turns itself over every so often, so visitors see the engraved back.
+  document.querySelectorAll('[data-tour-card]').forEach(function (card) {
+    var rot = card.querySelector('.tc-rot');
+    var sheens = card.querySelectorAll('.tc-sheen');
+    var hint = card.parentNode.querySelector('.tc-hint');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var FRICTION = 0.95, IDLE_RETURN_MS = 3000, RETURN_EASE = 0.045; // per 60fps frame, as in the app
+    var FLICK = 50;        // a tap sends the card into a free spin
+    var HALF_TURN = 9;     // coasts to exactly 180° under FRICTION (9 / (1 - 0.95)): rests on the back
+    var SHOWCASE_MS = 10000;
+    var CARD_W = 248, SHEEN_W = 92;
+    var s = { angle: 0, vel: 0, dragging: false, lastX: 0, downX: 0, downY: 0, moved: false, t0: 0, lastInteract: -1e9, turn: 0 };
+    var raf = 0, last = 0, drawn = NaN, visible = false, inView = false, showAt = Infinity;
+
+    // Position and brighten a face's reflection from its viewing angle (0 = head-on).
+    var sheen = function (el, view) {
+      if (Math.abs(view) >= 88) { el.style.opacity = '0'; return; }
+      var t = view / 90;
+      el.style.opacity = (0.12 + 0.5 * Math.sin(Math.abs(t) * Math.PI)).toFixed(3);
+      // In % of the streak's own width, so the sweep holds at any card scale.
+      var x = (CARD_W * (0.5 - t * 0.62) - SHEEN_W / 2) / SHEEN_W * 100;
+      el.style.transform = 'translateX(' + x.toFixed(1) + '%) skewX(-12deg)';
+    };
+    // Turn the card over; its idle return then carries on the same way round to the front.
+    var turnOver = function (dir) { s.vel = dir * HALF_TURN; s.turn = dir; };
+    var frame = function (now) {
+      var k = last ? Math.min((now - last) / (1000 / 60), 4) : 1; // frames elapsed at 60fps
+      last = now;
+      if (!s.dragging) {
+        if (!still && inView && now >= showAt && s.angle === 0 && s.vel === 0) {
+          turnOver(1);
+          s.lastInteract = now;
+          showAt = now + SHOWCASE_MS;
+        }
+        if (now - s.lastInteract < IDLE_RETURN_MS) {
+          s.angle += s.vel * k;
+          s.vel *= Math.pow(FRICTION, k);
+          // End a turn-over square on the face: a fraction of a degree off-axis renders the engraving soft.
+          if (s.turn && Math.abs(s.vel) < 0.01) { s.angle = Math.round(s.angle / 180) * 180; s.vel = 0; }
+        } else {
+          var target = (s.turn > 0 ? Math.ceil : s.turn < 0 ? Math.floor : Math.round)(s.angle / 360) * 360;
+          s.angle += (target - s.angle) * (1 - Math.pow(1 - RETURN_EASE, k));
+          s.vel = 0;
+          if (Math.abs(target - s.angle) < 0.05) { s.angle = 0; s.turn = 0; }
+        }
+      }
+      if (s.angle !== drawn) { // at rest there is nothing to repaint
+        drawn = s.angle;
+        rot.style.transform = 'rotateY(' + s.angle.toFixed(2) + 'deg)';
+        var norm = ((s.angle % 360) + 360) % 360;
+        sheen(sheens[0], norm > 180 ? norm - 360 : norm);
+        sheen(sheens[1], norm - 180);
+      }
+      raf = visible ? requestAnimationFrame(frame) : 0;
+    };
+    var touched = function (now) {
+      s.lastInteract = now;
+      showAt = now + SHOWCASE_MS;
+      if (hint) hint.classList.add('gone');
+    };
+
+    card.addEventListener('pointerdown', function (e) {
+      if (e.button > 0) return;
+      try { card.setPointerCapture(e.pointerId); } catch (err) { /* unsupported */ }
+      s.dragging = true;
+      s.lastX = s.downX = e.clientX;
+      s.downY = e.clientY;
+      s.moved = false;
+      s.t0 = s.lastInteract = performance.now();
+      s.vel = 0;
+      s.turn = 0;
+      card.classList.add('grabbing');
+    });
+    card.addEventListener('pointermove', function (e) {
+      if (!s.dragging) return;
+      var d = (e.clientX - s.lastX) * 0.7; // horizontal drag spins around the vertical axis
+      s.lastX = e.clientX;
+      s.lastInteract = performance.now();
+      if (Math.abs(e.clientX - s.downX) + Math.abs(e.clientY - s.downY) > 6) s.moved = true;
+      s.angle += d;
+      s.vel = d; // release inherits the flick's momentum
+    });
+    var endDrag = function (e) {
+      if (!s.dragging) return;
+      s.dragging = false;
+      try { card.releasePointerCapture(e.pointerId); } catch (err) { /* noop */ }
+      card.classList.remove('grabbing');
+      var now = performance.now();
+      if (e.type === 'pointerup' && !s.moved && now - s.t0 < 350) { if (still) turnOver(1); else s.vel = FLICK; }
+      if (e.type === 'pointerup' || s.moved) touched(now);
+      else s.lastInteract = now;
+    };
+    card.addEventListener('pointerup', endDrag);
+    card.addEventListener('pointercancel', endDrag);
+    card.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    card.addEventListener('keydown', function (e) {
+      if (['Enter', ' ', 'ArrowLeft', 'ArrowRight'].indexOf(e.key) < 0) return;
+      e.preventDefault();
+      turnOver(e.key === 'ArrowLeft' ? -1 : 1);
+      touched(performance.now());
+    });
+
+    var start = function () { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } };
+    if (!('IntersectionObserver' in window)) { visible = inView = true; showAt = 0; start(); return; }
+    // Run the loop only while the card is on screen; show it off once it is mostly in view.
+    new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      var wasInView = inView;
+      visible = e.isIntersecting;
+      inView = e.intersectionRatio >= 0.6;
+      if (inView && !wasInView) showAt = Math.max(performance.now() + 900, s.lastInteract + SHOWCASE_MS);
+      if (visible) start();
+    }, { threshold: [0, 0.6] }).observe(card);
+  });
 
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });

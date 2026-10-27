@@ -2,68 +2,45 @@
   "schema": 1,
   "page": "network",
   "namespace": "production",
-  "version": 44,
-  "submissionId": "1142c416-da0a-449b-8ac7-f2c10e00b644",
+  "version": 97,
+  "submissionId": "cb9388bb-484f-4285-8761-348167723d6a",
   "document": {
     "schema": 1,
-    "templateHash": "35b8038fdc104f99430935d65d83afd270a7509917baf5455e22886a41953837",
+    "templateHash": "ccb82e4cdbd5b9c182a45d0162b3a765bab36f5fc9940a00364bbb30e2603108",
     "elements": {
-      "n09e1f21d7f50": {
-        "style": {
-          "backgroundColor": "#111b34"
-        }
-      },
-      "n10dc84d750f2": {
-        "style": {
-          "color": "#111934"
-        }
-      },
       "n221aa968d957": {
         "style": {
-          "color": "#ffffff"
+          "fontWeight": 700
         }
       },
       "n2d763ff3eab2": {
         "style": {
-          "color": "#ffffff"
+          "fontWeight": 700
         }
       },
       "n794c79601581": {
         "style": {
-          "color": "#ffffff"
-        }
-      },
-      "na6d8a867afa5": {
-        "style": {
-          "backgroundColor": "#111934"
+          "fontWeight": 700
         }
       },
       "na8876e9d82f4": {
-        "src": "https://qvuqjpcxnnikbigixupb.supabase.co/storage/v1/object/public/website-editor-media/27202237-9e70-4262-86e7-d7a6f9d44085.jpg",
         "style": {
-          "objectFit": "contain",
-          "objectPosition": "100% 100%"
+          "width": 225,
+          "height": 44,
+          "fontSize": 47,
+          "objectFit": "cover",
+          "lineHeight": 1.6,
+          "letterSpacing": 1.3,
+          "paddingBottom": 0,
+          "objectPosition": "0% 0%"
         }
       },
       "nac2bda404f55": {
         "text": "Join as a Creator"
       },
-      "nad13a75ec1b2": {
-        "style": {
-          "color": "#212121",
-          "backgroundColor": "#111934"
-        }
-      },
-      "ncd46e0c1e50b": {
-        "text": "GCT",
-        "style": {
-          "color": "#ffffff",
-          "fontSize": 25
-        }
-      },
       "nef49b68e3e05": {
         "style": {
-          "color": "#ffffff"
+          "fontWeight": 700
         }
       }
     },
